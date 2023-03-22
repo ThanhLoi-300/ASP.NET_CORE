@@ -1,0 +1,148 @@
+﻿@using ASP.NET_CORE.Models
+@model IEnumerable<ASP.NET_CORE.DATA.Entities.Category>
+
+@{
+    ViewBag.Title = "Category_List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Pager pager = new Pager();
+
+    int page_No = 0;
+    if(ViewBag.pager != null)
+    {
+        pager = ViewBag.pager;
+        page_No = pager.Current_Page;
+    }
+
+    var i = (pager.Current_Page - 1) * pager.Page_Size;
+    var btn = "";
+    var icon = "";
+}
+
+@section css{
+        <link href="~/Public/Admin/css/table.css" rel="stylesheet" />
+}
+
+<section class="recent">
+    <div class="activity-grid">
+        <div class="activity-card">
+            <div class="activity-header">
+                <h3>Danh sách danh mục</h3>
+            </div>
+            <div class="activity-header row">
+                @using (Html.BeginForm("Category_List", "Category", FormMethod.Get, new { }))
+                {
+                    <spand style="margin-left:20px;" class="input-group input-group-sm">
+                        @Html.Editor("search", new { htmlAttributes = new { @placeholder = "Search", @class = "form-control" } })
+                        <spand class="input-group-append">
+                            <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                        </spand>
+                    </spand>
+                }
+
+
+                <spand class="activity-more col-3 right">
+                    <span class="ti-plus"></span>&nbsp;
+                    <a href="@Url.Action("Category_Create","Category")" class="add">Thêm danh mục</a>
+                </spand>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Tên danh mục</th>
+                            <th>Trạng thái</th>
+                            <th>Chi tiết</th>
+                            <th>Xoá</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (ASP.NET_CORE.DATA.Entities.Category c in Model)
+                    {
+                        if (c.Status == 1)
+                        {
+                            btn = "btn btn-sm btn-success";
+                            icon = "fas fa-toggle-on";
+                        }
+                        else
+                        {
+                            btn = "btn btn-sm btn-danger";
+                            icon = "fas fa-toggle-off";
+                        }
+                        <tbody id="tbl_Category">
+                            <tr>
+                                <td>@(++i)</td>
+                                <td>@c.Name</td>
+                                <td><a href="@Url.Action("Category_Status","Category", new {id = c.Id, page = pager.Current_Page, search = ViewBag.search})" class="@btn"><i class="@icon"></i></a></td>
+                                <td>
+                                    <a href="@Url.Action("Category_Edit","Category", new {id = c.Id, page = pager.Current_Page, search = ViewBag.search})" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                </td>
+                                <td>
+                                    @{
+                                       string s = "Category_Delete/"+c.Id + "?page=" +  pager.Current_Page + "&search=" + ViewBag.search;
+                                    }
+                                    <input type="hidden" id="@c.Id" value="@s" />
+                                    <span onclick="delete_Item(@c.Id)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+                <div class="row" style="margin-left:50%;margin-top:10px;">
+                    <div>
+                        @if (pager.Total_Page > 0)
+                        {
+                            <ul class="pagination justify-content-end">
+                                @if (pager.Current_Page > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Category_List","Category", new {page = 1, search = ViewBag.search})">First</a>
+                                    </li>
+                                    <li class="page-item">
+                                                <a class="page-link" href="@Url.Action("Category_List","Category", new {page = pager.Current_Page - 1, search = ViewBag.search})">&lt;&lt;</a>
+                                    </li>
+                                }
+
+                                @for (var p = pager.Start_Page; p <= pager.End_Page; p++)
+                                {
+                                    <li class="page-item @(p == pager.Current_Page ? "active" : "")">
+                                        <a class="page-link" href="@Url.Action("Category_List","Category", new {page = p, search = ViewBag.search})">@p</a>
+                                    </li>
+                                }
+
+                                @if (pager.Current_Page < pager.Total_Page)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Category_List","Category", new {page = pager.Current_Page + 1, search = ViewBag.search})">>></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Category_List","Category", new {page = pager.Total_Page, search = ViewBag.search})">Last</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        function delete_Item(id) {
+            var s = $("#"+id).val()
+            Swal.fire({
+                title: 'Do you want to delete?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+            }).then((result) => {
+                if (result.isConfirmed){
+                    location.href = s
+                } 
+            })
+        }
+    </script>
+}
+

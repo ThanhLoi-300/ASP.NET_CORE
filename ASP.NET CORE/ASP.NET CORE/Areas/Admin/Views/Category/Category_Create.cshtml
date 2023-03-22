@@ -1,0 +1,49 @@
+﻿@model ASP.NET_CORE.DATA.Entities.Category
+@{
+    ViewBag.Title = "Category_Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+            <link href="~/Public/Admin/css/table.css" rel="stylesheet" />
+}
+
+<section class="recent">
+    <div class="activity-grid">
+        <div class="activity-card">
+            <div class="activity-header">
+                <h3>Thêm danh mục</h3>
+                <div class="activity-more">
+                    <span class="ti-back-left"></span>&nbsp;
+                    <a href="@Url.Action("Category_List","Category")" class="add">Quay lại</a>
+                </div>
+            </div>
+
+            <form action="@Url.Action("Category_Create","Category")" method="post">
+                <table class="form" style="border-collapse: inherit;">
+                    <tr>
+                        <td>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập tên",style="width: 50%;text-align: center;padding: 10px;border-radius: 6px;font-size: 20px;"  } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="select" name="Status">
+                                <option value="-1">Trạng thái</option>
+                                <option value="0">Ẩn</option>
+                                <option value="1">Hiện</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" name="submit" Value="Save" style="padding: 10px 20px;border-radius: 6px;color: #fff;background: #323434;" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</section>
+

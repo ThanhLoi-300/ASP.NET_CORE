@@ -1,0 +1,40 @@
+﻿@using ASP.NET_CORE.DATA.Entities
+
+@{
+    ViewBag.Title = "Category_Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Category cate = ViewBag.category;
+}
+
+@section css{
+        <link href="~/Public/Admin/css/table.css" rel="stylesheet" />
+}
+
+<section class="recent">
+    <div class="activity-grid">
+        <div class="activity-card">
+            <div class="activity-header">
+                <h3>Thông tin thể loại</h3>
+                <div class="activity-more">
+                    <span class="ti-back-left"></span>&nbsp;
+                    <a href="@Url.Action("Category_List","Category", new { page = ViewBag.page, search =  ViewBag.search})" class="add">Quay lại</a>
+                </div>
+            </div>
+                <form action="@Url.Action("Category_Edit","Category", new {id = cate.Id , page = ViewBag.page, search =  ViewBag.search})" method="post">
+                    <table class="form" style="border-collapse: inherit;">
+                        <tr>
+                            <td>
+                                <input type="text" value="@cate.Name" name="Name" placeholder="Sửa sản phẩm" class="medium" style="width: 50%;text-align: center;padding: 10px;border-radius: 6px;font-size: 20px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" name="submit" Value="Save" style="padding: 10px 20px;border-radius: 6px;color: #fff;background: #323434;" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+        </div>
+    </div>
+</section>
+

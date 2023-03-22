@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+        "Connection_String": "Server=DESKTOP-PEFOHBR;Database=ASP.NET CORE;Trusted_Connection=True;MultipleActiveResultSets=true;trustServerCertificate=true;"
+    }
+}

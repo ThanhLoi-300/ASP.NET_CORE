@@ -1,0 +1,248 @@
+﻿@model ASP.NET_CORE.DATA.Entities.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Product_Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+        <div class="form-horizontal">
+            <section class="recent">
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <h3>Cập nhật sản phẩm</h3>
+                            <div class="activity-more">
+                                <span class="ti-back-left"></span>&nbsp;
+                                <a href="@Url.Action("Product_List","Product")" class="add">Quay lại</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link active " href="#activity" data-toggle="tab">Thông tin</a></li>
+                                    <li class="nav-item"><a class="nav-link " href="#timeline" data-toggle="tab">Ảnh</a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="activity">
+                                        <table class="form">
+                                            <tr>
+                                                <td class="form_title">
+                                                    <label>Nhập tên</label>
+                                                </td>
+                                                <td>
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập tên sản phẩm" } })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr style="border:none;">
+                                                <td class="form_title">
+                                                    <label>Số lượng tổng</label>
+                                                </td>
+                                                <td>
+                                                @{ 
+                                                    var total = Model.QuantityS + Model.QuantityM + Model.QuantityL + Model.QuantityXl;
+                                                }
+                                                    <input type="text" id="total" value="@total" class="medium  product" readonly />
+                                                </td>
+                                            </tr>
+                                            <tr style="border:none;">
+                                                <td class="form_title">
+                                                    <label>Size S</label>
+                                                </td>
+                                                <td>
+                                                @Html.EditorFor(model => model.QuantityS, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
+                                                @Html.ValidationMessageFor(model => model.QuantityS, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr style="border:none;">
+                                                <td class="form_title">
+                                                    <label>Size M</label>
+                                                </td>
+                                                <td>
+                                                @Html.EditorFor(model => model.QuantityM, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
+                                                @Html.ValidationMessageFor(model => model.QuantityM, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr style="border:none;">
+                                                <td class="form_title">
+                                                    <label>Size L</label>
+                                                </td>
+                                                <td>
+                                                @Html.EditorFor(model => model.QuantityL, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
+                                                @Html.ValidationMessageFor(model => model.QuantityL, "", new { @class = "text-danger" })
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title">
+                                                    <label>Size XL</label>
+                                                </td>
+                                                <td>
+                                                @Html.EditorFor(model => model.QuantityXl, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
+                                                @Html.ValidationMessageFor(model => model.QuantityXl, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title">
+                                                    <label>Danh mục sản phẩm</label>
+                                                </td>
+                                                <td>
+                                                @Html.DropDownListFor(model => model.Category_ID, ViewBag.cate as SelectList, "Chọn danh mục")
+                                                @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title" style="vertical-align: top; padding-top: 9px;">
+                                                    <label>Mô tả sản phẩm</label>
+                                                </td>
+                                                <td>
+                                                @Html.TextAreaFor(model => model.Description, htmlAttributes: new { @class = "tinymce", rows = "9", cols = "70" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title">
+                                                    <label>Giá sản phẩm</label>
+                                                </td>
+                                                <td>
+                                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "medium", placeholder = "Nhập giá" } })
+                                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title">
+                                                    <label>Kiểu sản phẩm</label>
+                                                </td>
+                                                <td>
+                                                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>()
+                                           {
+                                               new SelectListItem(){ Text ="Quần áo nam", Value ="Quần áo nam"},
+                                               new SelectListItem(){ Text ="Quần áo nữ", Value ="Quần áo nữ"},
+                                               new SelectListItem(){ Text ="Quần áo trẻ em", Value ="Quần áo trẻ em"}
+                                           }, "Chọn kiểu sản phẩm")
+                                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title">
+                                                    <label>Ảnh đại diện</label>
+                                                </td>
+                                                <td>
+                                                    <img style="margin:20px;" width="150" src="@Model.Img" id="avata" />
+
+                                                @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "medium", id = "img", type = "hidden" } })
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form_title"><label>Trạng thái</label></td>
+                                                <td>
+                                                @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
+                                                   {
+                                                       new SelectListItem(){ Text ="Ẩn", Value ="0"},
+                                                       new SelectListItem(){ Text ="Hiện", Value ="1"}
+                                                   }, "Trạng thái")
+                                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="form">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" value="abc" name="file" />
+                                        <input type="submit" name="submit" Value="Save" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+}
+@section scripts{
+        <script src="~/Content/ckeditor/ckeditor.js"></script>
+        <script src="~/Content/ckfinder/ckfinder.js"></script>
+        <script src="~/Public/Admin/js/autoNumeric.min.js"></script>
+        <script src="~/Public/dist/js/autoNumeric-1.9.45.js"></script>
+        <script>
+
+            var list_Img = []
+
+            function delete_btn(index) {
+                Swal.fire({
+                    title: 'Do you want to delete?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var list_Row = $('.row_Id')
+                        list_Img.splice(index, 1)
+
+                        for (var i = 0; i < list_Row.length; i++)
+                            list_Row[i].remove()
+
+                        var str = ''
+                        for (var i = 0; i < list_Img.length; i++) {
+                                str = `<tr class="row_Id">
+                                           <td class="text-center" ><div class="stt">${i + 1}</div></td>
+                                           <td class="text-center">
+                                               <img width="80" src="${list_Img[i]}"/><input type="hidden" value="${list_Img[i]}" name="file"/>
+                                           </td>
+                                           <td class="text-center"> <div onclick="delete_btn(${i})" class="btn btn-sm btn-danger btn_Xoa"><i class="fas fa-trash"></i></div></td>
+                                       </tr>`
+                            $('#tbHtml').append(str)
+                        }
+                        var temp = $('#CurrentId').val()
+                        $('#CurrentId').val(temp - 1)
+                    }
+                })
+            }
+
+            function add_Img(url) {
+                var temmp = $('#CurrentId').val()
+                var currentId = parseInt(temmp)
+                var str = ''
+                    str += `<tr class="row_Id">
+                               <td class="text-center" ><div class="stt">${currentId + 1}</div></td>
+                               <td class="text-center">
+                                   <img width="80" src="${url}"/>
+                                   <input type="text" value="${url}" name="file" />
+                               </td>
+                               <td class="text-center"> <div onclick="delete_btn(${currentId})" class="btn btn-sm btn-danger btn_Xoa"><i class="fas fa-trash"></i></div></td>
+                            </tr>`
+                list_Img.push(url)
+                $('#tbHtml').append(str)
+                $('#CurrentId').val(currentId + 1)
+            }
+
+
+            function display_Img(file) {
+                if (file.length > 0) {
+                    $('#img').attr('value', file[0].name)
+                    var fileReader = new FileReader()
+                    fileReader.onload = function (e) {
+                        $('#avata').attr('src', e.target.result)
+                    }
+                    fileReader.readAsDataURL(file[0])
+                }
+            }
+
+            function upload(field) {
+                var finder = new CKFinder()
+                finder.selectActionFunction = function (fileUrl) {
+                    add_Img(fileUrl)
+                }
+                finder.popup()
+            }
+
+        </script>
+}
+

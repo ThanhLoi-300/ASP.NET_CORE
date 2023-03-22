@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ASP.NET_CORE.DATA.Entities.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var i = 0;
+    var btn = "";
+    var icon = "";
+}
+
+<section class="recent">
+    <div class="activity-grid">
+        <div class="activity-card">
+            <div class="activity-header">
+                <h3>Danh sách sản phẩm</h3>
+                <div class="activity-more">
+                    <span class="ti-plus"></span>&nbsp;
+                    <a href="@Url.Action("Product_Create","Product")"> <h4>Thêm sản phẩm</h4></a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Tên</th>
+                            <th>Ảnh</th>
+                            <th>SL S</th>
+                            <th>SL M</th>
+                            <th>SL L</th>
+                            <th>SL XL</th>
+                            <th>Giá</th>
+                            <th>Danh mục</th>
+                            <th>Kiểu</th>
+                            <th>Trạng thái</th>
+                            <th>Chi tiết</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Status == 1)
+                            {
+                                btn = "btn btn-sm btn-success";
+                                icon = "fas fa-toggle-on";
+                            }
+                            else
+                            {
+                                btn = "btn btn-sm btn-danger";
+                                icon = "fas fa-toggle-off";
+                            }
+                                <tr>
+                                    <td>@(++i)</td>
+                                    <td>@item.Name</td>
+                                    <td><img src="@item.Img" style="width: 50px; height: 50px;" /></td>
+                                    <td>@item.QuantityS</td>
+                                    <td>@item.QuantityM</td>
+                                    <td>@item.QuantityL</td>
+                                    <td>@item.QuantityXl</td>
+                                    <td>@String.Format(" {0:0,00}", @item.Price)</td>
+                                    <td>@item.Category.Name</td>
+                                    <td>@item.Type</td>
+                                    <td><a href="@Url.Action("Product_Status","Product", new {id = item.Id})" class="@btn"><i class="@icon"></i></a></td>
+                                    <td>
+                                        <a href="@Url.Action("Product_Edit","Product", new {id = item.Id})" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        <div onclick="delete_Item(@item.Id)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></div>
+                                    </td>
+                                </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+        <script>
+            function delete_Item(item) {
+                Swal.fire({
+                    title: 'Do you want to delete?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                }).then((result) => {
+                    if (result.isConfirmed)
+                        location.href = "Product_Delete/" + item
+                })
+            }
+        </script>
+}

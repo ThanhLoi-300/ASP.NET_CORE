@@ -1,0 +1,454 @@
+:root {
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
+/* BACK TO TOP */
+
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 10px;
+    z-index: 99;
+    font-size: 34px;
+    border: none;
+    outline: none;
+    background-color: rgb(30 26 26 / 50%);
+    color: white;
+    cursor: pointer;
+    padding: 1px 13px;
+    border-radius: 50%;
+}
+
+.PC {
+    font-family: var(--font-family-monospace);
+}
+
+.app_body {
+    background-color: #fff;
+}
+
+.app_content {
+    padding: 10px 0;
+}
+
+.app_suggestion {
+    display: flex;
+}
+
+.app_suggestion a {
+    text-decoration: none;
+}
+
+.app_content-list {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    margin: 10px auto 0;
+    min-height: 108px;
+}
+
+.app_content-item img {
+    margin: 20px;
+}
+
+.app_content-img img {
+    height: 250px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.app_content-img1 img {
+    height: 250px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.app_content-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.ti-angle-left {
+    background: white;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.ti-angle-right {
+    background: white;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+
+/* BEST SELLER */
+
+.best_seller .row h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 40px;
+    font-family: var(--font-family-monospace);
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px rgb(192 192 192 / 70%), 2px 2px 5px rgb(128 128 128 / 50%), 3px 3px 7px rgb(64 64 64 / 30%);
+}
+
+.best_seller .row ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.best_seller .row li button {
+    font-size: 30px;
+    font-family: var(--font-family-monospace);
+    padding: 20px;
+    border: navajowhite;
+    background: none;
+}
+
+.best_seller_btn {
+    text-decoration: underline;
+}
+
+#men,
+#kids {
+    display: none;
+}
+
+
+/*  */
+
+.app_banner-web {
+    margin: 20px 0;
+    width: 100%;
+    height: 550px;
+    position: relative;
+}
+
+.banner-web {
+    background-image: url(../img/bl3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-web_list {
+    top: 72%;
+    position: absolute;
+    right: 42%;
+}
+
+.banner-web-title {
+    margin: 0 74.5px;
+}
+
+.banner-web_btn {
+    margin: 30px 0 0 74.5px;
+}
+
+.banner-web_btn button {
+    font-size: 25px;
+    padding: 15px;
+    background-color: white;
+    border: none;
+    color: black;
+    font-family: var(--font-family-sans-serif);
+    border: 1px solid;
+    border-radius: 50px 0 50px 0;
+}
+
+.banner-web_btn button:hover {
+    background-color: #333;
+    cursor: pointer;
+    color: white;
+}
+
+.banner-web-title h1 {
+    color: white;
+    font-size: 3.5rem;
+}
+
+.banner-web-title small {
+    color: white;
+    margin-top: 15px;
+    font-size: 1.25rem;
+}
+
+
+/* APP VIEW SHOP */
+
+.app_view-shop {
+    padding-bottom: 20px;
+    font-family: var(--font-family-monospace);
+}
+
+.app_view-shop-tile {
+    margin: 56px 0 32px;
+}
+
+.app_view-shop_tile {
+    margin: 30px;
+    font-family: var(--font-family-monospace);
+    text-align: left;
+    font-size: 40px;
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px rgb(192 192 192 / 70%), 2px 2px 5px rgb(128 128 128 / 50%), 3px 3px 7px rgb(64 64 64 / 30%);
+}
+
+.view-shop {
+    background-color: white;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+
+/* Thuộc tính CSS object-fit xác định cách nội dung của phần tử được thay thế ( <img>hoặc <video>ví dụ) sẽ phù hợp với vùng chứa của nó bằng cách sử dụng chiều rộng và chiều cao của nó. */
+
+
+/* Nội dung được thay thế có kích thước để lấp đầy ô nội dung. Kích thước thực của đối tượng được xác định bởi chiều cao và chiều rộng của phần tử. Do đó, nó được kéo dài để lấp đầy hộp. */
+
+.view-shop_img img {
+    object-fit: fill;
+    width: 100%;
+    height: 330px;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.view-shop_title {
+    text-align: center;
+    height: 100px;
+    font-size: 19px;
+}
+
+.view-shop_title h3 {
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    /*  cái hướng của chúng ta theo chiều nào */
+    -webkit-line-clamp: 1;
+}
+
+.view-shop_title small {
+    margin-top: 4px;
+}
+
+.view-shop_btn {
+    text-align: center;
+    padding: 10px;
+}
+
+.view-shop_btn button {
+    font-size: 20px;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 11px;
+    font-family: var(--font-family-monospace);
+}
+
+
+/* Background video */
+
+.shopping-for {
+    background-color: #fff;
+    height: 100%;
+    text-align: center;
+    box-shadow: 5px 10px 8px #888888;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.shopping-for img {
+    object-fit: fill;
+    width: 100%;
+    height: 400px;
+}
+
+.shopping-for button {
+    font-size: 15px;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    background-color: #282828;
+    color: white;
+}
+
+.shopping-for_btn {
+    width: 135px;
+}
+
+
+/*  home-product  */
+
+.home-product-item {
+    position: relative;
+    background-color: #fff;
+    height: 100%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 2px 2px 0 #ccc;
+    transition: transform linear 0.2s;
+}
+
+.home-product-item a {
+    text-decoration: none;
+}
+
+.home-product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 20px 0 #ccc;
+    cursor: pointer;
+}
+
+
+/*  */
+
+.overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(99, 99, 99, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-btn {
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: calibri;
+    border-radius: 20px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.buy-btn:hover {
+    color: #FFFFFF;
+    background-color: #0e0d0d;
+    transition: all ease 0.3s;
+}
+
+.overlay {
+    visibility: hidden;
+}
+
+.ovelay-img:hover .overlay {
+    visibility: visible;
+    animation: fade 0.5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*  */
+
+.home-product-item_img {
+    object-fit: fill;
+    width: 100%;
+}
+
+.home-product-item_name {
+    line-height: 1.8rem;
+    font-size: 20px;
+    height: 3.2rem;
+    font-family: var(--font-family-monospace);
+    color: black;
+    overflow: hidden;
+    /* Khi doi tuong con choi ra ngoai doi tuong chua se xu ly nhu nao */
+    margin: 10px;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /*  cái hướng của chúng ta theo chiều nào */
+    -webkit-line-clamp: 2;
+}
+
+.home-product-item_price {
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    height: 3.2rem;
+}
+
+.home-product-item_price-old {
+    text-decoration: line-through;
+    font-size: 15px;
+    color: #666;
+}
+
+.home-product-item_price-current {
+    margin-left: 10px;
+    color: #0b0c0c;
+    font-size: 20px;
+    font-family: var(--font-family-monospace);
+}
+
+
+/*  */
+
+.showcase-section {
+    height: 40vh;
+    text-align: center;
+    padding: 2rem;
+}
+
+.showcase__carousel--container {
+    padding: 2rem;
+    height: 30rem;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.showcase__carousel--content {
+    overflow: hidden;
+}
+
+.showcase__carousel--item {
+    height: 15rem;
+    width: 12rem;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: inline-block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
