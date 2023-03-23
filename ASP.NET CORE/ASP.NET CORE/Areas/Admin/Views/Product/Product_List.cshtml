@@ -1,8 +1,18 @@
 ﻿@model IEnumerable<ASP.NET_CORE.DATA.Entities.Product>
+@using ASP.NET_CORE.Models
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Pager pager = new Pager();
+
+    int page_No = 0;
+    if(ViewBag.pager != null)
+    {
+        pager = ViewBag.pager;
+        page_No = pager.Current_Page;
+    }
+
     var i = 0;
     var btn = "";
     var icon = "";
@@ -59,11 +69,11 @@
                                     <td>@item.QuantityL</td>
                                     <td>@item.QuantityXl</td>
                                     <td>@String.Format(" {0:0,00}", @item.Price)</td>
-                                    <td>@item.Category.Name</td>
+                                    <td></td>
                                     <td>@item.Type</td>
-                                    <td><a href="@Url.Action("Product_Status","Product", new {id = item.Id})" class="@btn"><i class="@icon"></i></a></td>
+                                <td><a href="@Url.Action("Product_Status","Product", new {id = item.Id, page = pager.Current_Page, search = ViewBag.search})" class="@btn"><i class="@icon"></i></a></td>
                                     <td>
-                                        <a href="@Url.Action("Product_Edit","Product", new {id = item.Id})" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="@Url.Action("Product_Edit","Product", new {id = item.Id, page = pager.Current_Page, search = ViewBag.search})" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <div onclick="delete_Item(@item.Id)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></div>

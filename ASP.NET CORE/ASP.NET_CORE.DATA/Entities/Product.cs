@@ -48,7 +48,7 @@ public partial class Product
 
     [ForeignKey("Category")]
     public int Category_ID { get; set; }
-    public Category? Category { get; set; }
+    public Category Category { get; set; } = null!;
 
     public ICollection<Cart> Carts { get; set; }
 

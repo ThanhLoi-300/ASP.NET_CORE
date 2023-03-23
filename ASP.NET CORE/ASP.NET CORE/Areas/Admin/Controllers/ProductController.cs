@@ -11,9 +11,11 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IProduct _product;
-        public ProductController(IProduct product)
+        private IWebHostEnvironment _webHostEnvironment;
+        public ProductController(IProduct product, IWebHostEnvironment webHostEnvironment)
         {
             _product = product;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Admin/Product
@@ -46,9 +48,15 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Product_Create(Product product, List<string> file, List<int> radio)
+        public async Task<IActionResult> Product_Create(Product product, IFormFile Image)
         {
             ViewBag.category_Id = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
+            if (Image == null)
+            {
+                ViewBag.message = "Img";
+                return View(product);
+            }
+
             if (ModelState.IsValid)
             {
                 if (product.QuantityS < 0 || product.QuantityM < 0 || product.QuantityL < 0 || product.QuantityXl < 0)
@@ -61,45 +69,20 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
                     ViewBag.message = "price";
                     return View(product);
                 }
-                else if (file.Count == 1)
-                {
-                    ViewBag.message = "Img";
-                    return View(product);
-                }
                 else
                 {
                     product.IsDeleted = 0;
                     if (_product.check_Name(product.Name, -1))
                     {
-                        if (file.Count > 1)
-                        {
-                            file.RemoveAt(file.Count - 1);
-                            for (var i = 0; i < file.Count; i++)
-                            {
-                                if (i + 1 == radio[0])
-                                {
-                                    product.Img = file[i];
-                                    product.Imgs.Add(new Img
-                                    {
-                                        ProductId = product.Id,
-                                        ImgProduct = file[i],
-                                        SubImg = 1
-                                    });
-                                }
-                                else
-                                {
-                                    product.Imgs.Add(new Img
-                                    {
-                                        ProductId = product.Id,
-                                        ImgProduct = file[i],
-                                        SubImg = 0
-                                    });
-                                }
-                            }
-                        }
-
-                        _product.Create_Product_Async(product);
-
+                        var uploadDir = @"img/product";
+                        var fileName = Path.GetFileNameWithoutExtension(Image.FileName);
+                        var extension = Path.GetExtension(Image.FileName);
+                        var webRootPath = _webHostEnvironment.WebRootPath;
+                        fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
+                        var path = Path.Combine(webRootPath, uploadDir, fileName);
+                        await Image.CopyToAsync(new FileStream(path, FileMode.Create));
+                        product.Img = "/" + uploadDir + "/" + fileName;
+                        await _product.Create_Product_Async(product);
 
                         TempData["mess"] = "success";
                         return RedirectToAction("Product_List");
@@ -120,11 +103,13 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         }
 
         // GET: Admin/Product/Edit/5
-        public ActionResult Product_Edit(int id)
+        public ActionResult Product_Edit(int id, int page, string search)
         {
             Product product = _product.get_Product_By_Id(id);
             ViewBag.c = product.Category_ID;
             ViewBag.cate = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
+            ViewBag.page = page;
+            ViewBag.search = search;
             return View(product);
         }
 
