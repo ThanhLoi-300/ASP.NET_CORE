@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<div>@ViewBag.c</div>
 
 @using (Html.BeginForm("Product_Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -124,18 +125,6 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="form_title">
-                                                    <label>Ảnh đại diện</label>
-                                                </td>
-                                                <td>
-                                                    <img style="margin:20px;" width="150" src="" id="myImage" />
-
-                                                    <input type="file" name="Image" class="btn btn-primary" accept="image/*" id="myFileInput" onchange="previewImage()">
-                                                    @Html.ValidationMessage("Image", "", new { @class = "text-danger" })
-                                                </td>
-                                            </tr>
-
-                                            <tr>
                                                 <td class="form_title"><label>Trạng thái</label></td>
                                                 <td>
                                                 @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
@@ -155,7 +144,8 @@
                                         <div class="timeline timeline-inverse">
                                             <div class="row">
                                                 <div class="col-md-12 text-right">
-                                                    <input type="file"  class="btn btn-primary" value="Tải ảnh" id="upload" multiple />
+                                                <input type="file"  class="btn btn-primary" value="Tải ảnh" id="upload" multiple />
+                                                <input type="file" name="save_Upload" class="btn btn-primary" value="Save" id="save_Upload" style="display: none;" multiple />
                                                 </div>
                                                 <div class="col-md-12">
                                                     <table class="table table-hover" id="tb_Img">
@@ -182,7 +172,6 @@
                             <table class="form">
                                 <tr>
                                     <td>
-                                        <input type="hidden" value="abc" name="file" />
                                         <input type="submit" name="submit" Value="Save" />
                                     </td>
                                 </tr>

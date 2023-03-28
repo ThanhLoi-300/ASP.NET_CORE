@@ -9,6 +9,9 @@ using ServiceStack;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMvc().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -51,8 +54,16 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
-      name: "areas",
+      name: "Areas",
       pattern: "{area:exists}/{controller=Category}/{action=Index}/{id?}"
+    );
+});
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Layout_Index}/{action=Index}/{id?}"
     );
 });
 
@@ -73,5 +84,7 @@ app.UseStaticFiles(new StaticFileOptions
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllers();
 
 app.Run();

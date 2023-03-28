@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Public/Admin/css/login.css">
+    <link rel="stylesheet" href="~/Public/Admin/css/grid.css">
+    <link rel="stylesheet" href="~/Public/User/font/themify-icons/themify-icons.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Đăng nhập admin</title>
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <form action="@Url.Action("Login_Request","Login")" method="post" class="login-form">
+        <p class="login-text">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-lock fa-stack-1x"></i>
+            </span>
+        </p>
+        <input type="text" name="admin_Acc" class="login-username" placeholder="Tên đăng nhâp" />
+        <input type="password" name="admin_Pass" class="login-password" placeholder="Password" />
+        <div class="login-form-waring">
+        </div>
+        <input type="submit" name="Login" value="Login" class="login-submit" />
+
+        <span id='fail'></span>
+        <a href="#" class="login-forgot-pass">Forgot password?</a>
+        <div class="underlay-photo"></div>
+        <div class="underlay-black"></div>
+        <!-- partial -->
+    </form>
+</body>
+</html>

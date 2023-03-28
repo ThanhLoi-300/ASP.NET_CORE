@@ -1,0 +1,499 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MLL SHOP</title>
+    <link rel="stylesheet" href="fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.5/css/lightslider.min.css'>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap">
+	<link rel="stylesheet" href="~/Public/User/font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="~/Public/User/css/main.css">
+	<link rel="stylesheet" href="~/Public/User/css/grid.css">
+	<link rel="stylesheet" href="~/Public/User/css/base.css">
+	<link rel="stylesheet" href="~/Public/User/css/newtodays.css">
+	<link rel="stylesheet" href="~/Public/User/css/banners.css">
+    <link rel="stylesheet" href="~/Public/User/font/fontawesome-free-5.15.4-web/css/all.min.css">
+	<link rel="shortcut icon" href="~/Public/User/img/favicon_created_by_logaster.ico" type="image/x-icon">
+    @RenderSection("css", required:false)
+</head>
+
+<body>
+	<section class="app">
+		<header>
+            <ul>
+                <li>
+                <div class="clearfix" style="margin-left:50px;">
+                    <nav class="navigation">
+                        <ul class="nav">
+                            <li class="nav-list">
+                                <a href="#">NAM</a>
+                                <div class="header_menu-list-in-item">
+                                    <div class="header_menu-list">
+                                        <div class="row">   
+                                            <div class="col c-5">
+                                                <div class="header_menu-list-part">
+                                                    <h6>Thương hiệu</h6>
+                                                    <ul class="row header_menu-list-brand ">
+
+                                                        <li class="col c-4">
+                                                            <a href="listProduct.php?idBrand=&type=0"></a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col c-7">
+                                                <div class="row header_menu-list-part">
+                                                    <ul>
+                                                        <li>
+                                                            <h6>Áo</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=0"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>Áo khoác</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php// echo $result['typeProductID']; ?>&type=0"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>QUẦN & JUMPSUIT</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=0"></a>
+                                                                </li>
+                                                           
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>CHÂN VÁY</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php// echo $result['typeProductID']; ?>&type=0"></a>
+                                                                </li>
+                                                           
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>ĐẦM</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=0"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>ĐỒ LÓT</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=0"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <a href="#">NỮ</a>
+                                <div class="header_menu-list-in-item">
+                                    <div class="header_menu-list">
+                                        <div class="row">   
+                                            <div class="col c-5">
+                                                <div class="header_menu-list-part">
+                                                    <h6>Thương hiệu</h6>
+                                                    <ul class="row header_menu-list-brand ">
+                                                
+                                                        <li class="col c-4">
+                                                            <a href="listProduct.php?idBrand=<?php //echo $result['brandId'] ?>&type=1"></a>
+                                                        </li>
+                                                    
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col c-7">
+                                                <div class="row header_menu-list-part">
+                                                    <ul>
+                                                        <li>
+                                                            <h6>Áo</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=1"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>Áo khoác</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=1"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>QUẦN & JUMPSUIT</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php// echo $result['typeProductID']; ?>&type=1"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>CHÂN VÁY</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=1"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>ĐẦM</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=1"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>ĐỒ LÓT</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=1"></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <a href="#">TRẺ EM</a>
+                                <div class="header_menu-list-in-item">
+                                    <div class="header_menu-list">
+                                        <div class="row">   
+                                            <div class="col c-5">
+                                                <div class="header_menu-list-part">
+                                                    <h6>Thương hiệu</h6>
+                                                    <ul class="row header_menu-list-brand ">
+                                                
+                                                        <li class="col c-4">
+                                                            <a href="listProduct.php?idBrand=<?php //echo $result['brandId'] ?>&type=2"><?php //echo $result['brandName'] ?></a>
+                                                        </li>
+                                                    
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col c-7">
+                                                <div class="row header_menu-list-part">
+                                                    <ul>
+                                                        <li>
+                                                            <h6>Áo</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=2"><?php //echo $result['typeProductName']; ?></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>Áo khoác</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=2"><?php //echo $result['typeProductName'] ?></a>
+                                                                </li>
+                                                             
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>QUẦN & JUMPSUIT</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=2"><?php //echo $result['typeProductName'] ?></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>CHÂN VÁY</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=2"><?php //echo $result['typeProductName'] ?></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>ĐẦM</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=2"><?php //echo $result['typeProductName'] ?></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <h6>ĐỒ LÓT</h6>
+                                                            <ul class="row header_menu-list-brand ">                                              
+                                                        
+                                                                <li class="col c-12">
+                                                                    <a href="listProduct.php?idType=<?php //echo $result['typeProductID']; ?>&type=2"><?php// echo $result['typeProductName'] ?></a>
+                                                                </li>
+                                                            
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-list">
+                                <a href="">BỘ SƯU TẬP</a>
+                            </li>
+                            <li class="nav-list">
+                                <a href="{{URL::to("/About_Us")}}">VỀ CHÚNG TÔI</a>
+                            </li>
+                            <li class="nav-list">
+                                <a href="{{URL::to("/Contact_Us")}}">LIÊN HỆ</a>
+                            </li>
+                        </ul>
+                     </nav>
+                </div>
+                </li>
+                <li>
+                    <div class="header__logo">
+                        <div class="logo">
+                         <a href="@Url.Action("Index","HomePage")">
+                            <img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="">
+                         </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <ul>
+                        <!-- thanh tìm kiếm -->
+                        <li class="header__search">
+                            <form action="{{URL::to("/Search")}}" method="GET">
+                                <input type="text" name="search" class="header__search-input" placeholder="Tìm kiếm sản phẩm...">
+                                <button type="submit" name="submit" class="ti-search"></button>
+                            </form>
+                        </li>
+                        <li class="header__cart-wrap1">
+                            <div class="header__cart">
+                                <div class="header__cart-wrap">
+                                    <a href="@Url.Action("Cart_Page","Cart")">
+                                        <i class="header__cart-icon ti-shopping-cart-full"></i>
+                                        <span class="header_cart_quantity">
+
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li  class="nav-list">
+                            <div class="nav-account">
+                                <div class="nav-account-img ti-headphone"></div>
+                                <div class="nav-account-img ti-user"></div>
+                                <ul class="nav-user_menu">
+                                    <li class="nav-user_menu-item">
+                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="{{URL::to('/Account/'.$login)}}">Tài khoản của tôi</a>
+                                    </li>
+                                    <li class="nav-user_menu-item">
+                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="doimatkhau.php">Đổi mật khẩu</a>
+                                    </li>
+                                    <li class="nav-user_menu-item">
+                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="{{URL::to('/Order_Management_Index')}}">Quản lí đơn hàng</a>
+                                    </li>
+                                    <li class="nav-user_menu-item">
+                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="{{URL::to('/Logout_User')}}">Đăng xuất</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                            <a href="{{URL::to('/Login')}}" style="text-decoration:none; color:black;">Đăng nhập</a>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+		@RenderBody()
+        <footer>
+            <div class="grid">
+                <div class="account-footer">
+                    <div class="grid wide">
+                        <div class="row">
+                            <div class="col l-2-4 c-12 m-6">
+                                <div class="account-footer_titel">CHĂM SÓC KHÁCH HÀNG</div>
+                                <div class="account-footer_list">
+                                    <ul>
+                                        <li>
+                                            <a href="">Trung tâm trợ giúp</a>
+                                        </li>
+                                        <li>
+                                            <a href="">TGl Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="">TGL Mall</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Hướng dấn mua hàng</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Hướng dấn bán hàng</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col l-2-4 c-12 m-6">
+                                <div class="account-footer_titel">VỀ TGl</div>
+                                <div class="account-footer_list">
+                                    <ul>
+                                        <li>
+                                            <a href="">Giới thiệu về TGL</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Tuyển dụng</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Điều khoản TGL</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Chính sách bảo mật</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Chính hãng</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Kênh người bán</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col l-2-4 c-12 m-6">
+                                <div class="account-footer_titel">THEO DÕI CHÚNG TÔI TRÊN</div>
+                                <div class="account-footer_list">
+                                    <ul>
+                                        <li>
+                                            <span class="ti-facebook"></span>
+                                            <a href="">Facebook</a>
+                                        </li>
+                                        <li>
+                                            <span class="ti-google"></span>
+                                            <a href="">Google</a>
+                                        </li>
+                                        <li>
+                                            <span class="ti-instagram"></span>
+                                            <a href="">Instagram</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col l-2-4 c-12 m-6">
+                                <div class="account-footer_titel">THANH TOÁN</div>
+                                <div class="account-footer_list">
+                                    <ul>
+                                        <li>
+                                            <span class="ti-credit-card"></span>
+                                            <a href="">Thẻ VISA</a>
+                                        </li>
+                                        <li>
+                                            <span class="ti-shortcode"></span>
+                                            <a href="">Chuyển khoản</a>
+                                        </li>
+                                        <li>
+                                            <span class="ti-receipt"></span>
+                                            <a href="">Credit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col c-12 l-2-4 m-6">
+                                <div class="account-footer_titel">TẢI ỨNG DỤNG TGL NGAY THÔI</div>
+                                <div class="account-footer_list">
+                                    <ul>
+                                        <li>
+                                            <span class="ti-apple"></span>
+                                            <a href="">App Store</a>
+                                        </li>
+                                        <li>
+                                            <span class="ti-android"></span>
+                                            <a href="">Ch Play</a>
+                                        </li>
+                                        <li>
+                                            <span class="ti-instagram"></span>
+                                            <a href="">Instagram</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-footer-security">
+                            © 2022 MLL. Tất cả các quyền được bảo lưu dưới quyền của các thành viên Team MLL
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+	</section>
+	<button onclick="topFunction()" id="backToTop" title="Go to top" style="display: block;">
+		<i class="ti-angle-up" style="font-size: 25px;"></i>
+	</button>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="fancybox/jquery.fancybox.pack.js?v=2.0.4"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="~/Public/User/js/product.js"></script>
+	<script type="text/javascript" src="~/Public/User/js/script.js"></script>
+    @RenderSection("script", required:false)
+
+</body>
+
+</html>

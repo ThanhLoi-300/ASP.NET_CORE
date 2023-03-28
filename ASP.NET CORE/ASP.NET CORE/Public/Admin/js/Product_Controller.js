@@ -1,4 +1,5 @@
-﻿var list_Img = []
+﻿var list_Img = []//content
+var list_File = []
 
             function delete_btn(index) {
                 Swal.fire({
@@ -10,6 +11,7 @@
                     if (result.isConfirmed) {
                         var list_Row = $('.row_Id')
                         list_Img.splice(index, 1)
+                        list_File.splice(index, 1)
 
                         for (var i = 0; i < list_Row.length; i++)
                             list_Row[i].remove()
@@ -38,6 +40,13 @@
                         }
                         var temp = $('#CurrentId').val()
                         $('#CurrentId').val(temp - 1)
+
+                        let dataTransfer = new DataTransfer();
+                        for (let file of list_File) {
+                            dataTransfer.items.add(file);
+                        }
+
+                        save_Upload.files = dataTransfer.files
                     }
                 })
             }
@@ -83,21 +92,41 @@
                 }
             }
 
-            function upload(field) {
-                var finder = new CKFinder()
-                finder.selectActionFunction = function (fileUrl) {
-                    add_Img(fileUrl) 
-                }
-                finder.popup()
-            }
+const upload = document.getElementById("upload");
+const save_Upload = document.getElementById('save_Upload');
 
-function previewImage() {
-    var fileInput = document.getElementById('myFileInput');
-    var image = document.getElementById('myImage');
-    var file = fileInput.files[0];
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        image.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
+upload.addEventListener("change", () => {
+    const files = upload.files;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = () => {
+            add_Img(reader.result)
+        };
+    }
+    Data_From_Input1_To_Input2()
+});
+
+function Data_From_Input1_To_Input2() {
+
+    // Lặp qua từng thẻ input và lấy danh sách file của nó
+    if (upload.files.length > 0) {
+        // Lặp qua từng file của thẻ input và thêm vào danh sách file
+        for (let i = 0; i < upload.files.length; i++) {
+            list_File.push(upload.files[i]);
+        }
+    }
+
+    let dataTransfer = new DataTransfer();
+    for (let file of list_File) {
+        dataTransfer.items.add(file);
+    }
+
+    save_Upload.files = dataTransfer.files
+    console.log(save_Upload.files)
 }
+

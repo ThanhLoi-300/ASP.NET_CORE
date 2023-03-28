@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<ASP.NET_CORE.DATA.Entities.Product>
 @using ASP.NET_CORE.Models
+@using ASP.NET_CORE.DATA.Entities
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +14,7 @@
         page_No = pager.Current_Page;
     }
 
-    var i = 0;
+    var i = (pager.Current_Page - 1) * pager.Page_Size;
     var btn = "";
     var icon = "";
 }
@@ -23,10 +24,23 @@
         <div class="activity-card">
             <div class="activity-header">
                 <h3>Danh sách sản phẩm</h3>
-                <div class="activity-more">
+            </div>
+            <div class="activity-header row">
+                @using (Html.BeginForm("Product_List", "Product", FormMethod.Get, new { }))
+                {
+                    <spand style="margin-left:20px;" class="input-group input-group-sm">
+                        @Html.Editor("search", new { htmlAttributes = new { @placeholder = "Search", @class = "form-control" } })
+                        <spand class="input-group-append">
+                            <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                        </spand>
+                    </spand>
+                }
+
+
+                <spand class="activity-more col-3 right">
                     <span class="ti-plus"></span>&nbsp;
-                    <a href="@Url.Action("Product_Create","Product")"> <h4>Thêm sản phẩm</h4></a>
-                </div>
+                    <a href="@Url.Action("Product_Create","Product")" class="add">Thêm danh mục</a>
+                </spand>
             </div>
             <div class="table-responsive">
                 <table>
@@ -48,7 +62,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        
+                        @foreach (ASP.NET_CORE.DATA.Entities.Product item in Model)
                         {
                             if (item.Status == 1)
                             {
@@ -69,34 +84,75 @@
                                     <td>@item.QuantityL</td>
                                     <td>@item.QuantityXl</td>
                                     <td>@String.Format(" {0:0,00}", @item.Price)</td>
-                                    <td></td>
+                                    <td>@item.Category.Name</td>
                                     <td>@item.Type</td>
-                                <td><a href="@Url.Action("Product_Status","Product", new {id = item.Id, page = pager.Current_Page, search = ViewBag.search})" class="@btn"><i class="@icon"></i></a></td>
+                                    <td><a href="@Url.Action("Product_Status","Product", new {id = item.Id, page = pager.Current_Page, search = ViewBag.search})" class="@btn"><i class="@icon"></i></a></td>
                                     <td>
                                     <a href="@Url.Action("Product_Edit","Product", new {id = item.Id, page = pager.Current_Page, search = ViewBag.search})" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
-                                        <div onclick="delete_Item(@item.Id)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></div>
+                                        @{
+                                            string s = "Product_Delete/" + item.Id + "?page=" + pager.Current_Page + "&search=" + ViewBag.search;
+                                        }
+                                        <input type="hidden" id="@item.Id" value="@s" />
+                                        <span onclick="delete_Item(@item.Id)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></span>
                                     </td>
                                 </tr>
                         }
                     </tbody>
                 </table>
+                <div class="row" style="margin-left:50%;margin-top:10px;">
+                    <div>
+                        @if (pager.Total_Page > 0)
+                        {
+                            <ul class="pagination justify-content-end">
+                                @if (pager.Current_Page > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Product_List","Product", new {page = 1, search = ViewBag.search})">First</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Product_List","Product", new {page = pager.Current_Page - 1, search = ViewBag.search})">&lt;&lt;</a>
+                                    </li>
+                                }
+
+                                @for (var p = pager.Start_Page; p <= pager.End_Page; p++)
+                                {
+                                    <li class="page-item @(p == pager.Current_Page ? "active" : "")">
+                                        <a class="page-link" href="@Url.Action("Product_List","Product", new {page = p, search = ViewBag.search})">@p</a>
+                                    </li>
+                                }
+
+                                @if (pager.Current_Page < pager.Total_Page)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Product_List","Product", new {page = pager.Current_Page + 1, search = ViewBag.search})">>></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Product_List","Product", new {page = pager.Total_Page, search = ViewBag.search})">Last</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 @section scripts{
         <script>
-            function delete_Item(item) {
+            function delete_Item(id) {
+                var s = $("#" + id).val()
                 Swal.fire({
                     title: 'Do you want to delete?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes',
                 }).then((result) => {
-                    if (result.isConfirmed)
-                        location.href = "Product_Delete/" + item
+                    if (result.isConfirmed) {
+                        location.href = s
+                    }
                 })
             }
         </script>

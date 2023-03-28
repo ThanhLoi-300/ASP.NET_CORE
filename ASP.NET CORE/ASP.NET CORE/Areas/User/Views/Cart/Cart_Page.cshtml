@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "Cart_Page";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+@section css{
+    <link rel="stylesheet" href="~/Public/User/css/comment.css">
+    <link rel="stylesheet" href="~/Public/User/css/productCart.css">
+}
+<section>
+    <div class="grid" style="border-top: 1px solid #ccc;">
+    <div class="app">
+        <div class="grid wide">
+            <div class="app_cart">
+                <div class="row">
+                    <div class="col l-8 " style="margin-top: 40px;">
+                        <div class="col l-12">
+                            <div class="checkout-process-bar block-border">
+                                <ul>
+                                    <li class="active">
+                                        <span>Giỏ hàng</span>
+                                    </li>
+                                    <li class=""><span>Đặt hàng</span></li>
+                                    <li class=""><span>Thanh toán</span></li>
+                                    <li><span>Hoàn thành đơn</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col l-12">
+                            <h1 style="margin: 20px;font-weight: 600;font-size: 24px;line-height: 32px;color: #221f20;font-family: var(--font-family-sans-serif);">Giỏ hàng của bạn </h1>
+                        </div>
+                        <div class="col l-12 dal">
+                            <?php
+                            $i = 0;
+                            ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Ảnh sản phẩm</th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Size</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Số tiền</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                            <tr>
+                                                <td>
+                                                    <a href="@Url.Action("Detail_Product_Page","DetailProduct")">
+                                                    <div class="cart-td_title">
+                                                            <img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="" class="app_cart-img">
+                                                    </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span></span>
+                                                </td>
+                                                <td>
+                                                    <span></span>
+                                                </td>
+                                                <td>
+                                                    <div class="cart-btn">
+                                                        <span></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="quantity" style="display: flex;">
+                                                        <input type="button" onclick="warning()" class="btn" value="+" name="click_+" style="width:30px;">
+                                                        <form action="{{URL::to('/Update_Cart/'.$item->product_Id.'/'.$item->product_Size)}}" method="post">
+                                                            <input type="submit" class="btn" value="-" name="click_-" style="width:30px;">
+                                                            <input type="hidden" name="quantity" value="{{$item->quantity -1 }}" id="hidden_input{{$i}}" />
+                                                        </form>
+
+                                                        <input class="input" id="id{{$i}}" type="text" value="0" readonly="readonly" style="width:50px; text-align:center;">
+                                                        
+                                                        <form action="@Url.Action()" method="post">
+                                                            <input type="submit" class="btn" value="+" name="click_+" style="width:30px;">
+                                                            <input type="hidden" name="quantity" value="{{$item->quantity +1 }}" id="hidden_input{{$i}}" />
+                                                        </form>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <span class="cart-current">
+                                                     
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{URL::to('/Delete_Cart/'.$item->product_Id.'/'.$item->product_Size)}}" class="ti-close"></a>
+                                                </td>
+                                            </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col l-12">
+                            <a class="back-history" href="javascript: window.history.back();">
+                                <span class="ti-arrow-left" style="padding: 0 10px;"></span>
+                                Tiếp tục mua hàng
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col l-4">
+                        <div class="cart-voucher">
+                            <h3>Tổng tiền giỏ hàng</h3>
+                                <div style="display: flex;justify-content: space-between; margin: 20px 0;">
+                                    <span class="voucher-title">
+                                        <span>Tổng sản phẩm</span>
+                                    </span>
+                                    <span class="sum-product"></span>
+                                </div>
+                                <div style="display: flex;justify-content: space-between; margin: 20px 0;">
+                                    <div class="voucher-title">
+                                        <span>Tổng tiền hàng</span>
+                                    </div>
+                                    <span class="sum-product"></span>
+                                </div>
+                                <div style="display: flex;justify-content: space-between; margin: 20px 0;">
+                                    <span class="sum-product">Tiền thuế(VAT 10%)</span>
+                                    <span class="sum-product"></span>
+                                </div>
+                                <div class="cart-purchase">
+                                    <span class="sum-product">Thành tiền</span>
+                                    <span class="sum-product" style="font-weight: 800;"></span>
+                                </div>
+                                <div class="cart-purchase-button">
+                                    <a href="{{URL::to('/Payment')}}"><button>Mua hàng</button></a>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="warning"></div>
+</section>
+
+@section script{
+    <script src="~/Public/User/js/chitietsp.js"></script>
+    <script type="text/javascript">
+        $('.money').simpleMoneyFormat();
+        function warning() {
+                    let message = Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Quantity_Not_Null',
+                    })
+
+                document.getElementById('warning').text=message
+        }
+        warning()
+    </script>
+}

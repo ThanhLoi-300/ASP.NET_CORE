@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using ASP.NET_CORE.SERVICE.Interface;
 using ASP.NET_CORE.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 {
@@ -36,6 +37,7 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
             ViewBag.pager = pager;
             ViewBag.search = search;
             ViewBag.category_Id = category_Id;
+            ViewBag.list_Category = _product.List_Category();
             return View(list);
         }
 
@@ -48,10 +50,11 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Product_Create(Product product, IFormFile Image)
+        public async Task<IActionResult> Product_Create(Product product, List<IFormFile> save_Upload, List<int> radio)
         {
             ViewBag.category_Id = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
-            if (Image == null)
+
+            if (save_Upload.Count == 0)
             {
                 ViewBag.message = "Img";
                 return View(product);
@@ -75,15 +78,44 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
                     if (_product.check_Name(product.Name, -1))
                     {
                         var uploadDir = @"img/product";
-                        var fileName = Path.GetFileNameWithoutExtension(Image.FileName);
-                        var extension = Path.GetExtension(Image.FileName);
+                        var fileName = "";
+                        var extension = "";
                         var webRootPath = _webHostEnvironment.WebRootPath;
-                        fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
-                        var path = Path.Combine(webRootPath, uploadDir, fileName);
-                        await Image.CopyToAsync(new FileStream(path, FileMode.Create));
-                        product.Img = "/" + uploadDir + "/" + fileName;
-                        await _product.Create_Product_Async(product);
+                        var path = "";
+                        product.Img = "";
 
+                        if (save_Upload.Count != 0)
+                        {
+                            var choose = 0;
+                            for (int i = 0; i < save_Upload.Count; i++)
+                            {
+                                fileName = Path.GetFileNameWithoutExtension(save_Upload[i].FileName);
+                                extension = Path.GetExtension(save_Upload[i].FileName);
+                                fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
+                                path = Path.Combine(webRootPath, uploadDir, fileName);
+                                await save_Upload[i].CopyToAsync(new FileStream(path, FileMode.Create));
+
+                                choose = 0;
+                                if (i + 1 == radio[0])
+                                {
+                                    choose = 1;
+                                    product.Img = "/" + uploadDir + "/" + fileName;
+                                }
+                                else
+                                {
+                                    choose = 0;
+                                }
+
+                                product.Imgs.Add(new Img
+                                {
+                                    ProductId = product.Id,
+                                    ImgProduct = "/" + uploadDir + "/" + fileName,
+                                    SubImg = choose
+                                });
+                            }
+                        }
+
+                        await _product.Create_Product_Async(product);
                         TempData["mess"] = "success";
                         return RedirectToAction("Product_List");
                     }
@@ -103,9 +135,18 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         }
 
         // GET: Admin/Product/Edit/5
-        public ActionResult Product_Edit(int id, int page, string search)
+        public ActionResult Product_Edit(int? id, int page, string search)
         {
-            Product product = _product.get_Product_By_Id(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Product product = _product.get_Product_By_Id((int)id);
+            if (product == null)
+            {
+                return NotFound();
+            }
             ViewBag.c = product.Category_ID;
             ViewBag.cate = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
             ViewBag.page = page;
@@ -151,6 +192,8 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
             else
             {
                 ViewBag.message = "error";
+                ViewBag.page = page;
+                ViewBag.search = search;
                 return View(product);
             }
         }

@@ -5,8 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Product_Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Product_Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data", page = ViewBag.page, search = ViewBag.search }))
 {
+    <div>@ViewBag.search</div>
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -18,7 +19,7 @@
                             <h3>Cập nhật sản phẩm</h3>
                             <div class="activity-more">
                                 <span class="ti-back-left"></span>&nbsp;
-                                <a href="@Url.Action("Product_List","Product")" class="add">Quay lại</a>
+                            <a href="@Url.Action("Product_List","Product", new { page = ViewBag.page, search =  ViewBag.search})" class="add">Quay lại</a>
                             </div>
                         </div>
                         <div class="card">

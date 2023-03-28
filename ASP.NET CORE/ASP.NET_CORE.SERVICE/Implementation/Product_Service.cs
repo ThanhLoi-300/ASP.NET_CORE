@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ASP.NET_CORE.DATA.EF;
 using ASP.NET_CORE.DATA.Entities;
 using ASP.NET_CORE.SERVICE.Interface;
+using Microsoft.AspNetCore.Http;
 using NHibernate.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -83,7 +84,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public List<Category> List_Category()
         {
-            return _context.Categories.ToList();
+            return _context.Categories.Where(c => c.IsDeleted == 0).ToList();
         }
 
         public string Loai_Dau(string text)
