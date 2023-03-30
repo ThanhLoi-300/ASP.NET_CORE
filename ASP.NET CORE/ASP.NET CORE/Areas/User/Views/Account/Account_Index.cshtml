@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewData["Title"] = "Accoun_Index";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+        <link rel="stylesheet" href="~/Public/User/css/account.css">
+}
+
+<section>
+    <div class="content">
+        <div class="grid wide" style="border-top: 1px solid #ccc;">
+            <div class="account-body">
+                <div class="row">
+                    <div class="col l-3  underline">
+                        <div class="category-all">
+                            <ul>
+                                <li style="display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 10px;
+                                border-bottom: 1px solid #ccc;">
+                                    <span class="ti-user" style="padding: 10px;border: 1px solid;border-radius: 50%;"></span>
+                                    <a href="" style="text-decoration: none;padding: 0 10px;font-family: var(--font-family-monospace); color: black;
+                                font-weight: bold"> Quỳnh Linh</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-user"></span>
+                                    <a href=""> Thông tin tài khoản</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-comments"></span>
+                                    <a href=""> Thông báo của tôi</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-printer"></span>
+                                    <a href="@Url.Action("Order_Manage","Order")"> Quản lý đơn hàng</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-location-pin"></span>
+                                    <a href=""> Số địa chỉ</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-envelope"></span>
+                                    <a href=""> Thông tin thanh toán</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-write"></span>
+                                    <a href=""> Nhận xét sản phẩm đã mua</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-ink-pen"></span>
+                                    <a href=""> Sản phẩm đã xem</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-ink-pen"></span>
+                                    <a href=""> Sản phẩm yêu thích</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-shopping-cart-full"></span>
+                                    <a href=""> Sản phẩm mua sau</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-star"></span>
+                                    <a href=""> Nhận xét của tôi</a>
+                                </li>
+                                <li class="category">
+                                    <span class="ti-ticket"></span>
+                                    <a href=""> Mã giảm giá</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col m-12 l-9">
+                        <div class="account-me">
+                            <div class="row">
+                                <div class="col l-7 m-12 underline">
+                                    <div class="account-tt">
+                                        <span class="account-title">Thông tin cá nhân</span>
+                                    </div>
+
+                                    <form action="" method="post">
+                                        <div class="information">
+                                            <div class="information-name">
+                                                <label>Họ & Tên</label>
+                                                <input type="text" name="name" value="<">
+                                            </div>
+                                            <div class="information-name">
+                                                <label>Số điện thoại</label>
+                                                <input type="text" name="phone" value="">
+                                            </div>
+                                            <div class="information-name">
+                                                <label>Email</label>
+                                                <input type="text" name="email" value="">
+                                            </div>
+                                            <div class="information-name">
+                                                <label>Ngày sinh</label>
+                                                <input type="text" name="date" value="">
+                                            </div>
+                                            <div class="information-name">
+                                                <label>Địa chỉ</label>
+                                                <input type="text" name="address" value="">
+                                            </div>
+                                            <div class="information-sex">
+                                                <label>Giới tính</label>
+                                                <input type="radio" checked="true" name="sex" id="Boy" value="Nam">
+                                                <label for="Nam">Nam</label>
+                                                <input type="radio" name="sex" id="Girl" value="Nữ">
+                                                <label for="Nu">Nữ</label>
+                                            </div>
+                                            <div style="text-align: center;margin: 15px;">
+
+                                            </div>
+
+                                            <div class="infotmation-save">
+                                                <input type="submit" name="save" value="Lưu thay đổi">
+                                            </div>
+                                    </form>
+                                    <!-- <div class="">
+                                        <a class="back-history" href="javascript:window.history.back();">
+                                            <span class="ti-arrow-left" style="padding: 0 10px;">
+
+                                            </span>
+
+                                        </a>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col l-5">
+                                <div class="form-upload__img">
+                                    <input type="file" name="user_name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewData["Title"] = "Search_Page";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+	<link rel="stylesheet" type="text/css" href="~/Public/User/css/timkiemnangcao.css">
+}
+
+<section>
+    <div class="app_search">
+		<div class="pc">
+			<div class="grid wide">
+				<div class="row">
+					<div class="col l-3">
+							<form action="" method="GET">
+								<div id=""  class="tim-kiem-nang-cao">
+									<div class="boloc-top">
+										<i class="icon-boloc ti-menu-alt"></i>
+										<span>BỘ LỌC TÌM KIẾM</span>
+									</div>
+									<div class="khoanggia">
+										<h4 class="h4">Theo khoảng giá</h4>
+										<div style="display: flex;align-items: center;justify-content: space-around;">										
+											<input id="slider_pr" type="range" name="price" min="0" max="2000000" value="0" >
+											<span id="max" style="font-family: var(--font-family-sans-serif);"></span>
+											đ
+										</div>
+									</div>
+									<!--  -->
+									<div class="dmuc">
+										<h4 class="h4">Theo danh mục</h4>
+										<ul class="danhmuc">
+											<li>
+												<input type="checkbox" id="category" name="category[]" value="<?= $result['catId'];?>" />
+												<label></label><br>
+											</li>
+										</ul>
+									</div>
+
+									<div style="width: 100%; text-align: center;">
+										<input class="tim-kiem-nang-cao-input" type="submit" name="submit" value="Tìm kiếm" />
+									</div>
+								</div>
+							 </form> 
+						</div>
+					<div id="searchResults" class="col l-9">
+							<div class="home-filter">
+								<span class="home-filter__label">Sắp xếp theo</span>
+								<form action="" method="GET">
+									<div class="sort_price" style="display: flex;">										
+										<select class="select-input" name="select" onchange="location = this.value;">																			
+												<option>Lựa chọn theo giá</option>											
+												<option value="">Giá từ thấp đến cao</option>																		
+												<option value="">Giá từ cao đến thấp</option>
+										</select>
+									</div>
+								</form>
+							</div>
+							<!-- Phổ biến -->
+							<div id="trend" class="home-suggestion">
+									<!-- Tìm kiếm nâng cao -->						
+								<div class="row">
+									<div class="col l-4">
+										<a href="@Url.Action("Detail_Product_Page","DetailProduct")">
+											<div class="home-product-item">
+												<img src="./admin/upload/<?php echo $result['image'] ?>" alt="" class="home-product-item_img">
+												<span class="home-product-item_name"></span>
+												<div class="home-product-item_price">
+													<span class="home-product-item_price"></span>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<span style="margin:50px auto;font-size:20px;">No product found</span>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@section script{
+	<script src="{{asset('public/user/js/product.js')}}"></script>
+	<script>
+		// thanh trượt giá
+		var slider = document.getElementById("slider_pr");
+		var output = document.getElementById("max");
+		output.innerHTML = slider.value;
+
+		slider.oninput = function () {
+			max.innerHTML = this.value;;
+		};
+
+		//tra data cho thanh truot
+		function load_data() {
+			var input = document.getElementById("slider_pr");
+					input.value = 1
+					input.value = 0;
+				document.getElementById("max").innerHTML = slider.value;
+		}
+		load_data();
+	</script>
+}

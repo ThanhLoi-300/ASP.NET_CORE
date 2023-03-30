@@ -9,5 +9,10 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         {
             return View();
         }
+
+        public IActionResult About_Us()
+        {
+            return View();
+        }
     }
 }

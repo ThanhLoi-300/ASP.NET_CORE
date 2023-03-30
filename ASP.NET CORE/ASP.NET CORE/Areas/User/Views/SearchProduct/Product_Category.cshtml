@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Product_Category";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Public/User/css/listProduct.css">
+}
+<section class="app">
+        <div class="app_search">
+            <div class="pc">
+                <div class="grid wide" style="max-width: 1300px ;">
+                    <div class="row">
+                        <div class="col l-12">
+                            <div class="home-filter">
+                                <div class="home-filter__page">
+                                    <div class="sm-gutter app__header">
+                                        <span class="title-direct"><a href="@Url.Action("Index","HomePage")">Trang chủ/</a></span>
+                                        <span class="title-page"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Phổ biến -->
+                            <div class="home-suggestion">
+                                <div class="row">
+                                    <div class="col l-3">
+                                        <a style="text-decoration: none;shape-rendering: #333;color: #333;" href="@Url.Action("Detail_Product_Page","DetailProduct")">
+                                        <div class="home-product-item">
+                                            <img src="" alt="" class="home-product-item_img">
+                                            <span class="home-product-item_name"></span>
+                                            <div class="home-product-item_price">
+                                                <span class="home-product-item_price"></span>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+
+                                    <div style="margin:20px auto;">Không có sản phẩm</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php include './inc/footer.php' ?>
+    </section>
+

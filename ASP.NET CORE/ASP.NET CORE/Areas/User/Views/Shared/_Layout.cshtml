@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MLL SHOP</title>
-    <link rel="stylesheet" href="fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.5/css/lightslider.min.css'>
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -293,10 +292,10 @@
                                 <a href="">BỘ SƯU TẬP</a>
                             </li>
                             <li class="nav-list">
-                                <a href="{{URL::to("/About_Us")}}">VỀ CHÚNG TÔI</a>
+                                <a href="@Url.Action("About_Us","HomePage")">VỀ CHÚNG TÔI</a>
                             </li>
                             <li class="nav-list">
-                                <a href="{{URL::to("/Contact_Us")}}">LIÊN HỆ</a>
+                                <a href="#">LIÊN HỆ</a>
                             </li>
                         </ul>
                      </nav>
@@ -315,7 +314,7 @@
                     <ul>
                         <!-- thanh tìm kiếm -->
                         <li class="header__search">
-                            <form action="{{URL::to("/Search")}}" method="GET">
+                            <form action="@Url.Action("Search_Page","SearchProduct")" method="GET">
                                 <input type="text" name="search" class="header__search-input" placeholder="Tìm kiếm sản phẩm...">
                                 <button type="submit" name="submit" class="ti-search"></button>
                             </form>
@@ -341,7 +340,7 @@
                                 <ul class="nav-user_menu">
                                     <li class="nav-user_menu-item">
                                         <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="{{URL::to('/Account/'.$login)}}">Tài khoản của tôi</a>
+                                        " href="@Url.Action("Account_Index","Account")">Tài khoản của tôi</a>
                                     </li>
                                     <li class="nav-user_menu-item">
                                         <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
@@ -349,7 +348,7 @@
                                     </li>
                                     <li class="nav-user_menu-item">
                                         <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="{{URL::to('/Order_Management_Index')}}">Quản lí đơn hàng</a>
+                                        " href="@Url.Action("Order_Manage","Order")">Quản lí đơn hàng</a>
                                     </li>
                                     <li class="nav-user_menu-item">
                                         <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
@@ -358,7 +357,7 @@
                                 </ul>
                             </div>
                         </li>
-                            <a href="{{URL::to('/Login')}}" style="text-decoration:none; color:black;">Đăng nhập</a>
+                        <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
                     </ul>
                 </li>
             </ul>
@@ -487,7 +486,6 @@
 		<i class="ti-angle-up" style="font-size: 25px;"></i>
 	</button>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="fancybox/jquery.fancybox.pack.js?v=2.0.4"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="~/Public/User/js/product.js"></script>
