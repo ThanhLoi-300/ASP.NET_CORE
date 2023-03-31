@@ -1,0 +1,320 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --main-color: #323434;
+    --color-dark: #1D2231;
+    --text-grey: #8390a2;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+
+/* MAIN CONTENT */
+
+.main-content {
+    position: relative;
+    margin-left: 30px;
+    margin-right: 30px;
+    transition: margin-left 500ms;
+}
+
+
+/* PHẦN  TỔNG QUAN  */
+
+main {
+    margin-top: 60px;
+    background: #f1f5f9;
+    min-height: 90vs;
+    padding: 1rem 3rem;
+}
+
+.dash-title {
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+}
+
+.dash-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 5rem;
+}
+
+.card-single {
+    background: var(--main-color);
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+    padding: 1.3rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+    .card-body span {
+        font-size: 3.7rem;
+        color: #fff;
+        padding-left: 1.5rem;
+    }
+
+.input-groups {
+    padding: 5px 10px;
+}
+
+    .input-groups input {
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid;
+        padding: 5px;
+    }
+
+.activity-card-calendar {
+    display: flex;
+    justify-content: end;
+}
+
+.input-group1 input {
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid;
+    padding: 5px;
+    background-color: white;
+}
+
+.input-group1 {
+    padding: 5px 10px;
+}
+
+    .input-group1 input:hover {
+        background-color: #323434;
+        border: 1px solid white;
+        color: white;
+        cursor: pointer;
+    }
+
+.card-body-DT {
+    margin-left: 20px;
+}
+
+.card-body h5 {
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 10px;
+}
+
+.card-body h4 {
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0 10px;
+    margin-top: 0.2rem;
+    text-align: end;
+}
+
+.card-footer {
+    padding: 0.2rem 1rem;
+    background: #f9fafc;
+}
+
+    .card-footer a {
+        color: var(--main-color);
+    }
+
+.recent {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+
+/* PHẦN BẢNG HOẠT ĐỘNG */
+
+.table-responsive {
+    overflow: scroll;
+    height: auto;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-column-gap: 1.5rem;
+}
+
+.activity-card {
+    margin-bottom: 1.5rem;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+.activity-card {
+    background: #fff;
+    border-radius: 7px;
+}
+
+    .activity-card h3 {
+        color: var(--text-grey);
+        padding: 1rem;
+    }
+
+    .activity-card table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .activity-card thead {
+        background: var(--main-color);
+        text-align: left;
+    }
+
+td {
+    border: 1px solid #ccc;
+    text-align: inherit;
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+    color: var(--color-dark);
+    text-align: center;
+}
+
+th {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+    color: #fff;
+    text-align: center;
+}
+
+tr {
+    border-bottom: 1px solid var(--main-color);
+}
+
+
+/* PHẦN SỐ LƯỢNG NGƯỜI DÙNG WEB */
+
+.summary-card {
+    background: var(--main-color);
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 7px;
+}
+
+.summary-single {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+    .summary-single span {
+        font-size: 1.5rem;
+        color: #fff;
+        padding-left: 1rem;
+        padding: 0 10px;
+    }
+
+    .summary-single h5 {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+        padding: 0 10px;
+    }
+
+    .summary-single small {
+        font-weight: 700;
+        padding: 0 10px;
+        color: #fff;
+    }
+
+
+/* PHẦN FIX CHO TRANG WEB PHÙ HỢP VỚI TỪNG GIAO DIỆN  */
+
+@media only screen and (max-width:1200px) {
+    .sidebar {
+        z-index: 1000;
+        width: 60px;
+    }
+
+        .sidebar .sidebar-header h3 span,
+        .sidebar li span:last-child {
+            display: none;
+        }
+
+        .sidebar .sidebar-header,
+        .sidebar li {
+            display: flex;
+            justify-content: center;
+        }
+
+    .main-content {
+        margin-left: 60px;
+    }
+
+        .main-content header {
+            left: 60px;
+            width: calc(100% - 60px);
+        }
+
+    #sidebar-toggle:checked ~ .sidebar {
+        width: 240px;
+    }
+
+        #sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
+        #sidebar-toggle:checked ~ .sidebar li span:last-child {
+            display: inline;
+        }
+
+        #sidebar-toggle:checked ~ .sidebar .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #sidebar-toggle:checked ~ .sidebar li {
+            display: block;
+        }
+
+    #sidebar-toggle:checked ~ .main-content {
+        margin-left: 60px;
+    }
+
+        #sidebar-toggle:checked ~ .main-content header {
+            left: 60px;
+        }
+}
+
+@media only screen and (max-width: 860px) {
+    .dash-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-single {
+        margin-bottom: 1rem;
+    }
+
+    .activity-grid {
+        display: block;
+    }
+
+    .summary {
+        margin-top: 1.5rem;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .dash-cards {
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width:450px) {
+    /* .search{
+        display: none;
+    } */
+    .sidebar {
+        z-index: 1000;
+    }
+
+    main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
