@@ -10,7 +10,7 @@ public partial class Img
 {
     [Key]
     public int Id { get; set; }
-    [Required,MaxLength(50)]
+    [Required,MaxLength(250)]
     public string? ImgProduct { get; set; }
     public int SubImg { get; set; }
 

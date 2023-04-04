@@ -14,13 +14,42 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 {
     public class Product_Service : IProduct
     {
-        private Web_Core_DbContext _context;
+        private readonly Web_Core_DbContext _context;
         private List<Product> list;
 
         public Product_Service(Web_Core_DbContext context)
         {
             _context = context;
             list = new List<Product>();
+        }
+
+        public async Task Add_Img(int id, List<string> url)
+        {
+            foreach(var i in url)
+            {
+                _context.Imgs.Add(new Img
+                {
+                    ImgProduct = i,
+                    ProductId = id,
+                    SubImg = 0
+                });
+            }
+            
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Change_Main_Img(int id)
+        {
+            var img = _context.Imgs.Find(id);
+            if(img != null)
+            {
+                img.SubImg = 1;
+
+                var main_Img = _context.Imgs.Where(i => i.ProductId == img.ProductId && i.SubImg == 1).ToList();
+                main_Img[0].SubImg = 0;
+            }
+            
+            await _context.SaveChangesAsync();
         }
 
         public bool check_Name(string name, int id)
@@ -77,6 +106,26 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             return list.OrderByDescending(product => product.Id).Skip(skip).Take(page_Size).ToList();
         }
 
+        public async Task Delete_All_SubImg(int id)
+        {
+            var list_Img_Is_Deleted = _context.Imgs.Where(i => i.ProductId == id  && i.SubImg == 0);
+            _context.Imgs.RemoveRange(list_Img_Is_Deleted);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete_Img(int id)
+        {
+            var item = _context.Imgs.Find(id);
+            _context.Imgs.Remove(item);
+            await _context.SaveChangesAsync();
+        }
+
+        public string find_Img_By_Id(int id)
+        {
+            Img i = _context.Imgs.Find(id);
+            return i.ImgProduct.ToString();
+        }
+
         public Product get_Product_By_Id(int id)
         {
             return _context.Products.Where(product => product.Id == id).FirstOrDefault();
@@ -85,6 +134,11 @@ namespace ASP.NET_CORE.SERVICE.Implementation
         public List<Category> List_Category()
         {
             return _context.Categories.Where(c => c.IsDeleted == 0).ToList();
+        }
+
+        public List<Img> List_Img_Of_Product(int id)
+        {
+            return _context.Imgs.Where(p => p.ProductId  == id).OrderByDescending(p => p.SubImg).ToList();
         }
 
         public string Loai_Dau(string text)

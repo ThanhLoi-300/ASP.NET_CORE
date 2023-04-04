@@ -1,0 +1,192 @@
+﻿@using ASP.NET_CORE.DATA.Entities
+
+@{
+    ViewData["Title"] = "Edit_Img_Product";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Imgs_Product.cshtml";
+
+    List<Img> list = (List<Img>)ViewBag.List_Img;
+    var count = list.Count;
+    var color = "";
+    var stt = 0;
+}
+
+    <style>
+        .card-tools{
+            display: flex;
+        }
+
+      #inputFile {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+    }
+        .Img{
+            list-style: none;
+            margin:10px 0;
+            padding:0;
+            display:flex;
+        }
+
+        .Img li{
+            display: inline-block;
+            position: relative;
+            margin-right: 10px;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 10px;
+        }
+
+        .box-btn{
+            position:absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+            text-align:center;
+        }
+
+    </style>
+
+<section class="content">
+    <div>@ViewBag.list</div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Ảnh sản phẩm: <span class="count">@count</span> ảnh</h3>
+
+            <div class="card-tools">
+                <label class="btn btn-danger Delete_All" onclick="Delete_All_SubImg()">Xóa hết ảnh phụ</label>
+                <form action="/form/sumbit" method="get">
+                    <label for="inputFile" class="btn btn-success">Thêm ảnh</label>
+                    <input type="file" id="inputFile" multiple>
+                </form>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <ul class="Img" data-id="@list[0].ProductId">
+                @foreach(var item in list){
+                    stt += 1;
+                    if (item.SubImg == 1)
+                        color = "btn btn-sm bg-success Default";
+                    else color = "btn btn-sm bg-secondary Default";
+
+                    <li id="row_@item.Id">
+                        <div class="stt">@stt</div>
+                        <img src="@item.ImgProduct" width="130" />
+                        <div class="box-btn">
+                            @if(item.SubImg != 1){
+                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger Delete"><i class="fas fa-trash"></i></a>
+                            }
+
+                            <a href="#" data-id="@item.Id" class="@color" onclick="change_Main_Img(@item.Id)"><i class="fas fa-check"></i></a>
+                        </div>
+                    </li>
+                    
+                }
+            </ul>
+        </div>
+
+        <div class="card-footer">
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        const inputFile = document.getElementById("inputFile");
+
+        function change_Main_Img(id){
+            alert(id)
+            $.ajax({
+                url: '/Admin/Product/Change_Main_Img',
+                type: 'POST',
+                data: { id: parseInt(id) },
+                contentType: false,
+                processData: false,
+                success: function (rs) {
+                    if (rs.success)
+                        location.href = "/Admin/Product/Edit_Img_Product/" + id;
+                }
+            })
+        }
+
+        inputFile.addEventListener("change", function () {
+            const files = inputFile.files;
+            var id = $(".Img").attr("data-id")
+
+            // Tạo đối tượng FormData
+            const formData = new FormData();
+
+            // Thêm chuỗi vào đối tượng FormData
+            formData.append('id', parseInt(id));
+
+            // Thêm các tập tin vào đối tượng FormData
+            for (let i = 0; i < files.length; i++) {
+                formData.append('url', files[i]);
+            }
+            console.log(formData.getAll('url').length)
+            if (files.length > 0)
+                $.ajax({
+                    url: '/Admin/Product/Add_Img',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (rs) {
+                        if (rs.success)
+                            location.href = "/Admin/Product/Edit_Img_Product/" + id;
+                    }
+                })
+        });
+
+        function Delete_All_SubImg() {
+            var id = $(".Img").attr("data-id")
+            console.log(parseInt(id))
+            Swal.fire({
+                title: 'Do you want to delete?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/Admin/Product/Delete_SubImg',
+                        type: 'POST',
+                        data: { id: parseInt(id) },
+                        contentType: false,
+                        processData: false,
+                        success: function (rs) {
+                            if (rs.success)
+                                location.href = "/Admin/Product/Edit_Img_Product/" + id;
+                        }
+                    })
+                }
+            })
+        }
+
+            $(document).ready(function () {
+
+                $("body").on("click", ".Delete", function () {
+                    var id = $(this).data("id")
+                    var id_product = $(".Img").attr("data-id")
+                    Swal.fire({
+                        title: 'Do you want to delete?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: '/Admin/Product/Delete_Img',
+                                type: 'POST',
+                                data: { id: id },
+                                success: function (rs) {
+                                    if (rs.success)
+                                    location.href = "/Admin/Product/Edit_Img_Product/" + id_product;
+                                }
+                            })
+                        }
+                    })
+                })
+            })
+    </script>
+}

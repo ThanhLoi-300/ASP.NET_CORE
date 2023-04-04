@@ -5,12 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Product_Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data", page = ViewBag.page, search = ViewBag.search }))
+@using (Html.BeginForm("Product_Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
-    <div>@ViewBag.search</div>
-    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
+    @Html.Hidden("page",new { htmlAttributes = new { @value = @ViewBag.page} })
+    @Html.Hidden("search",new { htmlAttributes = new { @value = @ViewBag.search} })
         <div class="form-horizontal">
             <section class="recent">
                 <div class="activity-grid">

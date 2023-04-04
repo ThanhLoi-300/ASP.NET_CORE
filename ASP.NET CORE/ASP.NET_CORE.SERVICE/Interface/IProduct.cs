@@ -14,5 +14,11 @@ namespace ASP.NET_CORE.SERVICE.Interface
         Task Update_Product_Async(Product product);
         string Loai_Dau(string s);
         List<Category> List_Category();
+        List<Img> List_Img_Of_Product(int id);
+        Task Delete_Img(int id);
+        Task Add_Img(int id, List<string> url);
+        Task Delete_All_SubImg(int id);
+        string find_Img_By_Id(int id);
+        Task Change_Main_Img(int id);
     }
 }

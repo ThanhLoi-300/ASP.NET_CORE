@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xBPF8xUDh5TrFdoSejbGTSGH1TTRa0LKYd+fDtweGv8=",
+  "Hash": "GZbRlIG3kKRbnPanC6XvUQaxor4tJUZBoTRWtK2Wumg=",
   "Source": "ASP.NET CORE",
   "BasePath": "_content/ASP.NET CORE",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2309347940bedfbdb7f.jpg",
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2326559330f80304c03.jfif",
       "SourceId": "ASP.NET CORE",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
       "BasePath": "_content/ASP.NET CORE",
-      "RelativePath": "img/product/2309347940bedfbdb7f.jpg",
+      "RelativePath": "img/product/2326559330f80304c03.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,15 +99,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\product\\2309347940bedfbdb7f.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\product\\2326559330f80304c03.jfif"
     },
     {
-      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2331599248ec266b465.jfif",
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2357173790acf716e75d06624b657e087f48f377a.jfif",
       "SourceId": "ASP.NET CORE",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
       "BasePath": "_content/ASP.NET CORE",
-      "RelativePath": "img/product/2331599248ec266b465.jfif",
+      "RelativePath": "img/product/2357173790acf716e75d06624b657e087f48f377a.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,15 +116,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\product\\2331599248ec266b465.jfif"
+      "OriginalItemSpec": "wwwroot\\img\\product\\2357173790acf716e75d06624b657e087f48f377a.jfif"
     },
     {
-      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2345258147f4f581ada.jfif",
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2357173971a384d4ed42916cbda180a8f9405dc6b.jfif",
       "SourceId": "ASP.NET CORE",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
       "BasePath": "_content/ASP.NET CORE",
-      "RelativePath": "img/product/2345258147f4f581ada.jfif",
+      "RelativePath": "img/product/2357173971a384d4ed42916cbda180a8f9405dc6b.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,15 +133,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\product\\2345258147f4f581ada.jfif"
+      "OriginalItemSpec": "wwwroot\\img\\product\\2357173971a384d4ed42916cbda180a8f9405dc6b.jfif"
     },
     {
-      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2345258798ec266b465.jfif",
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2357174051f94907f64a225ae3fc7cc506875f0f8.jfif",
       "SourceId": "ASP.NET CORE",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
       "BasePath": "_content/ASP.NET CORE",
-      "RelativePath": "img/product/2345258798ec266b465.jfif",
+      "RelativePath": "img/product/2357174051f94907f64a225ae3fc7cc506875f0f8.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,15 +150,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\product\\2345258798ec266b465.jfif"
+      "OriginalItemSpec": "wwwroot\\img\\product\\2357174051f94907f64a225ae3fc7cc506875f0f8.jfif"
     },
     {
-      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2349581517cb3eae122.jpg",
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2357174062b18d3adeb.jfif",
       "SourceId": "ASP.NET CORE",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
       "BasePath": "_content/ASP.NET CORE",
-      "RelativePath": "img/product/2349581517cb3eae122.jpg",
+      "RelativePath": "img/product/2357174062b18d3adeb.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,15 +167,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\product\\2349581517cb3eae122.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\product\\2357174062b18d3adeb.jfif"
     },
     {
-      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2349581737f4f581ada.jfif",
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2357174133a92fe9b64.jfif",
       "SourceId": "ASP.NET CORE",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
       "BasePath": "_content/ASP.NET CORE",
-      "RelativePath": "img/product/2349581737f4f581ada.jfif",
+      "RelativePath": "img/product/2357174133a92fe9b64.jfif",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -184,7 +184,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\product\\2349581737f4f581ada.jfif"
+      "OriginalItemSpec": "wwwroot\\img\\product\\2357174133a92fe9b64.jfif"
+    },
+    {
+      "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\img\\product\\2357174153ba82c82614e8a7c5b91a9ab7e6ea380.jfif",
+      "SourceId": "ASP.NET CORE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\",
+      "BasePath": "_content/ASP.NET CORE",
+      "RelativePath": "img/product/2357174153ba82c82614e8a7c5b91a9ab7e6ea380.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\product\\2357174153ba82c82614e8a7c5b91a9ab7e6ea380.jfif"
     },
     {
       "Identity": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\wwwroot\\js\\site.js",

@@ -222,8 +222,8 @@ namespace ASP.NET_CORE.DATA.Migrations
 
                     b.Property<string>("ImgProduct")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");

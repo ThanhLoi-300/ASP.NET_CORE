@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Public/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Public/dist/css/adminlte.min.css">
+    <link href="~/Public/User/font/themify-icons/themify-icons.css" rel="stylesheet" />
+    <link href="~/Public/plugins/select2-bootstrap4-theme/select2-bootstrap4.css" rel="stylesheet" />
+    <link href="~/Public/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/Public/plugins/icheck-bootstrap/icheck-bootstrap.css" rel="stylesheet" />
+    <link href="~/Public/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+    <link href="~/Public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.css" rel="stylesheet" />
+    <link href="~/Public/plugins/select2/css/select2.css" rel="stylesheet" />
+    <link href="~/Public/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.css" rel="stylesheet" />
+    <link href="~/Public/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet" />
+    <link href="~/Public/plugins/dropzone/min/dropzone.css" rel="stylesheet" />
+    <script src="~/Public/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body>
+    @RenderBody()
+    @RenderSection("scripts", required:false)
+</body>
+</html>

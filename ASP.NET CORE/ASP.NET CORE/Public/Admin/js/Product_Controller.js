@@ -98,17 +98,29 @@ const save_Upload = document.getElementById('save_Upload');
 upload.addEventListener("change", () => {
     const files = upload.files;
 
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+    const filesArray = Array.from(files);
+
+    filesArray.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+    });
+
+    let dataTransfer = new DataTransfer();
+    for (let file of filesArray) {
+        dataTransfer.items.add(file);
+    }
+
+    for (let i = 0; i < dataTransfer.files.length; i++) {
+        const file = dataTransfer.files[i];
         const reader = new FileReader();
 
         reader.readAsDataURL(file);
 
         reader.onload = () => {
+            console.log(reader.result.length)
             add_Img(reader.result)
         };
     }
-    Data_From_Input1_To_Input2()
+    save_Upload.files = dataTransfer.files
 });
 
 function Data_From_Input1_To_Input2() {

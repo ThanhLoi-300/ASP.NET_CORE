@@ -5,18 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 using ASP.NET_CORE.SERVICE.Interface;
 using ASP.NET_CORE.Models;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Packaging.Signing;
+using System.IO;
+using ASP.NET_CORE.DATA.EF;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using Microsoft.Extensions.FileProviders;
 
 namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductController : Controller
     {
+        Web_Core_DbContext context;
         private readonly IProduct _product;
         private IWebHostEnvironment _webHostEnvironment;
-        public ProductController(IProduct product, IWebHostEnvironment webHostEnvironment)
+        public ProductController(IProduct product, IWebHostEnvironment webHostEnvironment, Web_Core_DbContext contexxt)
         {
             _product = product;
             _webHostEnvironment = webHostEnvironment;
+            context = contexxt;
         }
 
         // GET: Admin/Product
@@ -42,9 +50,10 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         }
 
         // GET: Admin/Product/Create
-        public ActionResult Product_Create()
+        public ActionResult Product_Create(string search)
         {
             ViewBag.category_Id = new SelectList(_product.List_Category(), "Id", "Name");
+            ViewBag.search = search;
             return View();
         }
 
@@ -135,18 +144,9 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         }
 
         // GET: Admin/Product/Edit/5
-        public ActionResult Product_Edit(int? id, int page, string search)
+        public ActionResult Product_Edit(int id, int page, string search)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Product product = _product.get_Product_By_Id((int)id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            Product product = _product.get_Product_By_Id(id);
             ViewBag.c = product.Category_ID;
             ViewBag.cate = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
             ViewBag.page = page;
@@ -178,7 +178,7 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
                         product.IsDeleted = 0;
                         await _product.Update_Product_Async(product);
                         TempData["mess"] = "success";
-                        return RedirectToAction("Product_List", new { page = page, search = search });
+                        return RedirectToAction("Product_List", new { page = page, search = product.Name });
                     }
                     else
                     {
@@ -212,6 +212,58 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
             await _product.Update_Product_Async(p);
             TempData["mess"] = "delete";
             return RedirectToAction("Product_List", new { page = page, search = search });
+        }
+
+        public IActionResult Edit_Img_Product(int id)
+        {
+            ViewBag.List_Img = _product.List_Img_Of_Product(id);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete_Img(int id)
+        {
+            _product.Delete_Img(id);
+            return Json( new {success = true});
+        }
+
+        [HttpPost]
+        public IActionResult Add_Img(int id, List<IFormFile> url)
+        {
+            var uploadDir = @"img/product";
+            var webRootPath = _webHostEnvironment.WebRootPath;
+            List<string> list = new List<string>();
+
+            for (int i = 0; i < url.Count; i++)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(url[i].FileName);
+                var extension = Path.GetExtension(url[i].FileName);
+                fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
+                var path = Path.Combine(webRootPath, uploadDir, fileName);
+                url[i].CopyToAsync(new FileStream(path, FileMode.Create));
+                var s = "/" + uploadDir + "/" + fileName;
+                list.Add(s);
+            }
+            _product.Add_Img(id, list);
+            ViewBag.list = list.Count();
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public IActionResult Delete_SubImg(int id)
+        {
+            //_product.Delete_All_SubImg(id);
+            var list_Img_Is_Deleted = context.Imgs.Where(i => i.ProductId == id );
+            context.Imgs.RemoveRange(list_Img_Is_Deleted.Where(i => i.SubImg == 0));
+            context.SaveChanges();
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public IActionResult Change_Main_Img(int id)
+        {
+            _product.Change_Main_Img(id);
+            return Json(new { success = true });
         }
     }
 }

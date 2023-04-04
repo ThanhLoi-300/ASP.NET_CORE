@@ -8,7 +8,7 @@
 
 @using (Html.BeginForm("Product_Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
     @Html.AntiForgeryToken()
         <div class="form-horizontal">
             <section class="recent">
@@ -18,7 +18,7 @@
                             <h3>Thêm sản phẩm</h3>
                             <div class="activity-more">
                                 <span class="ti-back-left"></span>&nbsp;
-                                <a href="@Url.Action("Product_List","Product")" class="add">Quay lại</a>
+                            <a href="@Url.Action("Product_List","Product", new {search = ViewBag.search})" class="add">Quay lại</a>
                             </div>
                         </div>
                         <div class="card">
