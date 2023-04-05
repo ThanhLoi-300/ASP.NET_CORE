@@ -5,6 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Imgs_Product.cshtml";
 
     List<Img> list = (List<Img>)ViewBag.List_Img;
+    var product_Id = ViewBag.Product_Id;
     var count = list.Count;
     var color = "";
     var stt = 0;
@@ -47,7 +48,7 @@
     </style>
 
 <section class="content">
-    <div>@ViewBag.list</div>
+    <div>@ViewBag.id</div>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Ảnh sản phẩm: <span class="count">@count</span> ảnh</h3>
@@ -77,7 +78,7 @@
                                 <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger Delete"><i class="fas fa-trash"></i></a>
                             }
 
-                            <a href="#" data-id="@item.Id" class="@color" onclick="change_Main_Img(@item.Id)"><i class="fas fa-check"></i></a>
+                            <a href="#" data-id="@item.Id" class="@color"><i class="fas fa-check"></i></a>
                         </div>
                     </li>
                     
@@ -94,20 +95,26 @@
     <script>
         const inputFile = document.getElementById("inputFile");
 
-        function change_Main_Img(id){
-            alert(id)
+        $("body").on("click", ".Default", function () {
+            var id_Product = $(".Img").attr("data-id")
+            var id = $(this).attr("data-id")
+
+            var formData = new FormData();
+            formData.append('id', id);
+            formData.append('id_Product', id_Product);
+
             $.ajax({
                 url: '/Admin/Product/Change_Main_Img',
                 type: 'POST',
-                data: { id: parseInt(id) },
+                data: formData,
                 contentType: false,
                 processData: false,
                 success: function (rs) {
                     if (rs.success)
-                        location.href = "/Admin/Product/Edit_Img_Product/" + id;
+                        location.href = "/Admin/Product/Edit_Img_Product/" + id_Product;
                 }
             })
-        }
+        })
 
         inputFile.addEventListener("change", function () {
             const files = inputFile.files;
@@ -140,7 +147,11 @@
 
         function Delete_All_SubImg() {
             var id = $(".Img").attr("data-id")
-            console.log(parseInt(id))
+
+            var formData = new FormData();
+            formData.append('id', id);
+
+            alert(id)
             Swal.fire({
                 title: 'Do you want to delete?',
                 icon: 'warning',
@@ -151,12 +162,12 @@
                     $.ajax({
                         url: '/Admin/Product/Delete_SubImg',
                         type: 'POST',
-                        data: { id: parseInt(id) },
+                        data: formData,
                         contentType: false,
                         processData: false,
                         success: function (rs) {
                             if (rs.success)
-                                location.href = "/Admin/Product/Edit_Img_Product/" + id;
+                                location.href = "/Admin/Product/Edit_Img_Product/" + id; 
                         }
                     })
                 }

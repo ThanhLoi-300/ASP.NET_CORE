@@ -17,8 +17,7 @@ namespace ASP.NET_CORE.SERVICE.Interface
         List<Img> List_Img_Of_Product(int id);
         Task Delete_Img(int id);
         Task Add_Img(int id, List<string> url);
-        Task Delete_All_SubImg(int id);
-        string find_Img_By_Id(int id);
-        Task Change_Main_Img(int id);
+        void Delete_All_SubImg(int id);
+        Task Change_Main_Img(int id, int id_Product);
     }
 }

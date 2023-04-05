@@ -58,35 +58,36 @@
                                                 <td class="form_title">
                                                     <label>Size S</label>
                                                 </td>
-                                                <td>
-                                                @Html.EditorFor(model => model.QuantityS, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
-                                                @Html.ValidationMessageFor(model => model.QuantityS, "", new { @class = "text-danger" })
+                                                <td style="display:flex;">
+                                                    <input type="number" value="@Model.QuantityS" readonly>
+                                                    <input type="number" value="0" name="S" min="0" placeholder="Thêm số lượng">
                                                 </td>
                                             </tr>
                                             <tr style="border:none;">
                                                 <td class="form_title">
                                                     <label>Size M</label>
                                                 </td>
-                                                <td>
-                                                @Html.EditorFor(model => model.QuantityM, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
-                                                @Html.ValidationMessageFor(model => model.QuantityM, "", new { @class = "text-danger" })
+                                                <td style="display:flex;">
+                                                    <input type="number" value="@Model.QuantityM" readonly>
+                                                    <input type="number" value="0" name="M" min="0" placeholder="Thêm số lượng">
                                                 </td>
                                             </tr>
                                             <tr style="border:none;">
                                                 <td class="form_title">
                                                     <label>Size L</label>
                                                 </td>
-                                                <td>
-                                                @Html.EditorFor(model => model.QuantityL, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
-                                                @Html.ValidationMessageFor(model => model.QuantityL, "", new { @class = "text-danger" })
+                                                <td style="display:flex;">
+                                                <input type="number" value="@Model.QuantityL" readonly>
+                                                <input type="number" value="0" name="L" min="0" placeholder="Thêm số lượng">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="form_title">
                                                     <label>Size XL</label>
                                                 </td>
-                                                <td>
-                                                @Html.EditorFor(model => model.QuantityXl, new { htmlAttributes = new { @class = "medium", @placeholder = "Nhập số lượng", @value = "0" } })
-                                                @Html.ValidationMessageFor(model => model.QuantityXl, "", new { @class = "text-danger" })
+                                                <td style="display:flex;">
+                                                <input type="number" value="@Model.QuantityXl" readonly>
+                                                <input type="number" value="0" name="Xl" min="0" placeholder="Thêm số lượng">
                                                 </td>
                                             </tr>
                                             <tr>

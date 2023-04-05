@@ -156,7 +156,7 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Product_Edit(Product product, int page, string search)
+        public async Task<IActionResult> Product_Edit(Product product, int page, string search, int S, int M, int L, int Xl)
         {
             ViewBag.cate = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
             if (ModelState.IsValid)
@@ -176,6 +176,10 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
                     if (_product.check_Name(product.Name, product.Id))
                     {
                         product.IsDeleted = 0;
+                        product.QuantityS += S;
+                        product.QuantityM += M;
+                        product.QuantityL += L;
+                        product.QuantityXl += Xl;
                         await _product.Update_Product_Async(product);
                         TempData["mess"] = "success";
                         return RedirectToAction("Product_List", new { page = page, search = product.Name });
@@ -217,6 +221,7 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         public IActionResult Edit_Img_Product(int id)
         {
             ViewBag.List_Img = _product.List_Img_Of_Product(id);
+            //ViewBag.id = TempData["id"];
             return View();
         }
 
@@ -250,20 +255,17 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete_SubImg(int id)
+        public JsonResult Delete_SubImg(int id)
         {
-            //_product.Delete_All_SubImg(id);
-            var list_Img_Is_Deleted = context.Imgs.Where(i => i.ProductId == id );
-            context.Imgs.RemoveRange(list_Img_Is_Deleted.Where(i => i.SubImg == 0));
-            context.SaveChanges();
+            _product.Delete_All_SubImg(id);
             return Json(new { success = true });
         }
 
         [HttpPost]
-        public IActionResult Change_Main_Img(int id)
+        public JsonResult Change_Main_Img(int id, int id_Product)
         {
-            _product.Change_Main_Img(id);
-            return Json(new { success = true });
+            _product.Change_Main_Img(id, id_Product);
+            return Json(new { success = true});
         }
     }
 }

@@ -38,17 +38,18 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             await _context.SaveChangesAsync();
         }
 
-        public async Task Change_Main_Img(int id)
+        public async Task Change_Main_Img(int id, int id_Product)
         {
-            var img = _context.Imgs.Find(id);
-            if(img != null)
-            {
-                img.SubImg = 1;
+            var list_Img = _context.Imgs.ToList();
+            var sub_Img = list_Img.Find(i => i.Id == id && i.ProductId == id_Product);
+            sub_Img.SubImg = 1;
 
-                var main_Img = _context.Imgs.Where(i => i.ProductId == img.ProductId && i.SubImg == 1).ToList();
-                main_Img[0].SubImg = 0;
-            }
-            
+            var main_Img = _context.Imgs.FirstOrDefault(i => i.ProductId == sub_Img.ProductId && i.SubImg == 1);
+            main_Img.SubImg = 0;
+
+            var product = _context.Products.FirstOrDefault(i => i.Id == sub_Img.ProductId);
+            product.Img = sub_Img.ImgProduct;
+
             await _context.SaveChangesAsync();
         }
 
@@ -106,11 +107,11 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             return list.OrderByDescending(product => product.Id).Skip(skip).Take(page_Size).ToList();
         }
 
-        public async Task Delete_All_SubImg(int id)
+        public void Delete_All_SubImg(int id)
         {
-            var list_Img_Is_Deleted = _context.Imgs.Where(i => i.ProductId == id  && i.SubImg == 0);
+            var list_Img_Is_Deleted = _context.Imgs.Where(i => i.ProductId == id && i.SubImg == 0).ToList();
             _context.Imgs.RemoveRange(list_Img_Is_Deleted);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
 
         public async Task Delete_Img(int id)
@@ -118,12 +119,6 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             var item = _context.Imgs.Find(id);
             _context.Imgs.Remove(item);
             await _context.SaveChangesAsync();
-        }
-
-        public string find_Img_By_Id(int id)
-        {
-            Img i = _context.Imgs.Find(id);
-            return i.ImgProduct.ToString();
         }
 
         public Product get_Product_By_Id(int id)

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Elasticsearch.Net;
 
 namespace ASP.NET_CORE.DATA.Entities;
 
@@ -22,13 +23,13 @@ public partial class Product
 
     [Required, Column(TypeName ="decimal(18,2)")]
     public decimal Price { get; set; }
-
+    [Range(0, 999999999, ErrorMessage = "Giá trị phải lớn hơn hoặc bằng 0.")]
     public int QuantityS { get; set; }
-
+    [Range(0, 999999999, ErrorMessage = "Giá trị phải lớn hơn hoặc bằng 0.")]
     public int QuantityM { get; set; }
-
+    [Range(0, 999999999, ErrorMessage = "Giá trị phải lớn hơn hoặc bằng 0.")]
     public int QuantityL { get; set; }
-
+    [Range(0, 999999999, ErrorMessage = "Giá trị phải lớn hơn hoặc bằng 0.")]
     public int QuantityXl { get; set; }
 
     [Required]
