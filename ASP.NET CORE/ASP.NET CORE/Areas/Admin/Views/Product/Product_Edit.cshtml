@@ -3,10 +3,15 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var S = ViewBag.S;
+    var M = ViewBag.M;
+    var L = ViewBag.L;
+    var Xl = ViewBag.Xl;
 }
 
 @using (Html.BeginForm("Product_Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
+
     @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -59,8 +64,8 @@
                                                     <label>Size S</label>
                                                 </td>
                                                 <td style="display:flex;">
-                                                    <input type="number" value="@Model.QuantityS" readonly>
-                                                    <input type="number" value="0" name="S" min="0" placeholder="Thêm số lượng">
+                                                @Html.EditorFor(model => model.QuantityS, new { htmlAttributes = new { @class = "medium", @readonly = "readonly" } })
+                                                @Html.Editor("S", new { htmlAttributes = new { @class = "medium", placeholder="Thêm số lượng", type = "number", min = "0", value = S} })
                                                 </td>
                                             </tr>
                                             <tr style="border:none;">
@@ -68,8 +73,8 @@
                                                     <label>Size M</label>
                                                 </td>
                                                 <td style="display:flex;">
-                                                    <input type="number" value="@Model.QuantityM" readonly>
-                                                    <input type="number" value="0" name="M" min="0" placeholder="Thêm số lượng">
+                                                    @Html.EditorFor(model => model.QuantityM, new { htmlAttributes = new { @class = "medium",@readonly = "readonly" } })
+                                                @Html.Editor("M", new { htmlAttributes = new { @class = "medium", placeholder="Thêm số lượng", type = "number", min = "0", value = M} })
                                                 </td>
                                             </tr>
                                             <tr style="border:none;">
@@ -77,8 +82,8 @@
                                                     <label>Size L</label>
                                                 </td>
                                                 <td style="display:flex;">
-                                                <input type="number" value="@Model.QuantityL" readonly>
-                                                <input type="number" value="0" name="L" min="0" placeholder="Thêm số lượng">
+                                                @Html.EditorFor(model => model.QuantityL, new { htmlAttributes = new { @class = "medium",@readonly = "readonly" } })
+                                                @Html.Editor("L", new { htmlAttributes = new { @class = "medium", placeholder="Thêm số lượng", type = "number", min = "0", value = L} })
                                                 </td>
                                             </tr>
                                             <tr>
@@ -86,8 +91,8 @@
                                                     <label>Size XL</label>
                                                 </td>
                                                 <td style="display:flex;">
-                                                <input type="number" value="@Model.QuantityXl" readonly>
-                                                <input type="number" value="0" name="Xl" min="0" placeholder="Thêm số lượng">
+                                                @Html.EditorFor(model => model.QuantityXl, new { htmlAttributes = new { @class = "medium",@readonly = "readonly" } })
+                                                @Html.Editor("Xl", new { htmlAttributes = new { @class = "medium", placeholder="Thêm số lượng", type = "number", min = "0", value = Xl} })
                                                 </td>
                                             </tr>
                                             <tr>

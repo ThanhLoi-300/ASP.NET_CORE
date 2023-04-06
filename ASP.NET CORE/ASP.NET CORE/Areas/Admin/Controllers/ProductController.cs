@@ -156,9 +156,20 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Product_Edit(Product product, int page, string search, int S, int M, int L, int Xl)
+        public async Task<IActionResult> Product_Edit(Product product, int page, string search, string S, string M, string L, string Xl)
         {
             ViewBag.cate = new SelectList(_product.List_Category(), "Id", "Name", product.Category_ID);
+
+            if (String.IsNullOrEmpty(S) || S.Equals("Thêm số lượng") ) S = "0"; 
+            if (String.IsNullOrEmpty(M) || M.Equals("Thêm số lượng")) M = "0";
+            if (String.IsNullOrEmpty(L) || L.Equals("Thêm số lượng")) L = "0";
+            if (String.IsNullOrEmpty(Xl) || Xl.Equals("Thêm số lượng")) Xl = "0";
+
+            ViewBag.S = S;
+            ViewBag.M = M;
+            ViewBag.L = L;
+            ViewBag.Xl = Xl;
+
             if (ModelState.IsValid)
             {
                 if (product.QuantityS < 0 || product.QuantityM < 0 || product.QuantityL < 0 || product.QuantityXl < 0)
@@ -176,10 +187,10 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
                     if (_product.check_Name(product.Name, product.Id))
                     {
                         product.IsDeleted = 0;
-                        product.QuantityS += S;
-                        product.QuantityM += M;
-                        product.QuantityL += L;
-                        product.QuantityXl += Xl;
+                        product.QuantityS += int.Parse(S);
+                        product.QuantityM += int.Parse(M);
+                        product.QuantityL += int.Parse(L);
+                        product.QuantityXl += int.Parse(Xl);
                         await _product.Update_Product_Async(product);
                         TempData["mess"] = "success";
                         return RedirectToAction("Product_List", new { page = page, search = product.Name });
@@ -249,7 +260,17 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
                 var s = "/" + uploadDir + "/" + fileName;
                 list.Add(s);
             }
-            _product.Add_Img(id, list);
+            //_product.Add_Img(id, list);
+            foreach (var i in list)
+            {
+                context.Imgs.Add(new Img
+                {
+                    ImgProduct = i,
+                    ProductId = id,
+                    SubImg = 0
+                });
+            }
+            context.SaveChanges();
             ViewBag.list = list.Count();
             return Json(new { success = true });
         }
@@ -257,14 +278,28 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult Delete_SubImg(int id)
         {
-            _product.Delete_All_SubImg(id);
+            //_product.Delete_All_SubImg(id);
+            var list_Img_Is_Deleted = context.Imgs.Where(i => i.ProductId == id && i.SubImg == 0).ToList();
+            context.Imgs.RemoveRange(list_Img_Is_Deleted);
+            context.SaveChanges();
             return Json(new { success = true });
         }
 
         [HttpPost]
         public JsonResult Change_Main_Img(int id, int id_Product)
         {
-            _product.Change_Main_Img(id, id_Product);
+            //_product.Change_Main_Img(id, id_Product);
+            var list_Img = context.Imgs.ToList();
+            var sub_Img = list_Img.Find(i => i.Id == id && i.ProductId == id_Product);
+            sub_Img.SubImg = 1;
+
+            var main_Img = context.Imgs.FirstOrDefault(i => i.ProductId == sub_Img.ProductId && i.SubImg == 1);
+            main_Img.SubImg = 0;
+
+            var product = context.Products.FirstOrDefault(i => i.Id == sub_Img.ProductId);
+            product.Img = sub_Img.ImgProduct;
+
+            context.SaveChanges();
             return Json(new { success = true});
         }
     }
