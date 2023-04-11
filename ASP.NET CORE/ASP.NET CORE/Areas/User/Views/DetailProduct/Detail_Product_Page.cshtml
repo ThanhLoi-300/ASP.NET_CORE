@@ -1,4 +1,4 @@
-﻿
+﻿@model ASP.NET_CORE.DATA.Entities.Product
 @{
     ViewData["Title"] = "Detail_Product_Page";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col l-6 " style="font-family: var(--font-family-monospace);">
                             <div class="app_details-img">
-                            <img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="" class="content-img">
+                            <img src="@Model.Img" alt="" class="content-img">
                             </div>
                             <div>
                                 <div class="app_details-item">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="all-form-controls">
-                                    <form action="@Url.Action()" method="post">                                   
+                                    @*<form action="" method="post"> *@                                  
                                         <div class="home-product-item-size">
                                             <span>Kích cỡ</span>
                                             <div class="home-product-item-size_input">
@@ -76,9 +76,11 @@
                                                 <input type="button" class="btn_size" name="" value="XL">
                                             </div>
                                         </div>
-                                        <div>
-                                            <p id="checkSize" style="color:red; margin-left:10px;"></p>
-                                        </div>
+
+                                        <input type="hidden" class="QSize" value="@Model.QuantityS">
+                                        <input type="hidden" class="QSize" value="@Model.QuantityM">
+                                        <input type="hidden" class="QSize" value="@Model.QuantityL">
+                                        <input type="hidden" class="QSize" value="@Model.QuantityXl">
                                         <input type="hidden" id="btn_sizes" name="size" value="">
                                         <input type="hidden" id="btn_sizes" name="product_Id" value="{{$item->product_Id}}">
                                         <div class="buy_now">
@@ -90,27 +92,32 @@
                                             </div>
                                         </div>
                                         <div style="padding: 20px 0;color: black;">
-                                                <span>Số lượng sản phẩm (? sản phẩm)</span>
-                                                <span style="color: red ;">Sản phẩm đã hết hàng</span>
+                                                <span>Số lượng sản phẩm (<span id="Quantity_Product">@Model.QuantityS</span> sản phẩm)</span>
+                                                <div id="warning_Quantity" style="color: red ;">Sản phẩm đã hết hàng</div>
                                         </div>
                                         <div class="price-product">
                                             <span>Giá</span>
-                                            <span class="money"></span>
+                                            <span class="money">@String.Format(" {0:0,00}", @Model.Price) VND</span>
                                         </div>
                                         <!-- hiên thị thông báo sản phẩm đã được cập nhật nếu đã có trong giỏ hàng -->
                                         <div>
                                         </div>
                                         <div style="text-align: center;padding: 40px;align-items: center; display: flex; justify-content: center;     border-bottom: 1px solid #ccc;">
-                                                <input type="submit" name="submit" value="Thêm sản phẩm" class="btn--primary"><i class="fas fa-cart-plus" style="margin-left:10px; font-size:48px;"></i>
+                                                <input type="submit" name="submit" value="Thêm sản phẩm" onclick="swal_login_false()" class="btn--primary"><i class="fas fa-cart-plus" style="margin-left:10px; font-size:48px;"></i>
                                         </div>
                                         <div class="app_content">
                                             <div class="home-title">
                                                 <h4 class="home-title-all">CHI TIẾT SẢN PHẨM</h4>
-                                                <span>Mô tả</span>
+                                                <span>Mô tả: </span><br>
+                                                @if(String.IsNullOrEmpty(Model.Description)){
+                                                    <p>Không có</p>
+                                                }else{
+											        <p>@Model.Description</p>
+                                                }
                                             </div>
                                         </div>
 
-                                    </form>
+                                    @*</form>*@
 
                                 </div>
                             </div>
@@ -120,7 +127,7 @@
                 </div>
 
         <div class="related_products">
-            <h3>Sản phẩm liên quan</h1>
+            <h3>Sản phẩm liên quan</h3>
                 <div class="row">
                         <div class="col l-2-4">
                                 <a href="@Url.Action("Detail_Product_Page","DetailProduct")">
@@ -128,7 +135,7 @@
                                         <img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="" class="home-product-item_img">
                                     <h4 class="home-product-item_name"></h4>
                                     <div class="home-product-item_price">
-                                        <span class="home-product-item_price-current" class="money"></span>
+                                        <span class="home-product-item_price-current money"></span>
                                     </div>
                                 </div>
                             </a>
@@ -140,26 +147,5 @@
 </section>
 
 @section script{
-    <script src="~/Public/User/js/chitietsp.js"></script>
-    <script src="~/Public/Admin/js/simple.money.format.js"></script>
-    <script>
-        $('.money').simpleMoneyFormat();
-        function up() {
-            let Quantity = document.getElementById('input_quantity').value
-                Quantity++
-            document.getElementById('input_quantity').value = Quantity
-        }
-
-    function warning() {
-                let message = Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    text: 'Bạn phải đăng nhập mới được mua hàng',
-                })
-
-            document.getElementById('warning').text=message
-
-    }
-    warning()
-</script>
+    <script src="~/Public/User/js/Detail_Product.js"></script>
 }

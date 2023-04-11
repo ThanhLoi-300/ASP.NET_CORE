@@ -80,6 +80,18 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             return list.OrderByDescending(product => product.Id).ToList().Count();
         }
 
+        public int count_Product_Items(string search, List<int> category_Id)
+        {
+            IEnumerable<Product> list = _context.Products.Where(product => product.IsDeleted == 0 && product.Status == 1);
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                list = list.Where(product => Loai_Dau(product.Name.ToLower()).Contains(Loai_Dau(search.ToLower())));
+            }
+
+            return list.OrderByDescending(product => product.Id).ToList().Count();
+        }
+
         public async Task Create_Product_Async(Product product)
         {
             _context.Products.Add(product);
@@ -107,6 +119,22 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             return list.OrderByDescending(product => product.Id).Skip(skip).Take(page_Size).ToList();
         }
 
+        public List<Product> data_In_Page(int page, int page_Size, string search, List<int>? category_Id, string type)
+        {
+            if (page < 1)
+                page = 1;
+
+            int skip = (page - 1) * page_Size;
+            IEnumerable<Product> list = _context.Products.Where(product => product.IsDeleted == 0 && product.Status == 1);
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                list = list.Where(product => Loai_Dau(product.Name.ToLower()).Contains(Loai_Dau(search.ToLower())));
+            }
+
+            return list.OrderByDescending(product => product.Id).Skip(skip).Take(page_Size).ToList();
+        }
+
         public void Delete_All_SubImg(int id)
         {
             var list_Img_Is_Deleted = _context.Imgs.Where(i => i.ProductId == id && i.SubImg == 0).ToList();
@@ -128,7 +156,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public List<Category> List_Category()
         {
-            return _context.Categories.Where(c => c.IsDeleted == 0).ToList();
+            return _context.Categories.Where(c => c.IsDeleted == 0).OrderBy(c => c.Name).ToList();
         }
 
         public List<Img> List_Img_Of_Product(int id)

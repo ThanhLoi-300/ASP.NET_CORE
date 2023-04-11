@@ -1,11 +1,27 @@
-﻿
+﻿@model List<ASP.NET_CORE.DATA.Entities.Product>
+@using ASP.NET_CORE.Models
+@using ASP.NET_CORE.DATA.Entities
 @{
-    ViewData["Title"] = "Search_Page";
-    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Search_Page";
+	Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+
+	List<String> list = new List<String>() {"Nam", "Nữ","Trẻ em"};
+
+	Pager pager = new Pager();
+
+	int page_No = 0;
+	if (ViewBag.pager != null)
+	{
+		pager = ViewBag.pager;
+		page_No = pager.Current_Page;
+	}
+
+	var i = (pager.Current_Page - 1) * pager.Page_Size;
 }
 
 @section css{
 	<link rel="stylesheet" type="text/css" href="~/Public/User/css/timkiemnangcao.css">
+	<link rel="stylesheet" type="text/css" href="~/Public/User/css/Pagination.css">
 }
 
 <section>
@@ -14,28 +30,43 @@
 			<div class="grid wide">
 				<div class="row">
 					<div class="col l-3">
-							<form action="" method="GET">
-								<div id=""  class="tim-kiem-nang-cao">
+							@using (Html.BeginForm("Search_Page", "SearchProduct", FormMethod.Get, new { })){
+								<div id="" class="tim-kiem-nang-cao">
 									<div class="boloc-top">
 										<i class="icon-boloc ti-menu-alt"></i>
 										<span>BỘ LỌC TÌM KIẾM</span>
 									</div>
 									<div class="khoanggia">
 										<h4 class="h4">Theo khoảng giá</h4>
-										<div style="display: flex;align-items: center;justify-content: space-around;">										
-											<input id="slider_pr" type="range" name="price" min="0" max="2000000" value="0" >
+										<div style="display: flex;align-items: center;justify-content: space-around;">
+											<input id="slider_pr" type="range" name="price" min="0" max="2000000" value="0">
 											<span id="max" style="font-family: var(--font-family-sans-serif);"></span>
-											đ
 										</div>
 									</div>
 									<!--  -->
 									<div class="dmuc">
 										<h4 class="h4">Theo danh mục</h4>
-										<ul class="danhmuc">
-											<li>
-												<input type="checkbox" id="category" name="category[]" value="<?= $result['catId'];?>" />
-												<label></label><br>
-											</li>
+										<ul class="danhmuc" style="margin-left:20px;">
+											@foreach (var item in ViewBag.list_Category)
+											{
+												<li>
+													@Html.Editor("category_Id",new { htmlAttributes = new {value = @item.Id, type = "checkbox"  } })
+													<label>@item.Name</label><br>
+												</li>
+											}
+										</ul>
+									</div>
+
+									<div class="dmuc">
+										<h4 class="h4">Loại</h4>
+										<ul class="danhmuc" style="margin-left:20px;">
+											@foreach (var item in list)
+											{
+												<li>
+													@Html.Editor("type",new { htmlAttributes = new {value = @item, type = "checkbox"  } })
+													<label>@item</label><br>
+												</li>
+											}
 										</ul>
 									</div>
 
@@ -43,7 +74,7 @@
 										<input class="tim-kiem-nang-cao-input" type="submit" name="submit" value="Tìm kiếm" />
 									</div>
 								</div>
-							 </form> 
+						}
 						</div>
 					<div id="searchResults" class="col l-9">
 							<div class="home-filter">
@@ -60,22 +91,66 @@
 							</div>
 							<!-- Phổ biến -->
 							<div id="trend" class="home-suggestion">
-									<!-- Tìm kiếm nâng cao -->						
+									<!-- Tìm kiếm nâng cao -->
 								<div class="row">
-									<div class="col l-4">
-										<a href="@Url.Action("Detail_Product_Page","DetailProduct")">
-											<div class="home-product-item">
-												<img src="./admin/upload/<?php echo $result['image'] ?>" alt="" class="home-product-item_img">
-												<span class="home-product-item_name"></span>
-												<div class="home-product-item_price">
-													<span class="home-product-item_price"></span>
+									@if(Model.Count > 0){
+										foreach (var item in Model)
+										{
+												<div class="col l-4">
+													<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = item.Id})">
+														<div class="home-product-item">
+															<img src="@item.Img" onmouseover = "overing(@item.Id,this)" onmouseout="outing(@item.Id,this)" class="home-product-item_img">
+															<span class="home-product-item_name">@item.Name</span>
+															<div class="home-product-item_price">
+																<span class="home-product-item_price">@String.Format(" {0:0,00}", @item.Price) VND</span>
+															</div>
+														</div>
+													</a>
 												</div>
-											</div>
-										</a>
-									</div>
-
-									<span style="margin:50px auto;font-size:20px;">No product found</span>
+										}
+									}else{
+										<span style="margin:50px auto;font-size:20px;">No product found</span>
+									}
 								</div>
+							<div class="row" style="margin-left:35%;margin-top:50px;">
+								<div>
+									@if (pager.Total_Page > 0)
+									{
+										<ul class="pagination justify-content-end">
+											@if (pager.Current_Page > 1)
+											{
+												<li class="page-item">
+													<a class="page-link" href="@Url.Action("Search_Page","SearchProduct", new {page = 1, search = ViewBag.search})">First</a>
+												</li>
+												<li class="page-item">
+													<a class="page-link" href="@Url.Action("Search_Page","SearchProduct", new {page = pager.Current_Page - 1, search = ViewBag.search})">&lt;&lt;</a>
+												</li>
+											}
+
+											@for (var p = pager.Current_Page - 1; p <= pager.Current_Page + 1; p++)
+											{
+												if (p != 0)
+												{
+													<li class="page-item @(p == pager.Current_Page ? "active" : "")">
+														<a class="page-link" href="@Url.Action("Search_Page","SearchProduct", new {page = p, search = ViewBag.search})">@p</a>
+													</li>
+													if (p == pager.End_Page) break;
+												}
+											}
+
+											@if (pager.Current_Page < pager.Total_Page)
+											{
+												<li class="page-item">
+													<a class="page-link" href="@Url.Action("Search_Page","SearchProduct", new {page = pager.Current_Page + 1, search = ViewBag.search})">>></a>
+												</li>
+												<li class="page-item">
+													<a class="page-link" href="@Url.Action("Search_Page","SearchProduct", new {page = pager.Total_Page, search = ViewBag.search})">Last</a>
+												</li>
+											}
+										</ul>
+									}
+								</div>
+							</div>
 							</div>
 						</div>
 				</div>
@@ -87,14 +162,43 @@
 @section script{
 	<script src="{{asset('public/user/js/product.js')}}"></script>
 	<script>
-		// thanh trượt giá
-		var slider = document.getElementById("slider_pr");
-		var output = document.getElementById("max");
-		output.innerHTML = slider.value;
 
-		slider.oninput = function () {
-			max.innerHTML = this.value;;
-		};
+		//Hover
+		function overing(id, element){
+			$.ajax({
+				url: '/User/SearchProduct/Get_Img',
+				type: 'POST',
+				data: { id: id },
+				success: function (rs) {
+					if (rs.success)
+						element.src = rs.url
+				}
+			})
+		}
+
+		function outing(id, element){
+			$.ajax({
+				url: '/User/SearchProduct/Get_Main_Img',
+				type: 'POST',
+				data: { id: id },
+				success: function (rs) {
+					if (rs.success)
+						element.src = rs.url
+				}
+			})
+		}
+
+
+		// thanh trượt giá
+		var output = document.getElementById("max");
+		const rangeInput = document.getElementById("slider_pr");
+		rangeInput.addEventListener("input", updateValue);
+
+		function updateValue() {
+			const money = parseInt(rangeInput.value);
+			const formatted = money.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+			output.innerHTML = formatted;
+		}
 
 		//tra data cho thanh truot
 		function load_data() {

@@ -1,4 +1,4 @@
-.fnc {
+﻿.fnc {
     /* you can add color names and their values here
     and then simply add classes like .m--blend-$colorName to .fnc-slide 
     to apply specific color for mask blend mode */
@@ -11,11 +11,11 @@
     height: 90vh;
 }
 
-.fnc-slider *,
-.fnc-slider *:before,
-.fnc-slider *:after {
-    box-sizing: border-box;
-}
+    .fnc-slider *,
+    .fnc-slider *:before,
+    .fnc-slider *:after {
+        box-sizing: border-box;
+    }
 
 .fnc-slider__slides {
     position: relative;
@@ -81,16 +81,16 @@
     transform: translate3d(0, 0, 0);
 }
 
-.fnc-slide.m--before-sliding {
-    z-index: 2 !important;
-    transform: translate3d(100%, 0, 0);
-}
+    .fnc-slide.m--before-sliding {
+        z-index: 2 !important;
+        transform: translate3d(100%, 0, 0);
+    }
 
-.fnc-slide.m--active-slide {
-    z-index: 1;
-    transition: transform 1s 0.6666666667s ease-in-out;
-    transform: translate3d(0, 0, 0);
-}
+    .fnc-slide.m--active-slide {
+        z-index: 1;
+        transition: transform 1s 0.6666666667s ease-in-out;
+        transform: translate3d(0, 0, 0);
+    }
 
 .fnc-slide__inner {
     position: relative;
@@ -197,9 +197,9 @@
     word-spacing: 10px;
 }
 
-.fnc-slide__heading-line:nth-child(2) {
-    padding-left: 30px;
-}
+    .fnc-slide__heading-line:nth-child(2) {
+        padding-left: 30px;
+    }
 
 .m--before-sliding .fnc-slide__heading-line {
     transform: translateY(100%);
@@ -248,55 +248,55 @@
     outline: none;
 }
 
-.fnc-slide__action-btn span {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-    transition: transform 0.3s;
-    transform-origin: 50% 0;
-    line-height: 30px;
-    color: #fff;
-}
+    .fnc-slide__action-btn span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transition: transform 0.3s;
+        transform-origin: 50% 0;
+        line-height: 30px;
+        color: #fff;
+    }
 
-.fnc-slide__action-btn span:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #fff;
-    border-top: none;
-    border-bottom: none;
-}
+        .fnc-slide__action-btn span:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #fff;
+            border-top: none;
+            border-bottom: none;
+        }
 
-.fnc-slide__action-btn span:after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    line-height: 30px;
-    background: #1F2833;
-    opacity: 0;
-    transform-origin: 50% 0;
-    transform: translateY(100%) rotateX(-90deg);
-    transition: opacity 0.15s 0.15s;
-}
+        .fnc-slide__action-btn span:after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            line-height: 30px;
+            background: #1F2833;
+            opacity: 0;
+            transform-origin: 50% 0;
+            transform: translateY(100%) rotateX(-90deg);
+            transition: opacity 0.15s 0.15s;
+        }
 
-.fnc-slide__action-btn:hover span {
-    transform: rotateX(90deg);
-}
+    .fnc-slide__action-btn:hover span {
+        transform: rotateX(90deg);
+    }
 
-.fnc-slide__action-btn:hover span:after {
-    opacity: 1;
-    transition: opacity 0.15s;
-}
+        .fnc-slide__action-btn:hover span:after {
+            opacity: 1;
+            transition: opacity 0.15s;
+        }
 
 .fnc-nav {
     z-index: 5;
@@ -323,16 +323,16 @@
     height: 100%;
 }
 
-.fnc-nav__bg.m--nav-bg-before {
-    z-index: 2 !important;
-    transform: translateX(100%);
-}
+    .fnc-nav__bg.m--nav-bg-before {
+        z-index: 2 !important;
+        transform: translateX(100%);
+    }
 
-.fnc-nav__bg.m--active-nav-bg {
-    z-index: 1;
-    transition: transform 1s 0.6666666667s;
-    transform: translateX(0);
-}
+    .fnc-nav__bg.m--active-nav-bg {
+        z-index: 1;
+        transition: transform 1s 0.6666666667s;
+        transform: translateX(0);
+    }
 
 .fnc-nav__controls {
     font-size: 0;
@@ -355,9 +355,9 @@
     transition: background-color 0.5s;
 }
 
-.fnc-nav__control.m--active-control {
-    background: #1F2833;
-}
+    .fnc-nav__control.m--active-control {
+        background: #1F2833;
+    }
 
 .fnc-nav__control-progress {
     position: absolute;
@@ -444,25 +444,25 @@ body {
     cursor: pointer;
 }
 
-.demo-cont__credits-close:before,
-.demo-cont__credits-close:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 2px;
-    margin-top: -1px;
-    background: #fff;
-}
+    .demo-cont__credits-close:before,
+    .demo-cont__credits-close:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 2px;
+        margin-top: -1px;
+        background: #fff;
+    }
 
-.demo-cont__credits-close:before {
-    transform: rotate(45deg);
-}
+    .demo-cont__credits-close:before {
+        transform: rotate(45deg);
+    }
 
-.demo-cont__credits-close:after {
-    transform: rotate(-45deg);
-}
+    .demo-cont__credits-close:after {
+        transform: rotate(-45deg);
+    }
 
 .demo-cont__credits-heading {
     text-transform: uppercase;
@@ -525,15 +525,15 @@ body {
     background-position: center;
 }
 
-.example-slider .fnc-slide-3 .fnc-slide__inner:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-}
+    .example-slider .fnc-slide-3 .fnc-slide__inner:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+    }
 
 .example-slider .fnc-slide-4 .fnc-slide__inner,
 .example-slider .fnc-slide-4 .fnc-slide__mask-inner {
@@ -542,15 +542,15 @@ body {
     background-position: center;
 }
 
-.example-slider .fnc-slide-4 .fnc-slide__inner:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-}
+    .example-slider .fnc-slide-4 .fnc-slide__inner:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+    }
 
 .example-slider .fnc-slide__heading,
 .example-slider .fnc-slide__action-btn,
@@ -571,22 +571,22 @@ body {
     background: #cfcfcf;
 }
 
-.colorful-switch:before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    left: -5px;
-    top: -5px;
-    width: 190px;
-    height: 87.1428571429px;
-    border-radius: 37.1428571429px;
-    background: #314239;
-    transition: background-color 0.3s;
-}
+    .colorful-switch:before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        width: 190px;
+        height: 87.1428571429px;
+        border-radius: 37.1428571429px;
+        background: #314239;
+        transition: background-color 0.3s;
+    }
 
-.colorful-switch:hover:before {
-    background: #4C735F;
-}
+    .colorful-switch:hover:before {
+        background: #4C735F;
+    }
 
 .colorful-switch__checkbox {
     z-index: -10;
@@ -619,7 +619,7 @@ body {
     transform: translate3d(-360px, 0, 0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__bg {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__bg {
     transform: translate3d(0, 0, 0);
 }
 
@@ -637,7 +637,7 @@ body {
     transform: translate3d(0, 0, 0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__dot {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__dot {
     transform: translate3d(-80.3571428571px, 0, 0);
 }
 
@@ -651,7 +651,7 @@ body {
     transform: translate3d(0, 0, 0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__on {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__on {
     transform: translate3d(-80.3571428571px, 0, 0);
 }
 
@@ -664,7 +664,7 @@ body {
     transform: rotate(45deg) scale(0) translateZ(0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__on__inner {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__on__inner {
     transition: transform 0.25s 0.25s cubic-bezier(0.67, -0.16, 0.47, 1.61);
     transform: rotate(45deg) scale(1) translateZ(0);
 }
@@ -703,7 +703,7 @@ body {
     transform: translate3d(0, 0, 0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__off {
     transform: translate3d(-80.3571428571px, 0, 0);
 }
 
@@ -721,8 +721,8 @@ body {
     transition: transform 0.25s 0.25s;
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off:before,
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off:after {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__off:before,
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__off:after {
     transition-delay: 0s;
 }
 
@@ -730,7 +730,7 @@ body {
     transform: rotate(45deg) scaleX(1) translateZ(0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off:before {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__off:before {
     transform: rotate(45deg) scaleX(0) translateZ(0);
 }
 
@@ -739,7 +739,7 @@ body {
     transform: rotate(-45deg) scaleX(1) translateZ(0);
 }
 
-.colorful-switch__checkbox:checked~.colorful-switch__label .colorful-switch__off:after {
+.colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__off:after {
     transition-timing-function: ease;
     transform: rotate(-45deg) scaleX(0) translateZ(0);
 }

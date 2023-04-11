@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="~/Public/User/css/main.css">
 	<link rel="stylesheet" href="~/Public/User/css/grid.css">
 	<link rel="stylesheet" href="~/Public/User/css/base.css">
-	<link rel="stylesheet" href="~/Public/User/css/newtodays.css">
 	<link rel="stylesheet" href="~/Public/User/css/banners.css">
     <link rel="stylesheet" href="~/Public/User/font/fontawesome-free-5.15.4-web/css/all.min.css">
 	<link rel="shortcut icon" href="~/Public/User/img/favicon_created_by_logaster.ico" type="image/x-icon">
@@ -357,7 +356,9 @@
                                 </ul>
                             </div>
                         </li>
+                        <li>
                         <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -489,6 +490,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="~/Public/User/js/product.js"></script>
+    <script src="~/Public/plugins/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="~/Public/User/js/script.js"></script>
     @RenderSection("script", required:false)
 
