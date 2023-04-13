@@ -20,12 +20,12 @@ namespace ASP.NET_CORE.DATA.Configuration
             entity.Property(e => e.OrderTime).IsRequired();
             entity.Property(e => e.RecieveTime).IsRequired();
             entity.Property(e => e.Total).IsRequired();
-            entity.Property(e => e.UserId).IsRequired();
+            entity.Property(e => e.ClientId).IsRequired();
 
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
+            entity.HasOne(d => d.Client).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.ClientId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Order_user");
+                .HasConstraintName("FK_Order_Client");
         }
     }
 }

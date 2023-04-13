@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ASP.NET_CORE.DATA.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_CORE.Areas.User.Controllers
 {

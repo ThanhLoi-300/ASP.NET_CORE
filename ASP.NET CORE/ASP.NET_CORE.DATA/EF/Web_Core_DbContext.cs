@@ -37,6 +37,8 @@ namespace ASP.NET_CORE.DATA.EF
             modelBuilder.ApplyConfiguration(new Role_Configuration());
 
             modelBuilder.ApplyConfiguration(new User_Configuration());
+
+            modelBuilder.ApplyConfiguration(new Client_Configuration());
         }
 
         public virtual DbSet<Admin> Admins { get; set; }
@@ -60,5 +62,6 @@ namespace ASP.NET_CORE.DATA.EF
         public virtual DbSet<Role> Roles { get; set; }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
     }
 }

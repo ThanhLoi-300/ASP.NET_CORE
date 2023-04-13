@@ -20,17 +20,17 @@ namespace ASP.NET_CORE.DATA.Configuration
             entity.Property(e => e.ProductId);
             entity.Property(e => e.Quantity).IsRequired();
             entity.Property(e => e.Size).IsRequired();
-            entity.Property(e => e.UserId);
+            entity.Property(e => e.ClientId);
 
             entity.HasOne(d => d.Product).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Cart_Product");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Carts)
-                .HasForeignKey(d => d.UserId)
+            entity.HasOne(d => d.Client).WithMany(p => p.Carts)
+                .HasForeignKey(d => d.ClientId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Cart_user");
+                .HasConstraintName("FK_Cart_Client");
         }
     }
 }
