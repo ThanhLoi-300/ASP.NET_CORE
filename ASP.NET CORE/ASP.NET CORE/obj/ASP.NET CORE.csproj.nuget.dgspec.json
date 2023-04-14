@@ -1,43 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj": {}
+    "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/ASP.NET CORE.csproj": {}
   },
   "projects": {
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj": {
+    "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/ASP.NET CORE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
+        "projectUniqueName": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/ASP.NET CORE.csproj",
         "projectName": "ASP.NET CORE",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\obj\\",
+        "projectPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/ASP.NET CORE.csproj",
+        "packagesPath": "/Users/Quanmanh/.nuget/packages/",
+        "outputPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Quanmanh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
-                "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
+              "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj": {
+                "projectPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj"
               },
-              "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
-                "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj"
+              "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj": {
+                "projectPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj"
               }
             }
           }
@@ -55,6 +48,10 @@
             "Autofac": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
             },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
@@ -120,33 +117,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.407/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
+    "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
+        "projectUniqueName": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj",
         "projectName": "ASP.NET_CORE.DATA",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\obj\\",
+        "projectPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj",
+        "packagesPath": "/Users/Quanmanh/.nuget/packages/",
+        "outputPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Quanmanh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -165,6 +155,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Elasticsearch.Net": {
               "target": "Package",
               "version": "[7.17.5, )"
@@ -226,41 +220,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.407/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
+    "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj",
+        "projectUniqueName": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj",
         "projectName": "ASP.NET_CORE.SERVICE",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\obj\\",
+        "projectPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj",
+        "packagesPath": "/Users/Quanmanh/.nuget/packages/",
+        "outputPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Quanmanh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
-                "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
+              "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj": {
+                "projectPath": "/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj"
               }
             }
           }
@@ -320,7 +307,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.407/RuntimeIdentifierGraph.json"
         }
       }
     }

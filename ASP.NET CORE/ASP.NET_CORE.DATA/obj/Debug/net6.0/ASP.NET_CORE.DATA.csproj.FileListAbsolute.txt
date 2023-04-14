@@ -1,28 +1,42 @@
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.deps.json
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.runtimeconfig.json
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.dll
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.pdb
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.csproj.AssemblyReference.cache
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.GeneratedMSBuildEditorConfig.editorconfig
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.AssemblyInfoInputs.cache
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.AssemblyInfo.cs
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.csproj.CoreCompileInputs.cache
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.dll
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\refint\ASP.NET_CORE.DATA.dll
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.pdb
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.genruntimeconfig.cache
-C:\c#\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ref\ASP.NET_CORE.DATA.dll
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.deps.json
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.runtimeconfig.json
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.dll
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\bin\Debug\net6.0\ASP.NET_CORE.DATA.pdb
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.csproj.AssemblyReference.cache
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.GeneratedMSBuildEditorConfig.editorconfig
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.AssemblyInfoInputs.cache
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.AssemblyInfo.cs
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.csproj.CoreCompileInputs.cache
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.dll
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\refint\ASP.NET_CORE.DATA.dll
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.pdb
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ASP.NET_CORE.DATA.genruntimeconfig.cache
-C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET_CORE.DATA\obj\Debug\net6.0\ref\ASP.NET_CORE.DATA.dll
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.deps.json
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.runtimeconfig.json
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.dll
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.pdb
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.csproj.AssemblyReference.cache
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.GeneratedMSBuildEditorConfig.editorconfig
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.AssemblyInfoInputs.cache
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.AssemblyInfo.cs
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.csproj.CoreCompileInputs.cache
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.dll
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/refint/ASP.NET_CORE.DATA.dll
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.pdb
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.genruntimeconfig.cache
+C:/c#/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ref/ASP.NET_CORE.DATA.dll
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.deps.json
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.runtimeconfig.json
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.dll
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.pdb
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.csproj.AssemblyReference.cache
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.GeneratedMSBuildEditorConfig.editorconfig
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.AssemblyInfoInputs.cache
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.AssemblyInfo.cs
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.csproj.CoreCompileInputs.cache
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.dll
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/refint/ASP.NET_CORE.DATA.dll
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.pdb
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.genruntimeconfig.cache
+C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ref/ASP.NET_CORE.DATA.dll
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.deps.json
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.runtimeconfig.json
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.dll
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/bin/Debug/net6.0/ASP.NET_CORE.DATA.pdb
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.csproj.AssemblyReference.cache
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.AssemblyInfoInputs.cache
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.AssemblyInfo.cs
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.csproj.CoreCompileInputs.cache
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.dll
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/refint/ASP.NET_CORE.DATA.dll
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.pdb
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ASP.NET_CORE.DATA.genruntimeconfig.cache
+/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/obj/Debug/net6.0/ref/ASP.NET_CORE.DATA.dll

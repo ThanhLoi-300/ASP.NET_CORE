@@ -6,14 +6,39 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using ServiceStack;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//IHostBuilder CreateHostBuilder(string[] args) =>
+//    Host.CreateDefaultBuilder(args)
+//        .ConfigureWebHostDefaults(webBuilder =>
+//        {
+//            webBuilder.UseStartup<Startup>();
+//        })
+//        .ConfigureServices(services =>
+//        {
+//            services.AddDistributedMemoryCache();
+//            services.AddSession(options =>
+//            {
+//                options.IdleTimeout = TimeSpan.FromMinutes(30);
+//                options.Cookie.HttpOnly = true;
+//                options.Cookie.IsEssential = true;
+//            });
+//        });
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
 builder.Services.AddControllersWithViews();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Account/Login_Page";
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    });
 
 //Khai bao Interface
 builder.Services.AddScoped<ICategory, Category_Service>();
@@ -23,10 +48,10 @@ IMvcBuilder IMB = builder.Services.AddRazorPages();
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
 #if DEBUG
-    if(environment == Environments.Development)
-    {
-        IMB.AddRazorRuntimeCompilation();
-    }
+if (environment == Environments.Development)
+{
+    IMB.AddRazorRuntimeCompilation();
+}
 #endif
 
 builder.Services.AddDbContext<Web_Core_DbContext>(options =>
@@ -48,6 +73,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

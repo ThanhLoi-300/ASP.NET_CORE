@@ -7,6 +7,8 @@ namespace ASP.NET_CORE.Areas.User.Controllers
     {
         public IActionResult Index()
         {
+            if (TempData["mess"] != null)
+                ViewBag.message = "success";
             return View();
         }
 
