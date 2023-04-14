@@ -14,7 +14,6 @@ namespace ASP.NET_CORE.DATA.Entities
         [Required, MaxLength(50)]
         public string Account { get; set; } = null!;
         [Required, MaxLength(50)]
-        [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
         [Required, MaxLength(90)]
         public string Name { get; set; } = null!;

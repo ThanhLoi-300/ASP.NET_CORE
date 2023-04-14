@@ -8,137 +8,137 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ASP.NET_CORE
 build_property.RootNamespace = ASP.NET_CORE
-build_property.ProjectDir = /Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/
+build_property.ProjectDir = C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET CORE\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = /Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE
+build_property.MSBuildProjectDirectory = C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET CORE
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQ2F0ZWdvcnkvQ2F0ZWdvcnlfQ3JlYXRlLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlfQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQ2F0ZWdvcnkvQ2F0ZWdvcnlfRWRpdC5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlfRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQ2F0ZWdvcnkvQ2F0ZWdvcnlfTGlzdC5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlfTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Dashboard/Dashboard_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvRGFzaGJvYXJkL0Rhc2hib2FyZF9QYWdlLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Dashboard/Dashboard_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXERhc2hib2FyZF9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Login/Login_Admin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvTG9naW4vTG9naW5fQWRtaW4uY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Login/Login_Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9naW5cTG9naW5fQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvT3JkZXIvT3JkZXJfRGV0YWlsLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcT3JkZXJfRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Manage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvT3JkZXIvT3JkZXJfTWFuYWdlLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcT3JkZXJfTWFuYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Edit_Img_Product.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdC9FZGl0X0ltZ19Qcm9kdWN0LmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Edit_Img_Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxFZGl0X0ltZ19Qcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdC9Qcm9kdWN0X0NyZWF0ZS5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0X0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdC9Qcm9kdWN0X0VkaXQuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0X0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdC9Qcm9kdWN0X0xpc3QuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0X0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout_Imgs_Product.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL19MYXlvdXRfSW1nc19Qcm9kdWN0LmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout_Imgs_Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRfSW1nc19Qcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Account_Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9BY2NvdW50L0FjY291bnRfSW5kZXguY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Account_Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50XEFjY291bnRfSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Login_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9BY2NvdW50L0xvZ2luX1BhZ2UuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Login_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50XExvZ2luX1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Sign_Up_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9BY2NvdW50L1NpZ25fVXBfUGFnZS5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Sign_Up_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50XFNpZ25fVXBfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Cart/Cart_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9DYXJ0L0NhcnRfUGFnZS5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Cart/Cart_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xDYXJ0XENhcnRfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/DetailProduct/Detail_Product_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9EZXRhaWxQcm9kdWN0L0RldGFpbF9Qcm9kdWN0X1BhZ2UuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/DetailProduct/Detail_Product_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xEZXRhaWxQcm9kdWN0XERldGFpbF9Qcm9kdWN0X1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/About_Us.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9Ib21lUGFnZS9BYm91dF9Vcy5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/About_Us.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lUGFnZVxBYm91dF9Vcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9Ib21lUGFnZS9JbmRleC5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lUGFnZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Order/Order_Manage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9PcmRlci9PcmRlcl9NYW5hZ2UuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Order/Order_Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xPcmRlclxPcmRlcl9NYW5hZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Payment/Payment_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9QYXltZW50L1BheW1lbnRfUGFnZS5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Payment/Payment_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xQYXltZW50XFBheW1lbnRfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Product_Category.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9TZWFyY2hQcm9kdWN0L1Byb2R1Y3RfQ2F0ZWdvcnkuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Product_Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTZWFyY2hQcm9kdWN0XFByb2R1Y3RfQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Search_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9TZWFyY2hQcm9kdWN0L1NlYXJjaF9QYWdlLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Search_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTZWFyY2hQcm9kdWN0XFNlYXJjaF9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvVXNlci9WaWV3cy9TaGFyZWQvX0xheW91dC5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quanmanh/thư mục không có tiêu đề/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-nx465bmkxr
+[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-33o6e1j16g
