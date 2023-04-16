@@ -721,6 +721,26 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Session/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.DataProtection": "2.2.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Caching.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Options": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Session.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Session.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.WebUtilities/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -4706,6 +4726,7 @@
           "Elasticsearch.Net": "7.17.5",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
+          "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.1.23111.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.1.23111.4",
           "Microsoft.Extensions.Configuration.FileExtensions": "3.1.1",
@@ -4724,6 +4745,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "ASP.NET_CORE.DATA": "1.0.0",
+          "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.1.23111.4",
           "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0-preview.1.23110.8",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.12",
@@ -5310,6 +5332,19 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll",
         "microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
         "microsoft.aspnetcore.razor.language.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Session/2.2.0": {
+      "sha512": "lOjJVh293AKaOEPi1MIC1/G9gOVZMrve2a05o56oslK6bo0PMgMB17rmPomvqrJAjMdlWZ/MGdN2y78Z9wzWTw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.session/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Session.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Session.xml",
+        "microsoft.aspnetcore.session.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.session.nuspec"
       ]
     },
     "Microsoft.AspNetCore.WebUtilities/2.2.0": {
@@ -12583,6 +12618,7 @@
       "ASP.NET_CORE.SERVICE >= 1.0.0",
       "Autofac >= 6.5.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 6.0.0",
+      "Microsoft.AspNetCore.Session >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 8.0.0-preview.1.23111.4",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0-preview.1.23111.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0-preview.1.23111.4",
@@ -12595,43 +12631,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/Quanmanh/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
+      "projectUniqueName": "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/ASP.NET CORE.csproj",
       "projectName": "ASP.NET CORE",
-      "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\obj\\",
+      "projectPath": "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/ASP.NET CORE.csproj",
+      "packagesPath": "/Users/Quanmanh/.nuget/packages/",
+      "outputPath": "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/Quanmanh/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
-              "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
+            "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj": {
+              "projectPath": "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.DATA/ASP.NET_CORE.DATA.csproj"
             },
-            "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
-              "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj"
+            "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj": {
+              "projectPath": "/Users/Quanmanh/ASP.NET_CORE/ASP.NET CORE/ASP.NET_CORE.SERVICE/ASP.NET_CORE.SERVICE.csproj"
             }
           }
         }
@@ -12653,6 +12681,10 @@
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
             "target": "Package",
             "version": "[6.0.0, )"
+          },
+          "Microsoft.AspNetCore.Session": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -12714,7 +12746,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.407/RuntimeIdentifierGraph.json"
       }
     }
   }

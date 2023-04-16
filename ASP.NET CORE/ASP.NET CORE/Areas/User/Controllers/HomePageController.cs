@@ -7,7 +7,17 @@ namespace ASP.NET_CORE.Areas.User.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+          
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login_Page", "Account");
+            }
+            else
+            {
+                if (TempData["mess"] != null)
+                    ViewBag.message = "success";
+                return View();
+            }
         }
 
         public IActionResult About_Us()

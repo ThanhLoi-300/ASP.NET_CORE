@@ -1,4 +1,4 @@
-﻿
+﻿@model ASP.NET_CORE.Areas.Users.Models.LoginModel;
 @{
     ViewData["Title"] = "Login_Page";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,12 @@
     <div class="app">
         <div class="grid wide">
             <div class="app_content-all">
-                <form action="" method="post" class="auth__form-form">
+
+                @using (Html.BeginForm("Login_Page", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                {
+
+                    @Html.AntiForgeryToken()
                     <div class="row">
                         <div class="fix-content col c-5">
                             <div class="auth__form">
@@ -26,15 +31,24 @@
                                     </div>
                                     <div class="row">
                                         <div class="auth__form-group1 col c-12 ">
-                                            <input type="text" name="username" class="auth__form-input" placeholder="Tên đăng nhập">
+                                            @*<input type="text" name="username" class="auth__form-input" placeholder="Tên đăng nhập" asp-for="Username">*@
+                                            @Html.TextBoxFor(temp => temp.Username, new { @placeholder = "Tên đăng nhập", @class = "auth__form-input" })
+                                            @Html.ValidationMessageFor(temp => temp.Username, "", new { @class = "text-danger", style = "color:red;" })
                                         </div>
                                         <div class="auth__form-group1 col c-12">
-                                            <input type="password" name="password" class="auth__form-input" placeholder="Mật khẩu">
+                                            @*<input type="password" name="password" class="auth__form-input" placeholder="Mật khẩu" asp-for="Password">*@
+                                            @Html.TextBoxFor(temp => temp.Password, new { @placeholder = "Mật khẩu", @class = "auth__form-input" })
+                                            @Html.ValidationMessageFor(temp => temp.Password, "", new { @class = "text-danger", style = "color:red;" })
+
                                         </div>
                                     </div>
                                     <div style="text-align: right;">
                                         <a href="quenMatKhau.php" style="font-family: var(--font-family-monospace);color: #221f20;">Quên mật khẩu</a>
                                     </div>
+                                    @*<label>
+                                                                                <input type="checkbox" asp-for="KeepLoggedIn" />
+                                        Keep me logged In.
+                                                                                </label>*@
                                     <div class="baoloi">
 
                                     </div>
@@ -57,13 +71,14 @@
                                         </p>
                                     </div>
                                     <div class="btn-login1">
-                                        <a href="@Url.Action("Sign_Up_Page","Account")">Đăng ký </a>
+                                        <a href="@Url.Action("Sign_Up_Page", "Account")">Đăng ký </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                }
+
             </div>
         </div>
 </section>

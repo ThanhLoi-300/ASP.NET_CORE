@@ -6,14 +6,30 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using ServiceStack;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using ASP.NET_CORE;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
-builder.Services.AddControllersWithViews();
+// session
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Account/Login_Page";
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    });
 
 //Khai bao Interface
 builder.Services.AddScoped<ICategory, Category_Service>();
@@ -23,10 +39,10 @@ IMvcBuilder IMB = builder.Services.AddRazorPages();
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
 #if DEBUG
-    if(environment == Environments.Development)
-    {
-        IMB.AddRazorRuntimeCompilation();
-    }
+if (environment == Environments.Development)
+{
+    IMB.AddRazorRuntimeCompilation();
+}
 #endif
 
 builder.Services.AddDbContext<Web_Core_DbContext>(options =>
@@ -46,27 +62,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-      name: "Areas",
-      pattern: "{area:exists}/{controller=Category}/{action=Index}/{id?}"
-    );
-});
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Layout_Index}/{action=Index}/{id?}"
-    );
-});
-
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
@@ -76,15 +71,30 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(
-           Path.Combine(builder.Environment.ContentRootPath, "Content")),
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Content")),
     RequestPath = "/Content"
 });
+app.UseRouting();
+app.UseAuthorization();
+// Thêm middleware session
+app.UseSession();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "login",
+        pattern: "User/Account/Login",
+        defaults: new { area = "User", controller = "Account", action = "Login_Page" });
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{area}/{controller}/{action}/{id:int?}",
+        defaults: new { area = "User", controller = "Account", action = "Login_Page" },
+        constraints: new { id = @"\d+" },
+        new[] { "SP.NET_CORE.Areas.User.Controllers" });
+});
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllers();
-
+//app.MapControllers();
 app.Run();
