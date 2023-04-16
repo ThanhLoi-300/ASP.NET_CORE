@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Sign_Up_Page";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+    var Sex = -1;
+    if (Model == null) Sex = 1;
+    else Sex = Model.Sex;  
 }
 
 @section css{
@@ -57,8 +60,16 @@
                                                     <span>Giới tính</span>
                                                     <span style="color: red;">*</span>
                                                 </div>
-                                                @Html.TextBoxFor(temp => temp.Sex, new { @placeholder = "Nhập giới tính", @class = "auth__form-input" })
+                                                <input type="radio" name="Sex" value="1" style="margin-top:30px;" @((Sex == 1) ? " checked" : "")>
+                                                <label class="form-check-label" style=" margin-right:10px">
+                                                        Nam
+                                                    </label>
+                                                <input type="radio" name="Sex" value="2" style="margin-top:30px;" @((Sex == 2) ? " checked" : "")>
+                                                <label class="form-check-label" style=" margin-right:10px">
+                                                        Nữ
+                                                    </label>
                                                 @Html.ValidationMessageFor(temp => temp.Sex, "", new { @class = "text-danger", style = "color:red;" })
+
                                             </div>
                                         </div>
                                         <div class="row">
