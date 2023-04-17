@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,16 +81,31 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             return list.OrderByDescending(product => product.Id).ToList().Count();
         }
 
-        public int count_Product_Items(string search, List<int> category_Id)
+        public int count_Product_Items(string search, List<string>? category_Id, List<String> type, double price, string sort)
         {
             IEnumerable<Product> list = _context.Products.Where(product => product.IsDeleted == 0 && product.Status == 1);
 
+            if (category_Id != null && category_Id.Count > 0)
+                list = list.Where(p => category_Id.Contains(p.Category_ID.ToString())).ToList();
+
+            if (type != null && type.Count > 0)
+                list = list.Where(p => type.Contains(p.Type)).ToList();
+
             if (!String.IsNullOrEmpty(search))
-            {
                 list = list.Where(product => Loai_Dau(product.Name.ToLower()).Contains(Loai_Dau(search.ToLower())));
+
+            if (price > 0)
+                list = list.Where(p => p.Price <= Decimal.Parse(price.ToString())).ToList();
+
+            if (sort != null)
+            {
+                if (sort.Equals("up"))
+                    list = list.OrderBy(p => p.Price).ToList();
+                else if (sort.Equals("down"))
+                    list = list.OrderByDescending(p => p.Price).ToList();
             }
 
-            return list.OrderByDescending(product => product.Id).ToList().Count();
+            return list.ToList().Count();
         }
 
         public async Task Create_Product_Async(Product product)
@@ -119,7 +135,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             return list.OrderByDescending(product => product.Id).Skip(skip).Take(page_Size).ToList();
         }
 
-        public List<Product> data_In_Page(int page, int page_Size, string search, List<int>? category_Id, string type)
+        public List<Product> data_In_Page(int page, int page_Size, string search, List<string>? category_Id, List<string> type, double price, string sort)
         {
             if (page < 1)
                 page = 1;
@@ -128,11 +144,26 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             IEnumerable<Product> list = _context.Products.Where(product => product.IsDeleted == 0 && product.Status == 1);
 
             if (!String.IsNullOrEmpty(search))
-            {
                 list = list.Where(product => Loai_Dau(product.Name.ToLower()).Contains(Loai_Dau(search.ToLower())));
-            }
 
-            return list.OrderByDescending(product => product.Id).Skip(skip).Take(page_Size).ToList();
+            if (category_Id != null && category_Id.Count > 0)
+                list = list.Where(p => category_Id.Contains(p.Category_ID.ToString()));
+
+            if (type != null && type.Count > 0)
+                list = list.Where(p => type.Contains(p.Type));
+
+            if (price > 0)
+                list = list.Where(p => p.Price <= Decimal.Parse(price.ToString()));
+
+            if(sort != null)
+            {
+                if (sort.Equals("up"))
+                    list = list.OrderBy(p => p.Price);
+                else if (sort.Equals("down"))
+                    list = list.OrderByDescending(p => p.Price);
+            } 
+
+            return list.Skip(skip).Take(page_Size).ToList();
         }
 
         public void Delete_All_SubImg(int id)
@@ -156,7 +187,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public List<Category> List_Category()
         {
-            return _context.Categories.Where(c => c.IsDeleted == 0).OrderBy(c => c.Name).ToList();
+            return _context.Categories.Where(c => c.IsDeleted == 0 && c.Status == 1).OrderBy(c => c.Name).ToList();
         }
 
         public List<Img> List_Img_Of_Product(int id)
