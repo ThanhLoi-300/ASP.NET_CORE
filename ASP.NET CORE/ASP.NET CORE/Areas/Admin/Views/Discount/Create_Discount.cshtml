@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Create_Discount";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Public/Admin/css/discount.css" rel="stylesheet" />
+    <link href="~/Public/Admin/css/table.css" rel="stylesheet" />
+}
+
+<section style="margin-left:20px;">
+        <h2 class="dash-title">Nhập mã giảm giá</h2>
+        <section class="recent">
+            <div class="activity-grid" style="margin-bottom: 20px;">
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="activity-card col l-9">
+                            <div>
+                                <div class="discount_title">
+                                    <label for="">Tên mã giảm giá</label>
+                                </div>
+
+                                <div class="discount_name">
+                                    <input type="text" name="coupon_name" id="" placeholder="Nhập tên mã giảm giá">
+                                </div>
+                                <div class="discount_title">
+                                    <label for="">Mã giảm giá</label>
+                                </div>
+
+                                <div class="discount_name">
+                                    <input type="text" name="coupon_code" id="" placeholder="Nhập mã giảm giá">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-3" style="background: white;border-left: 1px solid;border-radius: 7px;">
+                            <div class="discount_date">Date Range</div>
+                            <div>
+                                <div class="input-group">
+                                    <span>Số lượng mã</span>
+                                    <input type="text" name="coupon_time" id="">
+                                </div>
+                                <div class="input-group">
+                                    <span>Nhập số % hoặc tiềm giảm</span>
+                                    <input type="text" name="coupon_number" id="">
+                                </div>
+                                <div class="input-group">
+                                    <span>Tính năng mã</span>
+                                    <select name="coupon_conditions" id="" style="width: 100%;margin-bottom: 10px;text-align: center;">
+                                        <option value="">-----Chọn-----</option>
+                                        <option value="0">Giảm theo phần trăm</option>
+                                        <option value="1">Giảm theo tiền</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="submit" name="submit" value="Lưu mã" style="width: 100%;background: #323434;color: white;font-size: 25ppx;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+</section>
+
+@section scripts{
+
+}
+

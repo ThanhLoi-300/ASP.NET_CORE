@@ -20,18 +20,22 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             _context = context;
         }
 
-        public IActionResult Search_Page(string search,string type, int? page, List<int> category_Id)
+        public IActionResult Search_Page(string search,List<string> type, int? page, List<string> category_Id, double price, string sort)
         {
             int page_Size = 6;
             var page_Index = page.HasValue ? Convert.ToInt32(page) : 1;
-            List<Product> product = _product.data_In_Page(page_Index, page_Size, search, category_Id, type);
-            int total = _product.count_Product_Items(search, category_Id);
+            List<Product> product = _product.data_In_Page(page_Index, page_Size, search, category_Id, type, price,sort);
+            int total = _product.count_Product_Items(search, category_Id, type, price,sort);
 
             var pager = new Pager(total, page_Index, page_Size);
             ViewBag.total = total;
             ViewBag.pager = pager;
             ViewBag.search = search;
             ViewBag.list_Category = _product.List_Category();
+            ViewBag.category_Id = category_Id;
+            ViewBag.type = type;
+            ViewBag.price = price;
+            ViewBag.sort = sort;
 
             return View(product);
         }

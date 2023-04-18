@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Discount_Page";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Public/Admin/css/table.css" rel="stylesheet" />
+}
+
+    <section class="recent" style="margin-left:20px;">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="activity-header">
+                    <h3>Danh sách sản phẩm</h3>
+                    <div class="activity-more">
+                        <span class="ti-plus"></span>
+                        <a href="@Url.Action("Create_Discount","Discount")">Thêm mã giảm giá</a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên mã giảm</th>
+                                <th>Mã giảm giá</th>
+                                <th>Số lượng mã giảm giá</th>
+                                <th>Điều kiện mã giảm</th>
+                                <th>Số giảm</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>%</td>
+                                <td></td>
+                                <td>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="">Delete</a>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+</section>
+
+@section scripts{
+
+}
+
