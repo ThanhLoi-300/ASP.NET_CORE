@@ -11,6 +11,7 @@
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            services.AddHttpContextAccessor();
 
             // Cấu hình các dịch vụ cần thiết khác
             // ...

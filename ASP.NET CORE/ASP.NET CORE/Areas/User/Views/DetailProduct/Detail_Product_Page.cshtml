@@ -2,11 +2,12 @@
 @{
     ViewData["Title"] = "Detail_Product_Page";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+
 }
 
 @section css{
     <link rel="stylesheet" href="~/Public/User/css/comment.css">
-    <link rel="stylesheet" href="~/Public/User/css/chitietsp.css">
+    <link rel="stylesheet" href="~/Public/User/css/chitietsp1.css">
 }
 
 <section>
@@ -16,7 +17,18 @@
                     <div class="row">
                         <div class="col l-6 " style="font-family: var(--font-family-monospace);">
                             <div class="app_details-img">
-                            <img src="@Model.Img" alt="" class="content-img">
+                                <div class="product-content-left row">
+                                    <div class="product-content-left-big-img">
+                                        <img src="@Model.Img" alt="" class="content-img">
+                                    </div>
+                                    <div class="product-content-left-small-img">
+                                        <div class="gallary">
+                                            @foreach(var i in Model.Imgs.OrderByDescending(i => i.SubImg)){
+                                                <img src="@i.ImgProduct" alt="" class="small-img">
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <div class="app_details-item">
@@ -129,17 +141,19 @@
         <div class="related_products">
             <h3>Sản phẩm liên quan</h3>
                 <div class="row">
-                        <div class="col l-2-4">
+                       @foreach(var item in ViewBag.product_Relationship){
+                            <div class="col l-2-4">
                                 <a href="@Url.Action("Detail_Product_Page","DetailProduct")">
-                                <div class="home-product-item">
-                                        <img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="" class="home-product-item_img">
-                                    <h4 class="home-product-item_name"></h4>
-                                    <div class="home-product-item_price">
-                                        <span class="home-product-item_price-current money"></span>
+                                    <div class="home-product-item">
+                                        <img src="@item.Img" alt="" class="home-product-item_img">
+                                        <h4 class="home-product-item_name"></h4>
+                                        <div class="home-product-item_price">
+                                            <span class="home-product-item_price-current money">@item.Price</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                       }
                 </div>
         </div>
     </div>
@@ -148,4 +162,14 @@
 
 @section script{
     <script src="~/Public/User/js/Detail_Product.js"></script>
+
+    <script>
+        const bigImg = document.querySelector(".content-img")
+        const smallImg = document.querySelectorAll(".small-img")
+        smallImg.forEach(function (imgItem, x) {
+            imgItem.addEventListener("click", function () {
+                bigImg.src = imgItem.src
+            })
+        })
+    </script>
 }

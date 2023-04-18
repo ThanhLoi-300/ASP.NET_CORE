@@ -8,10 +8,13 @@ using Microsoft.Extensions.FileProviders;
 using ServiceStack;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ASP.NET_CORE;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
+builder.Services.AddDefaultIdentity<IdentityUser>(option => option.SignIn.RequireConfirmedAccount = false)
+        .AddEntityFrameworkStores<Web_Core_DbContext>();
 // session
 builder.Services.AddSession(options =>
 {
@@ -34,6 +37,7 @@ builder.Services.AddAuthentication(
 //Khai bao Interface
 builder.Services.AddScoped<ICategory, Category_Service>();
 builder.Services.AddScoped<IProduct, Product_Service>();
+builder.Services.AddScoped<ILogin, Login_Service>();
 
 IMvcBuilder IMB = builder.Services.AddRazorPages();
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -76,6 +80,7 @@ app.UseStaticFiles(new StaticFileOptions
 });
 app.UseRouting();
 app.UseAuthorization();
+app.UseAuthentication();
 // Thêm middleware session
 app.UseSession();
 app.UseEndpoints(endpoints =>
@@ -90,11 +95,12 @@ app.UseEndpoints(endpoints =>
         pattern: "{area}/{controller}/{action}/{id:int?}",
         defaults: new { area = "User", controller = "Account", action = "Login_Page" },
         constraints: new { id = @"\d+" },
-        new[] { "SP.NET_CORE.Areas.User.Controllers" });
+        new[] { "ASP.NET_CORE.Areas.User.Controllers" });
 });
 //app.MapControllerRoute(
 //    name: "default",
 //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 //app.MapControllers();
+app.MapRazorPages();
 app.Run();

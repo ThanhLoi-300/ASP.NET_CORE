@@ -9,20 +9,24 @@
     <link rel="stylesheet" href="~/Public/Admin/css/grid.css">
     <link rel="stylesheet" href="~/Public/User/font/themify-icons/themify-icons.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
     <title>Đăng nhập admin</title>
 </head>
-
+@model ASP.NET_CORE.DATA.Model.LoginVM
 <body>
     <!-- partial:index.partial.html -->
-    <form action="@Url.Action("Login_Request","Login")" method="post" class="login-form">
+    @using (Html.BeginForm("Login_Request", "Login", FormMethod.Post, new { @class = "login-form", enctype = "multipart/form-data" }))
+    {
         <p class="login-text">
             <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-lock fa-stack-1x"></i>
             </span>
         </p>
-        <input type="text" name="admin_Acc" class="login-username" placeholder="Tên đăng nhâp" />
-        <input type="password" name="admin_Pass" class="login-password" placeholder="Password" />
+        @Html.AntiForgeryToken()
+        @Html.Editor("username", new { htmlAttributes = new { @class = "login-username", @placeholder = "Tên đăng nhâp"} })
+        @Html.Editor("pass", new { htmlAttributes = new { @class = "login-password", @placeholder = "Password", type="password" } })
         <div class="login-form-waring">
         </div>
         <input type="submit" name="Login" value="Login" class="login-submit" />
@@ -32,6 +36,30 @@
         <div class="underlay-photo"></div>
         <div class="underlay-black"></div>
         <!-- partial -->
-    </form>
+    }
 </body>
+<script src="~/Public/plugins/jquery/jquery.min.js"></script>
+<script src="~/Public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function warning() {
+        let warning = "@((string)ViewBag.message)";
+        let icon = '';
+        let title = '';
+        let text = '';
+        if (warning == "login fail") {
+            icon = 'warning'
+            title = 'Oosp. Fail!!!'
+            text = 'Sai tài khoản hoặc mật khẩu'
+        }
+
+        if (icon != '' && title != '' && text != '')
+            Swal.fire({
+                icon: icon,
+                title: title,
+                text: text
+            })
+    }
+    warning()
+</script>
 </html>

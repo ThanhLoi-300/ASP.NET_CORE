@@ -22,5 +22,6 @@ namespace ASP.NET_CORE.SERVICE.Interface
         Task Add_Img(int id, List<string> url);
         void Delete_All_SubImg(int id);
         Task Change_Main_Img(int id, int id_Product);
+        List<Product> get_Product_Relationship(int id);
     }
 }

@@ -20,6 +20,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Detail_Product_Page(int id)
         {
             Product product = _product.get_Product_By_Id(id);
+            ViewBag.product_Relationship = _product.get_Product_Relationship(id);
             return View(product);
         }
     }

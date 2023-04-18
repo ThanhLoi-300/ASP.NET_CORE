@@ -68,6 +68,9 @@ namespace ASP.NET_CORE.DATA.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -81,10 +84,12 @@ namespace ASP.NET_CORE.DATA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("ProductId");
 
@@ -116,6 +121,54 @@ namespace ASP.NET_CORE.DATA.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category", (string)null);
+                });
+
+            modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Account")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Img")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("Sdt")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sex")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("client", (string)null);
                 });
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.DetailDiscount", b =>
@@ -209,7 +262,7 @@ namespace ASP.NET_CORE.DATA.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Discounts");
+                    b.ToTable("Discounts", (string)null);
                 });
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Img", b =>
@@ -251,6 +304,9 @@ namespace ASP.NET_CORE.DATA.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("OrderTime")
                         .HasColumnType("datetime2");
 
@@ -260,10 +316,12 @@ namespace ASP.NET_CORE.DATA.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("UserId");
 
@@ -414,21 +472,25 @@ namespace ASP.NET_CORE.DATA.Migrations
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Cart", b =>
                 {
+                    b.HasOne("ASP.NET_CORE.DATA.Entities.Client", "Client")
+                        .WithMany("Carts")
+                        .HasForeignKey("ClientId")
+                        .IsRequired()
+                        .HasConstraintName("FK_Cart_Client");
+
                     b.HasOne("ASP.NET_CORE.DATA.Entities.Product", "Product")
                         .WithMany("Carts")
                         .HasForeignKey("ProductId")
                         .IsRequired()
                         .HasConstraintName("FK_Cart_Product");
 
-                    b.HasOne("ASP.NET_CORE.DATA.Entities.User", "User")
+                    b.HasOne("ASP.NET_CORE.DATA.Entities.User", null)
                         .WithMany("Carts")
-                        .HasForeignKey("UserId")
-                        .IsRequired()
-                        .HasConstraintName("FK_Cart_user");
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Client");
 
                     b.Navigation("Product");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.DetailDiscount", b =>
@@ -486,13 +548,17 @@ namespace ASP.NET_CORE.DATA.Migrations
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Order", b =>
                 {
-                    b.HasOne("ASP.NET_CORE.DATA.Entities.User", "User")
+                    b.HasOne("ASP.NET_CORE.DATA.Entities.Client", "Client")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("ClientId")
                         .IsRequired()
-                        .HasConstraintName("FK_Order_user");
+                        .HasConstraintName("FK_Order_Client");
 
-                    b.Navigation("User");
+                    b.HasOne("ASP.NET_CORE.DATA.Entities.User", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Product", b =>
@@ -509,6 +575,13 @@ namespace ASP.NET_CORE.DATA.Migrations
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Client", b =>
+                {
+                    b.Navigation("Carts");
+
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("ASP.NET_CORE.DATA.Entities.Discount", b =>

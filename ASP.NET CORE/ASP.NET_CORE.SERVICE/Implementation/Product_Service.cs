@@ -8,6 +8,8 @@ using ASP.NET_CORE.DATA.EF;
 using ASP.NET_CORE.DATA.Entities;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using NHibernate.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -182,7 +184,13 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public Product get_Product_By_Id(int id)
         {
-            return _context.Products.Where(product => product.Id == id).FirstOrDefault();
+            return _context.Products.Include(p => p.Imgs).FirstOrDefault(product => product.Id == id);
+        }
+
+        public List<Product> get_Product_Relationship(int id)
+        {
+            Product product = get_Product_By_Id(id);
+            return _context.Products.OrderBy(x => Guid.NewGuid()).Where(p => p.Category_ID == product.Category_ID && p.Type == product.Type).Take(5).ToList();
         }
 
         public List<Category> List_Category()
