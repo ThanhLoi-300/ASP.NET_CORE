@@ -37,20 +37,11 @@ namespace ASP.NET_CORE.Areas.User.Controllers
 
             // Lấy thông tin người dùng từ database theo username
             var user = context.Clients.FirstOrDefault(u => u.Account == userName);
-            //var editProfileModel = new EditProfileModel
-            //{
-            //    Username = userName,
-            //    FullName = user.Name,
-            //    Email = user.Email,
-            //    Address = user.Address,
-            //    Phone = user.Sdt,
-            //    Sex = user.Sex
-            //};
             if (user == null)
             {
                 return NotFound();
             }
-
+            ViewBag.user = HttpContext.Session.GetString("Username");
             return View(user);
         }
         [HttpPost]
@@ -120,23 +111,9 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 List<Client> client = context.Clients.Where(c => c.Account == user.Username && c.Password == user.Password).ToList();
                 if (client.Count == 1)
                 {
-                    //List<Claim> claims = new List<Claim>()
-                    //{
-                    //    new Claim(ClaimTypes.NameIdentifier, user.Username),
-                    //    new Claim("OtherProperties", "Example Role")
-                    //};
-                    //ClaimsIdentity claimsIdentity = new ClaimsIdentity(
-                    //    claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    //AuthenticationProperties properties = new AuthenticationProperties()
-                    //{
-                    //    AllowRefresh = true,
-                    //    IsPersistent = user.KeepLoggedIn
-                    //};
-                    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    //    new ClaimsPrincipal(claimsIdentity), properties);
                     TempData["mess"] = "success";
                     HttpContext.Session.SetString("Username", user.Username);
-                    ViewBag.Message = user.Username;
+                    ViewBag.user = HttpContext.Session.GetString("Username");
                     return RedirectToAction("Index", "HomePage");
                 }
                 else

@@ -82,35 +82,38 @@
                         </li>
 
 
-                        <li class="nav-list">
-                            <div class="nav-account">
-                                <div class="nav-account-img ti-headphone"></div>
-                                <div class="nav-account-img ti-user"></div>
-                                <ul class="nav-user_menu">
-                                    <li class="nav-user_menu-item">
-                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="@Url.Action("Account_Index","Account")">Tài khoản của tôi</a>
-                                    </li>
-                                    <li class="nav-user_menu-item">
-                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="doimatkhau.php">Đổi mật khẩu</a>
-                                    </li>
-                                    <li class="nav-user_menu-item">
-                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="@Url.Action("Order_Manage","Order")">Quản lí đơn hàng</a>
-                                    </li>
-                                    <li class="nav-user_menu-item">
-                                        <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="@Url.Action("Logout", "Account")">Đăng xuất</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        @if (ViewBag.message == null)
+                        @if (ViewBag.user != null)
                         {
-                        <li>
-                            <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
-                        </li>
+                            <li class="nav-list">
+                                <div class="nav-account">
+                                    <div class="nav-account-img ti-headphone"></div>
+                                    <div class="nav-account-img ti-user"></div>
+                                    <ul class="nav-user_menu">
+                                        <li class="nav-user_menu-item">
+                                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="@Url.Action("Account_Index","Account")">Tài khoản của tôi</a>
+                                        </li>
+                                        @*<li class="nav-user_menu-item">
+                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                            " href="doimatkhau.php">Đổi mật khẩu</a>
+                        </li>*@
+                                        <li class="nav-user_menu-item">
+                                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="@Url.Action("Order_Manage","Order")">Quản lí đơn hàng</a>
+                                        </li>
+                                        <li class="nav-user_menu-item">
+                                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+                                        " href="@Url.Action("Logout", "Account")">Đăng xuất</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        }
+                        @if (ViewBag.user == null)
+                        {
+                            <li>
+                                <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
+                            </li>
                         }
                     </ul>
                 </li>

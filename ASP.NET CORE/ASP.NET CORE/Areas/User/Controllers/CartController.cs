@@ -7,6 +7,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
     {
         public IActionResult Cart_Page()
         {
+            ViewBag.user = HttpContext.Session.GetString("Username");
             return View();
         }
     }

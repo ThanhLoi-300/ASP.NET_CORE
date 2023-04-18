@@ -21,6 +21,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         {
             Product product = _product.get_Product_By_Id(id);
             ViewBag.product_Relationship = _product.get_Product_Relationship(id);
+            ViewBag.user = HttpContext.Session.GetString("Username");
             return View(product);
         }
     }

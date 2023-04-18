@@ -18,18 +18,21 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                     ViewBag.message = "success";
                 else if (TempData["messss"] != null)
                     ViewBag.message = "successss";
+                ViewBag.user = HttpContext.Session.GetString("Username");
                 return View();
             }
         }
 
         public IActionResult About_Us()
         {
-            if (HttpContext.Session.GetString("Username") == null)
+            if (HttpContext.Session.GetString("Username") != null)
             {
-                var username = HttpContext.Session.GetString("Username");
-                ViewBag.message = username;
+                ViewBag.user = HttpContext.Session.GetString("Username");
+                
             }
             return View();
+
+
         }
     }
 }
