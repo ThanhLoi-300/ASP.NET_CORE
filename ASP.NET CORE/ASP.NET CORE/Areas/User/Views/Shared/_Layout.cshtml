@@ -101,14 +101,17 @@
                                     </li>
                                     <li class="nav-user_menu-item">
                                         <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                                        " href="{{URL::to('/Logout_User')}}">Đăng xuất</a>
+                                        " href="@Url.Action("Logout", "Account")">Đăng xuất</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
+                        @if (ViewBag.message == null)
+                        {
                         <li>
                             <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
                         </li>
+                        }
                     </ul>
                 </li>
             </ul>
@@ -253,7 +256,7 @@
             if (warning == "success") {
                     icon = 'success'
                     title = 'Congratulation!!!!'
-                    text = 'Thành công'
+                text = 'Đăng nhập thành công'
             } else if (warning == "login fail") {
                 icon = 'warning'
                 title = 'Ooops!!!!'
@@ -261,11 +264,15 @@
             } else if (warning == "register fail") {
                 icon = 'warning'
                 title = 'Ooops!!!!'
-                text = 'Đăng nhập thất bại.'
+                text = 'Đăng kí thất bại.'
             } else if (warning == "successs") {
                 icon = 'success'
                 title = 'Congratulation!!!!'
                 text = ' Đăng kí thành công.'
+            } else if (warning == "successss") {
+                icon = 'success'
+                title = 'Congratulation!!!!'
+                text = '  Cập nhật thành công.'
             }
 
             if(icon != '' && title != '' && text !='')

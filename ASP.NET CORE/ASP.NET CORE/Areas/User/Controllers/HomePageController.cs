@@ -16,12 +16,19 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             {
                 if (TempData["mess"] != null)
                     ViewBag.message = "success";
+                else if (TempData["messss"] != null)
+                    ViewBag.message = "successss";
                 return View();
             }
         }
 
         public IActionResult About_Us()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                var username = HttpContext.Session.GetString("Username");
+                ViewBag.message = username;
+            }
             return View();
         }
     }

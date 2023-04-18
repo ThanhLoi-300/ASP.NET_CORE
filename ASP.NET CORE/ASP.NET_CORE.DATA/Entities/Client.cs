@@ -15,15 +15,16 @@ namespace ASP.NET_CORE.DATA.Entities
         public string Account { get; set; } = null!;
         [Required, MaxLength(50)]
         public string Password { get; set; } = null!;
-        [Required, MaxLength(90)]
+        [Required(ErrorMessage = "Name can not blank."), MaxLength(90)]
         public string Name { get; set; } = null!;
-        [Required, MaxLength(500)]
+        [Required(ErrorMessage = "Address can not blank."), MaxLength(500)]
         public string Address { get; set; } = null!;
         [MaxLength(50)]
         public string? Img { get; set; }
-        [Required, MaxLength(90)]
+        [Required(ErrorMessage = "Email can not blank."), MaxLength(90)]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; } = null!;
-
+        [Required(ErrorMessage = "SĐT can not blank.")]
         public int Sdt { get; set; }
 
         public int Sex { get; set; }
