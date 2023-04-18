@@ -13,8 +13,6 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
-builder.Services.AddDefaultIdentity<IdentityUser>(option => option.SignIn.RequireConfirmedAccount = false)
-        .AddEntityFrameworkStores<Web_Core_DbContext>();
 // session
 builder.Services.AddSession(options =>
 {
