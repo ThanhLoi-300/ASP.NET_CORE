@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {}
+    "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {}
   },
   "projects": {
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
+    "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
+        "projectUniqueName": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
         "projectName": "ASP.NET_CORE.DATA",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
+        "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\obj\\",
+        "outputPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -56,6 +56,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -106,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -8,137 +8,145 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ASP.NET_CORE
 build_property.RootNamespace = ASP.NET_CORE
-build_property.ProjectDir = C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET CORE\
+build_property.ProjectDir = C:\c#\ASP.NET_CORE\ASP.NET CORE\ASP.NET CORE\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\ASP.NET_CORE\ASP.NET CORE\ASP.NET CORE
+build_property.MSBuildProjectDirectory = C:\c#\ASP.NET_CORE\ASP.NET CORE\ASP.NET CORE
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Create.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlfQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Edit.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlfRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_List.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Category/Category_List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlfTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Dashboard/Dashboard_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Dashboard/Dashboard_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXERhc2hib2FyZF9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Login/Login_Admin.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Discount/Create_Discount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGlzY291bnRcQ3JlYXRlX0Rpc2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Discount/Discount_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGlzY291bnRcRGlzY291bnRfUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Login/Login_Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9naW5cTG9naW5fQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Detail.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcT3JkZXJfRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Manage.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Order/Order_Manage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcT3JkZXJfTWFuYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Edit_Img_Product.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Edit_Img_Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxFZGl0X0ltZ19Qcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Create.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0X0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Edit.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0X0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_List.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Product/Product_List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0X0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout_Imgs_Product.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/Admin/Views/Shared/_Layout_Imgs_Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRfSW1nc19Qcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Account_Index.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Account_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50XEFjY291bnRfSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Login_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Login_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50XExvZ2luX1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Sign_Up_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Account/Sign_Up_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBY2NvdW50XFNpZ25fVXBfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Cart/Cart_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Cart/Cart_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xDYXJ0XENhcnRfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/DetailProduct/Detail_Product_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/DetailProduct/Detail_Product_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xEZXRhaWxQcm9kdWN0XERldGFpbF9Qcm9kdWN0X1BhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/About_Us.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/About_Us.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lUGFnZVxBYm91dF9Vcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/Index.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/HomePage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lUGFnZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Order/Order_Manage.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Order/Order_Manage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xPcmRlclxPcmRlcl9NYW5hZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Payment/Payment_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Payment/Payment_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xQYXltZW50XFBheW1lbnRfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Product_Category.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Product_Category.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTZWFyY2hQcm9kdWN0XFByb2R1Y3RfQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Search_Page.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/SearchProduct/Search_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTZWFyY2hQcm9kdWN0XFNlYXJjaF9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Shared/_Layout.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Areas/User/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Index.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Privacy.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/Error.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewImports.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewStart.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_Layout.cshtml]
+[C:/c\#/ASP.NET_CORE/ASP.NET CORE/ASP.NET CORE/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-33o6e1j16g

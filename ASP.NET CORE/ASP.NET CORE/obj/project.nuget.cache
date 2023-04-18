@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SLJfFh3TA+Hb7YiXN6iUtgU+9PjnPYNY2OvznROZOo882hVFFkTjpB/Y5xDgTGAQsAKgBfi+snCUsMTXkFv5rQ==",
+  "dgSpecHash": "4W/eiHQaTR3LR8wAGQt9VBGbmCEpALbxSGDyd+X1YC7PempnTHXt5CmqYGQn6l6aj5WTZhs9rsXW3OPK3Jqs8w==",
   "success": true,
-  "projectFilePath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
+  "projectFilePath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\autofac\\6.5.0\\autofac.6.5.0.nupkg.sha512",
@@ -35,6 +35,7 @@
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\6.0.0\\microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.session\\2.2.0\\microsoft.aspnetcore.session.2.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",

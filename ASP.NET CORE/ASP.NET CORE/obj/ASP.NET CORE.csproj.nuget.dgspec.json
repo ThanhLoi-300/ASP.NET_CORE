@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj": {}
+    "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj": {}
   },
   "projects": {
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj": {
+    "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
+        "projectUniqueName": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
         "projectName": "ASP.NET CORE",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
+        "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\ASP.NET CORE.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\obj\\",
+        "outputPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET CORE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
-                "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
+              "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
+                "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
               },
-              "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
-                "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj"
+              "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
+                "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj"
               }
             }
           }
@@ -59,6 +59,10 @@
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -120,18 +124,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
+    "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
+        "projectUniqueName": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
         "projectName": "ASP.NET_CORE.DATA",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
+        "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\obj\\",
+        "outputPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -176,6 +180,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -226,18 +234,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
+    "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj",
+        "projectUniqueName": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj",
         "projectName": "ASP.NET_CORE.SERVICE",
-        "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj",
+        "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\ASP.NET_CORE.SERVICE.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\obj\\",
+        "outputPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.SERVICE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -259,8 +267,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
-                "projectPath": "C:\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
+              "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj": {
+                "projectPath": "C:\\c#\\ASP.NET_CORE\\ASP.NET CORE\\ASP.NET_CORE.DATA\\ASP.NET_CORE.DATA.csproj"
               }
             }
           }
@@ -275,6 +283,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0-preview.1.23111.4, )"
@@ -320,7 +332,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
