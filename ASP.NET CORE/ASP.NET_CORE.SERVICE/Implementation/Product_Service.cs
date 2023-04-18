@@ -190,7 +190,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
         public List<Product> get_Product_Relationship(int id)
         {
             Product product = get_Product_By_Id(id);
-            return _context.Products.OrderBy(x => Guid.NewGuid()).Where(p => p.Category_ID == product.Category_ID && p.Type == product.Type).Take(5).ToList();
+            return _context.Products.OrderBy(x => Guid.NewGuid()).Where(p => p.Category_ID == product.Category_ID && p.Type == product.Type && p.Id != id).Take(5).ToList();
         }
 
         public List<Category> List_Category()
