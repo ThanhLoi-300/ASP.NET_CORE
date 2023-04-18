@@ -25,7 +25,7 @@ namespace ASP.NET_CORE.Areas.User.Models
         [Required(ErrorMessage = "ConfirmPassword can not blank.")]
         [Compare("Password", ErrorMessage = "Password and ConfirmPassword do not match.")]
         public String ConfirmPassword { get; set; } = null!;
-        [Required(ErrorMessage = "Sex can not blank.")]
+        [Required(ErrorMessage = "SĐT can not blank.")]
         public int Sdt { get; set; }
         [Required(ErrorMessage = "Sex can not blank.")]
         public int Sex { get; set; }

@@ -23,10 +23,81 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             _webHostEnvironment = webHostEnvironment;
             context = contexxt;
         }
+        // update profile
         public IActionResult Account_Index()
         {
-            return View();
+            // Lấy thông tin người dùng từ session
+            var userName = HttpContext.Session.GetString("Username");
+
+            if (string.IsNullOrEmpty(userName))
+            {
+                // Nếu session không có giá trị, chuyển hướng về trang đăng nhập
+                return RedirectToAction("Login_Page", "Account");
+            }
+
+            // Lấy thông tin người dùng từ database theo username
+            var user = context.Clients.FirstOrDefault(u => u.Account == userName);
+            //var editProfileModel = new EditProfileModel
+            //{
+            //    Username = userName,
+            //    FullName = user.Name,
+            //    Email = user.Email,
+            //    Address = user.Address,
+            //    Phone = user.Sdt,
+            //    Sex = user.Sex
+            //};
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Account_Index(Client model)
+        {
+            // Kiểm tra dữ liệu đầu vào
+            if (!ModelState.IsValid)
+            {
+                ViewBag.message = "register fail";
+                return View(model);
+            }
+            else
+            {
+                // Lấy thông tin người dùng từ session
+                //var userName = HttpContext.Session.GetString("Username");
+                // Lưu thông tin người dùng chỉnh sửa vào database
+                var user = context.Clients.FirstOrDefault(u => u.Account == model.Account);
+                if (user == null)
+                {
+                    ViewBag.message = "register fail";
+                    return NotFound(user);
+                }
+                // check maill
+                var checkMail = context.Clients.FirstOrDefault(u => u.Email == model.Email && u.Account != model.Account);
+
+                if (checkMail != null)
+                {
+                    ModelState.AddModelError("Email", "This Email is already in use.");
+                    return View(model);
+                }
+                user.Account = model.Account;
+                user.Password = model.Password;
+                user.Name = model.Name;
+                user.Address = model.Address;
+                user.Email = model.Email;
+                user.Sdt = model.Sdt;
+                user.Sex = model.Sex;
+
+                context.SaveChanges();
+                TempData["messss"] = "successss";
+                HttpContext.Session.SetString("Username", user.Account);
+                return RedirectToAction("Index", "HomePage");
+            }
+
+        }
+
 
         public IActionResult Login_Page()
         {
@@ -65,6 +136,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                     //    new ClaimsPrincipal(claimsIdentity), properties);
                     TempData["mess"] = "success";
                     HttpContext.Session.SetString("Username", user.Username);
+                    ViewBag.Message = user.Username;
                     return RedirectToAction("Index", "HomePage");
                 }
                 else
@@ -79,6 +151,15 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 return View();
 
             }
+        }
+        // logout
+        public IActionResult Logout()
+        {
+            // Xoá session
+            HttpContext.Session.Clear();
+
+            // Điều hướng đến trang đăng nhập
+            return RedirectToAction("Login_Page", "Account");
         }
 
         // register
