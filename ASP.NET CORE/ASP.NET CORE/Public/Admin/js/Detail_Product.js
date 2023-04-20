@@ -27,7 +27,7 @@ for (let i = 0; i < btnSize.length; i++) {
         if (parseInt(Quantity_Product.innerHTML) == 0) {
             Quantity.value = 0
         } else Quantity.value = 1
-            
+
     })
 }
 
@@ -88,12 +88,5 @@ function changeBestSeller(type, element) {
         default:
             break;
     }
-}
 
-function swal_login_false() {
-    Swal.fire({
-        icon: 'warning',
-        title: 'Oops...',
-        text: 'Bạn phải đăng nhập mới được mua hàng.',
-    })
 }

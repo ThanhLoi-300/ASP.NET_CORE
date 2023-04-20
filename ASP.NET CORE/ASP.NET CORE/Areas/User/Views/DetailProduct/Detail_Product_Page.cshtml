@@ -94,7 +94,6 @@
                                         <input type="hidden" class="QSize" value="@Model.QuantityL">
                                         <input type="hidden" class="QSize" value="@Model.QuantityXl">
                                         <input type="hidden" id="btn_sizes" name="size" value="">
-                                        <input type="hidden" id="btn_sizes" name="product_Id" value="{{$item->product_Id}}">
                                         <div class="buy_now">
                                             <span>Số lượng</span>
                                             <div class="home-product-item-size_quantity">
@@ -115,7 +114,7 @@
                                         <div>
                                         </div>
                                         <div style="text-align: center;padding: 40px;align-items: center; display: flex; justify-content: center;     border-bottom: 1px solid #ccc;">
-                                                <input type="submit" name="submit" value="Thêm sản phẩm" onclick="swal_login_false()" class="btn--primary"><i class="fas fa-cart-plus" style="margin-left:10px; font-size:48px;"></i>
+                                                <input type="submit" name="submit" value="Thêm sản phẩm" onclick="swal_login(@ViewBag.user,@Model.Id)" class="btn--primary"><i class="fas fa-cart-plus" style="margin-left:10px; font-size:48px;"></i>
                                         </div>
                                         <div class="app_content">
                                             <div class="home-title">
@@ -161,7 +160,8 @@
 </section>
 
 @section script{
-    <script src="~/Public/User/js/Detail_Product.js"></script>
+    <script src="~/Public/Admin/js/Detail_Product.js"></script>
+    <script src="~/Public/Admin/js/Product_Detail_Cart.js"></script>
 
     <script>
         const bigImg = document.querySelector(".content-img")
@@ -171,5 +171,7 @@
                 bigImg.src = imgItem.src
             })
         })
+        
+
     </script>
 }

@@ -83,7 +83,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
 
                 context.SaveChanges();
                 TempData["messss"] = "successss";
-                HttpContext.Session.SetString("Username", user.Account);
+                HttpContext.Session.SetString("Username", user.Id.ToString());
                 return RedirectToAction("Index", "HomePage");
             }
 
