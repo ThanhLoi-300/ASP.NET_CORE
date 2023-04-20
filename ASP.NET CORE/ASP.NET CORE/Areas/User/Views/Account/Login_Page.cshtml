@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="auth__form-group1 col c-12">
                                             @*<input type="password" name="password" class="auth__form-input" placeholder="Mật khẩu" asp-for="Password">*@
-                                            @Html.TextBoxFor(temp => temp.Password, new { @placeholder = "Mật khẩu", @class = "auth__form-input" })
+                                            @Html.TextBoxFor(temp => temp.Password, new { @placeholder = "Mật khẩu", @class = "auth__form-input", type="password" })
                                             @Html.ValidationMessageFor(temp => temp.Password, "", new { @class = "text-danger", style = "color:red;" })
 
                                         </div>

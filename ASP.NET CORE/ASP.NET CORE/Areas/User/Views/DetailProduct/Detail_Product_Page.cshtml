@@ -177,15 +177,27 @@
         function swal_loginss() {
             var username = document.getElementById('username').value
             var id_Propduct = document.getElementById('id_Propduct').value
+            var size = document.getElementById("btn_sizes").value;
+            var quantity = document.getElementById("input_quantity").value
+
             if (username == null || username == "") {
                 Swal.fire({
                     icon: 'warning',
                     title: 'Oops...',
                     text: 'Bạn phải đăng nhập mới được mua hàng.',
                 })
+            }else if(parseInt(quantity) == 0 ){
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Sản phẩm đã hết hàng',
+                })
             } else {
-                var size = document.getElementById("btn_sizes").value;
-                var quantity = document.getElementById("input_quantity").value
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Congratulation!!!!',
+                    text: 'Đã thêm vào giỏ hàng',
+                })
                 $.ajax({
                     url: '/User/Cart/AddCart',
                     type: 'POST',
@@ -196,8 +208,8 @@
                         id_Client : parseInt(username)
                     },
                     success: function (rs) {
-                        //if (rs.success)
-                        //    location.href = "/Admin/Product/Edit_Img_Product/" + id_product;
+                        if (rs.success)
+                            location.href = "/User/Cart/Cart_Page/";
                     }
                 })
             }

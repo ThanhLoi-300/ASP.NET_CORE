@@ -22,8 +22,6 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         {
             var username = HttpContext.Session.GetString("Username");
             ViewBag.user = username;
-            if(TempData["Cart success"] != null)
-                ViewBag.message = "Cart success";
 
             if (username != null)
             {
@@ -48,11 +46,11 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             cart.Quantity = quantity;
             cart.ClientId = id_Client;
             cart.Price = totalPrice;
+
             context.Carts.Add(cart);
             context.SaveChanges();
             ViewBag.user = id_Client;
-            TempData["Cart success"] = "Cart success";
-            return RedirectToAction("Cart_Page");
+            return Json(new { success = true});
         }
 
     }
