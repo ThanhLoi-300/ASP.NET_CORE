@@ -21,10 +21,14 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Cart_Page()
         {
             var username = HttpContext.Session.GetString("Username");
-            if(username != null)
-            {
-              var cart = context.Carts.Include(c => c.Product).Where(c => c.Id == int.Parse(username)).ToList();
+            ViewBag.user = username;
+            if(TempData["Cart success"] != null)
+                ViewBag.message = "Cart success";
 
+            if (username != null)
+            {
+              List<Cart> cart = context.Carts.Include(c => c.Product).Where(c => c.ClientId == int.Parse(username)).ToList();
+                ViewBag.count = cart.Count;
                 return View(cart);
             }
             else
@@ -34,20 +38,19 @@ namespace ASP.NET_CORE.Areas.User.Controllers
            
         }
         [HttpPost]
-        public IActionResult AddCart(string id, string size, string quantity)
+        public IActionResult AddCart(string id, string size, int quantity, int id_Client)
         {
-            var username = HttpContext.Session.GetString("Username");
             var price = context.Products.FirstOrDefault(p => p.Id == int.Parse(id)).Price;
-            var totalPrice = price * int.Parse(quantity);
+            var totalPrice = price * quantity;
             Cart cart = new Cart();
             cart.ProductId = int.Parse(id);
             cart.Size = size;
-            cart.Quantity = int.Parse(quantity);
-            cart.ClientId = int.Parse(username);
+            cart.Quantity = quantity;
+            cart.ClientId = id_Client;
             cart.Price = totalPrice;
             context.Carts.Add(cart);
             context.SaveChanges();
-            ViewBag.user = username;
+            ViewBag.user = id_Client;
             TempData["Cart success"] = "Cart success";
             return RedirectToAction("Cart_Page");
         }

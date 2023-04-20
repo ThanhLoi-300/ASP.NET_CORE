@@ -93,7 +93,7 @@
                                         <input type="hidden" class="QSize" value="@Model.QuantityM">
                                         <input type="hidden" class="QSize" value="@Model.QuantityL">
                                         <input type="hidden" class="QSize" value="@Model.QuantityXl">
-                                        <input type="hidden" id="btn_sizes" name="size" value="">
+                                        <input type="hidden" id="btn_sizes" name="size" value="S">
                                         <div class="buy_now">
                                             <span>Số lượng</span>
                                             <div class="home-product-item-size_quantity">
@@ -114,7 +114,9 @@
                                         <div>
                                         </div>
                                         <div style="text-align: center;padding: 40px;align-items: center; display: flex; justify-content: center;     border-bottom: 1px solid #ccc;">
-                                                <input type="submit" name="submit" value="Thêm sản phẩm" onclick="swal_login(@ViewBag.user,@Model.Id)" class="btn--primary"><i class="fas fa-cart-plus" style="margin-left:10px; font-size:48px;"></i>
+                                            <input type="hidden" value="@ViewBag.user" id="username"/>
+                                    <input type="hidden" value="@Model.Id" id="id_Propduct" />
+                                            <input type="submit" name="submit" value="Thêm sản phẩm" onclick="swal_loginss()" class="btn--primary"><i class="fas fa-cart-plus" style="margin-left:10px; font-size:48px;"></i>
                                         </div>
                                         <div class="app_content">
                                             <div class="home-title">
@@ -171,7 +173,34 @@
                 bigImg.src = imgItem.src
             })
         })
-        
 
+        function swal_loginss() {
+            var username = document.getElementById('username').value
+            var id_Propduct = document.getElementById('id_Propduct').value
+            if (username == null || username == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Bạn phải đăng nhập mới được mua hàng.',
+                })
+            } else {
+                var size = document.getElementById("btn_sizes").value;
+                var quantity = document.getElementById("input_quantity").value
+                $.ajax({
+                    url: '/User/Cart/AddCart',
+                    type: 'POST',
+                    data: {
+                        id: id_Propduct,
+                        size: size,
+                        quantity: parseInt(quantity),
+                        id_Client : parseInt(username)
+                    },
+                    success: function (rs) {
+                        //if (rs.success)
+                        //    location.href = "/Admin/Product/Edit_Img_Product/" + id_product;
+                    }
+                })
+            }
+        }
     </script>
 }

@@ -9,6 +9,8 @@ using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.CodeAnalysis.Scripting;
 using ASP.NET_CORE.Areas.User.Models;
+using Microsoft.AspNetCore.Http;
+
 namespace ASP.NET_CORE.Areas.User.Controllers
 {
     [Area("User")]
@@ -83,7 +85,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
 
                 context.SaveChanges();
                 TempData["messss"] = "successss";
-                HttpContext.Session.SetString("Username", user.Id.ToString());
+                HttpContext.Session.SetString("Username", user.Account);
                 return RedirectToAction("Index", "HomePage");
             }
 
@@ -112,7 +114,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 if (client.Count == 1)
                 {
                     TempData["mess"] = "success";
-                    HttpContext.Session.SetString("Username", user.Username);
+                    HttpContext.Session.SetString("Username", client[0].Id+"");
                     ViewBag.user = HttpContext.Session.GetString("Username");
                     return RedirectToAction("Index", "HomePage");
                 }

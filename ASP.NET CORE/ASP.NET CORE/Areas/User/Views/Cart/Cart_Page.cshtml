@@ -46,7 +46,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (ViewBag.cart != null)
+
+                                        @if (Model !=null && Model.Count !=0)
                                         {
                                             foreach (var item in Model)
                                             {
