@@ -51,6 +51,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             order.Total = total;
             order.OrderTime = now;
             order.RecieveTime = recieveTime;
+            order.Status = 0;
             context.Orders.Add(order);
             context.SaveChanges();
             var idOrder = context.Orders.Where(c => c.OrderTime == now).FirstOrDefault().Id;

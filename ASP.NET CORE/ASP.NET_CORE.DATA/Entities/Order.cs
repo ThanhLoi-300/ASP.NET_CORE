@@ -25,6 +25,8 @@ public partial class Order
     public DateTime OrderTime { get; set; }
 
     public DateTime RecieveTime { get; set; }
+
+    public int Status { get; set; }
     [ForeignKey("Client")]
     public int ClientId { get; set; }
 
