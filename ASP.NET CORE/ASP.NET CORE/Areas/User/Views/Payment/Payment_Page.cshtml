@@ -1,7 +1,8 @@
-﻿
+﻿@model List<ASP.NET_CORE.DATA.Entities.Cart>
 @{
     ViewData["Title"] = "Payment_Page";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+    var stt = 0;
 }
 
 @section css{
@@ -10,146 +11,186 @@
 }
 
 <section>
-        <div class="grid" style="border-top: 1px solid #ccc;">
-            <form action="" method="POST">
-                <div class="grid">
-                    <div class="app">
-                        <div class="grid wide">
-                            <div class="row">
-                                <div class="col l-8" style="margin-top: 40px;">
-                                    <div class="col l-12">
-                                        <div class="checkout-process-bar block-border">
-                                            <ul>
-                                                <li class="">
-                                                    <span>Giỏ hàng</span>
-                                                </li>
-                                                <li class="active"><span>Đặt hàng</span></li>
-                                                <li class=""><span>Thanh toán</span></li>
-                                                <li><span>Hoàn thành đơn</span></li>
-                                            </ul>
-                                        </div>
+    <div class="grid" style="border-top: 1px solid #ccc;">
+        <form action="" method="POST">
+            <div class="grid">
+                <div class="app">
+                    <div class="grid wide">
+                        <div class="row">
+                            <div class="col l-8" style="margin-top: 40px;">
+                                <div class="col l-12">
+                                    <div class="checkout-process-bar block-border">
+                                        <ul>
+                                            <li class="">
+                                                <span>Giỏ hàng</span>
+                                            </li>
+                                            <li class="active"><span>Đặt hàng</span></li>
+                                            <li class=""><span>Thanh toán</span></li>
+                                            <li><span>Hoàn thành đơn</span></li>
+                                        </ul>
                                     </div>
-                                    <div class="col l-12" style="margin: 20px 0;">
-                                        <h3 style="padding: 10px;font-family: var(--font-family-sans-serif);">Thông tin sản phẩm</h3>
-                                        <div style="border: 1px solid #e7e8e9;border-radius: 32px 0px 0px;">
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Ảnh</th>
-                                                        <th>Tên</th>
-                                                        <th>Size</th>
-                                                        <th>Giá</th>
-                                                        <th>Số lượng</th>
-                                                        <th>Số tiền</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-             
-                                                    <tr>
-                                                        <td>0</td>
-                                                        <td>
-                                                            <div class="cart-td_title">
-                                                                <a href="@Url.Action("Detail_Product_Page","DetailProduct")">
-                                                                    <img style="cursor:pointer;" src="" alt="" class="app_cart-img">
-                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span></span>
-                                                        </td>
-                                                        <td></td>
-                                                        <td>
-                                                            <div class="cart-btn">
-                                                                <span></span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input type="hidden" name="cartId" value="<?php echo $result_ProductCat['cartID'] ?>" />
-                                                            <input style="border: none;background: none;font-family: var(--font-family-sans-serif);" type="button" name="quantity" value="" width="30" />
-                                                        </td>
+                                </div>
+                                <div class="col l-12" style="margin: 20px 0;">
+                                    <h3 style="padding: 10px;font-family: var(--font-family-sans-serif);">Thông tin sản phẩm</h3>
+                                    <div style="border: 1px solid #e7e8e9;border-radius: 32px 0px 0px;">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Ảnh</th>
+                                                    <th>Tên</th>
+                                                    <th>Size</th>
+                                                    <th>Giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Số tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                                        <td>
-                                                            <span class="cart-current">
+                                                @if (Model != null && Model.Count > 0)
+                                                {
+                                                    foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@{stt++;} </td>
+                                                            <td>
+                                                                <div class="cart-td_title">
+                                                                    <a href="@Url.Action("Detail_Product_Page","DetailProduct")">
+                                                                        <img style="cursor:pointer;" src="@item.Product.Img" alt="" class="app_cart-img">
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span>@item.Product.Name</span>
+                                                            </td>
+                                                            <td>@item.Size</td>
+                                                            <td>
+                                                                <div class="cart-btn">
+                                                                    <span>@String.Format(" {0:0,00}", item.Product.Price) VND</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="hidden" name="cartId" value="<?php echo $result_ProductCat['cartID'] ?>" />
+                                                                <input style="border: none;background: none;font-family: var(--font-family-sans-serif);" type="button" name="quantity" value="@item.Quantity" width="30" />
+                                                            </td>
 
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                    </div>
-                                    <div class="col l-12" style="margin: 20px 0;">
-                                        <h3 style="padding: 10px;font-family: var(--font-family-sans-serif);">Địa chỉ giao hàng</h3>
-                                        <div style="border: 1px solid #e7e8e9;border-radius: 32px 0px 0px;">
-                                            <table>
-                                                <tbody>
-                                                    <tr style="line-height:50px;">
-                                                        <td>Tên: </td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr style="line-height:50px;">
-                                                        <td>Email: </td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr style="line-height:50px;">
-                                                        <td>SĐT: </td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr style="line-height:50px;">
-                                                        <td>Address: </td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr style="line-height:50px;">
-                                                        <td colspan="2" style="cursor:pointer;"><a href="account.php" style="text-decoration:none;color:black; ">Chỉnh sửa thông tin</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
+                                                            <td>
+                                                                <span class="cart-current">
+                                                                    @String.Format(" {0:0,00}", item.Price) VND
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                 </div>
-                                <div class="col l-4">
-                                    <div class="cart-voucher">
-                                        <h3>Tóm tắt đơn hàng</h3>
-                                       
-                                        <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                            <span class="voucher-title">
-                                                <span>Tổng sản phẩm</span>
-                                            </span>
-                                            <span class="sum-product">
+                                <div class="col l-12" style="margin: 20px 0;">
+                                    <h3 style="padding: 10px;font-family: var(--font-family-sans-serif);">Địa chỉ giao hàng</h3>
+                                    <div style="border: 1px solid #e7e8e9;border-radius: 32px 0px 0px;">
+                                        <table>
+                                            <tbody>
+                                                <tr style="line-height:50px;">
+                                                    <td>Tên: </td>
+                                                    <td>@ViewBag.name</td>
+                                                </tr>
+                                                <tr style="line-height:50px;">
+                                                    <td>Email: </td>
+                                                    <td>@ViewBag.email</td>
+                                                </tr>
+                                                <tr style="line-height:50px;">
+                                                    <td>SĐT: </td>
+                                                    <td>@ViewBag.sdt</td>
+                                                </tr>
+                                                <tr style="line-height:50px;">
+                                                    <td>Address: </td>
+                                                    <input type="hidden" id="address" value="@ViewBag.address" />
+                                                    <input type="hidden" id ="total" value="@ViewBag.endPrice" />
+                                                    <input type="hidden" id="idClient" value="@Model[0].ClientId" />
+                                                    <td>@ViewBag.address</td>
+                                                </tr>
+                                                <tr style="line-height:50px;">
+                                                    <td colspan="2" style="cursor:pointer;"><a href="@Url.Action("Account_Index","Account")" style="text-decoration:none;color:black; ">Chỉnh sửa thông tin</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                            </span>
-                                        </div>
-                                        <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                            <div class="voucher-title">
-                                                <span>Tổng tiền hàng</span>
-                                            </div>
-                                            <span class="sum-product"></span>
-                                        </div>
-                                        <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                            <span class="sum-product">Tiền thuế(VAT 10%)</span>
-                                            <span class="sum-product">
+                                </div>
 
-                                            </span>
-                                        </div>
-                                        <div class="cart-purchase">
-                                            <span class="sum-product">Thành tiền</span>
-                                            <span class="sum-product" style="font-weight: 800;">
+                            </div>
+                            <div class="col l-4">
+                                <div class="cart-voucher">
+                                    <h3>Tóm tắt đơn hàng</h3>
 
-                                            </span>
+                                    <div style="display: flex;justify-content: space-between; margin: 20px 0;">
+                                        <span class="voucher-title">
+                                            <span>Tổng sản phẩm</span>
+
+                                        </span>
+                                        <span class="sum-product">
+                                            @Model.Count
+                                        </span>
+                                    </div>
+                                    <div style="display: flex;justify-content: space-between; margin: 20px 0;">
+                                        <div class="voucher-title">
+                                            <span>Tổng tiền hàng</span>
                                         </div>
-                                        <div class="cart-purchase-button">
-                                            <p class="btn"><a href="?orderid=order" id="btn_order" onclick="return alert('Bạn đã đặt hàng thành công')">Xác nhận đặt hàng</a></p>
-                                        </div>
+                                        <span class="sum-product">@String.Format(" {0:0,00}", ViewBag.total) VND</span>
+                                    </div>
+                                    <div style="display: flex;justify-content: space-between; margin: 20px 0;">
+                                        <span class="sum-product">Tiền thuế(VAT 10%)</span>
+                                        <span class="sum-product">
+                                            @String.Format(" {0:0,00}", ViewBag.vat) VND
+                                        </span>
+                                    </div>
+                                    <div class="cart-purchase">
+                                        <span class="sum-product">Thành tiền</span>
+                                        <span class="sum-product" style="font-weight: 800;">
+                                            @String.Format(" {0:0,00}", ViewBag.endPrice) VND
+                                        </span>
+                                    </div>
+                                    <div class="cart-purchase-button">
+                                        <p class="btn"><a href="" id="btn_order" onclick="swal_sells()">Xác nhận đặt hàng</a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
+    </div>
 </section>
+
+<script>function swal_sells() {
+        var address = document.getElementById("address").value
+        var total = document.getElementById("total").value
+        var idClient = document.getElementById("idClient").value
+
+        //Swal.fire({
+        //    icon: 'success',
+        //    title: 'Congratulation!!!!',
+        //    text: 'Bạn đã đặt hàng thành công',
+        //})
+
+        $.ajax({
+            url: '/User/Order/Add_Order',
+            type: 'POST',
+            data: {
+                address: address,
+                total: total,
+                idClient: idClient
+
+            },
+            success: function (rs) {
+                //if (rs.success)
+                //    location.href = "/User/Order/Order_Manage/";
+            }
+
+        })
+    location.href = "/User/Order/Order_Manage/";
+    }</script>
+

@@ -1,14 +1,73 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ASP.NET_CORE.DATA.EF;
+using ASP.NET_CORE.DATA.Entities;
+using ASP.NET_CORE.SERVICE.Interface;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_CORE.Areas.User.Controllers
 {
     [Area("User")]
     public class OrderController : Controller
     {
+        Web_Core_DbContext context;
+        private readonly IProduct _product;
+        private IWebHostEnvironment _webHostEnvironment;
+        public OrderController(IProduct product, IWebHostEnvironment webHostEnvironment, Web_Core_DbContext contexxt)
+        {
+            _product = product;
+            _webHostEnvironment = webHostEnvironment;
+            context = contexxt;
+        }
         public IActionResult Order_Manage()
         {
-            ViewBag.user = HttpContext.Session.GetString("Username");
-            return View();
+            var username = HttpContext.Session.GetString("Username");
+            ViewBag.user = username;
+            if (username != null)
+            {
+                List<Order> order = context.Orders.Where(i => i.ClientId == int.Parse(username)).ToList();
+                return View(order);
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+        [HttpPost]
+        public IActionResult Add_Order(string address, decimal total, int idClient)
+        {
+            var username = HttpContext.Session.GetString("Username");
+            DateTime now = DateTime.Now;
+            DateTime recieveTime = now.AddDays(3);
+
+            //string formattedDateTime = now.ToString("dd/MM/yyyy HH:mm:ss");
+    
+
+            List<Cart> cart = context.Carts.Include(c => c.Product).Where(c => c.ClientId == int.Parse(username)).ToList();
+
+            Order order = new Order();
+            order.ClientId = idClient;
+            order.Address = address;
+            order.Total = total;
+            order.OrderTime = now;
+            order.RecieveTime = recieveTime;
+            context.Orders.Add(order);
+            context.SaveChanges();
+            var idOrder = context.Orders.Where(c => c.OrderTime == now).FirstOrDefault().Id;
+            foreach (var item in cart)
+            {
+                DetailOrder detailOrder = new DetailOrder();
+                detailOrder.ProductId = item.ProductId;
+                detailOrder.Quantity = item.Quantity;
+                detailOrder.Size = item.Size;
+                detailOrder.OrderId = idOrder;
+                detailOrder.Price = item.Product.Price;
+                detailOrder.PercentDiscount = 0;
+                context.DetailOrders.Add(detailOrder);
+              
+            }
+            context.SaveChanges();
+            return Json(new { success = true });
         }
     }
 }

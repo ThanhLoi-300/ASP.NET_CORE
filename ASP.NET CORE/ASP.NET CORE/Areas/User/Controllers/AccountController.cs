@@ -38,7 +38,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             }
 
             // Lấy thông tin người dùng từ database theo username
-            var user = context.Clients.FirstOrDefault(u => u.Account == userName);
+            var user = context.Clients.FirstOrDefault(u => u.Id == int.Parse(userName));
             if (user == null)
             {
                 return NotFound();
@@ -53,18 +53,14 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             // Kiểm tra dữ liệu đầu vào
             if (!ModelState.IsValid)
             {
-                ViewBag.message = "register fail";
                 return View(model);
             }
             else
             {
-                // Lấy thông tin người dùng từ session
-                //var userName = HttpContext.Session.GetString("Username");
                 // Lưu thông tin người dùng chỉnh sửa vào database
                 var user = context.Clients.FirstOrDefault(u => u.Account == model.Account);
                 if (user == null)
                 {
-                    ViewBag.message = "register fail";
                     return NotFound(user);
                 }
                 // check maill
@@ -85,7 +81,6 @@ namespace ASP.NET_CORE.Areas.User.Controllers
 
                 context.SaveChanges();
                 TempData["messss"] = "successss";
-                HttpContext.Session.SetString("Username", user.Account);
                 return RedirectToAction("Index", "HomePage");
             }
 
