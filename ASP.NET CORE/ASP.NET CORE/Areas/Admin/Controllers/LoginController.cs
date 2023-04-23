@@ -1,5 +1,6 @@
 ﻿using ASP.NET_CORE.DATA.Entities;
 using ASP.NET_CORE.DATA.Model;
+using ASP.NET_CORE.Models;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,8 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
             {
                 if (!_login.Login(username, pass).Equals(""))
                 {
-                    HttpContext.Session.SetString("Admin", _login.Login(username, pass));
+                    Static.Admin = _login.Login(username, pass);
+                    //HttpContext.Session.SetString("Admin", _login.Login(username, pass));
                     return RedirectToAction("Product_List","Product");
                 }
                 TempData["message"] = "login fail";
@@ -44,7 +46,8 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
 
         public IActionResult LogOut()
         {
-            HttpContext.Session.Remove("Admin");
+            //HttpContext.Session.Remove("Admin");
+            Static.Admin = "";
             return RedirectToAction("Login_Admin");
         }
     }

@@ -119,21 +119,34 @@
                                     <span class="voucher-title">
                                         <span>Tổng sản phẩm</span>
                                     </span>
-                                    <span class="sum-product">@Model.Count</span>
+                                    <span class="sum-product">
+                                        @if (Model != null) { @Model.Count }
+                                    </span>
                                 </div>
                                 <div style="display: flex;justify-content: space-between; margin: 20px 0;">
                                     <div class="voucher-title">
                                         <span>Tổng tiền hàng</span>
                                     </div>
-                                    <span class="sum-product">@String.Format(" {0:0,00}", ViewBag.total) VND</span>
+                                    <span class="sum-product">@if (Model != null)
+                                        {
+                                            @String.Format(" {0:0,00}", ViewBag.total)
+                                        } VND</span>
                                 </div>
                                 <div style="display: flex;justify-content: space-between; margin: 20px 0;">
                                     <span class="sum-product">Tiền thuế(VAT 10%)</span>
-                                    <span class="sum-product">@String.Format(" {0:0,00}", ViewBag.vat) VND</span>
+                                    <span class="sum-product">@if (Model != null)
+                                        {
+                                            @String.Format(" {0:0,00}", ViewBag.vat)
+                                        }
+                                        VND</span>
                                 </div>
                                 <div class="cart-purchase">
                                     <span class="sum-product">Thành tiền</span>
-                                    <span class="sum-product" style="font-weight: 800;">@String.Format(" {0:0,00}", ViewBag.endPrice) VND</span>
+                                    <span class="sum-product" style="font-weight: 800;">@if (Model != null)
+                                        {
+                                            @String.Format(" {0:0,00}", ViewBag.endPrice)
+                                        }
+                                        VND</span>
                                 </div>
                                 <div class="cart-purchase-button">
                                     <a href="@Url.Action("Payment_Page","Payment")"><button>Mua hàng</button></a>

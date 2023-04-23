@@ -23,13 +23,14 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Cart_Page()
         {
             var username = HttpContext.Session.GetString("Username");
-            var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
+           
             decimal totalPrice = 0;
             ViewBag.user = username;
 
             if (username != null)
             {
-              List<Cart> cart = context.Carts.Include(c => c.Product).Where(c => c.ClientId == int.Parse(username)).ToList();
+                var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
+                List<Cart> cart = context.Carts.Include(c => c.Product).Where(c => c.ClientId == int.Parse(username)).ToList();
                 ViewBag.count = cart.Count;
                 foreach (var item in cartProduct)
                 {

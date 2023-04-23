@@ -1,4 +1,6 @@
-﻿
+﻿@using ASP.NET_CORE.DATA.Entities
+@using ASP.NET_CORE.Models
+@model List<ASP.NET_CORE.DATA.Entities.Order>
 @{
     ViewData["Title"] = "Order_Manage";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -46,17 +48,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><?= ($i = $i + 1); ?></td>
-                                    <td><?= $result_OrderHistory0['name']; ?></td>
-                                    <td>
-                                        <?= $result_OrderHistory0['username']; ?>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Order_Detail","Order")">Xem chi tiết</a>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                @if (Model != null && Model.Count >0){
+                                    var stt = 0;
+                                    var b = Model.Where(a => a.Status == 0).Select(a => new Account{Username = a.Client.Account, Name = a.Client.Name, Id = a.ClientId}).DistinctBy(a => a.Username).ToList();
+                                    foreach (var item in b)
+                                    {
+                                        <tr>
+                                            <td>@(stt +=1)</td>
+                                            <td>@item.Name</td>
+                                            <td>
+                                                @item.Username
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Order_Detail","Order",new {clientId = item.Id, status = 0, account = item.Username, name = item.Name})">Xem chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
                         </table>
 
                         <table class="table table_1">
@@ -69,16 +78,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><?= ($i = $i + 1); ?></td>
-                                    <td><?= $result_OrderHistory1['name']; ?></td>
-                                    <td>
-                                        <?= $result_OrderHistory1['username']; ?>
-                                    </td>
-                                    <td>
-                                            <a href="@Url.Action("Order_Detail","Order")">Xem chi tiết</a>
-                                    </td>
-                                </tr>
+                                @if (Model != null && Model.Count >0){
+                                    var stt = 0;
+                                    var b = Model.Where(a => a.Status == 1).Select(a => new Account{Username = a.Client.Account, Name = a.Client.Name, Id = a.ClientId}).DistinctBy(a => a.Username).ToList();
+                                    foreach (var item in b)
+                                    {
+                                        <tr>
+                                            <td>@(stt +=1)</td>
+                                            <td>@item.Name</td>
+                                            <td>
+                                                @item.Username
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Order_Detail","Order",new {clientId = item.Id, status = 1, account = item.Username, name = item.Name})">Xem chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                                 </tbody>
                         </table>
 
@@ -92,16 +108,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><?= ($i = $i + 1); ?></td>
-                                    <td><?= $result_OrderHistory2['name']; ?></td>
-                                    <td>
-                                        <?= $result_OrderHistory2['username']; ?>
-                                    </td>
-                                    <td>
-                                            <a href="@Url.Action("Order_Detail","Order")">Xem chi tiết</a>
-                                    </td>
-                                </tr>
+                                @if (Model != null && Model.Count >0){
+                                    var stt = 0;
+                                    var b = Model.Where(a => a.Status == 2).Select(a => new Account{Username = a.Client.Account, Name = a.Client.Name, Id = a.ClientId}).DistinctBy(a => a.Username).ToList();
+                                    foreach (var item in b)
+                                    {
+                                        <tr>
+                                            <td>@(stt +=1)</td>
+                                            <td>@item.Name</td>
+                                            <td>
+                                                @item.Username
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Order_Detail","Order",new {clientId = item.Id, status = 2, account = item.Username, name = item.Name})">Xem chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                                 </tbody>
                         </table>
 
@@ -115,16 +138,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><?= ($i = $i + 1); ?></td>
-                                    <td><?= $result_OrderHistory0['name']; ?></td>
-                                    <td>
-                                        <?= $result_OrderHistory0['username']; ?>
-                                    </td>
-                                    <td>
-                                            <a href="@Url.Action("Order_Detail","Order")">Xem chi tiết</a>
-                                    </td>
-                                </tr>
+                                @if (Model != null && Model.Count >0){
+                                    var stt = 0;
+                                    var b = Model.Where(a => a.Status == -1).Select(a => new Account{Username = a.Client.Account, Name = a.Client.Name, Id = a.ClientId}).DistinctBy(a => a.Username).ToList();
+                                    foreach (var item in b)
+                                    {
+                                        <tr>
+                                            <td>@(stt +=1)</td>
+                                            <td>@item.Name</td>
+                                            <td>
+                                                @item.Username
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Order_Detail","Order",new {clientId = item.Id, status = -1, account = item.Username, name = item.Name})">Xem chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                                 </tbody>
                         </table>
                     </div>

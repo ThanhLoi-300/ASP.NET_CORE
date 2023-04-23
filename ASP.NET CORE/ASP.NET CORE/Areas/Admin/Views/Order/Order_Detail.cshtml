@@ -1,288 +1,386 @@
-﻿
+﻿@model List<ASP.NET_CORE.DATA.Entities.Order>
 @{
-    ViewData["Title"] = "Order_Detail";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Order_Detail";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 @section css{
-    <link rel="stylesheet" href="~/Public/Admin/css/donhang1.css">
-    <link rel="stylesheet" href="~/Public/Admin/font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="~/Public/Admin/css/donhang1.css">
+	<link rel="stylesheet" href="~/Public/Admin/font/themify-icons/themify-icons.css">
 }
 
-<section>
-          <div class="activity-grid">
-                    <div class="activity-card">
-                        <!-- status=0 -->
+	<section>
+		<div class="activity-grid">
+			<div class="activity-card">
+				<input type="hidden" id="clientId" value="@ViewBag.ClientId" />
+				<input type="hidden" id="Name" value="@ViewBag.Name" />
+				<input type="hidden" id="Account" value="@ViewBag.Account" />
+				<input type="hidden" id="Status" value="@ViewBag.Status" />
 
-                            <h2>ĐƠN HÀNG ĐANG CHỜ XÁC NHẬN</h2>
+				<!-- status=0 -->
+			@if (ViewBag.Status == 0)
+			{
+				<h2>ĐƠN HÀNG ĐANG CHỜ XÁC NHẬN</h2>
+				if (Model != null && Model.Count > 0)
+				{
+					var stt_order = 0;
 
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Đơn hàng: <?php echo $count; ?></th>
-                                                <th colspan="2">Account: <?php echo $username; ?></th>
-                                                <th colspan="5">Ngày đặt: <?php echo $result_date['order_time']; ?></th>
-                                                <th colspan="2" class="toggle">Xem chi tiết</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                    <table class="display" >
-                                        <thead style="background-color:#2a2b2c;">
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>Tên khách hàng</th>
-                                                <th>Ảnh</th>
-                                                <th>Tên</th>
-                                                <th>Size</th>
-                                                <th>Giá</th>
-                                                <th>Số lượng</th>
-                                                <th>Thành tiền</th>
-                                                <th>Địa chỉ</th>
-                                                <th>Tình trạng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                    <tr>
-                                                        <td><?= ($i = $i + 1); ?></td>
-                                                        <td><?= $result_getOrder_waiting['name']; ?></td>
-                                                        <td>
-                                                            <a href="../chitietsanpham.php?productId=<?php echo $result_getOrder_waiting['productId'] ?>&&brandId=<?php echo $result_getOrder_waiting['brandId'] ?>">
-                                                                <img style="width:100px;" src="~/Public/dist/img/user2-160x160.jpg"></a>
-                                                        </td>
-                                                        <td>
-                                                            kạdklasjkjasdjajdaskjdkljs
-                                                        </td>
-                                                        <td>
-                                                            <?= $result_getOrder_waiting['size']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= number_format($result_getOrder_waiting['price'], 0, ',', '.') . "" . "đ"  ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= $result_getOrder_waiting['quantity']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= number_format($result_getOrder_waiting['thanhtien'], 0, ',', '.') . "" . "đ"  ?>
-                                                        </td>
-                                                        <td style="width:250px;">
-                                                            <?= $result_getOrder_waiting['diaChi']; ?>
-                                                        </td>
-                                                        <td style="color:red;cursor:pointer">Đang chờ xác nhận</td>
+					foreach (var item in Model.Where(a => a.Status == 0).ToList())
+					{
+						stt_order += 1;
+						<table>
+							<thead>
+								<tr>
+									<th>Đơn hàng: @stt_order</th>
+									<th colspan="2">Account: @ViewBag.Account</th>
+									<th colspan="5">Ngày đặt: @item.OrderTime</th>
+									<th colspan="2" class="toggle">Xem chi tiết</th>
+								</tr>
+							</thead>
+						</table>
+						<table class="display">
+							<thead style="background-color:#2a2b2c;">
+								<tr>
+									<th>STT</th>
+									<th>Tên khách hàng</th>
+									<th>Ảnh</th>
+									<th>Tên</th>
+									<th>Size</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+									<th>Thành tiền</th>
+									<th>Địa chỉ</th>
+									<th>Tình trạng</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									var stt_Detail = 0;
+								}
+								@foreach (var i in item.DetailOrders)
+								{
+									<tr>
+										<td>@(stt_Detail += 1)</td>
+										<td>@ViewBag.Name</td>
+										<td>
+											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+												<img style="width:100px;" src="@i.Product.Img">
+											</a>
+										</td>
+										<td>
+											@i.Product.Name
+										</td>
+										<td>
+											@i.Size
+										</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Product.Price) VND
+										</td>
+										<td>@i.Quantity</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Price) VND
+										</td>
+										<td style="width:250px;">
+											@item.Address
+										</td>
+										<td style="color:red;cursor:pointer">Đang chờ xác nhận</td>
 
-                                                    </tr>
-                                                <?php
+									</tr>
+								}
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
+							<td colspan="4" style="background-color:#2a2b2c;">
+								<div>
 
-                                                }
-                                                ?>
-                                                <td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: <?php echo number_format($tong0, 0, ',', '.') . "" . "đ"; ?></td>
-                                                <td colspan="4" style="background-color:#2a2b2c;">
-                                                    <div>
-                                                        
-                                                        <a class="ti-check" style="font-size:15px;" onclick="return confirm('Bạn có chắc chắn muốn xác nhận đơn hàng này')" href="?order=<?php echo $orderID ?>&status=1&userId=<?php echo $userId; ?>&action=0&username=<?php echo $username; ?>"> Xác nhận đơn hàng </a>
+									<a class="ti-check" style="font-size:15px;" onclick="Change_Status(@item.Id)" href="#"> Xác nhận đơn hàng </a>
 
-                                                    </div>
+								</div>
 
-                                                </td>
-                                        </tbody>
+							</td>
+							</tbody>
 
-                                    </table>
+						</table>
+					}
+				}
 
-                                    <!-- status=1 -->
+			}
 
-                                        <h2>ĐƠN HÀNG ĐANG GIAO</h2>
+			<!-- status=1 -->
+			@if (ViewBag.Status == 1)
+			{
+				<h2>ĐƠN HÀNG ĐANG GIAO</h2>
+				if (Model != null && Model.Count > 0)
+				{
+					var stt_order = 0;
 
-                                                <table>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Đơn hàng: <?php echo $count; ?></th>
-                                                            <th colspan="2">Account: <?php echo $username; ?></th>
-                                                            <th colspan="5">Ngày đặt: <?php echo $result_date['order_time']; ?></th>
-                                                            <th colspan="2" class="toggle">Xem chi tiết</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
+					foreach (var item in Model.Where(a => a.Status == 1).ToList())
+					{
+						stt_order += 1;
+						<table>
+							<thead>
+								<tr>
+									<th>Đơn hàng: @(stt_order)</th>
+									<th colspan="2">Account: @ViewBag.Account</th>
+									<th colspan="5">Ngày đặt: @item.OrderTime</th>
+									<th colspan="2" class="toggle">Xem chi tiết</th>
+								</tr>
+							</thead>
+						</table>
 
-                                                <table class="display">
-                                                    <thead style="background-color:#2a2b2c;">
-                                                        <tr>
-                                                            <th>STT</th>
-                                                            <th>Tên khách hàng</th>
-                                                            <th>Ảnh</th>
-                                                            <th>Tên</th>
-                                                            <th>Size</th>
-                                                            <th>Giá</th>
-                                                            <th>Số lượng</th>
-                                                            <th>Thành tiền</th>
-                                                            <th>Địa chỉ</th>
-                                                            <th>Tình trạng</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                                <tr>
-                                                                    <td><?= ($i = $i + 1); ?></td>
-                                                                    <td><?= $result_getOrder_waiting['name']; ?></td>
-                                                                    <td>
-                                                                        <a href="../chitietsanpham.php?productId=<?php echo $result_getOrder_waiting['productId'] ?>">
-                                                                            <img style="width:100px;" src="../admin/upload/<?= $result_getOrder_waiting['image']; ?>"></a>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?= $result_getOrder_waiting['productName']; ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?= $result_getOrder_waiting['size']; ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?= number_format($result_getOrder_waiting['price'], 0, ',', '.') . "" . "đ"  ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?= $result_getOrder_waiting['quantity']; ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?= number_format($result_getOrder_waiting['thanhtien'], 0, ',', '.') . "" . "đ"  ?>
-                                                                    </td>
-                                                                    <td style="width:250px;">
-                                                                        <?= $result_getOrder_waiting['diaChi']; ?>
-                                                                    </td>
-                                                                    <td style="color:blue;cursor:pointer">Đang vận chuyển</td>
-                                                                </tr>
-                                                            <td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: <?php echo number_format($tong1, 0, ',', '.') . "" . "đ"; ?></td>
-                                                    </tbody>
-                                                </table>
+						<table class="display">
+							<thead style="background-color:#2a2b2c;">
+								<tr>
+									<th>STT</th>
+									<th>Tên khách hàng</th>
+									<th>Ảnh</th>
+									<th>Tên</th>
+									<th>Size</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+									<th>Thành tiền</th>
+									<th>Địa chỉ</th>
+									<th>Tình trạng</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									var stt_Detail = 0;
+								}
+								@foreach (var i in item.DetailOrders)
+								{
+									<tr>
+										<td>@(stt_Detail += 1)</td>
+										<td>@ViewBag.Name</td>
+										<td>
+											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+												<img style="width:100px;" src="@i.Product.Img">
+											</a>
+										</td>
+										<td>
+											@i.Product.Name
+										</td>
+										<td>
+											@i.Size
+										</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Product.Price) VND
+										</td>
+										<td>@i.Quantity</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Price) VND
+										</td>
+										<td style="width:250px;">
+											@item.Address
+										</td>
+										<td style="color:blue;cursor:pointer">Đang vận chuyển</td>
+										<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: </td>
+									</tr>
+								}
 
-
-
-
-                                            <!-- status=2,5 -->
-
-                                                <h2>ĐƠN HÀNG ĐÃ GIAO</h2>
-
-                                                    <table>
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Đơn hàng: <?php echo $count; ?></th>
-                                                                <th colspan="2">Account: <?php echo $username; ?></th>
-                                                                <th colspan="2">Ngày đặt: <?php echo $result_date['order_time']; ?></th>
-                                                                <th colspan="3">Ngày giao: <?php echo $result_date['recieve_time']; ?></th>
-                                                                <th colspan="2" class="toggle">Xem chi tiết</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-
-                                                    <table class="display">
-                                                        <thead style="background-color:#2a2b2c;">
-                                                            <tr>
-                                                                <th>STT</th>
-                                                                <th>Tên khách hàng</th>
-                                                                <th>Ảnh</th>
-                                                                <th>Tên</th>
-                                                                <th>Size</th>
-                                                                <th>Giá</th>
-                                                                <th>Số lượng</th>
-                                                                <th>Thành tiền</th>
-                                                                <th>Địa chỉ</th>
-                                                                <th>Tình trạng</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                                    <tr>
-                                                                        <td><?= ($i = $i + 1); ?></td>
-                                                                        <td><?= $result_getOrder_waiting['name']; ?></td>
-                                                                        <td>
-                                                                            <a href="../chitietsanpham.php?productId=<?php echo $result_getOrder_waiting['productId'] ?>">
-                                                                                <img style="width:100px;" src="../admin/upload/<?= $result_getOrder_waiting['image']; ?>"></a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?= $result_getOrder_waiting['productName']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?= $result_getOrder_waiting['size']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?= number_format($result_getOrder_waiting['price'], 0, ',', '.') . "" . "đ"  ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?= $result_getOrder_waiting['quantity']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?= number_format($result_getOrder_waiting['thanhtien'], 0, ',', '.') . "" . "đ"  ?>
-                                                                        </td>
-                                                                        <td style="width:250px;">
-                                                                            <?= $result_getOrder_waiting['diaChi']; ?>
-                                                                        </td>
-                                                                        <td style="color:blue;cursor:pointer">Đã nhận được hàng</td>
-                                                                    </tr>
-                                                                <td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: <?php echo number_format($tong2, 0, ',', '.') . "" . "đ"; ?></td>
-                                                        </tbody>
-                                                    </table>
+							</tbody>
+						</table>
+					}
+				}
+			}
 
 
-    <!-- status=-1,4 -->
 
-        <h2>ĐƠN HÀNG ĐÃ HỦY</h2>
+			<!-- status=2 -->
+			@if (ViewBag.Status == 2)
+			{
+				<h2>ĐƠN HÀNG ĐÃ GIAO</h2>
+				if (Model != null && Model.Count > 0)
+				{
+					var stt_order = 0;
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Đơn hàng: <?php echo $count; ?></th>
-                            <th colspan="2">Account: <?php echo $username; ?></th>
-                            <th colspan="5">Ngày đặt: <?php echo $result_date['order_time']; ?></th>
-                            <th colspan="2" class="toggle">Xem chi tiết</th>
-                        </tr>
-                    </thead>
-                </table>
+					foreach (var item in Model.Where(a => a.Status == 2).ToList())
+					{
+						stt_order += 1;
+						<table>
+							<thead>
+								<tr>
+									<th>Đơn hàng: @(stt_order)</th>
+									<th colspan="2">Account: @ViewBag.Account</th>
+									<th colspan="2">Ngày đặt: @item.OrderTime</th>
+									<th colspan="3">Ngày giao: @item.RecieveTime</th>
+									<th colspan="2" class="toggle">Xem chi tiết</th>
+								</tr>
+							</thead>
+						</table>
 
-                <table class="display">
-                    <thead style="background-color:#2a2b2c;">
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên khách hàng</th>
-                            <th>Ảnh</th>
-                            <th>Tên</th>
-                            <th>Size</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền</th>
-                            <th>Địa chỉ</th>
-                            <th>Tình trạng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+						<table class="display">
+							<thead style="background-color:#2a2b2c;">
+								<tr>
+									<th>STT</th>
+									<th>Tên khách hàng</th>
+									<th>Ảnh</th>
+									<th>Tên</th>
+									<th>Size</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+									<th>Thành tiền</th>
+									<th>Địa chỉ</th>
+									<th>Tình trạng</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									var stt_Detail = 0;
+								}
+								@foreach (var i in item.DetailOrders)
+								{
+									<tr>
+										<td>@(stt_Detail += 1)</td>
+										<td>@ViewBag.Name</td>
+										<td>
+											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+												<img style="width:100px;" src="@i.Product.Img">
+											</a>
+										</td>
+										<td>
+											@i.Product.Name
+										</td>
+										<td>
+											@i.Size
+										</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Product.Price) VND
+										</td>
+										<td>@i.Quantity</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Price) VND
+										</td>
+										<td style="width:250px;">
+											@item.Address
+										</td>
+										<td style="color:blue;cursor:pointer">Đã nhận được hàng</td>
+										<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					}
+				}
+			}
 
-                                <tr>
-                                    <td><?= ($i = $i + 1); ?></td>
-                                    <td><?= $result_getOrder_waiting['name']; ?></td>
-                                    <td>
-                                        <a href="../chitietsanpham.php?productId=<?php echo $result_getOrder_waiting['productId'] ?>">
-                                            <img style="width:100px;" src="../admin/upload/<?= $result_getOrder_waiting['image']; ?>"></a>
-                                    </td>
-                                    <td>
-                                        <?= $result_getOrder_waiting['productName']; ?>
-                                    </td>
-                                    <td>
-                                        <?= $result_getOrder_waiting['size']; ?>
-                                    </td>
-                                    <td>
-                                        <?= number_format($result_getOrder_waiting['price'], 0, ',', '.') . "" . "đ"  ?>
-                                    </td>
-                                    <td>
-                                        <?= $result_getOrder_waiting['quantity']; ?>
-                                    </td>
-                                    <td>
-                                        <?= number_format($result_getOrder_waiting['thanhtien'], 0, ',', '.') . "" . "đ"  ?>
-                                    </td>
-                                    <td style="width:250px;">
-                                        <?= $result_getOrder_waiting['diaChi']; ?>
-                                    </td>
-                                        <td style="color:red;cursor:pointer">Đã hủy</td>
-                                </tr>
 
-                            <td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: <?php echo number_format($tong2, 0, ',', '.') . "" . "đ"; ?></td>
-                    </tbody>
-                </table>
-                </div>
-                </div>
+
+			<!-- status=-1 -->
+			@if (ViewBag.Status == -1)
+			{
+				<h2>ĐƠN HÀNG ĐÃ HỦY</h2>
+				if (Model != null && Model.Count > 0)
+				{
+					var stt_order = 0;
+
+					foreach (var item in Model.Where(a => a.Status == -1).ToList())
+					{
+						stt_order += 1;
+						<table>
+							<thead>
+								<tr>
+									<th>Đơn hàng: @(stt_order)</th>
+									<th colspan="2">Account: @ViewBag.Account</th>
+									<th colspan="5">Ngày đặt: @item.OrderTime</th>
+									<th colspan="2" class="toggle">Xem chi tiết</th>
+								</tr>
+							</thead>
+						</table>
+
+						<table class="display">
+							<thead style="background-color:#2a2b2c;">
+								<tr>
+									<th>STT</th>
+									<th>Tên khách hàng</th>
+									<th>Ảnh</th>
+									<th>Tên</th>
+									<th>Size</th>
+									<th>Giá</th>
+									<th>Số lượng</th>
+									<th>Thành tiền</th>
+									<th>Địa chỉ</th>
+									<th>Tình trạng</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									var stt_Detail = 0;
+								}
+								@foreach (var i in item.DetailOrders)
+								{
+									<tr>
+										<td>@(stt_Detail += 1)</td>
+										<td>@ViewBag.Name</td>
+										<td>
+											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+												<img style="width:100px;" src="@i.Product.Img">
+											</a>
+										</td>
+										<td>
+											@i.Product.Name
+										</td>
+										<td>
+											@i.Size
+										</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Product.Price) VND
+										</td>
+										<td>@i.Quantity</td>
+										<td>
+											@String.Format(" {0:0,00}", @i.Price) VND
+										</td>
+										<td style="width:250px;">
+											@item.Address
+										</td>
+										<td style="color:red;cursor:pointer">Đã hủy</td>
+										<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
+									</tr>
+								}
+
+							</tbody>
+						</table>
+					}
+				}
+			}
+
+		</div>
+	</div>
 </section>
 
 @section scripts{
-    <script src="~/Public/Admin/js/chitietdonhang.js"></script>
+	<script src="~/Public/Admin/js/chitietdonhang.js"></script>
+	<script>
+		function Change_Status(order_Id) {
+			let action = "0->1";
+			let clientId = document.getElementById("clientId").value
+			let account = document.getElementById("Account").value
+			let status = document.getElementById("Status").value
+			let name = document.getElementById("Name").value
+
+			let string = "?clientId=" + clientId + "&account=" + account + "&status=" + status + "&name=" + name
+
+			Swal.fire({
+				title: 'Bạn có chắc chắn?',
+				icon: 'info',
+				showCancelButton: true,
+				confirmButtonText: 'Yes',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: '/Admin/Order/Change_Status/',
+						type: 'POST',
+						data: {
+							order_Id: parseInt(order_Id),
+							action: action
+						},
+						contentType: false,
+						processData: false,
+						success: function (rs) {
+							if (rs.success)
+								location.href = "/Admin/Order/Order_Detail/" + string;
+						}
+					})
+				}
+			})
+		}
+	</script>
 }
