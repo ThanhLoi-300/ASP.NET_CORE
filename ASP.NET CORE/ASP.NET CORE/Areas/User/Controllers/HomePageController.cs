@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ASP.NET_CORE.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_CORE.Areas.User.Controllers
 {
@@ -8,7 +9,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Index()
         {
           
-            if (HttpContext.Session.GetString("Username") == null)
+            if (Static.User == null || Static.User == "")
             {
                 return RedirectToAction("Login_Page", "Account");
             }
@@ -18,16 +19,16 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                     ViewBag.message = "success";
                 else if (TempData["messss"] != null)
                     ViewBag.message = "successss";
-                ViewBag.user = HttpContext.Session.GetString("Username");
+                ViewBag.user = Static.User; ;
                 return View();
             }
         }
 
         public IActionResult About_Us()
         {
-            if (HttpContext.Session.GetString("Username") != null)
+            if (Static.User != null || Static.User != "")
             {
-                ViewBag.user = HttpContext.Session.GetString("Username");
+                ViewBag.user = Static.User;
                 
             }
             return View();

@@ -36,7 +36,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             ViewBag.type = type;
             ViewBag.price = price;
             ViewBag.sort = sort;
-            ViewBag.user = HttpContext.Session.GetString("Username");
+            ViewBag.user = Static.User;
             return View(product);
         }
 
@@ -56,7 +56,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
 
         public IActionResult Product_Category()
         {
-            ViewBag.user = HttpContext.Session.GetString("Username");
+            ViewBag.user = Static.User;
             return View();
         }
     }

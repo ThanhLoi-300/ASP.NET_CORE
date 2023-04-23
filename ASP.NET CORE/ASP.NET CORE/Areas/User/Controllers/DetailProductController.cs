@@ -1,5 +1,6 @@
 ﻿using ASP.NET_CORE.DATA.EF;
 using ASP.NET_CORE.DATA.Entities;
+using ASP.NET_CORE.Models;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         {
             Product product = _product.get_Product_By_Id(id);
             ViewBag.product_Relationship = _product.get_Product_Relationship(id);
-            ViewBag.user = HttpContext.Session.GetString("Username");
+            ViewBag.user = Static.User;
             return View(product);
         }
     }

@@ -172,10 +172,10 @@
 											@item.Address
 										</td>
 										<td style="color:blue;cursor:pointer">Đang vận chuyển</td>
-										<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: </td>
+										
 									</tr>
 								}
-
+							<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
 							</tbody>
 						</table>
 					}
@@ -253,9 +253,9 @@
 											@item.Address
 										</td>
 										<td style="color:blue;cursor:pointer">Đã nhận được hàng</td>
-										<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
 									</tr>
 								}
+							<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
 							</tbody>
 						</table>
 					}
@@ -332,10 +332,10 @@
 											@item.Address
 										</td>
 										<td style="color:red;cursor:pointer">Đã hủy</td>
-										<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
+										
 									</tr>
 								}
-
+							<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
 							</tbody>
 						</table>
 					}
@@ -369,11 +369,9 @@
 						url: '/Admin/Order/Change_Status/',
 						type: 'POST',
 						data: {
-							order_Id: parseInt(order_Id),
+							order_Id: 1,
 							action: action
 						},
-						contentType: false,
-						processData: false,
 						success: function (rs) {
 							if (rs.success)
 								location.href = "/Admin/Order/Order_Detail/" + string;

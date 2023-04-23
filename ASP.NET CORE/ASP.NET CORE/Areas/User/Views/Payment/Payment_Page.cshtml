@@ -153,7 +153,7 @@
                                         </span>
                                     </div>
                                     <div class="cart-purchase-button">
-                                        <p class="btn"><a href="" id="btn_order" onclick="swal_sells()">Xác nhận đặt hàng</a></p>
+                                        <p class="btn"><a href="#" id="btn_order" onclick="swal_sells()">Xác nhận đặt hàng</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -169,28 +169,33 @@
         var address = document.getElementById("address").value
         var total = document.getElementById("total").value
         var idClient = document.getElementById("idClient").value
-
-        //Swal.fire({
-        //    icon: 'success',
-        //    title: 'Congratulation!!!!',
-        //    text: 'Bạn đã đặt hàng thành công',
-        //})
-
-        $.ajax({
-            url: '/User/Order/Add_Order',
-            type: 'POST',
-            data: {
-                address: address,
-                total: total,
-                idClient: idClient
-
-            },
-            success: function (rs) {
-                //if (rs.success)
-                //    location.href = "/User/Order/Order_Manage/";
-            }
-
-        })
-    location.href = "/User/Order/Order_Manage/";
+ 
+        Swal.fire({
+        title: 'Bạn chắc chắn muốn đặt hàng???',
+            icon: 'info',
+                showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Congratulation!!!!',
+                                text: 'Bạn đã đặt hàng thành công',
+                            })
+                            $.ajax({
+                                url: '/User/Order/Add_Order',
+                                type: 'POST',
+                                data: {
+                                    address: address,
+                                    total: total,
+                                    idClient: idClient
+                                },
+                                success: function (rs) {
+                                    if (rs.success)
+                                        location.href = "/User/Order/Order_Manage/";
+                                }
+                            })
+                        }
+                    })
     }</script>
 

@@ -1,5 +1,6 @@
 ﻿using ASP.NET_CORE.DATA.EF;
 using ASP.NET_CORE.DATA.Entities;
+using ASP.NET_CORE.Models;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         }
         public IActionResult Order_Manage()
         {
-            var username = HttpContext.Session.GetString("Username");
+            var username = Static.User;
             ViewBag.user = username;
             if (username != null)
             {
@@ -36,7 +37,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         [HttpPost]
         public IActionResult Add_Order(string address, decimal total, int idClient)
         {
-            var username = HttpContext.Session.GetString("Username");
+            var username = Static.User;
             DateTime now = DateTime.Now;
             DateTime recieveTime = now.AddDays(3);
 

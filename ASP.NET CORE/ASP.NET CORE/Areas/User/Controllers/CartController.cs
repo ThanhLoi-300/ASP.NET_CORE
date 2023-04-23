@@ -1,6 +1,7 @@
 ﻿using System.Net.Sockets;
 using ASP.NET_CORE.DATA.EF;
 using ASP.NET_CORE.DATA.Entities;
+using ASP.NET_CORE.Models;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
@@ -22,12 +23,14 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         }
         public IActionResult Cart_Page()
         {
-            var username = HttpContext.Session.GetString("Username");
-           
+            //var username = HttpContext.Session.GetString("Username");
+            var username = Static.User;
+
+
             decimal totalPrice = 0;
             ViewBag.user = username;
 
-            if (username != null)
+            if (username != null || username != "")
             {
                 var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
                 List<Cart> cart = context.Carts.Include(c => c.Product).Where(c => c.ClientId == int.Parse(username)).ToList();

@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.CodeAnalysis.Scripting;
 using ASP.NET_CORE.Areas.User.Models;
 using Microsoft.AspNetCore.Http;
+using ASP.NET_CORE.Models;
 
 namespace ASP.NET_CORE.Areas.User.Controllers
 {
@@ -29,7 +30,8 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Account_Index()
         {
             // Lấy thông tin người dùng từ session
-            var userName = HttpContext.Session.GetString("Username");
+            //var userName = HttpContext.Session.GetString("Username");
+            var userName = Static.User;
 
             if (string.IsNullOrEmpty(userName))
             {
@@ -43,7 +45,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             {
                 return NotFound();
             }
-            ViewBag.user = HttpContext.Session.GetString("Username");
+            ViewBag.user = Static.User;
             return View(user);
         }
         [HttpPost]
@@ -109,8 +111,10 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 if (client.Count == 1)
                 {
                     TempData["mess"] = "success";
-                    HttpContext.Session.SetString("Username", client[0].Id+"");
-                    ViewBag.user = HttpContext.Session.GetString("Username");
+                    //HttpContext.Session.SetString("Username", client[0].Id+"");
+                    //ViewBag.user = HttpContext.Session.GetString("Username");
+                    ViewBag.user = client[0].Id;
+                    Static.User = client[0].Id + "";
                     return RedirectToAction("Index", "HomePage");
                 }
                 else
@@ -130,7 +134,8 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Logout()
         {
             // Xoá session
-            HttpContext.Session.Clear();
+            //HttpContext.Session.Clear();
+            Static.User = "";
 
             // Điều hướng đến trang đăng nhập
             return RedirectToAction("Login_Page", "Account");

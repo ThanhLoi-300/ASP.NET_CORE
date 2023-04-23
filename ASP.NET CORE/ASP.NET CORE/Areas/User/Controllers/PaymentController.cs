@@ -1,5 +1,6 @@
 ﻿using ASP.NET_CORE.DATA.EF;
 using ASP.NET_CORE.DATA.Entities;
+using ASP.NET_CORE.Models;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         }
         public IActionResult Payment_Page()
         {
-            var username = HttpContext.Session.GetString("Username");
+            var username = Static.User;//HttpContext.Session.GetString("Username");
             var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
             decimal totalPrice = 0;
             ViewBag.user = username;
