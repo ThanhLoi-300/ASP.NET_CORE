@@ -25,7 +25,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             ViewBag.user = username;
             if (username != null)
             {
-                List<Order> order = context.Orders.Where(i => i.ClientId == int.Parse(username)).ToList();
+                List<Order> order = context.Orders.Include(i => i.DetailOrders).ThenInclude(i => i.Product).Where(i => i.ClientId == int.Parse(username)).ToList();
                 return View(order);
             }
             else
@@ -68,6 +68,16 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 context.DetailOrders.Add(detailOrder);
               
             }
+            context.SaveChanges();
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public IActionResult Cancel_Oder(int idOder)
+        {
+            Order statusNew = context.Orders.Where(i => i.Id == idOder).FirstOrDefault();
+            statusNew.Status = -1;
+            context.Orders.Update(statusNew);
             context.SaveChanges();
             return Json(new { success = true });
         }
