@@ -71,12 +71,22 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             context.SaveChanges();
             return Json(new { success = true });
         }
-
+        // huy don
         [HttpPost]
         public IActionResult Cancel_Oder(int idOder)
         {
             Order statusNew = context.Orders.Where(i => i.Id == idOder).FirstOrDefault();
             statusNew.Status = -1;
+            context.Orders.Update(statusNew);
+            context.SaveChanges();
+            return Json(new { success = true });
+        }
+        // nhan hang thanh cong
+        [HttpPost]
+        public IActionResult Confirm_Oder(int idOder)
+        {
+            Order statusNew = context.Orders.Where(i => i.Id == idOder).FirstOrDefault();
+            statusNew.Status = 2;
             context.Orders.Update(statusNew);
             context.SaveChanges();
             return Json(new { success = true });
