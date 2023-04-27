@@ -2,6 +2,7 @@
 using ASP.NET_CORE.Models;
 using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_CORE.Areas.Admin.Controllers
 {
@@ -9,10 +10,12 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
     public class OrderController : Controller
     {
         private IOrder _order;
+        private Web_Core_DbContext _dbContext;
 
-        public OrderController(IOrder order)
+        public OrderController(IOrder order,Web_Core_DbContext dbContext)
         {
             _order = order;
+            _dbContext = dbContext;
         }
 
         public IActionResult Order_Manage()
@@ -40,9 +43,26 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Change_Status(int order_Id, string action)
+        public IActionResult Change_Status(int order_Id)
         {
-            _order.Change_Status(order_Id, action);
+            //_order.Change_Status(order_Id);
+            var o = _dbContext.Orders.Where(o => o.Id == order_Id).FirstOrDefault();
+            o.Status = 1;
+
+            var list_Order = _dbContext.DetailOrders.Where(o => o.OrderId == order_Id).Include(o => o.Product).ToList();
+            foreach (var item in list_Order)
+            {
+                if (item.Size.Equals("S"))
+                    item.Product.QuantityS -= item.Quantity;
+                if (item.Size.Equals("M"))
+                    item.Product.QuantityM -= item.Quantity;
+                if (item.Size.Equals("L"))
+                    item.Product.QuantityL -= item.Quantity;
+                if (item.Size.Equals("Xl"))
+                    item.Product.QuantityXl -= item.Quantity;
+            }
+
+            _dbContext.SaveChanges();
             return Json(new {success = true});
         }
     }

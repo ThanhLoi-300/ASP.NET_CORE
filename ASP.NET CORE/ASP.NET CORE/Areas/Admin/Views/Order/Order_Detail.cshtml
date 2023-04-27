@@ -350,7 +350,6 @@
 	<script src="~/Public/Admin/js/chitietdonhang.js"></script>
 	<script>
 		function Change_Status(order_Id) {
-			let action = "0->1";
 			let clientId = document.getElementById("clientId").value
 			let account = document.getElementById("Account").value
 			let status = document.getElementById("Status").value
@@ -369,8 +368,7 @@
 						url: '/Admin/Order/Change_Status/',
 						type: 'POST',
 						data: {
-							order_Id: 1,
-							action: action
+							order_Id: order_Id
 						},
 						success: function (rs) {
 							if (rs.success)

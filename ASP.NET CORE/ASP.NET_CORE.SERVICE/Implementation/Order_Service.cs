@@ -23,21 +23,25 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             _context = context;
         }
 
-        public async Task Change_Status(int order_Id, string action)
+        public async Task Change_Status(int order_Id)
         {
             var o = _context.Orders.Where(o => o.Id == order_Id).FirstOrDefault();
-            if(o != null)
+            o.Status = 1;
+            var list_Order = _context.DetailOrders.Where(o => o.OrderId == order_Id).Include(o => o.Product).ToList();
+            foreach (var item in list_Order)
             {
-                if (action.Equals("0->1"))
-                    o.Status = 1;
-                if (action.Equals("1->2"))
-                    o.Status = 2;
-                if (action.Equals("0->-1"))
-                    o.Status = -1;
-                _context.Orders.Update(o);
-                await _context.SaveChangesAsync();
+                if (item.Size.Equals("S"))
+                    item.Product.QuantityS -= item.Quantity;
+                if (item.Size.Equals("M"))
+                    item.Product.QuantityM -= item.Quantity;
+                if (item.Size.Equals("L"))
+                    item.Product.QuantityL -= item.Quantity;
+                if (item.Size.Equals("Xl"))
+                    item.Product.QuantityXl -= item.Quantity;
             }
-            
+
+            //_context.Orders.Update(o);
+            await _context.SaveChangesAsync();     
         }
 
         public List<Order> get_Accounts_Have_Order()
