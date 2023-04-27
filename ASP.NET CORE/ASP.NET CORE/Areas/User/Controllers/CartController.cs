@@ -80,6 +80,77 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             ViewBag.user = id_Client;
             return Json(new { success = true});
         }
+        // xoa sp khoi cart
+        public IActionResult Deleted_Product(int idProduct)
+        {
+            var product = context.Carts.Where(i => i.Id == idProduct).FirstOrDefault();
+            if (product == null)
+            {
+                return NotFound();
+            }
+            
+            context.Carts.Remove(product);
+            context.SaveChanges();
+            return Json(new { success = true });
+        }
 
+        // add quantity in cart
+        public IActionResult Add_Quantity_Product(int idCart)
+        {
+            Cart cart = context.Carts.Where(i => i.Id == idCart).FirstOrDefault();
+            var quantityProducSize = 0;
+            var idProduct = cart.ProductId;
+            var size = cart.Size;
+            var quantityM = context.Products.Where(i => i.Id == idProduct).FirstOrDefault().QuantityM;
+            var quantityL = context.Products.Where(i => i.Id == idProduct).FirstOrDefault().QuantityL;
+            var quantityS = context.Products.Where(i => i.Id == idProduct).FirstOrDefault().QuantityS;
+            var quantityXL = context.Products.Where(i => i.Id == idProduct).FirstOrDefault().QuantityXl;
+            if (size == "M")
+            {
+                quantityProducSize = quantityM;
+            }
+            else if (size == "S")
+            {
+                quantityProducSize = quantityS;
+            }
+            else if (size == "L")
+            {
+                quantityProducSize = quantityL;
+            }
+            else if (size == "XL")
+            {
+                quantityProducSize = quantityXL;
+            }
+            if(cart.Quantity >= quantityProducSize)
+            {
+                ViewBag.message = "add error";
+                return View();
+            }
+            else
+            {
+                cart.Quantity += 1;
+                context.Carts.Update(cart);
+                context.SaveChanges();
+            }
+            return Json(new { success = true });
+        }
+        // subtract quantity in cart
+        public IActionResult Subtract_Quantity_Product(int idCart)
+        {
+           
+            Cart cart = context.Carts.Where(i => i.Id == idCart).FirstOrDefault();
+            if (cart.Quantity < 0)
+            {
+                ViewBag.message = "subtract error";
+                return View();
+            }
+            else
+            {
+                cart.Quantity -= 1;
+                context.Carts.Update(cart);
+                context.SaveChanges();
+            }
+            return Json(new { success = true });
+        }
     }
 }

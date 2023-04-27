@@ -276,7 +276,15 @@
                 icon = 'success'
                 title = 'Congratulation!!!!'
                 text = '  Cập nhật thành công.'
-            }
+            } else if (warning == "add error") {
+                icon = 'warning'
+                title = 'Ooops!!!!'
+                text = 'Kho hàng không đủ số lượng.'
+            } else if (warning == "subtract error") {
+                icon = 'warning'
+                title = 'Ooops!!!!'
+                text = 'Số lượng phải lớn hơn 0.'
+            } 
 
             if(icon != '' && title != '' && text !='')
                 Swal.fire({

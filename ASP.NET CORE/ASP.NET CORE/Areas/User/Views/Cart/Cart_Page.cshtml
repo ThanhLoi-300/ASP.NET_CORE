@@ -74,18 +74,10 @@
                                                     </td>
                                                     <td>
                                                         <div class="quantity" style="display: flex;">
-                                                            <input type="button" onclick="warning()" class="btn" value="+" name="click_+" style="width:30px;">
-                                                            <form action="{{URL::to('/Update_Cart/'.$item->product_Id.'/'.$item->product_Size)}}" method="post">
-                                                                <input type="submit" class="btn" value="-" name="click_-" style="width:30px;">
-                                                                <input type="hidden" name="quantity" value="{{$item->quantity -1 }}" id="hidden_input{{$i}}" />
-                                                            </form>
+                                                            <input type="submit" class="btn" value="-" style="width:30px;" onclick="Subtract_Quantity_Product(@item.Id)">
+                                                            <input class="input" type="text" value="@item.Quantity" readonly="readonly" style="width:50px; text-align:center;">
+                                                            <input type="submit" class="btn" value="+"  style="width:30px;" onclick="Add_Quantity_Product(@item.Id)">
 
-                                                            <input class="input" id="id{{$i}}" type="text" value="@item.Quantity" readonly="readonly" style="width:50px; text-align:center;">
-
-                                                            <form action="@Url.Action()" method="post">
-                                                                <input type="submit" class="btn" value="+" name="click_+" style="width:30px;">
-                                                                <input type="hidden" name="quantity" value="{{$item->quantity +1 }}" id="hidden_input{{$i}}" />
-                                                            </form>
                                                         </div>
                                                     </td>
 
@@ -95,7 +87,7 @@
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{URL::to('/Delete_Cart/'.$item->product_Id.'/'.$item->product_Size)}}" class="ti-close"></a>
+                                                        <a onclick="Deleted_Product(@item.Id)" href="#" class="ti-close"></a>
                                                     </td>
                                                 </tr>
                                             }
@@ -174,5 +166,57 @@
 
             document.getElementById('warning').text = message
         }
-        warning()</script>
+        warning()
+        // delete product in cart
+        function Deleted_Product(id) {
+            Swal.fire({
+                title: 'Do you want to deleted product?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/User/Cart/Deleted_Product',
+                        type: 'POST',
+                        data: { idProduct: id },
+                        success: function (rs) {
+                            if (rs.success)
+                                location.href = "/User/Cart/Cart_Page";
+                        }
+                    })
+                }
+            })
+        }
+        // them quantity in cart
+        function Add_Quantity_Product(id) {
+            $.ajax({
+                url: '/User/Cart/Add_Quantity_Product',
+                type: 'POST',
+                data: {
+                    idCart: id
+                   
+                },
+                success: function (rs) {
+                    if (rs.success)
+                        location.href = "/User/Cart/Cart_Page";
+                }
+            })
+        }
+        // giam quantity in cart
+        function Subtract_Quantity_Product(id) {
+            $.ajax({
+                url: '/User/Cart/Subtract_Quantity_Product',
+                type: 'POST',
+                data: {
+                    idCart: id
+                   
+                },
+                success: function (rs) {
+                    if (rs.success)
+                        location.href = "/User/Cart/Cart_Page";
+                }
+            })
+        }
+    </script>
 }
