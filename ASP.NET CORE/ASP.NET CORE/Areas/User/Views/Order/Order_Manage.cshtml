@@ -162,8 +162,8 @@
                                         <td colspan="7" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   @String.Format(" {0:0,00}", item.Total) VND</td>
                                         <td colspan="3" class="huy_don" style="background-color:#2a2b2c;">
                                             <div style="display: flex;align-items: center;justify-content: space-evenly;">
-                                                
-                                                <a style="text-decoration:none;font-size:20px;" class="ti-trash" onclick="abc(@item.Id)">Hủy đơn</a>
+
+                                                <a style="text-decoration:none;font-size:20px;" class="ti-trash" onclick="change_Status(@item.Id)">Hủy đơn</a>
                                             </div>
                                         </td>
 
@@ -405,7 +405,7 @@
 @section script{
     <script src="~/Public/User/js/Order_Manage.js"></script>
     <script>
-        function abc(idOder) {
+        function change_Status(id){
             Swal.fire({
                 title: 'Do you want to cancelOder?',
                 icon: 'warning',
@@ -416,7 +416,7 @@
                     $.ajax({
                         url: '/User/Order/Cancel_Oder',
                         type: 'POST',
-                        data: idOder: idOder,
+                        data: {idOder: id},
                         success: function (rs) {
                             if (rs.success)
                                 location.href = "/User/Order/Order_Manage";

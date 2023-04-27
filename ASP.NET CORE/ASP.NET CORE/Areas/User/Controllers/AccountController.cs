@@ -91,6 +91,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
 
         public IActionResult Login_Page()
         {
+            ViewBag.user = Static.User;
             if (TempData["messs"] != null)
                 ViewBag.message = "successs";
             return View();
