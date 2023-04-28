@@ -1,222 +1,273 @@
 ﻿@model List<ASP.NET_CORE.DATA.Entities.Cart>
 @{
-    ViewData["Title"] = "Cart_Page";
-    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Cart_Page";
+	Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
 @section css{
-    <link rel="stylesheet" href="~/Public/User/css/comment.css">
-    <link rel="stylesheet" href="~/Public/User/css/productCart.css">
+	<link rel="stylesheet" href="~/Public/User/css/comment.css">
+	<link rel="stylesheet" href="~/Public/User/css/productCart.css">
 }
-<section>
-    <div class="grid" style="border-top: 1px solid #ccc;">
-        <div class="app">
-            <div class="grid wide">
-                <div class="app_cart">
-                    <div class="row">
-                        <div class="col l-8 " style="margin-top: 40px;">
-                            <div class="col l-12">
-                                <div class="checkout-process-bar block-border">
-                                    <ul>
-                                        <li class="active">
-                                            <span>Giỏ hàng</span>
-                                        </li>
-                                        <li class=""><span>Đặt hàng</span></li>
-                                        <li class=""><span>Thanh toán</span></li>
-                                        <li><span>Hoàn thành đơn</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col l-12">
-                                <h1 style="margin: 20px;font-weight: 600;font-size: 24px;line-height: 32px;color: #221f20;font-family: var(--font-family-sans-serif);">Giỏ hàng của bạn </h1>
-                            </div>
-                            <div class="col l-12 dal">
-                                <?php
-                                $i = 0;
-                                ?>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Ảnh sản phẩm</th>
-                                            <th>Tên Sản Phẩm</th>
-                                            <th>Size</th>
-                                            <th>Giá</th>
-                                            <th>Số lượng</th>
-                                            <th>Số tiền</th>
-                                            <th>Trạng thái</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+	<section>
+		<div class="grid" style="border-top: 1px solid #ccc;">
+			<div class="app">
+				<div class="grid wide">
+					<div class="app_cart">
+						<div class="row">
+							<div class="col l-8 " style="margin-top: 40px;">
+								<div class="col l-12">
+									<div class="checkout-process-bar block-border">
+										<ul>
+											<li class="active">
+												<span>Giỏ hàng</span>
+											</li>
+											<li class=""><span>Đặt hàng</span></li>
+											<li class=""><span>Thanh toán</span></li>
+											<li><span>Hoàn thành đơn</span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col l-12">
+									<h1 style="margin: 20px;font-weight: 600;font-size: 24px;line-height: 32px;color: #221f20;font-family: var(--font-family-sans-serif);">Giỏ hàng của bạn </h1>
+								</div>
+								<div class="col l-12 dal">
+									<table>
+										<thead>
+											<tr>
+												<th>Ảnh sản phẩm</th>
+												<th>Tên Sản Phẩm</th>
+												<th>Size</th>
+												<th>Giá</th>
+												<th>Số lượng</th>
+												<th>Số tiền</th>
+												<th>Trạng thái</th>
+											</tr>
+										</thead>
+										<tbody>
 
-                                        @if (Model !=null && Model.Count !=0)
-                                        {
-                                            foreach (var item in Model)
-                                            {
+										@if (Model != null && Model.Count != 0)
+										{
+											foreach (var item in Model)
+											{
 
 
-                                                <tr>
-                                                    <td>
-                                                        <a href="@Url.Action("Detail_Product_Page","DetailProduct",new {id = item.Id})">
-                                                            <div class="cart-td_title">
-                                                                <img src="@item.Product.Img" alt="" class="app_cart-img">
-                                                            </div>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <span>@item.Product.Name</span>
-                                                    </td>
-                                                    <td>
-                                                        <span>@item.Size</span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="cart-btn">
-                                                            <span>@String.Format(" {0:0,00}", item.Product.Price) VND</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="quantity" style="display: flex;">
-                                                            <input type="submit" class="btn" value="-" style="width:30px;" onclick="Subtract_Quantity_Product(@item.Id)">
-                                                            <input class="input" type="text" value="@item.Quantity" readonly="readonly" style="width:50px; text-align:center;">
-                                                            <input type="submit" class="btn" value="+"  style="width:30px;" onclick="Add_Quantity_Product(@item.Id)">
+												<tr>
+													<td>
+														<a href="@Url.Action("Detail_Product_Page","DetailProduct",new {id = item.Product.Id})">
+															<div class="cart-td_title">
+																<img src="@item.Product.Img" alt="" class="app_cart-img">
+															</div>
+														</a>
+													</td>
+													<td>
+														<span>@item.Product.Name</span>
+													</td>
+													<td>
+														<span>@item.Size</span>
+													</td>
+													<td>
+														<div class="cart-btn" id="price_Product_@item.Id">
+															<span>@String.Format(" {0:0,00}", item.Product.Price) </span><p class="cart-btn">VND</p>
+														</div>
+													</td>
+													<td>
+														<div class="quantity" style="display: flex;">
+															<input type="submit" class="btn" value="-" style="width:30px;" onclick="Subtract_Quantity_Product(@item.Id)">
+															<input class="input" type="text" value="@item.Quantity" id="quantity_@item.Id" readonly="readonly" style="width:50px; text-align:center;">
+															<input type="submit" class="btn" value="+" style="width:30px;" onclick="Add_Quantity_Product(@item.Id)">
+														</div>
+													</td>
 
-                                                        </div>
-                                                    </td>
+													<td>
+														<span class="cart-current" id="price_@item.Id">
+															@String.Format(" {0:0,00}", item.Price)
+														</span><p class="cart-current">VND</p>
+													</td>
+													<td>
+														<a onclick="Deleted_Product(@item.Id)" href="#" class="ti-close"></a>
+													</td>
+												</tr>
+											}
+										}
+									</tbody>
+								</table>
 
-                                                    <td>
-                                                        <span class="cart-current">
-                                                            @String.Format(" {0:0,00}", item.Price) VND
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <a onclick="Deleted_Product(@item.Id)" href="#" class="ti-close"></a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        }
-                                    </tbody>
-                                </table>
+							</div>
+							<div class="col l-12">
+								<a class="back-history" href="javascript: window.history.back();">
+									<span class="ti-arrow-left" style="padding: 0 10px;"></span>
+									Tiếp tục mua hàng
+								</a>
+							</div>
 
-                            </div>
-                            <div class="col l-12">
-                                <a class="back-history" href="javascript: window.history.back();">
-                                    <span class="ti-arrow-left" style="padding: 0 10px;"></span>
-                                    Tiếp tục mua hàng
-                                </a>
-                            </div>
+						</div>
+						<div class="col l-4">
+							<div class="cart-voucher">
+								<h3>Tổng tiền giỏ hàng</h3>
+								<div style="display: flex;justify-content: space-between; margin: 20px 0;">
+									<span class="voucher-title">
+										<span>Tổng sản phẩm</span>
+									</span>
+									<span class="sum-product">
+										@if (Model != null)
+										{
+											@Model.Count
+										}
+									</span>
+								</div>
+								<div style="display: flex;justify-content: space-between; margin: 20px 0;">
+									<div class="voucher-title">
+										<span>Tổng tiền hàng</span>
+									</div>
+									<span class="sum-product" id="sum_Price">
+										@if (Model != null)
+										{
+											@String.Format(" {0:0,00}", ViewBag.total)
+										} 
+									</span><p class="sum-product">VND</p>
+								</div>
+								<div style="display: flex;justify-content: space-between; margin: 20px 0;">
+									<span class="sum-product">Tiền thuế(VAT 10%)</span>
+									<span class="sum-product" id="tax_Price">
+										@if (Model != null)
+										{
+											@String.Format(" {0:0,00}", ViewBag.vat)
+										}
+										
+									</span><p class="sum-product">VND</p>
+								</div>
+								<div class="cart-purchase">
+									<span class="sum-product">Thành tiền</span>
+									<span class="sum-product" style="font-weight: 800;" id="total_Price">
+										@if (Model != null)
+										{
+											@String.Format(" {0:0,00}", ViewBag.endPrice)
+										}
+									</span><p class="sum-product">VND</p>
+								</div>
+								<div class="cart-purchase-button">
+									<a href="@Url.Action("Payment_Page","Payment")"><button>Mua hàng</button></a>
+								</div>
+							</div>
 
-                        </div>
-                        <div class="col l-4">
-                            <div class="cart-voucher">
-                                <h3>Tổng tiền giỏ hàng</h3>
-                                <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                    <span class="voucher-title">
-                                        <span>Tổng sản phẩm</span>
-                                    </span>
-                                    <span class="sum-product">
-                                        @if (Model != null) { @Model.Count }
-                                    </span>
-                                </div>
-                                <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                    <div class="voucher-title">
-                                        <span>Tổng tiền hàng</span>
-                                    </div>
-                                    <span class="sum-product">@if (Model != null)
-                                        {
-                                            @String.Format(" {0:0,00}", ViewBag.total)
-                                        } VND</span>
-                                </div>
-                                <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                    <span class="sum-product">Tiền thuế(VAT 10%)</span>
-                                    <span class="sum-product">@if (Model != null)
-                                        {
-                                            @String.Format(" {0:0,00}", ViewBag.vat)
-                                        }
-                                        VND</span>
-                                </div>
-                                <div class="cart-purchase">
-                                    <span class="sum-product">Thành tiền</span>
-                                    <span class="sum-product" style="font-weight: 800;">@if (Model != null)
-                                        {
-                                            @String.Format(" {0:0,00}", ViewBag.endPrice)
-                                        }
-                                        VND</span>
-                                </div>
-                                <div class="cart-purchase-button">
-                                    <a href="@Url.Action("Payment_Page","Payment")"><button>Mua hàng</button></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="warning"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="warning"></div>
 </section>
 
 @section script{
-    <script src="~/Public/User/js/chitietsp.js"></script>
-    <script type="text/javascript">$('.money').simpleMoneyFormat();
-        function warning() {
-            let message = Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Quantity_Not_Null',
-            })
+	<script src="~/Public/User/js/chitietsp.js"></script>
+	<script type="text/javascript">
+		$('.money').simpleMoneyFormat();
+		function warning() {
+			let message = Swal.fire({
+				icon: 'warning',
+				title: 'Oops...',
+				text: 'Quantity_Not_Null',
+			})
 
-            document.getElementById('warning').text = message
-        }
-        warning()
-        // delete product in cart
-        function Deleted_Product(id) {
-            Swal.fire({
-                title: 'Do you want to deleted product?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: '/User/Cart/Deleted_Product',
-                        type: 'POST',
-                        data: { idProduct: id },
-                        success: function (rs) {
-                            if (rs.success)
-                                location.href = "/User/Cart/Cart_Page";
-                        }
-                    })
-                }
-            })
-        }
-        // them quantity in cart
-        function Add_Quantity_Product(id) {
-            $.ajax({
-                url: '/User/Cart/Add_Quantity_Product',
-                type: 'POST',
-                data: {
-                    idCart: id
-                   
-                },
-                success: function (rs) {
-                    if (rs.success)
-                        location.href = "/User/Cart/Cart_Page";
-                }
-            })
-        }
-        // giam quantity in cart
-        function Subtract_Quantity_Product(id) {
-            $.ajax({
-                url: '/User/Cart/Subtract_Quantity_Product',
-                type: 'POST',
-                data: {
-                    idCart: id
-                   
-                },
-                success: function (rs) {
-                    if (rs.success)
-                        location.href = "/User/Cart/Cart_Page";
-                }
-            })
-        }
-    </script>
+			document.getElementById('warning').text = message
+		}
+		warning()
+		// delete product in cart
+		function Deleted_Product(id) {
+			Swal.fire({
+				title: 'Do you want to deleted product?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: '/User/Cart/Deleted_Product',
+						type: 'POST',
+						data: { idProduct: id },
+						success: function (rs) {
+							if (rs.success)
+								location.href = "/User/Cart/Cart_Page";
+						}
+					})
+				}
+			})
+		}
+		// them quantity in cart
+		function Add_Quantity_Product(id) {
+			let quantity = $("#quantity_" + id).val()
+
+			$.ajax({
+				url: '/User/Cart/Add_Quantity_Product',
+				type: 'POST',
+				data: {
+					idCart: id
+
+				},
+				success: function (rs) {
+					if (rs.success)
+					{
+						if (rs.total != 0) {
+							$("#quantity_" + id).val(parseInt(quantity) + 1)
+							$("#price_" + id).text(rs.total.toLocaleString())
+							var sumprice = $("#sum_Price").text().replace(/[,.]/g, '')
+							var price_Procut = $("#price_Product_" + id).text().replace(/[,.]/g, '')
+							var tax_Price = $("#tax_Price").text().replace(/[,.]/g, '')
+							var total_Price = $("#total_Price").text().replace(/[,.]/g, '')
+
+							sumprice = parseInt(sumprice) + parseInt(price_Procut)
+							tax_Price = parseInt(sumprice) * 10 /100
+							total_Price = parseInt(sumprice) - parseInt(tax_Price)
+							$("#sum_Price").text(parseInt(sumprice).toLocaleString())
+							$("#tax_Price").text(parseInt(tax_Price).toLocaleString())
+							$("#total_Price").text(parseInt(total_Price).toLocaleString())
+
+						} else {
+							Swal.fire({
+								icon: "warning",
+								title: 'Ooops!!!!',
+								text: 'Đã đạt số lượng tối đa'
+							})
+						}
+
+
+					}
+				}
+			})
+		}
+		// giam quantity in cart
+		function Subtract_Quantity_Product(id) {
+			let quantity = $("#quantity_" + id).val()
+			$.ajax({
+				url: '/User/Cart/Subtract_Quantity_Product',
+				type: 'POST',
+				data: {
+					idCart: id
+
+				},
+				success: function (rs) {
+					if (rs.success){
+						if (rs.total != 0) {
+							$("#quantity_" + id).val(parseInt(quantity) - 1)
+							$("#price_" + id).text(rs.total.toLocaleString())
+
+							var sumprice = $("#sum_Price").text().replace(/[,.]/g, '')
+							var price_Procut = $("#price_Product_" + id).text().replace(/[,.]/g, '')
+							var tax_Price = $("#tax_Price").text().replace(/[,.]/g, '')
+							var total_Price = $("#total_Price").text().replace(/[,.]/g, '')
+
+							sumprice = parseInt(sumprice) - parseInt(price_Procut)
+							tax_Price = parseInt(sumprice) * 10 / 100
+							total_Price = parseInt(sumprice) - parseInt(tax_Price)
+							$("#sum_Price").text(parseInt(sumprice).toLocaleString())
+							$("#tax_Price").text(parseInt(tax_Price).toLocaleString())
+							$("#total_Price").text(parseInt(total_Price).toLocaleString())
+						}
+
+					}
+						
+				}
+			})
+		}
+	</script>
 }

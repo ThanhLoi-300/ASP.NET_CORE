@@ -99,6 +99,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         {
             Cart cart = context.Carts.Where(i => i.Id == idCart).FirstOrDefault();
             var quantityProducSize = 0;
+            decimal total = 0;
             var idProduct = cart.ProductId;
             var size = cart.Size;
             var quantityM = context.Products.Where(i => i.Id == idProduct).FirstOrDefault().QuantityM;
@@ -121,36 +122,48 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             {
                 quantityProducSize = quantityXL;
             }
-            if(cart.Quantity >= quantityProducSize)
+
+            if (cart.Quantity >= quantityProducSize)
             {
-                ViewBag.message = "add error";
-                return View();
+                total = 0;
             }
             else
             {
+                decimal quantity = cart.Quantity +1;
+                decimal price = cart.Product.Price;
+                decimal total_Price = cart.Price;
+                total = total_Price + price;
+
+                cart.Price = total;
                 cart.Quantity += 1;
                 context.Carts.Update(cart);
                 context.SaveChanges();
             }
-            return Json(new { success = true });
+            
+            return Json(new { success = true, total = total });
         }
         // subtract quantity in cart
         public IActionResult Subtract_Quantity_Product(int idCart)
         {
-           
-            Cart cart = context.Carts.Where(i => i.Id == idCart).FirstOrDefault();
-            if (cart.Quantity < 0)
+            decimal total = 0;
+            Cart cart = context.Carts.Where(i => i.Id == idCart).Include(i => i.Product).FirstOrDefault();
+            if (cart.Quantity == 1)
             {
-                ViewBag.message = "subtract error";
-                return View();
+                total = 0;
             }
             else
             {
+                decimal quantity = cart.Quantity + 1;
+                decimal price = cart.Product.Price;
+                decimal total_Price = cart.Price;
+                total = total_Price - price;
+
+                cart.Price = total;
                 cart.Quantity -= 1;
                 context.Carts.Update(cart);
                 context.SaveChanges();
             }
-            return Json(new { success = true });
+            return Json(new { success = true, total = total });
         }
     }
 }
