@@ -11,6 +11,7 @@ using ASP.NET_CORE.DATA.EF;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
 {
@@ -47,10 +48,10 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
             ViewBag.category_Id = category_Id;
             ViewBag.list_Category = _product.List_Category();
 
-            if(Static.Admin == "")
-                return RedirectToAction("Login_Admin","Login");
+            //if(Static.Admin == "")
+            //    return RedirectToAction("Login_Admin","Login");
 
-            ViewBag.Admin = Static.Admin/*HttpContext.Session.GetString("Admin")*/;
+            //ViewBag.Admin = Static.Admin/*HttpContext.Session.GetString("Admin")*/;
             return View(list);
         }
 

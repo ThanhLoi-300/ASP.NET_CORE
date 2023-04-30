@@ -11,6 +11,9 @@ using Microsoft.CodeAnalysis.Scripting;
 using ASP.NET_CORE.Areas.User.Models;
 using Microsoft.AspNetCore.Http;
 using ASP.NET_CORE.Models;
+using System.Web;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ASP.NET_CORE.Areas.User.Controllers
 {
@@ -73,8 +76,8 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                     ModelState.AddModelError("Email", "This Email is already in use.");
                     return View(model);
                 }
-                user.Account = model.Account;
-                user.Password = model.Password;
+                user.Account = user.Account;
+                user.Password = user.Password;
                 user.Name = model.Name;
                 user.Address = model.Address;
                 user.Email = model.Email;
@@ -108,15 +111,26 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             if (ModelState.IsValid)
             {
 
-                List<Client> client = context.Clients.Where(c => c.Account == user.Username && c.Password == user.Password).ToList();
+                List<Client> client = context.Clients.Where(c => c.Account == user.Username /*&& c.Password == user.Password*/).ToList();
                 if (client.Count == 1)
                 {
-                    TempData["mess"] = "success";
-                    //HttpContext.Session.SetString("Username", client[0].Id+"");
-                    //ViewBag.user = HttpContext.Session.GetString("Username");
-                    ViewBag.user = client[0].Id;
-                    Static.User = client[0].Id + "";
-                    return RedirectToAction("Index", "HomePage");
+                    // verify the password hash
+                    if (client[0].Password == GetSHA256Hash(user.Password))
+                    {
+                        // password is valid
+                        TempData["mess"] = "success";
+                        //HttpContext.Session.SetString("Username", client[0].Id+"");
+                        //ViewBag.user = HttpContext.Session.GetString("Username");
+                        ViewBag.user = client[0].Id;
+                        Static.User = client[0].Id + "";
+                        return RedirectToAction("Index", "HomePage");
+                    }
+                    else
+                    {
+                        // password is invalid
+                        ViewBag.message = "login fail";
+                        return View();
+                    } 
                 }
                 else
                 {
@@ -173,8 +187,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                     return View(user);
                 }
                 // Hash the password
-                //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                //user.Password = hashedPassword;
+                user.Password = GetSHA256Hash(user.Password);
                 // create a new Client entity and map the properties
                 var client = new Client
                 {
@@ -195,6 +208,19 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 TempData["messs"] = "successs";
                 return RedirectToAction("Login_Page", "Account");
             }
+        }
+
+        public static string GetSHA256Hash(string input)
+        {
+            SHA256 sha256 = SHA256.Create();
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashBytes = sha256.ComputeHash(inputBytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hashBytes.Length; i++)
+            {
+                sb.Append(hashBytes[i].ToString("x2"));
+            }
+            return sb.ToString();
         }
     }
 

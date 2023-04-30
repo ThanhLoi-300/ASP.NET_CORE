@@ -13,7 +13,7 @@ namespace ASP.NET_CORE.DATA.Entities
         public int Id { get; set; }
         [Required, MaxLength(50)]
         public string Account { get; set; } = null!;
-        [Required, MaxLength(50)]
+        [Required, MaxLength(250)]
         public string Password { get; set; } = null!;
         [Required(ErrorMessage = "Name can not blank."), MaxLength(90)]
         public string Name { get; set; } = null!;

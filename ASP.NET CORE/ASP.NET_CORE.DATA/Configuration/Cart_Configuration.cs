@@ -21,6 +21,7 @@ namespace ASP.NET_CORE.DATA.Configuration
             entity.Property(e => e.Quantity).IsRequired();
             entity.Property(e => e.Size).IsRequired();
             entity.Property(e => e.ClientId);
+            entity.Property(e => e.UserId);
 
             entity.HasOne(d => d.Product).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.ProductId)

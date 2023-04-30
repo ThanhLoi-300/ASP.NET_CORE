@@ -12,6 +12,11 @@ public partial class Cart
     [ForeignKey("Product")]
     public int ProductId { get; set; }
     public Product Product { get; set; } = null!;
+    [ForeignKey("Users")]
+    public string? UserId { get; set; }
+
+    public ApplicationUser Users { get; set; } = null!;
+
     [ForeignKey("Client")]
     public int ClientId { get; set; }
     public virtual Client Client { get; set; } = null!;

@@ -87,16 +87,8 @@
                                 </div>
 
                                 <div class="information">
-                                    <div class="information-name">
-                                        <label>UserName</label>
-
-                                        @Html.TextBoxFor(temp => temp.Account, new { @value = @Model.Account, @readonly = "readonly", @style = "color: gray" })
-                                    </div>
-                                    <div class="information-name">
-                                        <label>Password</label>
-
-                                        @Html.TextBoxFor(temp => temp.Password, new { @value = @Model.Password, @type = "password" })
-                                    </div>
+                                            @Html.TextBoxFor(temp => temp.Account, new { @value = @Model.Account, @readonly = "readonly", @style = "color: gray",@type = "hidden" })
+                                            @Html.TextBoxFor(temp => temp.Password, new { @value = @Model.Password, @type = "hidden" })
                                     <div class="information-name">
                                         <label>Họ & Tên</label>
 

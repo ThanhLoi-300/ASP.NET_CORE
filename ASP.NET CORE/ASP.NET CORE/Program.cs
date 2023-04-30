@@ -9,6 +9,7 @@ using ServiceStack;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ASP.NET_CORE;
 using Microsoft.AspNetCore.Identity;
+using ASP.NET_CORE.DATA.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,14 @@ builder.Services.AddSession(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<Web_Core_DbContext>()
+        .AddDefaultTokenProviders()
+        .AddRoles<IdentityRole>()
+        .AddRoleManager<RoleManager<IdentityRole>>()
+        .AddSignInManager<SignInManager<ApplicationUser>>();
 
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)

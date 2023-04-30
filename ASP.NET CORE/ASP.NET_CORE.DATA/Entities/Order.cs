@@ -27,10 +27,14 @@ public partial class Order
     public DateTime RecieveTime { get; set; }
 
     public int Status { get; set; }
+    [ForeignKey("Users")]
+    public string UserId { get; set; }
+
+    public ApplicationUser Users { get; set; } = null!;
+
     [ForeignKey("Client")]
     public int ClientId { get; set; }
-
-    public Client Client { get; set; } = null!;
+    public virtual Client Client { get; set; } = null!;
 
     public virtual ICollection<DetailOrder> DetailOrders { get; set; }
 }
