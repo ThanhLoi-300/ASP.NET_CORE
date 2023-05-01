@@ -5,6 +5,8 @@ using ASP.NET_CORE.SERVICE.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace ASP.NET_CORE.Areas.Admin.Controllers
@@ -36,21 +38,19 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _userManager.FindByNameAsync(username);
-                if (result != null)
+                //var result = await _signInManager.PasswordSignInAsync(username,pass,false,false);
+                //if (result.Succeeded)
+                //{
+                //    return RedirectToAction("Product_List", "Product");
+                //}
+                if (!_login.Login(username, GetSHA256Hash(pass)).Equals(""))
                 {
+                    Static.Admin = _login.Login(username, GetSHA256Hash(pass));
+                    ViewBag.Admin = Static.Admin;
                     return RedirectToAction("Product_List", "Product");
                 }
-                //if (!_login.Login(username, pass).Equals(""))
-                //{
-                //    Static.Admin = _login.Login(username, pass);
-                //    //HttpContext.Session.SetString("Admin", _login.Login(username, pass));
-                //    return RedirectToAction("Product_List","Product");
-                //}
-                TempData["message"] = "success";
-                return RedirectToAction("Category_List","Category");
             }
-            //TempData["message"] = "login fail";
+            TempData["message"] = "login fail";
             return RedirectToAction("Login_Admin");
         }
 
@@ -60,6 +60,19 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
             //Static.Admin = "";
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login_Admin");
+        }
+
+        public static string GetSHA256Hash(string input)
+        {
+            SHA256 sha256 = SHA256.Create();
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashBytes = sha256.ComputeHash(inputBytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hashBytes.Length; i++)
+            {
+                sb.Append(hashBytes[i].ToString("x2"));
+            }
+            return sb.ToString();
         }
     }
 }

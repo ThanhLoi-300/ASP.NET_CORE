@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ASP.NET_CORE.DATA.Model.Product_Dashboard>
 @{
     ViewData["Title"] = "Dashboard_Page";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -20,11 +20,11 @@
                             <div class="card-body-DT">
 
                                 <h5> Tổng doanh thu</h5>
-                                <h4><?php echo number_format($total0, 0, ',', '.') . "" . "đ"   ?></h4>
+                                <h4>@String.Format(" {0:0,00}",  @ViewBag.Total) VND</h4>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a href="#">View all</a>
                         </div>
                     </div>
                     <div class="card-single">
@@ -33,11 +33,11 @@
                             <div class="card-body-DT">
 
                                 <h5> Số lượng khách hàng</h5>
-                                <h4><?php echo $dem ?></h4>
+                            <h4>@ViewBag.Count_User</h4>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a href="#">View all</a>
                         </div>
                     </div>
                     <div class="card-single">
@@ -47,7 +47,7 @@
                             <div class="card-body-DT">
 
                                 <h5>Số lượng sản phẩm</h5>
-                                <h4><?php echo $dem ?></h4>
+                                <h4>@ViewBag.Count_Product</h4>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -60,72 +60,67 @@
                         <div class="activity-card">
                             <h3>Thống kê sản phẩm</h3>
                             <div>
-                                <form method="POST" action="">
-                                    <div class="activity-card-calendar">
+                            @using (Html.BeginForm("Dashboard_Page", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" })){
+                            <div class="activity-card-calendar">
 
-                                        <div class="input-groups mb-3">
-                                            <input id="datePickerId" value="2021-01-01" name="date1" type="date" data-date-inline-picker="true" />
-                                        </div>
-                                        <div class="input-groups mb-3">
-                                            <input id="datePickerId" value="2022-12-30" name="date2" type="date" data-date-inline-picker="true" />
-                                        </div>
-                                        <div class="input-group1 mb-3">
-                                            <input id="submit" name="submit" type="submit" value="Tìm kiếm">
-                                        </div>
+                                <div class="input-groups mb-3">
+                                    <input id="datePickerId" value="@ViewBag.Start" name="start" type="date" data-date-inline-picker="true" />
+                                </div>
+                                <div class="input-groups mb-3">
+                                    <input id="datePickerId" value="@ViewBag.End" name="end" type="date" data-date-inline-picker="true" />
+                                </div>
+                                <div class="input-group1 mb-3">
+                                    <input id="submit" name="submit" type="submit" value="Tìm kiếm">
+                                </div>
 
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table>
-                                            <thead>
+                            </div>
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Ảnh</th>
+                                            <th>Giá</th>
+                                            <th>Số lượng bán ra</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if(Model.Count != 0 && Model != null){
+                                            var quantity = 0;
+                                            decimal price = 0;
+                                            foreach(var i in Model){
+                                                quantity += i.Quantity;
+                                                price += i.Total_Price;
                                                 <tr>
-                                                    <th>Sản phẩm</th>
-                                                    <th>Ảnh</th>
-                                                    <th>Giá</th>
-                                                    <th>Số lượng bán ra</th>
-                                                    <th>Thành tiền</th>
-                                                </tr>
-                                            </thead>
+                                                    <td>@i.Name</td>
+                                                    <td><img src="@i.Img" alt="" style="width: 100px;"></td>
+                                                    <td>@String.Format(" {0:0,00}", @i.Price) VND</td>
+                                                    <td>@i.Quantity</td>
 
-                                            <tbody>
-                                                <tr>
-                                                    <td><?php echo $result_dtngay['productName'] ?></td>
-                                                    <td><img src="upload/<?php echo $result_dtngay['image'] ?>" alt="" style="width: 100px;"></td>
-                                                    <td><?php echo number_format($result_dtngay['price'], 0, ',', '.') . " " . "đ";   ?></td>
-                                                    <td><?php echo  $result_dtngay['value_count'] ?></td>
-
-                                                    <td><?php echo number_format($result_dtngay['value_sumTT'], 0, ',', '.') . " " . "đ"; ?></td>
+                                                    <td>@String.Format(" {0:0,00}", @i.Total_Price) VND</td>
                                                 </tr>
-
-                                                <?php
-                                                }
-                                                ?>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                Số lượng sản phẩm bán ra : <?php echo $totalquantity ?>
-                                            </td>
-                                            <td>
-                                                Tổng tiền bán ra : <?php echo number_format($sumDT, 0, ',', '.') . " " . "đ"; ?>
-                                            </td>
-                                            </tbody>
-                                            <?php
-                                            } else {
-                                            ?>
-                                            <tbody>
-                                                <tr>
-                                                    <td colspan="4" style="text-align:center">Không có sản phẩm nào trong mốc thời gian này</td>
-                                                </tr>
-                                            </tbody>
-                                            <?php
                                             }
-                                            ?>
-                                        </table>
-                                        <?php
-                                        //}
-                                        ?>
-                                    </div>
-                                </form>
+                                        
+                                        <tr>
+                                            <td colspan="2">
+                                                    Số lượng sản phẩm bán ra : @quantity
+                                            </td>
+                                                <td colspan="3">
+                                                    Tổng tiền bán ra : @String.Format(" {0:0,00}", @price) VND
+                                            </td>
+                                        </tr>
+                                        }else{
+                                            <tr>
+                                                <td colspan="4" style="text-align:center">Không có sản phẩm nào trong mốc thời gian này</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            }
                             </div>
                         </div>
                     </div>

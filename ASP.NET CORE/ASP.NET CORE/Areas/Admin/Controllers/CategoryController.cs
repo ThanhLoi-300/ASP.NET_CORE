@@ -37,8 +37,8 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
             ViewBag.pager = pager;
             ViewBag.search = search;
 
-            //if (Static.Admin == "")
-            //    return RedirectToAction("Login_Admin", "Login");
+            if (Static.Admin == "")
+                return RedirectToAction("Login_Admin", "Login");
 
             //ViewBag.Admin = Static.Admin/*HttpContext.Session.GetString("Admin")*/;
             return View(list);

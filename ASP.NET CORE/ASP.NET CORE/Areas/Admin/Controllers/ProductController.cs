@@ -48,8 +48,8 @@ namespace Web_BAN_QUAN_AO.Areas.Admin.Controllers
             ViewBag.category_Id = category_Id;
             ViewBag.list_Category = _product.List_Category();
 
-            //if(Static.Admin == "")
-            //    return RedirectToAction("Login_Admin","Login");
+            if (Static.Admin == "")
+                return RedirectToAction("Login_Admin", "Login");
 
             //ViewBag.Admin = Static.Admin/*HttpContext.Session.GetString("Admin")*/;
             return View(list);

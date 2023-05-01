@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using ASP.NET_CORE.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,7 +83,7 @@
                         </li>
 
 
-                        @if (ViewBag.user != "")
+                        @if (Static.User != "")
                         {
                             <li class="nav-list">
                                 <div class="nav-account">
@@ -109,7 +110,7 @@
                                 </div>
                             </li>
                         }
-                        @if (ViewBag.user == "")
+                        @if (Static.User == "")
                         {
                             <li>
                                 <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>

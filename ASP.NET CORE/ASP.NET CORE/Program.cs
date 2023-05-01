@@ -46,6 +46,7 @@ builder.Services.AddScoped<ICategory, Category_Service>();
 builder.Services.AddScoped<IProduct, Product_Service>();
 builder.Services.AddScoped<ILogin, Login_Service>();
 builder.Services.AddScoped<IOrder, Order_Service>();
+builder.Services.AddScoped<IDashboard, Dashboard_Service>();
 
 IMvcBuilder IMB = builder.Services.AddRazorPages();
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");

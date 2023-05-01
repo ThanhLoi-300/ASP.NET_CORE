@@ -22,7 +22,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         public IActionResult Order_Manage()
         {
             var username = Static.User;
-            ViewBag.user = username;
+           // ViewBag.user = username;
             if (username != null)
             {
                 List<Order> order = context.Orders.Include(i => i.DetailOrders).ThenInclude(i => i.Product).Where(i => i.ClientId == int.Parse(username)).ToList();
@@ -53,6 +53,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             order.OrderTime = now;
             order.RecieveTime = recieveTime;
             order.Status = 0;
+            order.UserId = "ff045d07-be86-4a4e-bfa4-0264ec832c12";
             context.Orders.Add(order);
             context.SaveChanges();
             var idOrder = context.Orders.Where(c => c.OrderTime == now).FirstOrDefault().Id;
@@ -63,7 +64,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 detailOrder.Quantity = item.Quantity;
                 detailOrder.Size = item.Size;
                 detailOrder.OrderId = idOrder;
-                detailOrder.Price = item.Product.Price;
+                detailOrder.Price = item.Product.Price * item.Quantity;
                 detailOrder.PercentDiscount = 0;
                 context.DetailOrders.Add(detailOrder);
               
