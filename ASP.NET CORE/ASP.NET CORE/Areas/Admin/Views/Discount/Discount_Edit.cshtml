@@ -1,0 +1,178 @@
+﻿@using ASP.NET_CORE.DATA.Entities
+@model ASP.NET_CORE.DATA.Entities.Discount
+@{
+	ViewData["Title"] = "Discount_Edit";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+	List<Discount> list_item_of_Discount = ViewBag.list_item_of_Discount;
+	List<Product> list_product_Remaining = ViewBag.list_product_Remaining;
+}
+
+@section css{
+	<link href="~/Public/Admin/css/table.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/Public/Admin/font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="~/Public/Admin/css/main1.css">
+	<link rel="stylesheet" type="text/css" href="~/Public/User/css/timkiemnangcao.css">
+	<link rel="stylesheet" type="text/css" href="~/Public/User/css/Pagination.css">
+	<link rel="stylesheet" href="~/Public/User/css/grid.css">
+	<style>
+		.home-product-item__favourite {
+			position: absolute;
+			top: 10px;
+			left: -4px;
+			color: white;
+			font-size: 1.2rem;
+			background-color: red;
+			font-weight: 500;
+			padding: 0 5px;
+			line-height: 1.6rem;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+
+			.home-product-item__favourite::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -8px;
+				border-top: 8px solid red;
+				border-left: 8px solid transparent;
+				filter: brightness(60%);
+			}
+
+			.home-product-item__favourite i {
+				font-size: 0.9rem;
+				margin: 0 3px 0 5px;
+			}
+
+		.home-product-item__sale-off {
+			position: absolute;
+			right: 0;
+			top: 0;
+			padding: 8px 2px 8px 2px;
+			width: 54px;
+			height: 60px;
+			text-align: center;
+			background-color: rgba(255,216,64,0.94);
+		}
+
+			.home-product-item__sale-off::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -6px;
+				border-width: 0 27px 6px;
+				border-style: solid;
+				border-color: transparent rgba(255,216,64,0.94) transparent rgba(255,216,64,0.94);
+			}
+
+		.home-product-item__percent {
+			color: #EE4D2D;
+			font-weight: 600;
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+			top: -1px;
+			position: relative;
+		}
+
+		.home-product-item__label {
+			font-size: 1.3rem;
+			line-height: 1.3rem;
+			color: white;
+			position: relative;
+		}
+	</style>
+}
+
+
+	<section>
+		<div class="activity-grid">
+			<div class="activity-card">
+				<div class="activity-header">
+					<h3>Nhập mã giảm giá</h3>
+				</div>
+
+				<form action="@Url.Action("Discount_Edit","Discount")" method="post">
+					<div class="activity-card-calendar">
+						@Html.EditorFor(model => model.Id, new { htmlAttributes = new { value = Model.Id, type="hidden" } })
+						<div class="input-groups mb-3">
+							<span>Ngày bắt đầu  </span>
+							<input id="datePickerId" value="@ViewBag.Start" name="StartTime" type="date" data-date-inline-picker="true" />
+						</div>
+						<div class="input-groups mb-3">
+							<span> Ngày Kết thúc  </span>
+							<input id="datePickerId" value="@ViewBag.End" name="EndTime" type="date" data-date-inline-picker="true" />
+						</div>
+					</div>
+					<table class="form" style="border-collapse: inherit;">
+						<tr>
+							<td>
+								<input type="text" value="@Model.Value" name="value" placeholder="Nhập giá trị" class="medium" style="width: 50%;text-align: center;padding: 10px;border-radius: 6px;font-size: 20px;" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" name="submit" Value="Save" style="padding: 10px 20px;border-radius: 6px;color: #fff;background: #323434;" />
+							</td>
+						</tr>
+					</table>
+					<div id="trend" class="home-suggestion" style="margin-left:20px;">
+						<div class="row">
+						@if (list_item_of_Discount[0].DetailDiscounts.Count > 0)
+						{
+							foreach (DetailDiscount item in list_item_of_Discount[0].DetailDiscounts)
+							{
+								<div class="col l-3" style="text-align: center;display: flex;">
+									<a href="#">
+										<input type="checkbox" name="choose" value="@item.Product.Id" checked/>
+										<div class="home-product-item">
+											<img src="@item.Product.Img" class="home-product-item_img" style="width:90%;margin:auto;">
+											<div class="home-product-item__sale-off">
+												<span class="home-product-item__percent">@item.Discount.Value%</span>
+												<span class="home-product-item__label">Giảm</span>
+											</div>
+											<span class="home-product-item_name">@item.Product.Name</span>
+											<div class="home-product-item_price">
+												<span class="home-product-item_price" style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.5;">@String.Format(" {0:0,00}", @item.Product.Price) VND</span>
+											</div>
+											<div class="home-product-item_price">
+												@{
+													var price = item.Product.Price - item.Product.Price * item.Discount.Value / 100;
+												}
+												<span class="home-product-item_price">@String.Format(" {0:0,00}", @price) VND</span>
+											</div>
+										</div>
+									</a>
+								</div>
+							}
+						}
+						@if (list_product_Remaining.Count > 0)
+						{
+							foreach (Product item in list_product_Remaining)
+							{
+								<div class="col l-3" style="text-align: center;display: flex;">
+									<a href="#">
+										<input type="checkbox" name="choose" value="@item.Id" />
+										<div class="home-product-item">
+											<img src="@item.Img" class="home-product-item_img">
+											<span class="home-product-item_name">@item.Name</span>
+											<div class="home-product-item_price">
+												<span class="home-product-item_price" style="margin-bottom:10px;">@String.Format(" {0:0,00}", @item.Price) VND</span>
+											</div>
+										</div>
+									</a>
+								</div>
+							}
+						}
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+@section scripts{
+
+}
+
+

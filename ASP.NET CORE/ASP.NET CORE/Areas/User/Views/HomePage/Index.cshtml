@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ASP.NET_CORE.DATA.Model.Product_Dashboard>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
@@ -7,6 +7,73 @@
 @section css{
     <link rel="stylesheet" href="~/Public/User/css/slider1.css">
     <link rel="stylesheet" href="~/Public/User/css/newtodays.css">
+    <style>
+		.home-product-item__favourite {
+			position: absolute;
+			top: 10px;
+			left: -4px;
+			color: white;
+			font-size: 1.2rem;
+			background-color: red;
+			font-weight: 500;
+			padding: 0 5px;
+			line-height: 1.6rem;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+
+			.home-product-item__favourite::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -8px;
+				border-top: 8px solid red;
+				border-left: 8px solid transparent;
+				filter: brightness(60%);
+			}
+
+			.home-product-item__favourite i {
+				font-size: 0.9rem;
+				margin: 0 3px 0 5px;
+			}
+
+		.home-product-item__sale-off {
+			position: absolute;
+			right: 0;
+			top: 0;
+			padding: 8px 2px 8px 2px;
+			width: 54px;
+			height: 60px;
+			text-align: center;
+			background-color: rgba(255,216,64,0.94);
+		}
+
+			.home-product-item__sale-off::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -6px;
+				border-width: 0 27px 6px;
+				border-style: solid;
+				border-color: transparent rgba(255,216,64,0.94) transparent rgba(255,216,64,0.94);
+			}
+
+		.home-product-item__percent {
+			color: #EE4D2D;
+			font-weight: 600;
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+			top: -1px;
+			position: relative;
+		}
+
+		.home-product-item__label {
+			font-size: 1.3rem;
+			line-height: 1.3rem;
+			color: white;
+			position: relative;
+		}
+	</style>
 }
 <section>
     <div class="app_body">
@@ -136,7 +203,7 @@
                     <div class="row">
                         <h1>BEST SELLER</h1>
                     </div>
-                    <div class="row">
+                    @*<div class="row">
                         <ul>
                             <li>
                                 <button class="best_Seller " onclick="changeBestSeller('women',this)">
@@ -154,41 +221,38 @@
                                 </button>
                             </li>
                         </ul>
-                    </div>
+                    </div>*@
                     <div id="women" class="row">
-                        <div class="app_suggestion">
-                            <button class="arrow_left">
+                        <div class="app_suggestion" id="app_suggestion">
+                            <button class="arrow_left" id="left">
                                 <i class="class-ti ti-angle-left"></i>
                             </button>
-
-                            <div class="col l-3 ">
-                                <a href="chitietsanpham.php?productId=<?php //echo $result['productId'] ?>&&brandId=<?php //echo $result['brandId'] ?>&&type=<?php //echo $result['type'] ?>">
-                                    <div class="home-product-item">
-                                        <div class="ovelay-img">
-                                            <img src="/img/product/2331599248ec266b465.jfif" alt="" class="home-product-item_img">
-                                            <div class="overlay">
-                                                <!--buy-btn------>
-                                                <a href="chitietsanpham.php?productId=<?php //echo $result['productId'] ?>&&brandId=<?php //echo $result['brandId'] ?>&&type=<?php //echo $result['type'] ?>" class="buy-btn">Buy Now</a>
+                            @if(Model.Count >  0){
+                                foreach(var i in Model){
+                                    <div class="col l-3 ">
+                                        <a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.Id})">
+                                            <div class="home-product-item">
+                                                <div class="ovelay-img">
+                                                    <img src="@i.Img" alt="" class="home-product-item_img">
+                                                    <div class="overlay">
+                                                        <!--buy-btn------>
+                                                        <a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.Id})" class="buy-btn">Buy Now</a>
+                                                    </div>
+                                                </div>
+                                                <h4 class="home-product-item_name">@i.Name</h4>
+                                                <div class="home-product-item_price">
+                                                    <span class="home-product-item_price-current"></span>
+                                                </div>
+                                                <span style="margin-left:200px;font-family: var(--font-family-sans-serif);font-weight: 600;">Đã bán: @i.Quantity</span>
                                             </div>
-                                        </div>
-                                        <h4 class="home-product-item_name"><?php //echo $result['productName'] ?></h4>
-                                        <div class="home-product-item_price">
-                                            <span class="home-product-item_price-current"><?php //echo number_format($result['price'], 0, ',', '.') . "" . "đ" ?></span>
-                                        </div>
-                                        <span style="margin-left:200px;font-family: var(--font-family-sans-serif);font-weight: 600;">Đã bán: <?//$result['quantitysales']?></span>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <?php
-                            //}
-                            ?>
-                            <button class="arrow_right"><i class="class-ti ti-angle-right"></i></button>
-                            <?php
-                            //}
-                            ?>
+                                }
+                            }
+                            <button class="arrow_right" id="right"><i class="class-ti ti-angle-right"></i></button>
                         </div>
                     </div>
-                    <div id="men" class="row">
+                    @*<div id="men" class="row">
 
                         <div class="app_suggestion ">
                             <?php
@@ -267,7 +331,7 @@
                             //}
                             ?>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
             <div class="grid wide">
@@ -386,6 +450,19 @@
         </div>
     </div>
 </section>
+ <script>
+        let scroll = document.getElementById("app_suggestion");
+        let arrow_left = document.getElementById('left')
+        let arrow_right = document.getElementById('right')
+
+        arrow_left.addEventListener('click', () => {
+            scroll.scrollLeft -= 500
+        })
+
+        arrow_right.addEventListener('click', () => {
+            scroll.scrollLeft += 500
+        })
+    </script>
 @section script{
     <script src="~/Public/User/js/slideshow.js"></script>
 }

@@ -76,18 +76,26 @@ function topFunction() {
 }
 
 // slider thuong mại
-let scroll = document.getElementsByClassName("app_suggestion");
-let arrow_left = document.querySelectorAll('.arrow_left')
-let arrow_right = document.querySelectorAll('.arrow_right')
+let scroll = document.getElementById("app_suggestion");
+let arrow_left = document.getElementById('left')
+let arrow_right = document.getElementById('right')
+
+arrow_left.addEventListener('click', () => {
+    scroll.scrollLeft -= 500
+})
+
+arrow_right.addEventListener('click', () => {
+    scroll.scrollLeft += 500
+})
 
 //click vào mũi tên sẽ cuộn trái hoặc phải 500px
-for (let i = 0; i < scroll.length; i++) {
+//for (let i = 0; i < scroll.length; i++) {
 
-    arrow_left[i].addEventListener('click', () => {
-        scroll[i].scrollLeft -= 500
-    })
+//    arrow_left[i].addEventListener('click', () => {
+//        scroll.scrollLeft -= 500
+//    })
 
-    arrow_right[i].addEventListener('click', () => {
-        scroll[i].scrollLeft += 500
-    })
-}
+//    arrow_right[i].addEventListener('click', () => {
+//        scroll.scrollLeft += 500
+//    })
+//}

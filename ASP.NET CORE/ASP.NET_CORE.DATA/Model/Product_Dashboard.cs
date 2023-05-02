@@ -8,6 +8,7 @@ namespace ASP.NET_CORE.DATA.Model
 {
     public class Product_Dashboard
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Img { get; set; }
         //public int M { get; set; }

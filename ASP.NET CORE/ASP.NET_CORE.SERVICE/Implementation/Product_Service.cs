@@ -143,7 +143,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
                 page = 1;
 
             int skip = (page - 1) * page_Size;
-            IEnumerable<Product> list = _context.Products.Where(product => product.IsDeleted == 0 && product.Status == 1);
+            IEnumerable<Product> list = _context.Products.Where(product => product.IsDeleted == 0 && product.Status == 1).Include(p => p.DetailDiscounts).ThenInclude(p => p.Discount);
 
             if (!String.IsNullOrEmpty(search))
                 list = list.Where(product => Loai_Dau(product.Name.ToLower()).Contains(Loai_Dau(search.ToLower())));
@@ -157,7 +157,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
             if (price > 0)
                 list = list.Where(p => p.Price <= Decimal.Parse(price.ToString()));
 
-            if(sort != null)
+            if(sort != null && sort !="")
             {
                 if (sort.Equals("up"))
                     list = list.OrderBy(p => p.Price);
@@ -184,13 +184,13 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public Product get_Product_By_Id(int id)
         {
-            return _context.Products.Include(p => p.Imgs).FirstOrDefault(product => product.Id == id);
+            return _context.Products.Include(p => p.Imgs).Include(p => p.DetailDiscounts).ThenInclude(p => p.Discount).FirstOrDefault(product => product.Id == id);
         }
 
         public List<Product> get_Product_Relationship(int id)
         {
             Product product = get_Product_By_Id(id);
-            return _context.Products.OrderBy(x => Guid.NewGuid()).Where(p => p.Category_ID == product.Category_ID && p.Type == product.Type && p.Id != id).Take(5).ToList();
+            return _context.Products.OrderBy(x => Guid.NewGuid()).Where(p => p.Category_ID == product.Category_ID && p.Type == product.Type && p.Id != id).Include(p => p.DetailDiscounts).ThenInclude(p => p.Discount).Take(5).ToList();
         }
 
         public List<Category> List_Category()

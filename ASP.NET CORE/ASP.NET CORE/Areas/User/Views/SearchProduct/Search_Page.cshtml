@@ -18,7 +18,7 @@
 
 	var i = (pager.Current_Page - 1) * pager.Page_Size;
 
-	
+
 
 }
 
@@ -26,102 +26,103 @@
 	<link rel="stylesheet" type="text/css" href="~/Public/User/css/timkiemnangcao.css">
 	<link rel="stylesheet" type="text/css" href="~/Public/User/css/Pagination.css">
 	<style>
-		.home-product-item__favourite{
+		.home-product-item__favourite {
 			position: absolute;
-			top:10px;
-			left:-4px;
-			color:white;
-			font-size:1.2rem;
+			top: 10px;
+			left: -4px;
+			color: white;
+			font-size: 1.2rem;
 			background-color: red;
-			font-weight:500;
-			padding:0 5px;
+			font-weight: 500;
+			padding: 0 5px;
 			line-height: 1.6rem;
 			border-top-right-radius: 4px;
 			border-bottom-right-radius: 4px;
 		}
 
-		.home-product-item__favourite::after{
-			content:"";
+			.home-product-item__favourite::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -8px;
+				border-top: 8px solid red;
+				border-left: 8px solid transparent;
+				filter: brightness(60%);
+			}
+
+			.home-product-item__favourite i {
+				font-size: 0.9rem;
+				margin: 0 3px 0 5px;
+			}
+
+		.home-product-item__sale-off {
 			position: absolute;
-			left:0;
-			bottom:-8px;
-			border-top:8px solid red;
-			border-left: 8px solid transparent;
-			filter: brightness(60%);
-		}
-
-		.home-product-item__favourite i{
-			font-size:0.9rem;
-			margin: 0 3px 0 5px;
-		}
-
-		.home-product-item__sale-off{
-			position:absolute;
-			right:0;
-			top:0;
-			padding:8px 2px 8px 2px;
-			width:54px;
-			height:60px;
-			text-align:center;
+			right: 0;
+			top: 0;
+			padding: 8px 2px 8px 2px;
+			width: 54px;
+			height: 60px;
+			text-align: center;
 			background-color: rgba(255,216,64,0.94);
 		}
 
-		.home-product-item__sale-off::after{
-			content:"";
-			position: absolute;
-			left:0;
-			bottom:-6px;
-			border-width:0 27px 6px;
-			border-style:solid;
-			border-color: transparent rgba(255,216,64,0.94) transparent rgba(255,216,64,0.94);
-		}
+			.home-product-item__sale-off::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -6px;
+				border-width: 0 27px 6px;
+				border-style: solid;
+				border-color: transparent rgba(255,216,64,0.94) transparent rgba(255,216,64,0.94);
+			}
 
-		.home-product-item__percent{
+		.home-product-item__percent {
 			color: #EE4D2D;
-			font-weight:600;
-			font-size:1.2rem;
-			line-height:1.2rem;
-			top:-1px;
-			position:relative;
+			font-weight: 600;
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+			top: -1px;
+			position: relative;
 		}
 
-		.home-product-item__label{
-			font-size:1.3rem;
-			line-height:1.3rem;
-			color:white;
-			position:relative;
+		.home-product-item__label {
+			font-size: 1.3rem;
+			line-height: 1.3rem;
+			color: white;
+			position: relative;
 		}
 	</style>
 
 }
 
-<section>
-    <div class="app_search">
-		<div class="pc">
-			<div class="grid wide">
-				<div class="row">
-					<div class="col l-3">
-							@using (Html.BeginForm("Search_Page", "SearchProduct", FormMethod.Get, new { })){
-								<div id="" class="tim-kiem-nang-cao">
-									<div class="boloc-top">
-										<i class="icon-boloc ti-menu-alt"></i>
-										<span>BỘ LỌC TÌM KIẾM</span>
+	<section>
+		<div class="app_search">
+			<div class="pc">
+				<div class="grid wide">
+					<div class="row">
+						<div class="col l-3">
+						@using (Html.BeginForm("Search_Page", "SearchProduct", FormMethod.Get, new { }))
+						{
+							<div id="" class="tim-kiem-nang-cao">
+								<div class="boloc-top">
+									<i class="icon-boloc ti-menu-alt"></i>
+									<span>BỘ LỌC TÌM KIẾM</span>
+								</div>
+								<input type="text" style="width:100%;" name="search" class="header__search-input" id="search" placeholder="Tìm kiếm sản phẩm..." value="@ViewBag.search">
+								<div class="khoanggia">
+									<h4 class="h4">Theo khoảng giá</h4>
+									<div style="display: flex;align-items: center;justify-content: space-around;">
+										<input id="slider_pr" type="range" name="price" min="0" max="2000000">
+										<span id="max" style="font-family: var(--font-family-sans-serif);"></span>
 									</div>
-									<input type="text" style="width:100%;" name="search" class="header__search-input" id="search" placeholder="Tìm kiếm sản phẩm..." value="@ViewBag.search">
-									<div class="khoanggia">
-										<h4 class="h4">Theo khoảng giá</h4>
-										<div style="display: flex;align-items: center;justify-content: space-around;">
-											<input id="slider_pr" type="range" name="price" min="0" max="2000000">
-											<span id="max" style="font-family: var(--font-family-sans-serif);"></span>
-										</div>
-									</div>
-									<!--  -->
-									<div class="dmuc">
-										<h4 class="h4">Theo danh mục</h4>
-										<ul class="danhmuc" style="margin-left:20px;">
-											@foreach (var item in ViewBag.list_Category)
-											{
-												<li>
+								</div>
+								<!--  -->
+								<div class="dmuc">
+									<h4 class="h4">Theo danh mục</h4>
+									<ul class="danhmuc" style="margin-left:20px;">
+										@foreach (var item in ViewBag.list_Category)
+										{
+											<li>
 												@if (ViewBag.category_Id != null)
 												{
 													if (ViewBag.category_Id.Contains(item.Id.ToString()))
@@ -137,19 +138,20 @@
 												{
 													<input type="checkbox" name="category_Id" value="@item.Id" />
 												}
-													<label>@item.Name</label><br>
-												</li>
-											}
-										</ul>
-									</div>
+												<label>@item.Name</label><br>
+											</li>
+										}
+									</ul>
+								</div>
 
-									<div class="dmuc">
-										<h4 class="h4">Loại</h4>
-										<ul class="danhmuc" style="margin-left:20px;">
-											@foreach (var item in list)
-											{
+								<div class="dmuc">
+									<h4 class="h4">Loại</h4>
+									<ul class="danhmuc" style="margin-left:20px;">
+										@foreach (var item in list)
+										{
 											<li>
-												@if(ViewBag.type!=null){
+												@if (ViewBag.type != null)
+												{
 													if (ViewBag.type.Contains(item))
 													{
 														<input type="checkbox" name="type" value="@item" checked="checked" />
@@ -158,76 +160,110 @@
 													{
 														<input type="checkbox" name="type" value="@item" />
 													}
-												}else{
+												}
+												else
+												{
 													<input type="checkbox" name="type" value="@item" />
 												}
-													<label>@item</label><br>
-												</li>
-											}
-										</ul>
-									</div>
-
-									<div style="width: 100%; text-align: center;">
-										<input class="tim-kiem-nang-cao-input" type="button" onclick="sort_sp(1)" value="Tìm kiếm" />
-									</div>
+												<label>@item</label><br>
+											</li>
+										}
+									</ul>
 								</div>
-						}
-						</div>
-						<div id="searchResults" class="col l-9">
-							<div class="home-filter">
-								<span class="home-filter__label">Sắp xếp theo</span>
-								<form action="" method="GET">
-									<div class="sort_price" style="display: flex;">										
-										<select id="sort" class="select-input" name="sort" onchange="sort_sp(1)">																			
-												@if(ViewBag.sort != null){
-													if(ViewBag.sort.Equals("up")){										
-														<option value="up">Giá từ thấp đến cao</option>																		
-														<option value="down">Giá từ cao đến thấp</option>
-													}else if(ViewBag.sort.Equals("down")){
-														<option value="down">Giá từ cao đến thấp</option>																		
-														<option value="up">Giá từ thấp đến cao</option>
-													}
-												}else{
-													<option>Lựa chọn theo giá</option>											
-													<option value="up">Giá từ thấp đến cao</option>																		
-													<option value="down">Giá từ cao đến thấp</option>
-												}
-										</select>
-									</div>
-								</form>
+
+								<div style="width: 100%; text-align: center;">
+									<input class="tim-kiem-nang-cao-input" type="button" onclick="sort_sp(1)" value="Tìm kiếm" />
+								</div>
 							</div>
-							<!-- Phổ biến -->
-							<div id="trend" class="home-suggestion">
-									<!-- Tìm kiếm nâng cao -->
-								<div class="row">
-									@if(Model.Count > 0){
-										foreach (var item in Model)
+						}
+					</div>
+					<div id="searchResults" class="col l-9">
+						<div class="home-filter">
+							<span class="home-filter__label">Sắp xếp theo</span>
+							<form action="" method="GET">
+								<div class="sort_price" style="display: flex;">
+									<select id="sort" class="select-input" name="sort" onchange="sort_sp(1)">
+										@if (ViewBag.sort != null)
 										{
-												<div class="col l-4">
-													<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = item.Id})">
-														<div class="home-product-item">
-															<img src="@item.Img" onmouseover = "overing(@item.Id,this)" onmouseout="outing(@item.Id,this)" class="home-product-item_img">
-															<div class="home-product-item__favourite">
-																<i class="fas fa-check"></i>
-																Yêu thích
-																<span></span>
+											if (ViewBag.sort.Equals("up"))
+											{
+												<option value="up">Giá từ thấp đến cao</option>
+												<option value="down">Giá từ cao đến thấp</option>
+											}
+											else if (ViewBag.sort.Equals("down"))
+											{
+												<option value="down">Giá từ cao đến thấp</option>
+												<option value="up">Giá từ thấp đến cao</option>
+											}
+										}
+										else
+										{
+											<option>Lựa chọn theo giá</option>
+											<option value="up">Giá từ thấp đến cao</option>
+											<option value="down">Giá từ cao đến thấp</option>
+										}
+									</select>
+								</div>
+							</form>
+						</div>
+						<!-- Phổ biến -->
+						<div id="trend" class="home-suggestion">
+							<!-- Tìm kiếm nâng cao -->
+							<div class="row">
+								@if (Model.Count > 0)
+								{
+									foreach (var item in Model)
+									{
+										<div class="col l-4">
+											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = item.Id})">
+												<div class="home-product-item">
+													<img src="@item.Img" class="home-product-item_img">
+													@*<div class="home-product-item__favourite">
+											<i class="fas fa-check"></i>
+											Yêu thích
+											<span></span>
+											</div>*@
+													@if (item.DetailDiscounts.Count > 0)
+													{
+														var a = item.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+														if (a.Count > 0)
+														{
+															<div class="home-product-item__sale-off">
+																<span class="home-product-item__percent">@a[0]%</span>
+																<span class="home-product-item__label">Giảm</span>
 															</div>
-													<div class="home-product-item__sale-off">
-														<span class="home-product-item__percent">10%</span>
-														<span class="home-product-item__label">Giảm</span>
-													</div>
 															<span class="home-product-item_name">@item.Name</span>
 															<div class="home-product-item_price">
-																<span class="home-product-item_price">@String.Format(" {0:0,00}", @item.Price) VND</span>
+																<span class="home-product-item_price" style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.5;">@String.Format(" {0:0,00}", @item.Price) VND</span>
 															</div>
+															<div class="home-product-item_price">
+																@{
+																	var price = item.Price - item.Price * a[0] / 100;
+																}
+																<span class="home-product-item_price">@String.Format(" {0:0,00}", @price) VND</span>
+															</div>
+														}else{
+															<span class="home-product-item_name">@item.Name</span>
+														<div class="home-product-item_price">
+															<span class="home-product-item_price">@String.Format(" {0:0,00}", @item.Price) VND</span>
 														</div>
-													</a>
+														}
+													}else{
+														<span class="home-product-item_name">@item.Name</span>
+														<div class="home-product-item_price">
+															<span class="home-product-item_price">@String.Format(" {0:0,00}", @item.Price) VND</span>
+														</div>
+													}
 												</div>
-										}
-									}else{
-										<span style="margin:50px auto;font-size:20px;">No product found</span>
+											</a>
+										</div>
 									}
-								</div>
+								}
+								else
+								{
+									<span style="margin:50px auto;font-size:20px;">No product found</span>
+								}
+							</div>
 							<div class="row" style="margin-left:35%;margin-top:50px;">
 								<div>
 									@if (pager.Total_Page > 0)
@@ -267,8 +303,8 @@
 									}
 								</div>
 							</div>
-							</div>
 						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -280,7 +316,7 @@
 	<script>
 
 		//Hover
-		function overing(id, element){
+		function overing(id, element) {
 			$.ajax({
 				url: '/User/SearchProduct/Get_Img',
 				type: 'POST',
@@ -292,7 +328,7 @@
 			})
 		}
 
-		function outing(id, element){
+		function outing(id, element) {
 			$.ajax({
 				url: '/User/SearchProduct/Get_Main_Img',
 				type: 'POST',
@@ -319,22 +355,23 @@
 		//tra data cho thanh truot
 		function load_data() {
 			var input = document.getElementById("slider_pr");
-					input.value = @(ViewBag.price)
+			input.value = @(ViewBag.price)
 				document.getElementById("max").innerHTML = parseInt(input.value).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 		}
 		load_data();
 
-		function sort_sp(page){
+		function sort_sp(page) {
 			var category_Id = document.querySelectorAll('input[type=checkbox][name="category_Id"]');
 			var sort = document.getElementById("sort").value;
 			var search = document.getElementById('search').value
 			var type = document.querySelectorAll('input[type=checkbox][name="type"]')
 			var price = document.getElementById('slider_pr').value
 
+			if(sort == "Lựa chọn theo giá") sort = ""
 			var list_Category = "";
 			for (var i = 0; i < category_Id.length; i++) {
 				if (category_Id[i].checked) {
-					list_Category += "category_Id="+category_Id[i].value+"&";
+					list_Category += "category_Id=" + category_Id[i].value + "&";
 				}
 			}
 
@@ -345,7 +382,7 @@
 				}
 			}
 
-			location.href = "/User/SearchProduct/Search_Page?search=" + search+ "&page="+page+"&sort="+sort+"&price=" + price + "&" + list_Type + "&" + list_Category;
+			location.href = "/User/SearchProduct/Search_Page?search=" + search + "&page=" + page + "&sort=" + sort + "&price=" + price + "&" + list_Type + "&" + list_Category;
 		}
 	</script>
 }
