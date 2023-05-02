@@ -26,29 +26,29 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             //var username = HttpContext.Session.GetString("Username");
             var username = Static.User;
 
-
+            return View();
             decimal totalPrice = 0;
             ViewBag.user = username;
 
-            if (username != null || username != "")
+            if ( username == "")
+            {
+                return View();
+            }
+            else
             {
                 var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
-                List<Cart> cart = context.Carts.Include(c => c.Product).Where(c => c.ClientId == int.Parse(username)).ToList();
+                List<Cart> cart = context.Carts.Include(c => c.Product).Include(c => c.Product.DetailDiscounts).Where(c => c.ClientId == int.Parse(username)).ToList();
                 ViewBag.count = cart.Count;
                 foreach (var item in cartProduct)
                 {
                     totalPrice += item.Price;
                 }
-                decimal vat = totalPrice * 10/100;
+                decimal vat = totalPrice * 10 / 100;
                 decimal endPrice = totalPrice - vat;
                 ViewBag.vat = vat;
                 ViewBag.endPrice = endPrice;
                 ViewBag.total = totalPrice;
                 return View(cart);
-            }
-            else
-            {
-                return View();
             }
            
         }

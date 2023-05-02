@@ -48,13 +48,22 @@
 										{
 											foreach (var item in Model)
 											{
-
-
 												<tr>
 													<td>
 														<a href="@Url.Action("Detail_Product_Page","DetailProduct",new {id = item.Product.Id})">
 															<div class="cart-td_title">
 																<img src="@item.Product.Img" alt="" class="app_cart-img">
+																@if (item.Product.DetailDiscounts.Count > 0)
+																{
+																	var a = item.Product.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+																	if (a.Count > 0)
+																	{
+																		<div class="home-product-item__sale-off">
+																			<span class="home-product-item__percent">@a[0]%</span>
+																			<span class="home-product-item__label">Giảm</span>
+																		</div>
+																	}
+																}
 															</div>
 														</a>
 													</td>
@@ -122,7 +131,7 @@
 										@if (Model != null)
 										{
 											@String.Format(" {0:0,00}", ViewBag.total)
-										} 
+										}
 									</span><p class="sum-product">VND</p>
 								</div>
 								<div style="display: flex;justify-content: space-between; margin: 20px 0;">
@@ -132,7 +141,7 @@
 										{
 											@String.Format(" {0:0,00}", ViewBag.vat)
 										}
-										
+
 									</span><p class="sum-product">VND</p>
 								</div>
 								<div class="cart-purchase">
@@ -205,8 +214,7 @@
 
 				},
 				success: function (rs) {
-					if (rs.success)
-					{
+					if (rs.success) {
 						if (rs.total != 0) {
 							$("#quantity_" + id).val(parseInt(quantity) + 1)
 							$("#price_" + id).text(rs.total.toLocaleString())
@@ -216,7 +224,7 @@
 							var total_Price = $("#total_Price").text().replace(/[,.]/g, '')
 
 							sumprice = parseInt(sumprice) + parseInt(price_Procut)
-							tax_Price = parseInt(sumprice) * 10 /100
+							tax_Price = parseInt(sumprice) * 10 / 100
 							total_Price = parseInt(sumprice) - parseInt(tax_Price)
 							$("#sum_Price").text(parseInt(sumprice).toLocaleString())
 							$("#tax_Price").text(parseInt(tax_Price).toLocaleString())
@@ -246,7 +254,7 @@
 
 				},
 				success: function (rs) {
-					if (rs.success){
+					if (rs.success) {
 						if (rs.total != 0) {
 							$("#quantity_" + id).val(parseInt(quantity) - 1)
 							$("#price_" + id).text(rs.total.toLocaleString())
@@ -265,7 +273,7 @@
 						}
 
 					}
-						
+
 				}
 			})
 		}
