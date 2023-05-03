@@ -115,7 +115,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public decimal get_Total(DateTime start, DateTime end)
         {
-            List<Product_Dashboard> product_Dashboards = (from o in _context.Orders
+            List<Product_Dashboard> product_Dashboards = (from o in _context.Orders.Where(o => o.Status == 2)
                                                           join od in _context.DetailOrders on o.Id equals od.OrderId
                                                           join p in _context.Products on od.ProductId equals p.Id
                                                           where o.OrderTime >= start && o.OrderTime <= end.AddDays(1)
@@ -123,7 +123,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
                                                           orderby g.Key.Id
                                                           select new Product_Dashboard
                                                           {
-                                                              Total_Price = g.Sum(x => x.Price * x.Quantity),
+                                                              Total_Price = g.Sum(x => x.Price ),
                                                               Quantity = g.Sum(x => x.Quantity),
                                                               Img = g.Key.Img,
                                                               Name = g.Key.Name,

@@ -52,7 +52,7 @@ namespace ASP.NET_CORE.SERVICE.Implementation
 
         public List<Order> get_Order_Of_Username(int clientId, int status)
         {
-            return _context.Orders.Include(a => a.DetailOrders).ThenInclude(o => o.Product).Where(a => a.ClientId == clientId && a.Status == status).ToList();
+            return _context.Orders.Include(a => a.DetailOrders).ThenInclude(o => o.Product).ThenInclude(o => o.DetailDiscounts).ThenInclude(o => o.Discount).Where(a => a.ClientId == clientId && a.Status == status).ToList();
         }
     }
 }

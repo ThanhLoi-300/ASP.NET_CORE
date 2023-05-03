@@ -11,9 +11,11 @@ namespace ASP.NET_CORE.Areas.Admin.Controllers
     public class DashboardController : Controller
     {
         private readonly IDashboard _dashborad;
-        public DashboardController(IDashboard dashborad)
+        Web_Core_DbContext _context;
+        public DashboardController(IDashboard dashborad, Web_Core_DbContext context)
         {
             _dashborad = dashborad;
+            _context = context;
         }
 
         public IActionResult Dashboard_Page()

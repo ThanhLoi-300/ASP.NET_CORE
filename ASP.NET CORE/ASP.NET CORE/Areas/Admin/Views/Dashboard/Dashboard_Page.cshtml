@@ -12,7 +12,12 @@
 <section>
        <div class="main-content">
                 <h2 class="dash-title">Tổng Quan</h2>
-
+                @if(ViewBag.l != null){
+                    foreach(var i in ViewBag.l){
+                    <div>@i</div>
+                }
+                }
+                
                 <div class="dash-cards">
                     <div class="card-single">
                         <div class="card-body">
