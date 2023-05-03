@@ -21,14 +21,20 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         }
         public IActionResult Payment_Page()
         {
-            var username = Static.User;//HttpContext.Session.GetString("Username");
+            var username = Static.User;
+            if (username == "")
+            {
+                TempData["mess"] = "havetologin";
+                return RedirectToAction("Index","HomePage");
+            }
+
             var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
             decimal totalPrice = 0;
             ViewBag.user = username;
 
-            if (username != null)
+            if (username != "")
             {
-                List<Cart> cart = context.Carts.Include(c => c.Product).Include(c => c.Client).Where(c => c.ClientId == int.Parse(username)).ToList();
+                List<Cart> cart = context.Carts.Include(c => c.Product).ThenInclude(c => c.DetailDiscounts).ThenInclude(c => c.Discount).Include(c => c.Client).Where(c => c.ClientId == int.Parse(username)).ToList();
                 var client = context.Clients.Where(c => c.Id == int.Parse(username)).ToList();
                 ViewBag.name = client[0].Name;
                 ViewBag.sdt = client[0].Name;
@@ -39,10 +45,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 {   
                     totalPrice += item.Price;
                 }
-                decimal vat = totalPrice * 10 / 100;
-                decimal endPrice = totalPrice - vat;
-                ViewBag.vat = vat;
-                ViewBag.endPrice = endPrice;
+
                 ViewBag.total = totalPrice;
                 return View(cart);
             }

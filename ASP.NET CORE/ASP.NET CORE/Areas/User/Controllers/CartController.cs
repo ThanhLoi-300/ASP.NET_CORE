@@ -21,12 +21,25 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             _webHostEnvironment = webHostEnvironment;
             context = contexxt;
         }
-        public IActionResult Cart_Page()
+        public async Task<IActionResult> Cart_Page()
         {
-            //var username = HttpContext.Session.GetString("Username");
+            var d = context.Discounts.ToList();
+            DateTime now = DateTime.Now;
+
+            foreach (var i in d)
+            {
+                int start = DateTime.Compare(now.Date, i.StartTime.Date);
+                int end = DateTime.Compare(now.Date, i.EndTime.Date);
+                if (start >= 0 && end <= 0)
+                {
+                    i.Status = "Đang kích hoạt";
+                }
+                else i.Status = "Ngừng kích hoạt";
+            }
+
+            await context.SaveChangesAsync();
             var username = Static.User;
 
-            return View();
             decimal totalPrice = 0;
             ViewBag.user = username;
 
@@ -37,16 +50,12 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             else
             {
                 var cartProduct = context.Carts.Where(i => i.ClientId == int.Parse(username)).ToList();
-                List<Cart> cart = context.Carts.Include(c => c.Product).Include(c => c.Product.DetailDiscounts).Where(c => c.ClientId == int.Parse(username)).ToList();
+                List<Cart> cart = context.Carts.Include(c => c.Product).ThenInclude(c => c.DetailDiscounts).ThenInclude(c => c.Discount).Where(c => c.ClientId == int.Parse(username)).ToList();
                 ViewBag.count = cart.Count;
                 foreach (var item in cartProduct)
                 {
                     totalPrice += item.Price;
                 }
-                decimal vat = totalPrice * 10 / 100;
-                decimal endPrice = totalPrice - vat;
-                ViewBag.vat = vat;
-                ViewBag.endPrice = endPrice;
                 ViewBag.total = totalPrice;
                 return View(cart);
             }
@@ -97,9 +106,10 @@ namespace ASP.NET_CORE.Areas.User.Controllers
         // add quantity in cart
         public IActionResult Add_Quantity_Product(int idCart)
         {
-            Cart cart = context.Carts.Where(i => i.Id == idCart).FirstOrDefault();
+            Cart cart = context.Carts.Include(c => c.Product).ThenInclude(c => c.DetailDiscounts).ThenInclude(c => c.Discount).Where(i => i.Id == idCart).FirstOrDefault();
             var quantityProducSize = 0;
             decimal total = 0;
+            decimal price_Discount = 0;
             var idProduct = cart.ProductId;
             var size = cart.Size;
             var quantityM = context.Products.Where(i => i.Id == idProduct).FirstOrDefault().QuantityM;
@@ -129,18 +139,17 @@ namespace ASP.NET_CORE.Areas.User.Controllers
             }
             else
             {
-                decimal quantity = cart.Quantity +1;
                 decimal price = cart.Product.Price;
                 decimal total_Price = cart.Price;
-                total = total_Price + price;
-
+                total = total_Price + price;       
                 cart.Price = total;
+
                 cart.Quantity += 1;
                 context.Carts.Update(cart);
                 context.SaveChanges();
             }
             
-            return Json(new { success = true, total = total });
+            return Json(new { success = true, total = total, price_Discount = price_Discount });
         }
         // subtract quantity in cart
         public IActionResult Subtract_Quantity_Product(int idCart)

@@ -2,6 +2,8 @@
 @{
 	ViewData["Title"] = "Cart_Page";
 	Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+
+	decimal total = 0;
 }
 @section css{
 	<link rel="stylesheet" href="~/Public/User/css/comment.css">
@@ -49,7 +51,7 @@
 											foreach (var item in Model)
 											{
 												<tr>
-													<td>
+													<td style="position:relative;">
 														<a href="@Url.Action("Detail_Product_Page","DetailProduct",new {id = item.Product.Id})">
 															<div class="cart-td_title">
 																<img src="@item.Product.Img" alt="" class="app_cart-img">
@@ -74,9 +76,35 @@
 														<span>@item.Size</span>
 													</td>
 													<td>
-														<div class="cart-btn" id="price_Product_@item.Id">
-															<span>@String.Format(" {0:0,00}", item.Product.Price) </span><p class="cart-btn">VND</p>
-														</div>
+														@if (item.Product.DetailDiscounts.Count > 0)
+														{
+															var a = item.Product.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+															if (a.Count > 0)
+															{
+																<div class="cart-btn" id="price_Old_@item.Id">
+																	<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", item.Product.Price)</span>
+																</div>
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	@{
+																		var price = item.Product.Price - item.Product.Price * a[0] / 100;
+																	}
+																	<span>@String.Format(" {0:0,00}", price) </span>
+																</div>
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", item.Product.Price) </span>
+																</div>
+															}
+														}
+														else
+														{
+															<div class="cart-btn" id="price_Product_@item.Id">
+																<span>@String.Format(" {0:0,00}", item.Product.Price) </span>
+															</div>
+														}
+
 													</td>
 													<td>
 														<div class="quantity" style="display: flex;">
@@ -87,9 +115,37 @@
 													</td>
 
 													<td>
-														<span class="cart-current" id="price_@item.Id">
-															@String.Format(" {0:0,00}", item.Price)
-														</span><p class="cart-current">VND</p>
+														@if (item.Product.DetailDiscounts.Count > 0)
+														{
+															var a = item.Product.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+															if (a.Count > 0)
+															{
+																<span class="cart-current" id="price_Old_Sum_@item.Id" style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">
+																	@String.Format(" {0:0,00}", item.Price)
+																</span>
+																<span class="cart-current" id="price_@item.Id">
+																	@{
+																		var price = item.Price - item.Price * a[0] / 100;
+																		total += price;
+																	}
+																	@String.Format(" {0:0,00}", price)
+																</span>
+															}
+															else
+															{
+																total += item.Price;
+																<span class="cart-current" id="price_@item.Id">
+																	@String.Format(" {0:0,00}", item.Price)
+																</span>
+															}
+														}
+														else
+														{
+															total += item.Price;
+															<span class="cart-current" id="price_@item.Id">
+																@String.Format(" {0:0,00}", item.Price)
+															</span>
+														}
 													</td>
 													<td>
 														<a onclick="Deleted_Product(@item.Id)" href="#" class="ti-close"></a>
@@ -127,21 +183,11 @@
 									<div class="voucher-title">
 										<span>Tổng tiền hàng</span>
 									</div>
-									<span class="sum-product" id="sum_Price">
+									<span class="sum-product" id="sum_Price" style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">
 										@if (Model != null)
 										{
 											@String.Format(" {0:0,00}", ViewBag.total)
 										}
-									</span><p class="sum-product">VND</p>
-								</div>
-								<div style="display: flex;justify-content: space-between; margin: 20px 0;">
-									<span class="sum-product">Tiền thuế(VAT 10%)</span>
-									<span class="sum-product" id="tax_Price">
-										@if (Model != null)
-										{
-											@String.Format(" {0:0,00}", ViewBag.vat)
-										}
-
 									</span><p class="sum-product">VND</p>
 								</div>
 								<div class="cart-purchase">
@@ -149,7 +195,7 @@
 									<span class="sum-product" style="font-weight: 800;" id="total_Price">
 										@if (Model != null)
 										{
-											@String.Format(" {0:0,00}", ViewBag.endPrice)
+											@String.Format(" {0:0,00}", total)
 										}
 									</span><p class="sum-product">VND</p>
 								</div>
@@ -217,17 +263,30 @@
 					if (rs.success) {
 						if (rs.total != 0) {
 							$("#quantity_" + id).val(parseInt(quantity) + 1)
-							$("#price_" + id).text(rs.total.toLocaleString())
+							var price_Product = $("#price_Product_" + id).text().replace(/[,.]/g, '')
+							var price = $("#price_" + id).text().replace(/[,.]/g, '')
 							var sumprice = $("#sum_Price").text().replace(/[,.]/g, '')
-							var price_Procut = $("#price_Product_" + id).text().replace(/[,.]/g, '')
-							var tax_Price = $("#tax_Price").text().replace(/[,.]/g, '')
 							var total_Price = $("#total_Price").text().replace(/[,.]/g, '')
+							var Price_Old = $("#price_Old_" + id).text().replace(/[,.]/g, '')
+							var Price_Old_Sum = $("#price_Old_Sum_" + id).text().replace(/[,.]/g, '')
 
-							sumprice = parseInt(sumprice) + parseInt(price_Procut)
-							tax_Price = parseInt(sumprice) * 10 / 100
-							total_Price = parseInt(sumprice) - parseInt(tax_Price)
+							price = parseInt(price) + parseInt(price_Product)
+							Price_Old_Sum = parseInt(Price_Old_Sum) + parseInt(Price_Old)
+
+							if (document.getElementById("price_Old_" + id) !== null) {
+
+								sumprice = parseInt(sumprice) + parseInt(Price_Old)
+								total_Price = parseInt(total_Price) + parseInt(price_Product)
+
+							} else {
+
+								sumprice = parseInt(sumprice) + parseInt(price_Product)
+								total_Price = parseInt(total_Price) + parseInt(price_Product)
+							}
+
+							$("#price_" + id).text(price.toLocaleString())
+							$("#price_Old_Sum_" + id).text(Price_Old_Sum.toLocaleString())
 							$("#sum_Price").text(parseInt(sumprice).toLocaleString())
-							$("#tax_Price").text(parseInt(tax_Price).toLocaleString())
 							$("#total_Price").text(parseInt(total_Price).toLocaleString())
 
 						} else {
@@ -257,18 +316,30 @@
 					if (rs.success) {
 						if (rs.total != 0) {
 							$("#quantity_" + id).val(parseInt(quantity) - 1)
-							$("#price_" + id).text(rs.total.toLocaleString())
-
+							var price_Product = $("#price_Product_" + id).text().replace(/[,.]/g, '')
+							var price = $("#price_" + id).text().replace(/[,.]/g, '')
 							var sumprice = $("#sum_Price").text().replace(/[,.]/g, '')
-							var price_Procut = $("#price_Product_" + id).text().replace(/[,.]/g, '')
-							var tax_Price = $("#tax_Price").text().replace(/[,.]/g, '')
 							var total_Price = $("#total_Price").text().replace(/[,.]/g, '')
+							var Price_Old = $("#price_Old_" + id).text().replace(/[,.]/g, '')
+							var Price_Old_Sum = $("#price_Old_Sum_" + id).text().replace(/[,.]/g, '')
 
-							sumprice = parseInt(sumprice) - parseInt(price_Procut)
-							tax_Price = parseInt(sumprice) * 10 / 100
-							total_Price = parseInt(sumprice) - parseInt(tax_Price)
+							price = parseInt(price) - parseInt(price_Product)
+							Price_Old_Sum = parseInt(Price_Old_Sum) - parseInt(Price_Old)
+
+							if (document.getElementById("price_Old_" + id) !== null) {
+
+								sumprice = parseInt(sumprice) - parseInt(Price_Old)
+								total_Price = parseInt(total_Price) - parseInt(price_Product)
+
+							} else {
+
+								sumprice = parseInt(sumprice) - parseInt(price_Product)
+								total_Price = parseInt(total_Price) - parseInt(price_Product)
+							}
+
+							$("#price_" + id).text(price.toLocaleString())
+							$("#price_Old_Sum_" + id).text(Price_Old_Sum.toLocaleString())
 							$("#sum_Price").text(parseInt(sumprice).toLocaleString())
-							$("#tax_Price").text(parseInt(tax_Price).toLocaleString())
 							$("#total_Price").text(parseInt(total_Price).toLocaleString())
 						}
 

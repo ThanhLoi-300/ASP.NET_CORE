@@ -217,7 +217,7 @@
 										<div class="col l-4">
 											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = item.Id})">
 												<div class="home-product-item">
-													<img src="@item.Img" class="home-product-item_img">
+													<img src="@item.Img" onmouseover="overing(@item.Id,this)" onmouseout="outing(@item.Id,this)" class="home-product-item_img">
 													@*<div class="home-product-item__favourite">
 											<i class="fas fa-check"></i>
 											Yêu thích

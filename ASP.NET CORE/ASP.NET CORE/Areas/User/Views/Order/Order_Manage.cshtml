@@ -1,478 +1,724 @@
 ﻿@model List<ASP.NET_CORE.DATA.Entities.Order>
 @{
-    ViewData["Title"] = "Order_Manage";
-    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Order_Manage";
+	Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
 
 @section css{
-    <link rel="stylesheet" href="~/Public/User/css/account.css">
-    <link rel="stylesheet" href="~/Public/User/css/xemlaidonhang.css">
+	<link rel="stylesheet" href="~/Public/User/css/account.css">
+	<link rel="stylesheet" href="~/Public/User/css/xemlaidonhang.css">
 }
 
-<section>
-    <div class="content">
-        <div class="grid wide" style="border-top: 1px solid #ccc;">
-            <div class="account-body1">
-                <div class="row">
-                    <div class="col l-3  underline">
-                        <div class="category-all">
-                            <ul>
-                                <li style="display: flex;
+	<section>
+		<div class="content">
+			<div class="grid wide" style="border-top: 1px solid #ccc;">
+				<div class="account-body1">
+					<div class="row">
+						<div class="col l-3  underline">
+							<div class="category-all">
+								<ul>
+									<li style="display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 padding: 10px;
                                 border-bottom: 1px solid #ccc;">
-                                    <span class="ti-user" style="padding: 10px;border: 1px solid;border-radius: 50%;"></span>
-                                    <a href="" style="text-decoration: none;padding: 0 10px;font-family: var(--font-family-monospace); color: black;
+										<span class="ti-user" style="padding: 10px;border: 1px solid;border-radius: 50%;"></span>
+										<a href="" style="text-decoration: none;padding: 0 10px;font-family: var(--font-family-monospace); color: black;
                                 font-weight: bold"> Quỳnh Linh</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-user"></span>
-                                    <a href=""> Thông tin tài khoản</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-comments"></span>
-                                    <a href=""> Thông báo của tôi</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-printer"></span>
-                                    <a href="tinhtrangdonhang.php"> Tình trạng đơn hàng</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-printer"></span>
-                                    <a href="lichsu.php"> Quản lý đơn hàng</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-location-pin"></span>
-                                    <a href=""> Số địa chỉ</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-envelope"></span>
-                                    <a href=""> Thông tin thanh toán</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-write"></span>
-                                    <a href=""> Nhận xét sản phẩm đã mua</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-ink-pen"></span>
-                                    <a href=""> Sản phẩm đã xem</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-ink-pen"></span>
-                                    <a href=""> Sản phẩm yêu thích</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-shopping-cart-full"></span>
-                                    <a href=""> Sản phẩm mua sau</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-star"></span>
-                                    <a href=""> Nhận xét của tôi</a>
-                                </li>
-                                <li class="category">
-                                    <span class="ti-ticket"></span>
-                                    <a href=""> Mã giảm giá</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col m-12 l-9">
-                        <h3 style="font-weight: 500;font-size: 24px;line-height: 32px;text-transform: uppercase;color: #221f20;display: flex;align-items: center;">Quản lí đơn hàng</h3>
-                        <ul style="display:flex;">
-                            <li class="QLdonhang" onclick="changeProductList('choXN',this)">Chờ xác nhận</li>
-                            <li class="QLdonhang" onclick="changeProductList('daNH',this)">Đang giao</li>
-                            <li class="QLdonhang" onclick="changeProductList('daGiao',this)">Đã giao</li>
-                            <li class="QLdonhang" onclick="changeProductList('daHuy',this)">Đã hủy</li>
-                        </ul>
-                        <div class="col l-12">
-                            <!-- cho xac nhan-->
-                            @if (Model != null || Model.Count != 0)
-                            {
-                                var list = Model.Where(i => i.Status == 0).ToList();
-                                var stt = 0;
-                                @foreach (var item in list)
-                                {
-                                    <table id="choXN" class="choXN table_0">
-                                        <thead>
+									</li>
+									<li class="category">
+										<span class="ti-user"></span>
+										<a href=""> Thông tin tài khoản</a>
+									</li>
+									<li class="category">
+										<span class="ti-comments"></span>
+										<a href=""> Thông báo của tôi</a>
+									</li>
+									<li class="category">
+										<span class="ti-printer"></span>
+										<a href="tinhtrangdonhang.php"> Tình trạng đơn hàng</a>
+									</li>
+									<li class="category">
+										<span class="ti-printer"></span>
+										<a href="lichsu.php"> Quản lý đơn hàng</a>
+									</li>
+									<li class="category">
+										<span class="ti-location-pin"></span>
+										<a href=""> Số địa chỉ</a>
+									</li>
+									<li class="category">
+										<span class="ti-envelope"></span>
+										<a href=""> Thông tin thanh toán</a>
+									</li>
+									<li class="category">
+										<span class="ti-write"></span>
+										<a href=""> Nhận xét sản phẩm đã mua</a>
+									</li>
+									<li class="category">
+										<span class="ti-ink-pen"></span>
+										<a href=""> Sản phẩm đã xem</a>
+									</li>
+									<li class="category">
+										<span class="ti-ink-pen"></span>
+										<a href=""> Sản phẩm yêu thích</a>
+									</li>
+									<li class="category">
+										<span class="ti-shopping-cart-full"></span>
+										<a href=""> Sản phẩm mua sau</a>
+									</li>
+									<li class="category">
+										<span class="ti-star"></span>
+										<a href=""> Nhận xét của tôi</a>
+									</li>
+									<li class="category">
+										<span class="ti-ticket"></span>
+										<a href=""> Mã giảm giá</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col m-12 l-9">
+							<h3 style="font-weight: 500;font-size: 24px;line-height: 32px;text-transform: uppercase;color: #221f20;display: flex;align-items: center;">Quản lí đơn hàng</h3>
+							<ul style="display:flex;">
+								<li class="QLdonhang" onclick="changeProductList('choXN',this)">Chờ xác nhận</li>
+								<li class="QLdonhang" onclick="changeProductList('daNH',this)">Đang giao</li>
+								<li class="QLdonhang" onclick="changeProductList('daGiao',this)">Đã giao</li>
+								<li class="QLdonhang" onclick="changeProductList('daHuy',this)">Đã hủy</li>
+							</ul>
+							<div class="col l-12">
+								<!-- cho xac nhan-->
+							@if (Model != null && Model.Count != 0)
+							{
+								var list = Model.Where(i => i.Status == 0).ToList();
+								var stt = 0;
+								@foreach (var item in list)
+								{
+									<table id="choXN" class="choXN table_0">
+										<thead>
 
-                                            <tr>
-                                                <th>Đơn hàng: @(stt +=1) </th>
-                                                <th colspan="5">Ngày đặt: @item.OrderTime</th>
-                                                <th colspan="2" class="toggle">Xem chi tiết</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                    @* cho xac nhan*@
-                                    <table class="display display_0">
-                                        <thead style="background-color:blue;">
-                                            <tr>
-                                                <th>STT</th>
-                                                <th>Ảnh</th>
-                                                <th>Tên</th>
-                                                <th>Size</th>
-                                                <th>Giá</th>
-                                                <th>Số lượng</th>
-                                                <th>Thành tiền</th>
-                                                <th>Địa chỉ</th>
-                                                <th>Tình trạng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @{var stts = 0;}
-                                            @foreach (var items in item.DetailOrders)
-                                            {
-                                                <tr>
-                                                    <td>@(stts +=1)</td>
-                                                    <td>
-                                                        <div class="cart-td_title">
-                                                            <a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = items.ProductId})"><img style="cursor:pointer;" src="@items.Product.Img" alt="" class="app_cart-img"></a>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <span>@items.Product.Name</span>
-                                                    </td>
-                                                    <td>@items.Size</td>
-                                                    <td>
-                                                        <div class="cart-btn">
-                                                            <span>@String.Format(" {0:0,00}", items.Product.Price) VND</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <form action="" method="post">
-                                                            <!-- hidden loại type không hiên thị -->
+											<tr>
+												<th>Đơn hàng: @(stt += 1) </th>
+												<th colspan="5">Ngày đặt: @item.OrderTime</th>
+												<th colspan="2" class="toggle">Xem chi tiết</th>
+											</tr>
+										</thead>
+									</table>
+									@* cho xac nhan*@
+									<table class="display display_0">
+										<thead style="background-color:blue;">
+											<tr>
+												<th>STT</th>
+												<th>Ảnh</th>
+												<th>Tên</th>
+												<th>Size</th>
+												<th>Giá</th>
+												<th>Số lượng</th>
+												<th>Thành tiền</th>
+												<th>Địa chỉ</th>
+												<th>Tình trạng</th>
+											</tr>
+										</thead>
+										<tbody>
+											@{
+												var stts = 0;
+											}
+											@foreach (var items in item.DetailOrders)
+											{
+												<tr>
+													<td>@(stts += 1)</td>
+													<td style="position:relative;">
+														<div class="cart-td_title">
+															<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = items.ProductId})">
+																<img style="cursor:pointer;" src="@items.Product.Img" alt="" class="app_cart-img">
+																@if (items.Product.DetailDiscounts.Count > 0)
+																{
+																	if (items.PercentDiscount > 0)
+																	{
+																		<div class="home-product-item__sale-off">
+																			<span class="home-product-item__percent">@items.PercentDiscount%</span>
+																			<span class="home-product-item__label">Giảm</span>
+																		</div>
+																	}
+																}
+															</a>
+														</div>
+													</td>
+													<td>
+														<span>@items.Product.Name</span>
+													</td>
+													<td>@items.Size</td>
+													<td>
+														@if (items.Product.DetailDiscounts.Count > 0)
+														{
 
-                                                            <input style="border: none;background: none;" type="button" name="quantity" value="@items.Quantity" width="30px" />
-                                                            <!-- <input type="submit" name="submit" value="Update"/> -->
-                                                        </form>
-                                                    </td>
+															if (items.PercentDiscount > 0)
+															{
+																<div class="cart-btn" id="price_Old_@item.Id">
+																	<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", items.Product.Price)</span>
+																</div>
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	@{
+																		var price = items.Product.Price - items.Product.Price * items.PercentDiscount / 100;
+																	}
+																	<span>@String.Format(" {0:0,00}", price) </span>
+																</div>
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", items.Product.Price) </span>
+																</div>
+															}
+														}
+														else
+														{
+															<div class="cart-btn" id="price_Product_@item.Id">
+																<span>@String.Format(" {0:0,00}", items.Product.Price) </span>
+															</div>
+														}
+													</td>
+													<td>
+														<input style="border: none;background: none;" type="button" name="quantity" value="@items.Quantity" width="30px" />
+													</td>
 
-                                                    <td>
-                                                        <span class="cart-current">
-                                                            @String.Format(" {0:0,00}", items.Price) VND
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        @item.Address
-                                                    </td>
-                                                    <td style="color:red;cursor:pointer">Đang chờ xác nhận</td>
+													<td>
+														@if (items.Product.DetailDiscounts.Count > 0)
+														{
 
-                                                </tr>
-                                            }
-                                        <td colspan="7" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   @String.Format(" {0:0,00}", item.Total) VND</td>
-                                        <td colspan="3" class="huy_don" style="background-color:#2a2b2c;">
-                                            <div style="display: flex;align-items: center;justify-content: space-evenly;">
+															if (items.PercentDiscount > 0)
+															{
+																<div class="cart-btn" id="price_Old_@item.Id">
+																	<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", items.Price)</span>
+																</div>
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	@{
+																		var price = items.Price - items.Price * items.PercentDiscount / 100;
+																	}
+																	<span>@String.Format(" {0:0,00}", price) </span>
+																</div>
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", items.Price) </span>
+																</div>
+															}
+														}
+														else
+														{
+															<div class="cart-btn" id="price_Product_@item.Id">
+																<span>@String.Format(" {0:0,00}", items.Price) </span>
+															</div>
+														}
+													</td>
+													<td>
+														@item.Address
+													</td>
+													<td style="color:red;cursor:pointer">Đang chờ xác nhận</td>
 
-                                                <a style="text-decoration:none;font-size:20px;" class="ti-trash" onclick="change_Status(@item.Id)">Hủy đơn</a>
-                                            </div>
-                                        </td>
+												</tr>
+											}
+										<td colspan="3" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) </span></td>
+										<td colspan="3" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
+										<td colspan="4" class="huy_don" style="background-color:#2a2b2c;">
+											<div style="display: flex;align-items: center;justify-content: space-evenly;">
 
-                                        </tbody>
-                                    </table>
-                                }
-                            }
+												<a style="text-decoration:none;font-size:20px;" class="ti-trash" onclick="change_Status(@item.Id)">Hủy đơn</a>
+											</div>
+										</td>
 
-                            <!-- dang giao-->
-                            @if (Model != null || Model.Count != 0)
-                            {
-                                var listDelivering = Model.Where(i => i.Status == 1);
-                                var stt = 0;
-                                foreach (var item in listDelivering)
-                                {
-                                    <table id="daNH" class="daNH table_1">
-                                        <thead>
-                                            <tr>
-                                                <th>Đơn hàng: @(stt +=1)</th>
-                                                <th colspan="5">Ngày đặt: @item.OrderTime</th>
-                                                <th colspan="2" class="toggle">Xem chi tiết</th>
-                                            </tr>
-                                        </thead>
-                                        <!-- </table> -->
+										</tbody>
+									</table>
+								}
+							}
 
-                                        <table class="display display_1">
-                                            <thead style="background-color:blue;">
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Ảnh</th>
-                                                    <th>Tên</th>
-                                                    <th>Size</th>
-                                                    <th>Giá</th>
-                                                    <th>Số lượng</th>
-                                                    <th>Thành tiền</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Tình trạng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @{ var stts = 0;}
-                                                @foreach (var i in item.DetailOrders)
-                                                {
-                                                    <tr>
-                                                        <td>@(stts +=1)</td>
-                                                        <td>
-                                                            <div class="cart-td_title">
-                                                                <a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})"><img style="cursor:pointer;" src="@i.Product.Img" alt="" class="app_cart-img"></a>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span>@i.Product.Name</span>
-                                                        </td>
-                                                        <td>@i.Size</td>
-                                                        <td>
-                                                            <div class="cart-btn">
-                                                                <span>@String.Format(" {0:0,00}", i.Product.Price) VND</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <form action="" method="post">
-                                                                <!-- hidden loại type không hiên thị -->
+							<!-- dang giao-->
+							@if (Model != null || Model.Count != 0)
+							{
+								var listDelivering = Model.Where(i => i.Status == 1);
+								var stt = 0;
+								foreach (var item in listDelivering)
+								{
+									<table id="daNH" class="daNH table_1">
+										<thead>
+											<tr>
+												<th>Đơn hàng: @(stt += 1)</th>
+												<th colspan="5">Ngày đặt: @item.OrderTime</th>
+												<th colspan="2" class="toggle">Xem chi tiết</th>
+											</tr>
+										</thead>
+										<!-- </table> -->
 
-                                                                <input style="border: none;background: none;" type="button" name="quantity" value="@i.Quantity" width="30px" />
-                                                                <!-- <input type="submit" name="submit" value="Update"/> -->
-                                                            </form>
-                                                        </td>
+										<table class="display display_1">
+											<thead style="background-color:blue;">
+												<tr>
+													<th>STT</th>
+													<th>Ảnh</th>
+													<th>Tên</th>
+													<th>Size</th>
+													<th>Giá</th>
+													<th>Số lượng</th>
+													<th>Thành tiền</th>
+													<th>Địa chỉ</th>
+													<th>Tình trạng</th>
+												</tr>
+											</thead>
+											<tbody>
+												@{
+													var stts = 0;
+												}
+												@foreach (var i in item.DetailOrders)
+												{
+													<tr>
+														<td>@(stts += 1)</td>
+														<td style="position:relative;">
+															<div class="cart-td_title">
+																<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+																	<img style="cursor:pointer;" src="@i.Product.Img" alt="" class="app_cart-img">
+																	@if (i.PercentDiscount > 0)
+																	{
+																	<div class="home-product-item__sale-off">
+																		<span class="home-product-item__percent">@i.PercentDiscount%</span>
+																		<span class="home-product-item__label">Giảm</span>
+																	</div>
+																	}
 
-                                                        <td>
-                                                            <span class="cart-current">
-                                                                @String.Format(" {0:0,00}", i.Price) VND
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            @item.Address
-                                                        </td>
-                                                        <td style="color:blue;">Đang giao</td>
-                                                    </tr>
-                                                }
-                                            <td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
-                                            <td colspan="3" class="confirm" style="background-color:#2a2b2c;">
-                                                <div>
-                                                    <a class="ti-check" style="text-decoration:none;font-size:15px;" onclick="Change_Delivered(@item.Id)" href="#">Đã nhận được hàng</a>
-                                                </div>
+																</a>
+															</div>
+														</td>
+														<td>
+															<span>@i.Product.Name</span>
+														</td>
+														<td>@i.Size</td>
+														<td>
+															@if (i.Product.DetailDiscounts.Count > 0)
+															{
 
-                                            </td>
+																if (i.PercentDiscount > 0)
+																{
+																	<div class="cart-btn" id="price_Old_@item.Id">
+																		<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+																	</div>
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		@{
+																			var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+																		}
+																		<span>@String.Format(" {0:0,00}", price) </span>
+																	</div>
+																}
+																else
+																{
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+																	</div>
+																}
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+																</div>
+															}
+														</td>
+														<td>
+															<form action="" method="post">
+																<!-- hidden loại type không hiên thị -->
 
-                                            </tbody>
-                                        </table>
-                                    </table>
-                                }
-                            }
+																<input style="border: none;background: none;" type="button" name="quantity" value="@i.Quantity" width="30px" />
+																<!-- <input type="submit" name="submit" value="Update"/> -->
+															</form>
+														</td>
 
-                            <!--da giao-->
-                            @if (Model != null || Model.Count != 0)
-                            {
-                                var listDelivered = Model.Where(i => i.Status == 2);
-                                var stt = 0;
-                                foreach (var item in listDelivered)
-                                {
-                                    <table id="daGiao" class="daGiao table_2">
-                                        <thead>
-                                            <tr>
-                                                <th>Đơn hàng: @(stt +=1)</th>
-                                                <th colspan="3">Ngày đặt: @item.OrderTime</th>
-                                                <th colspan="2">Ngày nhận: @item.RecieveTime</th>
-                                                <th colspan="2" class="toggle">Xem chi tiết</th>
-                                            </tr>
-                                        </thead>
-                                        <!-- </table> -->
+														<td>
+															@if (i.Product.DetailDiscounts.Count > 0)
+															{
 
-                                        <table class="display display_2">
-                                            <thead style="background-color:blue;">
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Ảnh</th>
-                                                    <th>Tên</th>
-                                                    <th>Size</th>
-                                                    <th>Giá</th>
-                                                    <th>Số lượng</th>
-                                                    <th>Thành tiền</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Tình trạng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @{ var stts = 0;}
-                                                @foreach (var i in item.DetailOrders)
-                                                {
-                                                    <tr>
-                                                        <td>@(stts +=1)</td>
-                                                        <td>
-                                                            <div class="cart-td_title">
-                                                                <a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})"><img style="cursor:pointer;" src="@i.Product.Img" alt="" class="app_cart-img"></a>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span>@i.Product.Name</span>
-                                                        </td>
-                                                        <td>@i.Size</td>
-                                                        <td>
-                                                            <div class="cart-btn">
-                                                                <span>@String.Format(" {0:0,00}", i.Product.Price) VND</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <form action="" method="post">
-                                                                <!-- hidden loại type không hiên thị -->
+																if (i.PercentDiscount > 0)
+																{
+																	<div class="cart-btn" id="price_Old_@item.Id">
+																		<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+																	</div>
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		@{
+																			var price = i.Price - i.Price * i.PercentDiscount / 100;
+																		}
+																		<span>@String.Format(" {0:0,00}", price) </span>
+																	</div>
+																}
+																else
+																{
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		<span>@String.Format(" {0:0,00}", i.Price) </span>
+																	</div>
+																}
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", i.Price) </span>
+																</div>
+															}
+														</td>
+														<td>
+															@item.Address
+														</td>
+														<td style="color:blue;">Đang giao</td>
+													</tr>
+												}
+											<td colspan="3" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+											<td colspan="3" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
+											<td colspan="3" class="confirm" style="background-color:#2a2b2c;">
+												<div>
+													<a class="ti-check" style="text-decoration:none;font-size:15px;" onclick="Change_Delivered(@item.Id)" href="#">Đã nhận được hàng</a>
+												</div>
 
-                                                                <input style="border: none;background: none;" type="button" name="quantity" value="@i.Quantity" width="30px" />
-                                                                <!-- <input type="submit" name="submit" value="Update"/> -->
-                                                            </form>
-                                                        </td>
+											</td>
 
-                                                        <td>
-                                                            <span class="cart-current">
-                                                                @String.Format(" {0:0,00}", i.Price) VND
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            @item.Address
-                                                        </td>
-                                                        <td style="color:blue;cursor:pointer">Đã nhận được hàng</td>
+											</tbody>
+										</table>
+									</table>
+								}
+							}
 
-                                                    </tr>
-                                                }
-                                                <tr>
-                                                    <td colspan="9" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
-                                                </tr>
-                                            </tbody>
+							<!--da giao-->
+							@if (Model != null || Model.Count != 0)
+							{
+								var listDelivered = Model.Where(i => i.Status == 2);
+								var stt = 0;
+								foreach (var item in listDelivered)
+								{
+									<table id="daGiao" class="daGiao table_2">
+										<thead>
+											<tr>
+												<th>Đơn hàng: @(stt += 1)</th>
+												<th colspan="3">Ngày đặt: @item.OrderTime</th>
+												<th colspan="2">Ngày nhận: @item.RecieveTime</th>
+												<th colspan="2" class="toggle">Xem chi tiết</th>
+											</tr>
+										</thead>
+										<!-- </table> -->
 
-                                        </table>
-                                    </table>
-                                }
-                            }
+										<table class="display display_2">
+											<thead style="background-color:blue;">
+												<tr>
+													<th>STT</th>
+													<th>Ảnh</th>
+													<th>Tên</th>
+													<th>Size</th>
+													<th>Giá</th>
+													<th>Số lượng</th>
+													<th>Thành tiền</th>
+													<th>Địa chỉ</th>
+													<th>Tình trạng</th>
+												</tr>
+											</thead>
+											<tbody>
+												@{
+													var stts = 0;
+												}
+												@foreach (var i in item.DetailOrders)
+												{
+													<tr>
+														<td>@(stts += 1)</td>
+														<td style="position:relative;">
+															<div class="cart-td_title">
+																<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+																	<img style="cursor:pointer;" src="@i.Product.Img" alt="" class="app_cart-img">
+																	@if (i.PercentDiscount > 0)
+																	{
+																	<div class="home-product-item__sale-off">
+																		<span class="home-product-item__percent">@i.PercentDiscount%</span>
+																		<span class="home-product-item__label">Giảm</span>
+																	</div>
+																	}
+																</a>
+															</div>
+														</td>
+														<td>
+															<span>@i.Product.Name</span>
+														</td>
+														<td>@i.Size</td>
+														<td>
+															@if (i.Product.DetailDiscounts.Count > 0)
+															{
 
-                            <!--huy don-->
-                            @if (Model != null || Model.Count != 0)
-                            {
-                                var listCanelOder = Model.Where(i => i.Status == -1);
-                                var stt = 0;
-                                foreach (var item in listCanelOder)
-                                {
-                                    <table id="daHuy" class="daHuy table_4">
-                                        <thead>
-                                            <tr>
-                                                <th>Đơn hàng: @(stt +=1)</th>
-                                                <th colspan="4">Ngày đặt: @item.OrderTime</th>
-                                                <th colspan="3" class="toggle">Xem chi tiết</th>
-                                            </tr>
-                                        </thead>
-                                        <!-- </table> -->
+																if (i.PercentDiscount > 0)
+																{
+																	<div class="cart-btn" id="price_Old_@item.Id">
+																		<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+																	</div>
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		@{
+																			var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+																		}
+																		<span>@String.Format(" {0:0,00}", price) </span>
+																	</div>
+																}
+																else
+																{
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+																	</div>
+																}
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+																</div>
+															}
+														</td>
+														<td>
+															<form action="" method="post">
+																<!-- hidden loại type không hiên thị -->
 
-                                        <table class="display display_4">
-                                            <thead style="background-color:blue;">
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Ảnh</th>
-                                                    <th>Tên</th>
-                                                    <th>Size</th>
-                                                    <th>Giá</th>
-                                                    <th>Số lượng</th>
-                                                    <th>Thành tiền</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Tình trạng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @{ var stts = 0;}
-                                                @foreach (var i in item.DetailOrders)
-                                                {
-                                                    <tr>
-                                                        <td>@(stts +=1)</td>
-                                                        <td>
-                                                            <div class="cart-td_title">
-                                                                <a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})"><img style="cursor:pointer;" src="@i.Product.Img" alt="" class="app_cart-img"></a>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span>@i.Product.Name</span>
-                                                        </td>
-                                                        <td>@i.Size</td>
-                                                        <td>
-                                                            <div class="cart-btn">
-                                                                <span> @String.Format(" {0:0,00}", i.Product.Price) VND</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <form action="" method="post">
-                                                                <!-- hidden loại type không hiên thị -->
+																<input style="border: none;background: none;" type="button" name="quantity" value="@i.Quantity" width="30px" />
+																<!-- <input type="submit" name="submit" value="Update"/> -->
+															</form>
+														</td>
 
-                                                                <input style="border: none;background: none;" type="button" name="quantity" value="@i.Quantity" width="30px" />
-                                                                <!-- <input type="submit" name="submit" value="Update"/> -->
-                                                            </form>
-                                                        </td>
+														<td>
+																@if (i.Product.DetailDiscounts.Count > 0)
+																{
 
-                                                        <td>
-                                                            <span class="cart-current">
-                                                                @String.Format(" {0:0,00}", i.Price) VND
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            @item.Address
-                                                        </td>
-                                                        <td style="color:red;cursor:pointer">Đã hủy đơn</td>
+																	if (i.PercentDiscount > 0)
+																	{
+																	<div class="cart-btn" id="price_Old_@item.Id">
+																		<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+																	</div>
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																			@{
+																				var price = i.Price - i.Price * i.PercentDiscount / 100;
+																			}
+																		<span>@String.Format(" {0:0,00}", price) </span>
+																	</div>
+																	}
+																	else
+																	{
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		<span>@String.Format(" {0:0,00}", i.Price) </span>
+																	</div>
+																	}
+																}
+																else
+																{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", i.Price) </span>
+																</div>
+																}
+														</td>
+														<td>
+															@item.Address
+														</td>
+														<td style="color:blue;cursor:pointer">Đã nhận được hàng</td>
 
-                                                    </tr>
-                                                }
+													</tr>
+												}
+												<tr>
+													<td colspan="4" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+													<td colspan="5" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
+												</tr>
+											</tbody>
 
-                                            <td colspan="9" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @item.Total</td>
+										</table>
+									</table>
+								}
+							}
 
-                                            </tbody>
+							<!--huy don-->
+							@if (Model != null || Model.Count != 0)
+							{
+								var listCanelOder = Model.Where(i => i.Status == -1);
+								var stt = 0;
+								foreach (var item in listCanelOder)
+								{
+									<table id="daHuy" class="daHuy table_4">
+										<thead>
+											<tr>
+												<th>Đơn hàng: @(stt += 1)</th>
+												<th colspan="4">Ngày đặt: @item.OrderTime</th>
+												<th colspan="3" class="toggle">Xem chi tiết</th>
+											</tr>
+										</thead>
+										<!-- </table> -->
 
-                                        </table>
-                                    </table>
-                                }
-                            }
+										<table class="display display_4">
+											<thead style="background-color:blue;">
+												<tr>
+													<th>STT</th>
+													<th>Ảnh</th>
+													<th>Tên</th>
+													<th>Size</th>
+													<th>Giá</th>
+													<th>Số lượng</th>
+													<th>Thành tiền</th>
+													<th>Địa chỉ</th>
+													<th>Tình trạng</th>
+												</tr>
+											</thead>
+											<tbody>
+												@{
+													var stts = 0;
+												}
+												@foreach (var i in item.DetailOrders)
+												{
+													<tr>
+														<td>@(stts += 1)</td>
+														<td style="position:relative;">
+															<div class="cart-td_title">
+																<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
+																	<img style="cursor:pointer;" src="@i.Product.Img" alt="" class="app_cart-img">
+																	@if (i.PercentDiscount > 0)
+																	{
+																		<div class="home-product-item__sale-off">
+																			<span class="home-product-item__percent">@i.PercentDiscount%</span>
+																			<span class="home-product-item__label">Giảm</span>
+																		</div>
+																	}
+																</a>
+															</div>
+														</td>
+														<td>
+															<span>@i.Product.Name</span>
+														</td>
+														<td>@i.Size</td>
+														<td>
+															@if (i.Product.DetailDiscounts.Count > 0)
+															{
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+																if (i.PercentDiscount > 0)
+																{
+																	<div class="cart-btn" id="price_Old_@item.Id">
+																		<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+																	</div>
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		@{
+																			var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+																		}
+																		<span>@String.Format(" {0:0,00}", price) </span>
+																	</div>
+																}
+																else
+																{
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+																	</div>
+																}
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+																</div>
+															}
+														</td>
+														<td>
+															<form action="" method="post">
+																<!-- hidden loại type không hiên thị -->
+
+																<input style="border: none;background: none;" type="button" name="quantity" value="@i.Quantity" width="30px" />
+																<!-- <input type="submit" name="submit" value="Update"/> -->
+															</form>
+														</td>
+
+														<td>
+															@if (i.Product.DetailDiscounts.Count > 0)
+															{
+
+																if (i.PercentDiscount > 0)
+																{
+																	<div class="cart-btn" id="price_Old_@item.Id">
+																		<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+																	</div>
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		@{
+																			var price = i.Price - i.Price * i.PercentDiscount / 100;
+																		}
+																		<span>@String.Format(" {0:0,00}", price) </span>
+																	</div>
+																}
+																else
+																{
+																	<div class="cart-btn" id="price_Product_@item.Id">
+																		<span>@String.Format(" {0:0,00}", i.Price) </span>
+																	</div>
+																}
+															}
+															else
+															{
+																<div class="cart-btn" id="price_Product_@item.Id">
+																	<span>@String.Format(" {0:0,00}", i.Price) </span>
+																</div>
+															}
+														</td>
+														<td>
+															@item.Address
+														</td>
+														<td style="color:red;cursor:pointer">Đã hủy đơn</td>
+
+													</tr>
+												}
+											<td colspan="4" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+											<td colspan="5" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
+
+											</tbody>
+
+										</table>
+									</table>
+								}
+							}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 @section script{
-    <script src="~/Public/User/js/Order_Manage.js"></script>
-    <script>
-        function change_Status(id) {
-            Swal.fire({
-                title: 'Do you want to cancelOder?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: '/User/Order/Cancel_Oder',
-                        type: 'POST',
-                        data: { idOder: id },
-                        success: function (rs) {
-                            if (rs.success)
-                                location.href = "/User/Order/Order_Manage";
-                        }
-                    })
-                }
-            })
-        }
+	<script src="~/Public/User/js/Order_Manage.js"></script>
+	<script>
+		function change_Status(id) {
+			Swal.fire({
+				title: 'Do you want to cancelOder?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: '/User/Order/Cancel_Oder',
+						type: 'POST',
+						data: { idOder: id },
+						success: function (rs) {
+							if (rs.success)
+								location.href = "/User/Order/Order_Manage";
+						}
+					})
+				}
+			})
+		}
 
-        function Change_Delivered(id) {
-            Swal.fire({
-                title: 'Do you want to item received?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: '/User/Order/Confirm_Oder',
-                        type: 'POST',
-                        data: { idOder: id },
-                        success: function (rs) {
-                            if (rs.success)
-                                location.href = "/User/Order/Order_Manage";
-                        }
-                    })
-                }
-            })
-        }
-    </script>
+		function Change_Delivered(id) {
+			Swal.fire({
+				title: 'Do you want to item received?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: '/User/Order/Confirm_Oder',
+						type: 'POST',
+						data: { idOder: id },
+						success: function (rs) {
+							if (rs.success)
+								location.href = "/User/Order/Order_Manage";
+						}
+					})
+				}
+			})
+		}
+	</script>
 
 }

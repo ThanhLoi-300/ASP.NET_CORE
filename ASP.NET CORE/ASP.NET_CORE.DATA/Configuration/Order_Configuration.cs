@@ -20,6 +20,7 @@ namespace ASP.NET_CORE.DATA.Configuration
             entity.Property(e => e.OrderTime).IsRequired();
             entity.Property(e => e.RecieveTime).IsRequired();
             entity.Property(e => e.Total).IsRequired();
+            entity.Property(e => e.Total_After_Discount).IsRequired();
             entity.Property(e => e.ClientId).IsRequired();
             entity.Property(e => e.UserId).IsRequired();
             entity.Property(e => e.Status).IsRequired();

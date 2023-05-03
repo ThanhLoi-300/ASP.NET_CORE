@@ -62,9 +62,16 @@
 									<tr>
 										<td>@(stt_Detail += 1)</td>
 										<td>@ViewBag.Name</td>
-										<td>
+										<td style="position:relative;">
 											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
 												<img style="width:100px;" src="@i.Product.Img">
+												@if (i.PercentDiscount > 0)
+												{
+													<div class="home-product-item__sale-off">
+														<span class="home-product-item__percent">@i.PercentDiscount%</span>
+														<span class="home-product-item__label">Giảm</span>
+													</div>
+												}
 											</a>
 										</td>
 										<td>
@@ -74,11 +81,65 @@
 											@i.Size
 										</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Product.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+												</div>
+											}
 										</td>
 										<td>@i.Quantity</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Price - i.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Price) </span>
+												</div>
+											}
 										</td>
 										<td style="width:250px;">
 											@item.Address
@@ -87,7 +148,8 @@
 
 									</tr>
 								}
-							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
+							<td colspan="4" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+							<td colspan="4" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
 							<td colspan="4" style="background-color:#2a2b2c;">
 								<div>
 
@@ -150,9 +212,16 @@
 									<tr>
 										<td>@(stt_Detail += 1)</td>
 										<td>@ViewBag.Name</td>
-										<td>
+										<td style="position:relative;">
 											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
 												<img style="width:100px;" src="@i.Product.Img">
+												@if (i.PercentDiscount > 0)
+												{
+													<div class="home-product-item__sale-off">
+														<span class="home-product-item__percent">@i.PercentDiscount%</span>
+														<span class="home-product-item__label">Giảm</span>
+													</div>
+												}
 											</a>
 										</td>
 										<td>
@@ -162,20 +231,75 @@
 											@i.Size
 										</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Product.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+												</div>
+											}
 										</td>
 										<td>@i.Quantity</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Price - i.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Price) </span>
+												</div>
+											}
 										</td>
 										<td style="width:250px;">
 											@item.Address
 										</td>
 										<td style="color:blue;cursor:pointer">Đang vận chuyển</td>
-										
+
 									</tr>
 								}
-							<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
 							</tbody>
 						</table>
 					}
@@ -231,9 +355,16 @@
 									<tr>
 										<td>@(stt_Detail += 1)</td>
 										<td>@ViewBag.Name</td>
-										<td>
+										<td style="position:relative;">
 											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
 												<img style="width:100px;" src="@i.Product.Img">
+												@if (i.PercentDiscount > 0)
+												{
+													<div class="home-product-item__sale-off">
+														<span class="home-product-item__percent">@i.PercentDiscount%</span>
+														<span class="home-product-item__label">Giảm</span>
+													</div>
+												}
 											</a>
 										</td>
 										<td>
@@ -243,11 +374,65 @@
 											@i.Size
 										</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Product.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+												</div>
+											}
 										</td>
 										<td>@i.Quantity</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Price - i.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Price) </span>
+												</div>
+											}
 										</td>
 										<td style="width:250px;">
 											@item.Address
@@ -255,7 +440,8 @@
 										<td style="color:blue;cursor:pointer">Đã nhận được hàng</td>
 									</tr>
 								}
-							<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount) VND</td>
 							</tbody>
 						</table>
 					}
@@ -310,9 +496,16 @@
 									<tr>
 										<td>@(stt_Detail += 1)</td>
 										<td>@ViewBag.Name</td>
-										<td>
+										<td style="position:relative;">
 											<a href="@Url.Action("Detail_Product_Page","DetailProduct", new {id = i.ProductId})">
 												<img style="width:100px;" src="@i.Product.Img">
+												@if (i.PercentDiscount > 0)
+												{
+													<div class="home-product-item__sale-off">
+														<span class="home-product-item__percent">@i.PercentDiscount%</span>
+														<span class="home-product-item__label">Giảm</span>
+													</div>
+												}
 											</a>
 										</td>
 										<td>
@@ -322,21 +515,77 @@
 											@i.Size
 										</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Product.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Product.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Product.Price - i.Product.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Product.Price) </span>
+												</div>
+											}
 										</td>
 										<td>@i.Quantity</td>
 										<td>
-											@String.Format(" {0:0,00}", @i.Price) VND
+											@if (i.Product.DetailDiscounts.Count > 0)
+											{
+
+												if (i.PercentDiscount > 0)
+												{
+													<div class="cart-btn" id="price_Old_@item.Id">
+														<span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", i.Price)</span>
+													</div>
+													<div class="cart-btn" id="price_Product_@item.Id">
+														@{
+															var price = i.Price - i.Price * i.PercentDiscount / 100;
+														}
+														<span>@String.Format(" {0:0,00}", price) </span>
+													</div>
+												}
+												else
+												{
+													<div class="cart-btn" id="price_Product_@item.Id">
+														<span>@String.Format(" {0:0,00}", i.Price) </span>
+													</div>
+												}
+											}
+											else
+											{
+												<div class="cart-btn" id="price_Product_@item.Id">
+													<span>@String.Format(" {0:0,00}", i.Price) </span>
+												</div>
+											}
 										</td>
 										<td style="width:250px;">
 											@item.Address
 										</td>
 										<td style="color:red;cursor:pointer">Đã hủy</td>
-										
+
 									</tr>
 								}
-							<td colspan="11" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng: @String.Format(" {0:0,00}", @item.Total) VND</td>
-							</tbody>
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">Tổng đơn hàng:   <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.9;">@String.Format(" {0:0,00}", item.Total) VND</span></td>
+							<td colspan="6" style="background-color:#2a2b2c;text-align:center;color:white;">
+								Thành tiền:   @String.Format(" {0:0,00}", item.Total_After_Discount)
+								</tbody>
 						</table>
 					}
 				}

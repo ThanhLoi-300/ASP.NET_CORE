@@ -22,6 +22,9 @@ public partial class Order
     [Column(TypeName = "decimal(18,2)")]
     public decimal Total { get; set; }
 
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal Total_After_Discount { get; set; }
+
     public DateTime OrderTime { get; set; }
 
     public DateTime RecieveTime { get; set; }

@@ -2,367 +2,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLL SHOP</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.5/css/lightslider.min.css'>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap">
-    <link rel="stylesheet" href="~/Public/User/font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="~/Public/User/css/main.css">
-    <link rel="stylesheet" href="~/Public/User/css/grid.css">
-    <link rel="stylesheet" href="~/Public/User/css/base.css">
-    <link rel="stylesheet" href="~/Public/User/css/banners.css">
-    <link rel="stylesheet" href="~/Public/User/font/fontawesome-free-5.15.4-web/css/all.min.css">
-    <link rel="shortcut icon" href="~/Public/User/img/favicon_created_by_logaster.ico" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
-    @RenderSection("css", required: false)
-    <style>
-        .home-product-item__favourite {
-            position: absolute;
-            top: 10px;
-            left: -4px;
-            color: white;
-            font-size: 1.2rem;
-            background-color: red;
-            font-weight: 500;
-            padding: 0 5px;
-            line-height: 1.6rem;
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MLL SHOP</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.5/css/lightslider.min.css'>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap">
+	<link rel="stylesheet" href="~/Public/User/font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="~/Public/User/css/main.css">
+	<link rel="stylesheet" href="~/Public/User/css/grid.css">
+	<link rel="stylesheet" href="~/Public/User/css/base.css">
+	<link rel="stylesheet" href="~/Public/User/css/banners.css">
+	<link rel="stylesheet" href="~/Public/User/font/fontawesome-free-5.15.4-web/css/all.min.css">
+	<link rel="shortcut icon" href="~/Public/User/img/favicon_created_by_logaster.ico" type="image/x-icon">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+	@RenderSection("css", required: false)
+	<style>
+		.home-product-item__favourite {
+			position: absolute;
+			top: 10px;
+			left: -4px;
+			color: white;
+			font-size: 1.2rem;
+			background-color: red;
+			font-weight: 500;
+			padding: 0 5px;
+			line-height: 1.6rem;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
 
-            .home-product-item__favourite::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -8px;
-                border-top: 8px solid red;
-                border-left: 8px solid transparent;
-                filter: brightness(60%);
-            }
+			.home-product-item__favourite::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -8px;
+				border-top: 8px solid red;
+				border-left: 8px solid transparent;
+				filter: brightness(60%);
+			}
 
-            .home-product-item__favourite i {
-                font-size: 0.9rem;
-                margin: 0 3px 0 5px;
-            }
+			.home-product-item__favourite i {
+				font-size: 0.9rem;
+				margin: 0 3px 0 5px;
+			}
 
-        .home-product-item__sale-off {
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 8px 2px 8px 2px;
-            width: 54px;
-            height: 60px;
-            text-align: center;
-            background-color: rgba(255,216,64,0.94);
-        }
+		.home-product-item__sale-off {
+			position: absolute;
+			right: 0;
+			top: 0;
+			padding: 8px 2px 8px 2px;
+			width: 54px;
+			height: 60px;
+			text-align: center;
+			background-color: rgba(255,216,64,0.94);
+		}
 
-            .home-product-item__sale-off::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -6px;
-                border-width: 0 27px 6px;
-                border-style: solid;
-                border-color: transparent rgba(255,216,64,0.94) transparent rgba(255,216,64,0.94);
-            }
+			.home-product-item__sale-off::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -6px;
+				border-width: 0 27px 6px;
+				border-style: solid;
+				border-color: transparent rgba(255,216,64,0.94) transparent rgba(255,216,64,0.94);
+			}
 
-        .home-product-item__percent {
-            color: #EE4D2D;
-            font-weight: 600;
-            font-size: 1.2rem;
-            line-height: 1.2rem;
-            top: -1px;
-            position: relative;
-        }
+		.home-product-item__percent {
+			color: #EE4D2D;
+			font-weight: 600;
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+			top: -1px;
+			position: relative;
+		}
 
-        .home-product-item__label {
-            font-size: 1.3rem;
-            line-height: 1.3rem;
-            color: white;
-            position: relative;
-        }
-</style>
+		.home-product-item__label {
+			font-size: 1.3rem;
+			line-height: 1.3rem;
+			color: white;
+			position: relative;
+		}
+	</style>
 </head>
 
 <body>
-    <section class="app">
-        <header>
-            <ul>
-                <li>
-                    <div class="clearfix" style="margin-left:50px;">
-                        <nav class="navigation">
-                            <ul class="nav">
-                                <li class="nav-list">
-                                    <a href="#">NAM</a>
-                                </li>
-                                <li class="nav-list">
-                                    <a href="#">NỮ</a>
-                                </li>
-                                <li class="nav-list">
-                                    <a href="#">TRẺ EM</a>
-                                </li>
-                                <li class="nav-list">
-                                    <a href="">BỘ SƯU TẬP</a>
-                                </li>
-                                <li class="nav-list">
-                                    <a href="@Url.Action("About_Us","HomePage")">VỀ CHÚNG TÔI</a>
-                                </li>
-                                <li class="nav-list">
-                                    <a href="#">LIÊN HỆ</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </li>
-                <li>
-                    <div class="header__logo">
-                        <div class="logo">
-                            <a href="@Url.Action("Index","HomePage")">
-                                <img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <ul>
-                        <!-- thanh tìm kiếm -->
-                        <li class="header__search">
-                            <form action="@Url.Action("Search_Page","SearchProduct")" method="GET">
-                                <input type="text" name="search" class="header__search-input" placeholder="Tìm kiếm sản phẩm...">
-                                <button type="submit" name="submit" class="ti-search"></button>
-                            </form>
-                        </li>
-                        <li class="header__cart-wrap1">
-                            <div class="header__cart">
-                                <div class="header__cart-wrap">
-                                    <a href="@Url.Action("Cart_Page","Cart")">
-                                        <i class="header__cart-icon ti-shopping-cart-full"></i>
-                                        <span class="header_cart_quantity">
+	<section class="app">
+		<header>
+			<ul>
+				<li>
+					<div class="clearfix" style="margin-left:50px;">
+						<nav class="navigation">
+							<ul class="nav">
+								<li class="nav-list">
+									<a href="#">NAM</a>
+								</li>
+								<li class="nav-list">
+									<a href="#">NỮ</a>
+								</li>
+								<li class="nav-list">
+									<a href="#">TRẺ EM</a>
+								</li>
+								<li class="nav-list">
+									<a href="">BỘ SƯU TẬP</a>
+								</li>
+								<li class="nav-list">
+									<a href="@Url.Action("About_Us","HomePage")">VỀ CHÚNG TÔI</a>
+								</li>
+								<li class="nav-list">
+									<a href="#">LIÊN HỆ</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</li>
+				<li>
+					<div class="header__logo">
+						<div class="logo">
+							<a href="@Url.Action("Index","HomePage")">
+								<img src="~/Public/User/img/29c5d91c5a319a6fc320.jpg" alt="">
+							</a>
+						</div>
+					</div>
+				</li>
+				<li>
+					<ul>
+						<!-- thanh tìm kiếm -->
+						<li class="header__search">
+							<form action="@Url.Action("Search_Page","SearchProduct")" method="GET">
+								<input type="text" name="search" class="header__search-input" placeholder="Tìm kiếm sản phẩm...">
+								<button type="submit" name="submit" class="ti-search"></button>
+							</form>
+						</li>
+						<li class="header__cart-wrap1">
+							<div class="header__cart">
+								<div class="header__cart-wrap">
+									<a href="@Url.Action("Cart_Page","Cart")">
+										<i class="header__cart-icon ti-shopping-cart-full"></i>
+										<span class="header_cart_quantity">
 
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
+										</span>
+									</a>
+								</div>
+							</div>
+						</li>
 
 
-                        @if (Static.User != "")
-                        {
-                            <li class="nav-list">
-                                <div class="nav-account">
-                                    <div class="nav-account-img ti-headphone"></div>
-                                    <div class="nav-account-img ti-user"></div>
-                                    <ul class="nav-user_menu">
-                                        <li class="nav-user_menu-item">
-                                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+						@if (Static.User != "")
+						{
+							<li class="nav-list">
+								<div class="nav-account">
+									<div class="nav-account-img ti-headphone"></div>
+									<div class="nav-account-img ti-user"></div>
+									<ul class="nav-user_menu">
+										<li class="nav-user_menu-item">
+											<a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
                                         " href="@Url.Action("Account_Index","Account")">Tài khoản của tôi</a>
-                                        </li>
-                                        @*<li class="nav-user_menu-item">
-                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
-                            " href="doimatkhau.php">Đổi mật khẩu</a>
-                        </li>*@
-                                        <li class="nav-user_menu-item">
-                                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+										</li>
+										@*<li class="nav-user_menu-item">
+									<a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+									" href="doimatkhau.php">Đổi mật khẩu</a>
+									</li>*@
+										<li class="nav-user_menu-item">
+											<a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
                                         " href="@Url.Action("Order_Manage","Order")">Quản lí đơn hàng</a>
-                                        </li>
-                                        <li class="nav-user_menu-item">
-                                            <a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
+										</li>
+										<li class="nav-user_menu-item">
+											<a style="color: #ffffff;  font-size: 14px; font-weight: 600; text-decoration: none; font-family: var(--font-family-monospace);
                                         " href="@Url.Action("Logout", "Account")">Đăng xuất</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        }
-                        @if (Static.User == "")
-                        {
-                            <li>
-                                <a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
-                            </li>
-                        }
-                    </ul>
-                </li>
-            </ul>
-        </header>
-        @RenderBody()
-        <footer>
-            <div class="grid">
-                <div class="account-footer">
-                    <div class="grid wide">
-                        <div class="row">
-                            <div class="col l-2-4 c-12 m-6">
-                                <div class="account-footer_titel">CHĂM SÓC KHÁCH HÀNG</div>
-                                <div class="account-footer_list">
-                                    <ul>
-                                        <li>
-                                            <a href="">Trung tâm trợ giúp</a>
-                                        </li>
-                                        <li>
-                                            <a href="">TGl Blog</a>
-                                        </li>
-                                        <li>
-                                            <a href="">TGL Mall</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Hướng dấn mua hàng</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Hướng dấn bán hàng</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col l-2-4 c-12 m-6">
-                                <div class="account-footer_titel">VỀ TGl</div>
-                                <div class="account-footer_list">
-                                    <ul>
-                                        <li>
-                                            <a href="">Giới thiệu về TGL</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Tuyển dụng</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Điều khoản TGL</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Chính sách bảo mật</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Chính hãng</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Kênh người bán</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col l-2-4 c-12 m-6">
-                                <div class="account-footer_titel">THEO DÕI CHÚNG TÔI TRÊN</div>
-                                <div class="account-footer_list">
-                                    <ul>
-                                        <li>
-                                            <span class="ti-facebook"></span>
-                                            <a href="">Facebook</a>
-                                        </li>
-                                        <li>
-                                            <span class="ti-google"></span>
-                                            <a href="">Google</a>
-                                        </li>
-                                        <li>
-                                            <span class="ti-instagram"></span>
-                                            <a href="">Instagram</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col l-2-4 c-12 m-6">
-                                <div class="account-footer_titel">THANH TOÁN</div>
-                                <div class="account-footer_list">
-                                    <ul>
-                                        <li>
-                                            <span class="ti-credit-card"></span>
-                                            <a href="">Thẻ VISA</a>
-                                        </li>
-                                        <li>
-                                            <span class="ti-shortcode"></span>
-                                            <a href="">Chuyển khoản</a>
-                                        </li>
-                                        <li>
-                                            <span class="ti-receipt"></span>
-                                            <a href="">Credit</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col c-12 l-2-4 m-6">
-                                <div class="account-footer_titel">TẢI ỨNG DỤNG TGL NGAY THÔI</div>
-                                <div class="account-footer_list">
-                                    <ul>
-                                        <li>
-                                            <span class="ti-apple"></span>
-                                            <a href="">App Store</a>
-                                        </li>
-                                        <li>
-                                            <span class="ti-android"></span>
-                                            <a href="">Ch Play</a>
-                                        </li>
-                                        <li>
-                                            <span class="ti-instagram"></span>
-                                            <a href="">Instagram</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="account-footer-security">
-                            © 2022 MLL. Tất cả các quyền được bảo lưu dưới quyền của các thành viên Team MLL
-                        </div>
-                    </div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						}
+						@if (Static.User == "")
+						{
+							<li>
+								<a href="@Url.Action("Login_Page","Account")" style="text-decoration:none; color:black;">Đăng nhập</a>
+							</li>
+						}
+					</ul>
+				</li>
+			</ul>
+		</header>
+		@RenderBody()
+		<footer>
+			<div class="grid">
+				<div class="account-footer">
+					<div class="grid wide">
+						<div class="row">
+							<div class="col l-2-4 c-12 m-6">
+								<div class="account-footer_titel">CHĂM SÓC KHÁCH HÀNG</div>
+								<div class="account-footer_list">
+									<ul>
+										<li>
+											<a href="">Trung tâm trợ giúp</a>
+										</li>
+										<li>
+											<a href="">TGl Blog</a>
+										</li>
+										<li>
+											<a href="">TGL Mall</a>
+										</li>
+										<li>
+											<a href="">Hướng dấn mua hàng</a>
+										</li>
+										<li>
+											<a href="">Hướng dấn bán hàng</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col l-2-4 c-12 m-6">
+								<div class="account-footer_titel">VỀ TGl</div>
+								<div class="account-footer_list">
+									<ul>
+										<li>
+											<a href="">Giới thiệu về TGL</a>
+										</li>
+										<li>
+											<a href="">Tuyển dụng</a>
+										</li>
+										<li>
+											<a href="">Điều khoản TGL</a>
+										</li>
+										<li>
+											<a href="">Chính sách bảo mật</a>
+										</li>
+										<li>
+											<a href="">Chính hãng</a>
+										</li>
+										<li>
+											<a href="">Kênh người bán</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col l-2-4 c-12 m-6">
+								<div class="account-footer_titel">THEO DÕI CHÚNG TÔI TRÊN</div>
+								<div class="account-footer_list">
+									<ul>
+										<li>
+											<span class="ti-facebook"></span>
+											<a href="">Facebook</a>
+										</li>
+										<li>
+											<span class="ti-google"></span>
+											<a href="">Google</a>
+										</li>
+										<li>
+											<span class="ti-instagram"></span>
+											<a href="">Instagram</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col l-2-4 c-12 m-6">
+								<div class="account-footer_titel">THANH TOÁN</div>
+								<div class="account-footer_list">
+									<ul>
+										<li>
+											<span class="ti-credit-card"></span>
+											<a href="">Thẻ VISA</a>
+										</li>
+										<li>
+											<span class="ti-shortcode"></span>
+											<a href="">Chuyển khoản</a>
+										</li>
+										<li>
+											<span class="ti-receipt"></span>
+											<a href="">Credit</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col c-12 l-2-4 m-6">
+								<div class="account-footer_titel">TẢI ỨNG DỤNG TGL NGAY THÔI</div>
+								<div class="account-footer_list">
+									<ul>
+										<li>
+											<span class="ti-apple"></span>
+											<a href="">App Store</a>
+										</li>
+										<li>
+											<span class="ti-android"></span>
+											<a href="">Ch Play</a>
+										</li>
+										<li>
+											<span class="ti-instagram"></span>
+											<a href="">Instagram</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="account-footer-security">
+							© 2022 MLL. Tất cả các quyền được bảo lưu dưới quyền của các thành viên Team MLL
+						</div>
+					</div>
 
-                </div>
-            </div>
-        </footer>
-    </section>
-    <button onclick="topFunction()" id="backToTop" title="Go to top" style="display: block;">
-        <i class="ti-angle-up" style="font-size: 25px;"></i>
-    </button>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="~/Public/User/js/product.js"></script>
-    <script src="~/Public/plugins/jquery/jquery.min.js"></script>
-    <script src="~/Public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="~/Public/User/js/script.js"></script>
-    @RenderSection("script", required: false)
-    <script>
-        function warning() {
-            let warning = "@((string)ViewBag.message)";
-            let icon = '';
-            let title = '';
-            let text = '';
-            if (warning == "success") {
-                    icon = 'success'
-                    title = 'Congratulation!!!!'
-                text = 'Đăng nhập thành công'
-            } else if (warning == "login fail") {
-                icon = 'warning'
-                title = 'Ooops!!!!'
-                text = 'Đăng nhập thất bại.'
-            } else if (warning == "register fail") {
-                icon = 'warning'
-                title = 'Ooops!!!!'
-                text = 'Đăng kí thất bại.'
-            } else if (warning == "successs") {
-                icon = 'success'
-                title = 'Congratulation!!!!'
-                text = ' Đăng kí thành công.'
-            } else if (warning == "successss") {
-                icon = 'success'
-                title = 'Congratulation!!!!'
-                text = '  Cập nhật thành công.'
-            } else if (warning == "add error") {
-                icon = 'warning'
-                title = 'Ooops!!!!'
-                text = 'Kho hàng không đủ số lượng.'
-            } else if (warning == "subtract error") {
-                icon = 'warning'
-                title = 'Ooops!!!!'
-                text = 'Số lượng phải lớn hơn 0.'
-            } 
+				</div>
+			</div>
+		</footer>
+	</section>
+	<button onclick="topFunction()" id="backToTop" title="Go to top" style="display: block;">
+		<i class="ti-angle-up" style="font-size: 25px;"></i>
+	</button>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="~/Public/User/js/product.js"></script>
+	<script src="~/Public/plugins/jquery/jquery.min.js"></script>
+	<script src="~/Public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="~/Public/User/js/script.js"></script>
+	@RenderSection("script", required: false)
+	<script>
+		function warning() {
+			let warning = "@((string)ViewBag.message)";
+			let icon = '';
+			let title = '';
+			let text = '';
+			if (warning == "success") {
+				icon = 'success'
+				title = 'Congratulation!!!!'
+				text = 'Đăng nhập thành công'
+			} else if (warning == "login fail") {
+				icon = 'warning'
+				title = 'Ooops!!!!'
+				text = 'Đăng nhập thất bại.'
+			} else if (warning == "register fail") {
+				icon = 'warning'
+				title = 'Ooops!!!!'
+				text = 'Đăng kí thất bại.'
+			} else if (warning == "successs") {
+				icon = 'success'
+				title = 'Congratulation!!!!'
+				text = ' Đăng kí thành công.'
+			} else if (warning == "successss") {
+				icon = 'success'
+				title = 'Congratulation!!!!'
+				text = '  Cập nhật thành công.'
+			} else if (warning == "add error") {
+				icon = 'warning'
+				title = 'Ooops!!!!'
+				text = 'Kho hàng không đủ số lượng.'
+			} else if (warning == "subtract error") {
+				icon = 'warning'
+				title = 'Ooops!!!!'
+				text = 'Số lượng phải lớn hơn 0.'
+			} else if (warning == "havetologin") {
+				icon = 'warning'
+				title = 'Ooops!!!!'
+				text = 'Bạn phải đăng nhập'
+			}
 
-            if(icon != '' && title != '' && text !='')
-                Swal.fire({
-                    icon: icon,
-                    title: title,
-                    text: text
-                })
-        }
-        warning()
-    </script>
+			if (icon != '' && title != '' && text != '')
+				Swal.fire({
+					icon: icon,
+					title: title,
+					text: text
+				})
+		}
+		warning()
+	</script>
 
 </body>
 

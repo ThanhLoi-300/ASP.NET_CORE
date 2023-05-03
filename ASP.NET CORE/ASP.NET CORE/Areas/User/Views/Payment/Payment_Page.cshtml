@@ -3,6 +3,7 @@
     ViewData["Title"] = "Payment_Page";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
     var stt = 0;
+    decimal total = 0;
 }
 
 @section css{
@@ -51,12 +52,24 @@
                                                 {
                                                     foreach (var item in Model)
                                                     {
+
                                                         <tr>
-                                                            <td>@{stt++;} </td>
-                                                            <td>
+                                                            <td>@(stt+=1) </td>
+                                                            <td style="position:relative;">
                                                                 <div class="cart-td_title">
                                                                     <a href="@Url.Action("Detail_Product_Page","DetailProduct")">
                                                                         <img style="cursor:pointer;" src="@item.Product.Img" alt="" class="app_cart-img">
+                                                                        @if (item.Product.DetailDiscounts.Count > 0)
+                                                                        {
+                                                                            var a = item.Product.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+                                                                            if (a.Count > 0)
+                                                                            {
+                                                                                <div class="home-product-item__sale-off">
+                                                                                    <span class="home-product-item__percent">@a[0]%</span>
+                                                                                    <span class="home-product-item__label">Giảm</span>
+                                                                                </div>
+                                                                            }
+                                                                        }
                                                                     </a>
                                                                 </div>
                                                             </td>
@@ -65,9 +78,34 @@
                                                             </td>
                                                             <td>@item.Size</td>
                                                             <td>
-                                                                <div class="cart-btn">
-                                                                    <span>@String.Format(" {0:0,00}", item.Product.Price) VND</span>
-                                                                </div>
+                                                                @if (item.Product.DetailDiscounts.Count > 0)
+                                                                {
+                                                                    var a = item.Product.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+                                                                    if (a.Count > 0)
+                                                                    {
+                                                                        <div class="cart-btn" id="price_Old_@item.Id">
+                                                                            <span style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">@String.Format(" {0:0,00}", item.Product.Price)</span>
+                                                                        </div>
+                                                                        <div class="cart-btn" id="price_Product_@item.Id">
+                                                                            @{
+                                                                                var price = item.Product.Price - item.Product.Price * a[0] / 100;
+                                                                            }
+                                                                            <span>@String.Format(" {0:0,00}", price) </span>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="cart-btn" id="price_Product_@item.Id">
+                                                                            <span>@String.Format(" {0:0,00}", item.Product.Price) </span>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="cart-btn" id="price_Product_@item.Id">
+                                                                        <span>@String.Format(" {0:0,00}", item.Product.Price) </span>
+                                                                    </div>
+                                                                }
                                                             </td>
                                                             <td>
                                                                 <input type="hidden" name="cartId" value="<?php echo $result_ProductCat['cartID'] ?>" />
@@ -75,9 +113,37 @@
                                                             </td>
 
                                                             <td>
-                                                                <span class="cart-current">
-                                                                    @String.Format(" {0:0,00}", item.Price) VND
-                                                                </span>
+                                                                @if (item.Product.DetailDiscounts.Count > 0)
+                                                                {
+                                                                    var a = item.Product.DetailDiscounts.Where(b => b.Discount.Status == "Đang kích hoạt").Select(b => b.Discount.Value).ToList();
+                                                                    if (a.Count > 0)
+                                                                    {
+                                                                        <span class="cart-current" id="price_Old_Sum_@item.Id" style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">
+                                                                            @String.Format(" {0:0,00}", item.Price)
+                                                                        </span>
+                                                                        <span class="cart-current" id="price_@item.Id">
+                                                                            @{
+                                                                                var price = item.Price - item.Price * a[0] / 100;
+                                                                                total += price;
+                                                                            }
+                                                                            @String.Format(" {0:0,00}", price)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        total += item.Price;
+                                                                        <span class="cart-current" id="price_@item.Id">
+                                                                            @String.Format(" {0:0,00}", item.Price)
+                                                                        </span>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    total += item.Price;
+                                                                    <span class="cart-current" id="price_@item.Id">
+                                                                        @String.Format(" {0:0,00}", item.Price)
+                                                                    </span>
+                                                                }
                                                             </td>
                                                         </tr>
                                                     }
@@ -138,19 +204,21 @@
                                         <div class="voucher-title">
                                             <span>Tổng tiền hàng</span>
                                         </div>
-                                        <span class="sum-product">@String.Format(" {0:0,00}", ViewBag.total) VND</span>
-                                    </div>
-                                    <div style="display: flex;justify-content: space-between; margin: 20px 0;">
-                                        <span class="sum-product">Tiền thuế(VAT 10%)</span>
-                                        <span class="sum-product">
-                                            @String.Format(" {0:0,00}", ViewBag.vat) VND
-                                        </span>
+                                        <span class="sum-product" id="root" style="text-decoration: line-through;margin-bottom:10px;color:grey;opacity:0.8;">
+                                            @if (Model != null)
+                                            {
+                                                @String.Format(" {0:0,00}", ViewBag.total)
+                                            }
+                                        </span><p class="sum-product">VND</p>
                                     </div>
                                     <div class="cart-purchase">
                                         <span class="sum-product">Thành tiền</span>
-                                        <span class="sum-product" style="font-weight: 800;">
-                                            @String.Format(" {0:0,00}", ViewBag.endPrice) VND
-                                        </span>
+                                        <span class="sum-product" style="font-weight: 800;" id="sum_Price">
+                                            @if (Model != null)
+                                            {
+                                                @String.Format(" {0:0,00}", total)
+                                            }
+                                        </span><p class="sum-product">VND</p>
                                     </div>
                                     <div class="cart-purchase-button">
                                         <p class="btn"><a href="#" id="btn_order" onclick="swal_sells()">Xác nhận đặt hàng</a></p>
@@ -167,8 +235,9 @@
 
 <script>function swal_sells() {
         var address = document.getElementById("address").value
-        var total = document.getElementById("total").value
+        var total = document.getElementById("root").textContent
         var idClient = document.getElementById("idClient").value
+        var sum_Price = document.getElementById("sum_Price").innerHTML
  
         Swal.fire({
         title: 'Bạn chắc chắn muốn đặt hàng???',
@@ -188,6 +257,7 @@
                                 data: {
                                     address: address,
                                     total: total,
+                                    sum_Price : sum_Price,
                                     idClient: idClient
                                 },
                                 success: function (rs) {
