@@ -37,7 +37,7 @@ namespace ASP.NET_CORE.Areas.User.Controllers
                 List<Cart> cart = context.Carts.Include(c => c.Product).ThenInclude(c => c.DetailDiscounts).ThenInclude(c => c.Discount).Include(c => c.Client).Where(c => c.ClientId == int.Parse(username)).ToList();
                 var client = context.Clients.Where(c => c.Id == int.Parse(username)).ToList();
                 ViewBag.name = client[0].Name;
-                ViewBag.sdt = client[0].Name;
+                ViewBag.sdt = client[0].Sdt;
                 ViewBag.address = client[0].Address;
                 ViewBag.email = client[0].Email;
                 ViewBag.count = cart.Count;

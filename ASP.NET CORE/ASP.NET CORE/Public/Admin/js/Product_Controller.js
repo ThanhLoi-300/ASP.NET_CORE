@@ -60,7 +60,7 @@ var list_File = []
                                <td class="text-center" ><div class="stt">${currentId + 1}</div></td>
                                <td class="text-center">
                                    <img width="80" src="${url}"/>
-                                   <input type="text" value="${url}" name="file" />
+                                   <input type="hidden" value="${url}" name="file" />
                                </td>
                                <td class="text-center"> <input type="radio" checked ="checked" value="${currentId + 1}" name="radio"/></td>
                                <td class="text-center"> <div onclick="delete_btn(${currentId})" class="btn btn-sm btn-danger btn_Xoa"><i class="fas fa-trash"></i></div></td>
@@ -70,7 +70,7 @@ var list_File = []
                                <td class="text-center" ><div class="stt">${currentId + 1}</div></td>
                                <td class="text-center">
                                    <img width="80" src="${url}"/>
-                                   <input type="text" value="${url}" name="file" />
+                                   <input type="hidden" value="${url}" name="file" />
                                </td>
                                <td class="text-center"> <input type="radio" value="${currentId + 1}" name="radio"/></td>
                                <td class="text-center"> <div onclick="delete_btn(${currentId})" class="btn btn-sm btn-danger btn_Xoa"><i class="fas fa-trash"></i></div></td>
@@ -120,11 +120,13 @@ upload.addEventListener("change", () => {
             add_Img(reader.result)
         };
     }
-    save_Upload.files = dataTransfer.files
+    //save_Upload.files = dataTransfer.files
+    Data_From_Input1_To_Input2()
+    console.log(list_File.length)
 });
 
 function Data_From_Input1_To_Input2() {
-
+    alert("ok")
     // Lặp qua từng thẻ input và lấy danh sách file của nó
     if (upload.files.length > 0) {
         // Lặp qua từng file của thẻ input và thêm vào danh sách file
@@ -139,6 +141,6 @@ function Data_From_Input1_To_Input2() {
     }
 
     save_Upload.files = dataTransfer.files
-    console.log(save_Upload.files)
+    console.log(list_File.length)
 }
 
